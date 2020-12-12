@@ -49,14 +49,13 @@ func Test_parseFile(t *testing.T) {
 	}
 }
 
-//
-//func Benchmark_parseFileSequential(b *testing.B) {
-//	benchmarkParseFile(b, parseFileSequential)
-//}
-//
-//func Benchmark_parseFileConcurrentV1(b *testing.B) {
-//	benchmarkParseFile(b, parseFileConcurrentV1)
-//}
+func Benchmark_parseFileSequential(b *testing.B) {
+	benchmarkParseFile(b, parseFileSequential)
+}
+
+func Benchmark_parseFileConcurrentV1(b *testing.B) {
+	benchmarkParseFile(b, parseFileConcurrentV1)
+}
 
 func Benchmark_parseFileConcurrentV2(b *testing.B) {
 	benchmarkParseFile(b, parseFileConcurrentV2)
