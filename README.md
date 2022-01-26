@@ -1,6 +1,6 @@
 # 100 Go Mistakes and How to Avoid Them
 
-Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them).
+Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) 📖, edited by Manning.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 * 6 - Interface on the producer side
 * 7 - Returning interfaces
 * 8 - `any` says nothing
-* 9 - Being confused about when to use generics
+* 9 - [Being confused about when to use generics](https://teivah.medium.com/when-to-use-generics-in-go-36d49c1aeda)
 * 10 - Not being aware of the possible problems with type embedding
 * 11 - Not using the functional options pattern
 * 12 - Project misorganization (project structure and package organization)
