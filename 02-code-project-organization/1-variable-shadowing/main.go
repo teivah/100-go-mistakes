@@ -64,6 +64,22 @@ func listing3() error {
 	return nil
 }
 
+func listing4() error {
+	var client *http.Client
+	var err error
+	if tracing {
+		client, err = createClientWithTracing()
+	} else {
+		client, err = createDefaultClient()
+	}
+	if err != nil {
+		return err
+	}
+
+	_ = client
+	return nil
+}
+
 var tracing bool
 
 func createClientWithTracing() (*http.Client, error) {

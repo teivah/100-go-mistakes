@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -32,6 +33,16 @@ func (s store) handleLog2(log string) error {
 		return errors.New("log is not correctly formatted")
 	}
 	uuid := string([]byte(log[:36]))
+	s.store(uuid)
+	// Do something
+	return nil
+}
+
+func (s store) handleLog3(log string) error {
+	if len(log) < 36 {
+		return errors.New("log is not correctly formatted")
+	}
+	uuid := string(strings.Clone(log[:36]))
 	s.store(uuid)
 	// Do something
 	return nil

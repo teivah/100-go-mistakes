@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func getKeys(m any) ([]any, error) {
 	switch t := m.(type) {
@@ -44,11 +47,22 @@ func (n *Node[T]) Add(next *Node[T]) {
 	n.next = next
 }
 
-type sliceFn[T any] struct {
-	s       []T
-	compare func(T, T) bool
+type SliceFn[T any] struct {
+	S       []T
+	Compare func(T, T) bool
 }
 
-func (s sliceFn[T]) Len() int           { return len(s.s) }
-func (s sliceFn[T]) Less(i, j int) bool { return s.compare(s.s[i], s.s[j]) }
-func (s sliceFn[T]) Swap(i, j int)      { s.s[i], s.s[j] = s.s[j], s.s[i] }
+func (s SliceFn[T]) Len() int           { return len(s.S) }
+func (s SliceFn[T]) Less(i, j int) bool { return s.Compare(s.S[i], s.S[j]) }
+func (s SliceFn[T]) Swap(i, j int)      { s.S[i], s.S[j] = s.S[j], s.S[i] }
+
+func main() {
+	s := SliceFn[int]{
+		S: []int{3, 2, 1},
+		Compare: func(a, b int) bool {
+			return a < b
+		},
+	}
+	sort.Sort(s)
+	fmt.Println(s.S)
+}
