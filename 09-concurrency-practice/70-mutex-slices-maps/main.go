@@ -1,6 +1,20 @@
 package main
 
-import "sync"
+import (
+	"fmt"
+	"sync"
+)
+
+func main() {
+	c := Cache{
+		balances: make(map[string]float64),
+	}
+	c.AddBalance("1", 1.0)
+	c.AddBalance("2", 3.0)
+	fmt.Println(c.AverageBalance1())
+	fmt.Println(c.AverageBalance2())
+	fmt.Println(c.AverageBalance3())
+}
 
 type Cache struct {
 	mu       sync.Mutex
@@ -48,5 +62,5 @@ func (c *Cache) AverageBalance3() float64 {
 	for _, balance := range m {
 		sum += balance
 	}
-	return sum / float64(len(c.balances))
+	return sum / float64(len(m))
 }

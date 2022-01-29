@@ -68,13 +68,13 @@ func listing5() {
 
 	go func() {
 		mutex.Lock()
+		defer mutex.Unlock()
 		i = 1
-		mutex.Unlock()
 	}()
 
 	go func() {
 		mutex.Lock()
+		defer mutex.Unlock()
 		i = 2
-		mutex.Unlock()
 	}()
 }

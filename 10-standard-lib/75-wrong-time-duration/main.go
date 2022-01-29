@@ -1,13 +1,21 @@
 package main
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	listing1()
+	//listing2()
+}
 
 func listing1() {
 	ticker := time.NewTicker(1000)
 	for {
 		select {
 		case <-ticker.C:
-			// Do something
+			fmt.Println("tick")
 		}
 	}
 }
@@ -17,7 +25,7 @@ func listing2() {
 	for {
 		select {
 		case <-ticker.C:
-			// Do something
+			fmt.Println("tick")
 		}
 	}
 }

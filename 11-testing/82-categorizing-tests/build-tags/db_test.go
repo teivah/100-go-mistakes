@@ -1,8 +1,10 @@
+//go:build integration
 // +build integration
 
 package db
 
 import (
+	"os"
 	"testing"
 )
 

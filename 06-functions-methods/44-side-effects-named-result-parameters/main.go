@@ -5,9 +5,9 @@ import (
 	"errors"
 )
 
-type locator struct{}
+type loc struct{}
 
-func (l locator) getCoordinates1(ctx context.Context, address string) (
+func (l loc) getCoordinates1(ctx context.Context, address string) (
 	lat, lng float32, err error) {
 	isValid := l.validateAddress(address)
 	if !isValid {
@@ -22,7 +22,7 @@ func (l locator) getCoordinates1(ctx context.Context, address string) (
 	return 0, 0, nil
 }
 
-func (l locator) getCoordinates2(ctx context.Context, address string) (
+func (l loc) getCoordinates2(ctx context.Context, address string) (
 	lat, lng float32, err error) {
 	isValid := l.validateAddress(address)
 	if !isValid {
@@ -37,6 +37,21 @@ func (l locator) getCoordinates2(ctx context.Context, address string) (
 	return 0, 0, nil
 }
 
-func (l locator) validateAddress(address string) bool {
+func (l loc) getCoordinates3(ctx context.Context, address string) (
+	lat, lng float32, err error) {
+	isValid := l.validateAddress(address)
+	if !isValid {
+		return 0, 0, errors.New("invalid address")
+	}
+
+	if err = ctx.Err(); err != nil {
+		return
+	}
+
+	// Get and return coordinates
+	return 0, 0, nil
+}
+
+func (l loc) validateAddress(address string) bool {
 	return true
 }
