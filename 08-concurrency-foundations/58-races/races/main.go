@@ -77,4 +77,6 @@ func listing5() {
 		defer mutex.Unlock()
 		i = 2
 	}()
+
+	_ = i
 }

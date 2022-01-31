@@ -31,7 +31,7 @@ func getKeysGenerics[K comparable, V any](m map[K]V) []K {
 }
 
 type customConstraint interface {
-	~int | ~string <1>
+	~int | ~string
 }
 
 func getKeysWithConstraing[K customConstraint, V any](m map[K]V) []K {

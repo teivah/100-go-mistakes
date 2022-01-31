@@ -7,9 +7,9 @@ import (
 
 func TestCache_TrimBefore(t *testing.T) {
 	events := []Event{
-		{Timestamp: time.Now().Add(-20 * time.Millisecond)},
-		{Timestamp: time.Now().Add(-10 * time.Millisecond)},
-		{Timestamp: time.Now().Add(10 * time.Millisecond)},
+		{Timestamp: parseTime(t, "2020-01-01T12:00:00.04Z")},
+		{Timestamp: parseTime(t, "2020-01-01T12:00:00.05Z")},
+		{Timestamp: parseTime(t, "2020-01-01T12:00:00.06Z")},
 	}
 	cache := &Cache{}
 	cache.Add(events)
