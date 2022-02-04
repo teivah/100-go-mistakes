@@ -17,6 +17,9 @@ func main() {
 	for i, r := range runes {
 		fmt.Printf("position %d: %c\n", i, r)
 	}
+
+	s2 := "hello"
+	fmt.Printf("%c\n", rune(s2[4]))
 }
 
 func getIthRune(largeString string, i int) rune {

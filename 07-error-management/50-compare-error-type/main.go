@@ -14,7 +14,7 @@ func (t transientError) Error() string {
 	return fmt.Sprintf("transient error: %v", t.err)
 }
 
-func GetTransactionAmountHandler(w http.ResponseWriter, r *http.Request) {
+func handler(w http.ResponseWriter, r *http.Request) {
 	transactionID := r.URL.Query().Get("transaction")
 
 	amount, err := getTransactionAmount1(transactionID)
@@ -48,13 +48,12 @@ func getTransactionAmountFromDB1(id string) (float32, error) {
 	return 0, nil
 }
 
-func GetTransactionAmount2(w http.ResponseWriter, r *http.Request) {
+func handler2(w http.ResponseWriter, r *http.Request) {
 	transactionID := r.URL.Query().Get("transaction")
 
 	amount, err := getTransactionAmount2(transactionID)
 	if err != nil {
-		terr := transientError{}
-		if errors.As(err, &terr) {
+		if errors.As(err, &transientError{}) {
 			http.Error(w, err.Error(), http.StatusServiceUnavailable)
 		} else {
 			http.Error(w, err.Error(), http.StatusBadRequest)

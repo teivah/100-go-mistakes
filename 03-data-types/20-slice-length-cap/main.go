@@ -12,9 +12,7 @@ func main() {
 	s = append(s, 2)
 	print(s)
 
-	s = append(s, 3)
-	s = append(s, 4)
-	s = append(s, 5)
+	s = append(s, 3, 4, 5)
 	print(s)
 
 	s1 := make([]int, 3, 6)

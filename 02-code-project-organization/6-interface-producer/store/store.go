@@ -1,6 +1,6 @@
 package store
 
-type Storer interface {
+type CustomerStorage interface {
 	StoreCustomer(customer Customer) error
 	GetCustomer(id string) (Customer, error)
 	UpdateCustomer(customer Customer) error
