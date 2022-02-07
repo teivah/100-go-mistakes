@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func TestCache_TrimBefore(t *testing.T) {
+func TestCache_TrimOlderThan(t *testing.T) {
 	events := []Event{
 		{Timestamp: time.Now().Add(-20 * time.Millisecond)},
 		{Timestamp: time.Now().Add(-10 * time.Millisecond)},
@@ -13,7 +13,7 @@ func TestCache_TrimBefore(t *testing.T) {
 	}
 	cache := &Cache{}
 	cache.Add(events)
-	cache.TrimBefore(15 * time.Millisecond)
+	cache.TrimOlderThan(15 * time.Millisecond)
 	got := cache.GetAll()
 	expected := 2
 	if len(got) != expected {

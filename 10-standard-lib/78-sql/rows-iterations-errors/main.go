@@ -6,8 +6,8 @@ import (
 	"log"
 )
 
-func (c *conn) get1(ctx context.Context, id string) (string, int, error) {
-	rows, err := c.db.QueryContext(ctx,
+func get1(ctx context.Context, db *sql.DB, id string) (string, int, error) {
+	rows, err := db.QueryContext(ctx,
 		"SELECT DEP, AGE FROM EMP WHERE ID = ?", id)
 	if err != nil {
 		return "", 0, err
@@ -33,8 +33,8 @@ func (c *conn) get1(ctx context.Context, id string) (string, int, error) {
 	return department, age, nil
 }
 
-func (c *conn) get2(ctx context.Context, id string) (string, int, error) {
-	rows, err := c.db.QueryContext(ctx,
+func get2(ctx context.Context, db *sql.DB, id string) (string, int, error) {
+	rows, err := db.QueryContext(ctx,
 		"SELECT DEP, AGE FROM EMP WHERE ID = ?", id)
 	if err != nil {
 		return "", 0, err
@@ -61,8 +61,4 @@ func (c *conn) get2(ctx context.Context, id string) (string, int, error) {
 	}
 
 	return department, age, nil
-}
-
-type conn struct {
-	db *sql.DB
 }

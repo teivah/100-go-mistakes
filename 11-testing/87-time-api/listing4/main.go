@@ -15,11 +15,10 @@ type Event struct {
 	Data      string
 }
 
-func (c *Cache) TrimOlderThan(since time.Duration) {
+func (c *Cache) TrimOlderThan(t time.Time) {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
 
-	t := time.Now().Add(-since)
 	for i := 0; i < len(c.events); i++ {
 		if c.events[i].Timestamp.After(t) {
 			c.events = c.events[i:]

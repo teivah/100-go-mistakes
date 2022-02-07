@@ -7,8 +7,8 @@ import (
 )
 
 func TestMySQLIntegration(t *testing.T) {
-	s := setupMySQL()
-	defer teardownMySQL(s)
+	setupMySQL()
+	defer teardownMySQL()
 
 	// ...
 }
@@ -26,12 +26,12 @@ func createConnection(t *testing.T, dsn string) *sql.DB {
 }
 
 func TestMain(m *testing.M) {
-	s := setupMySQL()
+	setupMySQL()
 	code := m.Run()
-	teardownMySQL(s)
+	teardownMySQL()
 	os.Exit(code)
 }
 
-func setupMySQL() interface{} { return nil }
+func setupMySQL() {}
 
-func teardownMySQL(m interface{}) {}
+func teardownMySQL() {}

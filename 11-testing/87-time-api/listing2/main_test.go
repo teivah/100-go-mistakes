@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func TestCache_TrimBefore(t *testing.T) {
+func TestCache_TrimOlderThan(t *testing.T) {
 	events := []Event{
 		{Timestamp: parseTime(t, "2020-01-01T12:00:00.04Z")},
 		{Timestamp: parseTime(t, "2020-01-01T12:00:00.05Z")},
@@ -15,7 +15,7 @@ func TestCache_TrimBefore(t *testing.T) {
 		return parseTime(t, "2020-01-01T12:00:00.06Z")
 	}}
 	cache.Add(events)
-	cache.TrimBefore(15 * time.Millisecond)
+	cache.TrimOlderThan(15 * time.Millisecond)
 	// ...
 }
 

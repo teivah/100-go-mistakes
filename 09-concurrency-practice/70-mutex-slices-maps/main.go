@@ -17,7 +17,7 @@ func main() {
 }
 
 type Cache struct {
-	mu       sync.Mutex
+	mu       sync.RWMutex
 	balances map[string]float64
 }
 
@@ -28,9 +28,9 @@ func (c *Cache) AddBalance(id string, balance float64) {
 }
 
 func (c *Cache) AverageBalance1() float64 {
-	c.mu.Lock()
+	c.mu.RLock()
 	balances := c.balances
-	c.mu.Unlock()
+	c.mu.RUnlock()
 
 	sum := 0.
 	for _, balance := range balances {
@@ -40,8 +40,8 @@ func (c *Cache) AverageBalance1() float64 {
 }
 
 func (c *Cache) AverageBalance2() float64 {
-	c.mu.Lock()
-	defer c.mu.Unlock()
+	c.mu.RLock()
+	defer c.mu.RUnlock()
 
 	sum := 0.
 	for _, balance := range c.balances {
@@ -51,12 +51,12 @@ func (c *Cache) AverageBalance2() float64 {
 }
 
 func (c *Cache) AverageBalance3() float64 {
-	c.mu.Lock()
+	c.mu.RLock()
 	m := make(map[string]float64, len(c.balances))
 	for k, v := range c.balances {
 		m[k] = v
 	}
-	c.mu.Unlock()
+	c.mu.RUnlock()
 
 	sum := 0.
 	for _, balance := range m {

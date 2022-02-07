@@ -12,8 +12,19 @@ func (l LowerCaseReader) Read(p []byte) (int, error) {
 	return 0, nil
 }
 
-func foo(r io.Reader) error {
+func foo1(r io.Reader) error {
 	b, err := io.ReadAll(r)
+	if err != nil {
+		return err
+	}
+
+	// ...
+	_ = b
+	return nil
+}
+
+func foo2(r io.Reader) error {
+	b, err := readAll(r, 3)
 	if err != nil {
 		return err
 	}
@@ -33,10 +44,10 @@ func readAll(r io.Reader, retries int) ([]byte, error) {
 		b = b[:len(b)+n]
 		if err != nil {
 			if err == io.EOF {
-				err = nil
+				return b, nil
 			}
 			retries--
-			if retries <= 0 {
+			if retries < 0 {
 				return b, err
 			}
 		}

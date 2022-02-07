@@ -27,8 +27,8 @@ func listing3() {
 	s := []int{1, 2, 3}
 
 	for _, i := range s {
-		go func(i int) {
-			fmt.Print(i)
+		go func(val int) {
+			fmt.Print(val)
 		}(i)
 	}
 }

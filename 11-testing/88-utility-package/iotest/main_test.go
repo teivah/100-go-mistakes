@@ -16,8 +16,17 @@ func TestLowerCaseReader(t *testing.T) {
 	}
 }
 
-func TestFoo(t *testing.T) {
-	err := foo(iotest.TimeoutReader(
+func TestFoo1(t *testing.T) {
+	err := foo1(iotest.TimeoutReader(
+		strings.NewReader(randomString(1024)),
+	))
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestFoo2(t *testing.T) {
+	err := foo2(iotest.TimeoutReader(
 		strings.NewReader(randomString(1024)),
 	))
 	if err != nil {

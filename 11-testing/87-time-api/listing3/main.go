@@ -15,7 +15,7 @@ type Event struct {
 	Data      string
 }
 
-func (c *Cache) TrimBefore(now time.Time, since time.Duration) {
+func (c *Cache) TrimOlderThan(now time.Time, since time.Duration) {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
 
