@@ -26,8 +26,8 @@ type Event struct {
 }
 
 func (c *Cache) TrimOlderThan(since time.Duration) {
-	c.mu.RLock()
-	defer c.mu.RUnlock()
+	c.mu.Lock()
+	defer c.mu.Unlock()
 
 	t := time.Now().Add(-since)
 	for i := 0; i < len(c.events); i++ {
