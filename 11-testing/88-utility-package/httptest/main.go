@@ -15,9 +15,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 }
 
-func (c DurationClient) GetDuration(url string,
-	lat1, lng1, lat2, lng2 float64) (
-	time.Duration, error) {
+func (c DurationClient) GetDuration(url string, lat1, lng1, lat2, lng2 float64) (time.Duration, error) {
 	resp, err := c.client.Post(
 		url, "application/json",
 		buildRequestBody(lat1, lng1, lat2, lng2),
