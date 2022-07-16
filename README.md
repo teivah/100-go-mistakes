@@ -169,6 +169,6 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
 
 ## Author
 
-Teiva Harsanyi is a senior software engineer in Docker. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
+Teiva Harsanyi is a senior software engineer in Docker. He worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
 
 **Note:** If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
