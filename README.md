@@ -161,7 +161,7 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
     * Compiler optimizations
     * `sync.Pool`
 * 97 - Not relying on inlining
-* 98 - Not using Go diagnostics tooling:
+* 98 - Not using Go diagnostics tooling
     * Profiling (enabling pprof, CPU, heap, goroutines, block, and mutex profiling)
     * Execution tracer
 * 99 - Not understanding how the GC works
