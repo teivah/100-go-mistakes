@@ -90,7 +90,7 @@ Anupam Sengupta
 * 44 - Unintended side effects with named result parameters
 * 45 - Returning a nil receiver
 * 46 - Using a filename as a function input
-* 47 - Ignoring how defer arguments and receivers are evaluated (argument evaluation, pointer and value receivers)
+* 47 - Ignoring how defer arguments and receivers are evaluated (argument evaluation, pointer, and value receivers)
   
 ### Chapter 7 - Error Management
 
