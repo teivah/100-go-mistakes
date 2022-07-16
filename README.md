@@ -8,23 +8,23 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
 
 > "This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch."
 
-Neeraj Shah
+– Neeraj Shah
 
 > "This unique book teaches you good habits by helping you identify bad ones. Harsanyi's writing style is engaging, the examples relevant, and his insights useful. I thought it was a great read, and I think you will too."
 
-Thad Meyer
+– Thad Meyer
 
 > "Learning from mistakes is proven as one of the best ways to learn a subject. This book helps you do just that by demonstrating the most common mistakes people make coming to Go, why most people make them and the proper way to solve the problems."
 
-Ryan Huber
+– Ryan Huber
 
 > "This book explains many subtleties of the Go programming language that may cause errors and provides the reader with advice on how to deal with these situations. The precise explanations and real world examples make it a great addition for those learning Go programming language or looking to advance their mastery of the language."
 
-Borko Djurkovic
+– Borko Djurkovic
 
 > "Not having this will be the 101st mistake a Go programmer could make."
 
-Anupam Sengupta
+– Anupam Sengupta
 
 ## Table of Contents
 
