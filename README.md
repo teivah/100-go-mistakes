@@ -1,6 +1,8 @@
 # 100 Go Mistakes and How to Avoid Them
 
-Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) 📖, edited by Manning.
+Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them), edited by Manning.
+
+**Note:** If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
 
 ![](inside-cover.jpg)
 
@@ -11,9 +13,9 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 ### Chapter 2 - Code and Project Organization
 
 * 1 - Unintended variable shadowing
-* 2 - Writing nested code
+* 2 - Unnecessary nested code
 * 3 - Misusing init functions
-* 4 - Always using getters and setters
+* 4 - Overusing getters and setters
 * 5 - Interface pollution
 * 6 - Interface on the producer side
 * 7 - Returning interfaces
@@ -36,8 +38,8 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 * 21 - Inefficient slice initialization
 * 22 - Being confused about nil vs. empty slice
 * 23 - Not properly checking if a slice is empty
-* 24 - Not making slice copy correctly
-* 25 - Unexpected side-effects using slice append
+* 24 - Not making slice copies correctly
+* 25 - Unexpected side effects using slice append
 * 26 - Slice and memory leaks
 * 27 - Inefficient map initialization
 * 28 - Map and memory leaks
@@ -58,17 +60,17 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 * 37 - Inaccurate string iteration
 * 38 - Misusing trim functions
 * 39 - Under-optimized strings concatenation
-* 40 - Useless string conversion
+* 40 - Useless string conversions
 * 41 - Substring and memory leaks
 
 ### Chapter 6 - Functions and Methods
   
 * 42 - Not knowing which type of receiver to use
 * 43 - Never using named result parameters
-* 44 - Unintended side-effects with named result parameters
+* 44 - Unintended side effects with named result parameters
 * 45 - Returning a nil receiver
 * 46 - Using a filename as a function input
-* 47 - Ignoring how defer arguments and receivers are evaluated
+* 47 - Ignoring how defer arguments and receivers are evaluated (argument evaluation, pointer and value receivers)
   
 ### Chapter 7 - Error Management
 
@@ -82,10 +84,10 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 
 ### Chapter 8 - Concurrency: Foundations
   
-* 55 - Mixing concurrency and parallelism
-* 56 - Concurrency isn't always faster
+* 55 - Mixing up concurrency and parallelism
+* 56 - Thinking concurrency is always faster
 * 57 - Being puzzled about when to use channels or mutexes
-* 58 - Not understanding race problems (data races vs. race conditions and Go memory model)
+* 58 - Not understanding race problems (data races vs. race conditions and the Go memory model)
 * 59 - Not understanding the concurrency impacts of a workload type
 * 60 - Misunderstanding Go contexts
 
@@ -97,8 +99,8 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 * 64 - Expecting a deterministic behavior using select and channels
 * 65 - Not using notification channels
 * 66 - Not using nil channels
-* 67 - Being puzzled about a channel size
-* 68 - Forgetting about possible side-effects with string formatting (etcd and dead-lock)
+* 67 - Being puzzled about channel size
+* 68 - Forgetting about possible side effects with string formatting (etcd data race example and deadlock)
 * 69 - Creating data races with append
 * 70 - Using mutexes inaccurately with slices and maps
 * 71 - Misusing `sync.WaitGroup`
@@ -109,13 +111,13 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 ### Chapter 10 - Standard Library
 
 * 75 - Providing a wrong time duration
-* 76 - `time.After` and memory leak
+* 76 - `time.After` and memory leaks
 * 77 - JSON handling common mistakes
     * Unexpected behavior because of type embedding
-    * JSON and monotonic clock
+    * JSON and the monotonic clock
     * Map of `any`
-* 78 - SQL common mistakes
-    * Forgetting that `sql.Open` doesn't necessarily establish connections to a DB
+* 78 - Common SQL mistakes
+    * Forgetting that `sql.Open` doesn't necessarily establish connections to a database
     * Forgetting about connections pooling
     * Not using prepared statements
     * Mishandling null values
@@ -126,7 +128,7 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 
 ### Chapter 11 - Testing
 
-* 82 - Not categorizing tests (build tags and short mode)
+* 82 - Not categorizing tests (build tags, environment variables, and short mode)
 * 83 - Not enabling the race flag
 * 84 - Not using test execution modes (parallel and shuffle)
 * 85 - Not using table-driven tests
@@ -152,7 +154,7 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
     * Slice of structs vs. struct of slices
     * Predictability
     * Cache placement policy
-* 92 - Writing concurrent code leading to false sharing
+* 92 - Writing concurrent code that leads to false sharing
 * 93 - Not taking into account instruction-level parallelism
 * 94 - Not being aware of data alignment
 * 95 - Not understanding stack vs. heap
@@ -161,6 +163,12 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
     * Compiler optimizations
     * `sync.Pool`
 * 97 - Not relying on inlining
-* 98 - Not using Go diagnostics tooling (profiling and execution tracer)
+* 98 - Not using Go diagnostics tooling:
+    * Profiling (enabling pprof, CPU, heap, goroutines, block, and mutex profiling)
+    * Execution tracer
 * 99 - Not understanding how the GC works
-* 100 - Not understanding the impacts of running Go inside of Docker and Kubernetes
+* 100 - Not understanding the impacts of running Go in Docker and Kubernetes
+
+## Author
+
+Teiva Harsanyi is a senior software engineer in Docker. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
