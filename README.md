@@ -4,6 +4,12 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
 
 ![](cover.png)
 
+## Author
+
+Teiva Harsanyi is a senior software engineer at Docker. He worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
+
+**Note:** If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
+
 ## Quotes
 
 > "This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch."
@@ -191,8 +197,8 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
 
 ![](inside-cover.jpg)
 
-## Author
+## Resources
 
-Teiva Harsanyi is a senior software engineer at Docker. He worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
-
-**Note:** If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
+* How to make mistakes in Go (Go Time - episode #190)
+  * [Episode](https://changelog.com/gotime/190)
+  * [Spotify](https://open.spotify.com/episode/0K1DImrxHCy6E7zVY4AxMZ?si=akroInsPQ1mM5B5V2tHLUw&dl_branch=1)
