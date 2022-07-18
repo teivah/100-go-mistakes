@@ -2,7 +2,7 @@
 
 Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them), edited by Manning.
 
-![](inside-cover.jpg)
+![](cover.png)
 
 ## Quotes
 
@@ -188,6 +188,8 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
     * Execution tracer
 * 99 - Not understanding how the GC works
 * 100 - Not understanding the impacts of running Go in Docker and Kubernetes
+
+![](inside-cover.jpg)
 
 ## Author
 
