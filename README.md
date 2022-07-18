@@ -96,7 +96,7 @@ Teiva Harsanyi is a senior software engineer at Docker. He worked in various dom
 * 44 - Unintended side effects with named result parameters
 * 45 - Returning a nil receiver
 * 46 - Using a filename as a function input
-* 47 - Ignoring how defer arguments and receivers are evaluated (argument evaluation, pointer, and value receivers)
+* 47 - Ignoring how `defer` arguments and receivers are evaluated (argument evaluation, pointer, and value receivers)
   
 ### Chapter 7 - Error Management
 
@@ -106,7 +106,7 @@ Teiva Harsanyi is a senior software engineer at Docker. He worked in various dom
 * 51 - Comparing an error value inaccurately
 * 52 - Handling an error twice
 * 53 - Not handling an error
-* 54 - Not handling defer errors
+* 54 - Not handling `defer` errors
 
 ### Chapter 8 - Concurrency: Foundations
   
