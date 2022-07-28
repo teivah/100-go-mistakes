@@ -2,7 +2,7 @@
 
 Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them), edited by Manning.
 
-![](inside-cover.jpg)
+![](cover.png)
 
 ## Quotes
 
@@ -28,7 +28,7 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
 
 ## Table of Contents
 
-![](cover.png)
+![](inside-cover.jpg)
 
 ### Chapter 1 - Introduction
 
