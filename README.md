@@ -32,47 +32,47 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
 
 ### Chapter 2 - Code and Project Organization
 
-* 1 - Unintended variable shadowing
-* 2 - Unnecessary nested code
-* 3 - Misusing init functions
-* 4 - Overusing getters and setters
-* 5 - Interface pollution
-* 6 - Interface on the producer side
-* 7 - Returning interfaces
-* 8 - `any` says nothing
-* 9 - [Being confused about when to use generics](https://teivah.medium.com/when-to-use-generics-in-go-36d49c1aeda)
-* 10 - Not being aware of the possible problems with type embedding
-* 11 - Not using the functional options pattern
-* 12 - Project misorganization (project structure and package organization)
-* 13 - Creating utility packages
-* 14 - Ignoring package name collisions
-* 15 - Missing code documentation
-* 16 - Not using linters
+#### #1: Unintended variable shadowing
+#### #2: Unnecessary nested code
+#### #3: Misusing init functions
+#### #4: Overusing getters and setters
+#### #5: Interface pollution
+#### #6: Interface on the producer side
+#### #7: Returning interfaces
+#### #8: `any` says nothing
+#### #9: [Being confused about when to use generics](https://teivah.medium.com/when-to-use-generics-in-go-36d49c1aeda)
+#### #10: Not being aware of the possible problems with type embedding
+#### #11: Not using the functional options pattern
+#### #12: Project misorganization (project structure and package organization)
+#### #13: Creating utility packages
+#### #14: Ignoring package name collisions
+#### #15: Missing code documentation
+#### #16: Not using linters
 
 ### Chapter 3 - Data Types
   
-* 17 - Creating confusion with octal literals
-* 18 - Neglecting integer overflows
-* 19 - Not understanding floating-points
-* 20 - Not understanding slice length and capacity
-* 21 - Inefficient slice initialization
-* 22 - Being confused about nil vs. empty slice
-* 23 - Not properly checking if a slice is empty
-* 24 - Not making slice copies correctly
-* 25 - Unexpected side effects using slice append
-* 26 - Slice and memory leaks
-* 27 - Inefficient map initialization
-* 28 - Map and memory leaks
-* 29 - Comparing values incorrectly
+#### #17: Creating confusion with octal literals
+#### #18: Neglecting integer overflows
+#### #19: Not understanding floating-points
+#### #20: Not understanding slice length and capacity
+#### #21: Inefficient slice initialization
+#### #22: Being confused about nil vs. empty slice
+#### #23: Not properly checking if a slice is empty
+#### #24: Not making slice copies correctly
+#### #25: Unexpected side effects using slice append
+#### #26: Slice and memory leaks
+#### #27: Inefficient map initialization
+#### #28: Map and memory leaks
+#### #29: Comparing values incorrectly
 
 ### Chapter 4 - Control Structures  
 
-* 30 - Ignoring that elements are copied in `range` loops
-* 31 - Ignoring how arguments are evaluated in `range` loops (channels and arrays)
-* 32 - Ignoring the impacts of using pointer elements in `range` loops
-* 33 - Making wrong assumptions during map iterations (ordering and map insert during iteration)
-* 34 - Ignoring how the `break` statement work
-* 35 - Using `defer` inside a loop
+#### #30: Ignoring that elements are copied in `range` loops
+#### #31: Ignoring how arguments are evaluated in `range` loops (channels and arrays)
+#### #32: Ignoring the impacts of using pointer elements in `range` loops
+#### #33: Making wrong assumptions during map iterations (ordering and map insert during iteration)
+#### #34: Ignoring how the `break` statement work
+#### #35: Using `defer` inside a loop
 
 ### Chapter 5 - Strings
   
