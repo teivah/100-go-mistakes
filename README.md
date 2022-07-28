@@ -166,9 +166,6 @@ The value element in a `range` loop is a copy. Therefore, to mutate a struct, fo
 
 #### #31: Ignoring how arguments are evaluated in `range` loops (channels and arrays)
 
-* Channels
-* Arrays
-
 Understanding that the expression passed to the `range` operator is evaluated only once before the beginning of the loop can help you avoid common mistakes such as inefficient assignment in channel or slice iteration.
 
 #### #32: Ignoring the impacts of using pointer elements in `range` loops
@@ -177,7 +174,7 @@ Using a local variable or accessing an element using an index, you can prevent m
 
 #### #33: Making wrong assumptions during map iterations (ordering and map insert during iteration)
 
-To ensure predictable outputs when using maps, remember that a map data structure
+To ensure predictable outputs when using maps, remember that a map data structure:
 * Doesn’t order the data by keys
 * Doesn’t preserve the insertion order
 * Doesn’t have a deterministic iteration order
@@ -247,7 +244,7 @@ Passing a pointer to a `defer` function and wrapping a call inside a closure are
 
 #### #48: Panicking
 
-* Using `panic` is an option to deal with errors in Go. However, it should only be used sparingly in unrecoverable conditions: for example, to signal a programmer error or when you fail to load a mandatory dependency.
+Using `panic` is an option to deal with errors in Go. However, it should only be used sparingly in unrecoverable conditions: for example, to signal a programmer error or when you fail to load a mandatory dependency.
 
 #### #49: Ignoring when to wrap an error
 
@@ -458,61 +455,59 @@ The `iotest` package helps write io.Reader and test that an application is toler
 #### #89: Writing inaccurate benchmarks
 * Not resetting or pausing the timer
 
-Use time methods to preserve the accuracy of a benchmark.
+  Use time methods to preserve the accuracy of a benchmark.
 
 * Making wrong assumptions about micro-benchmarks
 
-Increasing `benchtime` or using tools such as `benchstat` can be helpful when dealing with micro-benchmarks.
+  Increasing `benchtime` or using tools such as `benchstat` can be helpful when dealing with micro-benchmarks.
 
-Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-benchmark.
+  Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-benchmark.
 
 * Not being careful about compiler optimizations
 
-Make sure the function under test leads to a side effect, to prevent compiler optimizations from fooling you about the benchmark results.
+  Make sure the function under test leads to a side effect, to prevent compiler optimizations from fooling you about the benchmark results.
 
 * Being fooled by the observer effect
 
-To prevent the observer effect, force a benchmark to re-create the data used by a CPU-bound function.
+  To prevent the observer effect, force a benchmark to re-create the data used by a CPU-bound function.
 
 #### #90: Not exploring all the Go testing features
 * Code coverage
 
-Use code coverage with the `-coverprofile` flag to quickly see which part of the code needs more attention.
+  Use code coverage with the `-coverprofile` flag to quickly see which part of the code needs more attention.
 
 * Testing from a different package
 
-Place unit tests in a different package to enforce writing tests that focus on an exposed behavior, not internals.
+  Place unit tests in a different package to enforce writing tests that focus on an exposed behavior, not internals.
 
 * Utility functions
 
-Handling errors using the `*testing.T` variable instead of the classic `if err != nil` makes code shorter and easier to read.
+  Handling errors using the `*testing.T` variable instead of the classic `if err != nil` makes code shorter and easier to read.
 
 * Setup and teardown
 
-You can use setup and teardown functions to configure a complex environment, such as in the case of integration tests.
+  You can use setup and teardown functions to configure a complex environment, such as in the case of integration tests.
 
 ### Chapter 12 - Optimizations
 
 #### #91: Not understanding CPU caches
 * CPU architecture
 
-Understanding how to use CPU caches is important for optimizing CPU-bound applications because the L1 cache is about 50 to 100 times faster than the main memory.
+  Understanding how to use CPU caches is important for optimizing CPU-bound applications because the L1 cache is about 50 to 100 times faster than the main memory.
 
 * Cache line
 
-Being conscious of the cache line concept is critical to understanding how to organize data in data-intensive applications. A CPU doesn’t fetch memory word by word; instead, it usually copies a memory block to a 64-byte cache line. To get the most out of each individual cache line, enforce spatial locality.
+  Being conscious of the cache line concept is critical to understanding how to organize data in data-intensive applications. A CPU doesn’t fetch memory word by word; instead, it usually copies a memory block to a 64-byte cache line. To get the most out of each individual cache line, enforce spatial locality.
 
 * Slice of structs vs. struct of slices
 
-See above.
-
 * Predictability
 
-Making code predictable for the CPU can also be an efficient way to optimize certain functions. For example, a unit or constant stride is predictable for the CPU, but a non-unit stride (for example, a linked list) isn’t predictable.
+  Making code predictable for the CPU can also be an efficient way to optimize certain functions. For example, a unit or constant stride is predictable for the CPU, but a non-unit stride (for example, a linked list) isn’t predictable.
 
 * Cache placement policy
 
-To avoid a critical stride, hence utilizing only a tiny portion of the cache, be aware that caches are partitioned.
+  To avoid a critical stride, hence utilizing only a tiny portion of the cache, be aware that caches are partitioned.
 
 #### #92: Writing concurrent code that leads to false sharing
 
