@@ -4,31 +4,7 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
 
 ![](cover.png)
 
-## Quotes
-
-> "This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch."
-
-– Neeraj Shah
-
-> "This unique book teaches you good habits by helping you identify bad ones. Harsanyi's writing style is engaging, the examples relevant, and his insights useful. I thought it was a great read, and I think you will too."
-
-– Thad Meyer
-
-> "Learning from mistakes is proven as one of the best ways to learn a subject. This book helps you do just that by demonstrating the most common mistakes people make coming to Go, why most people make them and the proper way to solve the problems."
-
-– Ryan Huber
-
-> "This book explains many subtleties of the Go programming language that may cause errors and provides the reader with advice on how to deal with these situations. The precise explanations and real world examples make it a great addition for those learning Go programming language or looking to advance their mastery of the language."
-
-– Borko Djurkovic
-
-> "Not having this will be the 101st mistake a Go programmer could make."
-
-– Anupam Sengupta
-
 ## Table of Contents
-
-![](inside-cover.jpg)
 
 ### Chapter 1 - Introduction
 
@@ -547,8 +523,32 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
 
+![](inside-cover.jpg)
+
 ## Author
 
 Teiva Harsanyi is a senior software engineer at Docker. He worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
 
 **Note:** If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
+
+## Quotes
+
+> "This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch."
+
+– Neeraj Shah
+
+> "This unique book teaches you good habits by helping you identify bad ones. Harsanyi's writing style is engaging, the examples relevant, and his insights useful. I thought it was a great read, and I think you will too."
+
+– Thad Meyer
+
+> "Learning from mistakes is proven as one of the best ways to learn a subject. This book helps you do just that by demonstrating the most common mistakes people make coming to Go, why most people make them and the proper way to solve the problems."
+
+– Ryan Huber
+
+> "This book explains many subtleties of the Go programming language that may cause errors and provides the reader with advice on how to deal with these situations. The precise explanations and real world examples make it a great addition for those learning Go programming language or looking to advance their mastery of the language."
+
+– Borko Djurkovic
+
+> "Not having this will be the 101st mistake a Go programmer could make."
+
+– Anupam Sengupta
