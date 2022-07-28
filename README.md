@@ -519,6 +519,8 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
 
+# Inside Cover
+
 ![](inside-cover.jpg)
 
 ## Author
