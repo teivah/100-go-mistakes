@@ -56,10 +56,6 @@ To handle options conveniently and in an API-friendly manner, use the functional
 
 #### #12: Project misorganization (project structure and package organization)
 
-* Project structure
-
-* Package organization
-
 Following a layout such as project-layout can be a good way to start structuring Go projects, especially if you are looking for existing conventions to standardize a new project.
 
 #### #13: Creating utility packages
