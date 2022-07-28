@@ -2,7 +2,7 @@
 
 Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them), edited by Manning.
 
-![](cover.png)
+![](inside-cover.jpg)
 
 ## Quotes
 
@@ -27,6 +27,8 @@ Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.
 – Anupam Sengupta
 
 ## Table of Contents
+
+![](cover.png)
 
 ### Chapter 1 - Introduction
 
@@ -544,8 +546,6 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 #### #100: Not understanding the impacts of running Go in Docker and Kubernetes
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
-
-![](inside-cover.jpg)
 
 ## Author
 
