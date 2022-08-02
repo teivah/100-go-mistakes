@@ -1,6 +1,6 @@
-# 100 Go Mistakes and How to Avoid Them
+# 📖 100 Go Mistakes and How to Avoid Them
 
-Source code of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them), edited by Manning.
+Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them), edited by Manning (Oct. 2022).
 
 ![](cover.png)
 
@@ -210,7 +210,7 @@ When returning an interface, be cautious about returning not a nil pointer but a
 
 Designing functions to receive `io.Reader` types instead of filenames improves the reusability of a function and makes testing easier.
 
-#### #47: Ignoring how defer arguments and receivers are evaluated (argument evaluation, pointer, and value receivers)
+#### #47: Ignoring how `defer` arguments and receivers are evaluated (argument evaluation, pointer, and value receivers)
 
 Passing a pointer to a `defer` function and wrapping a call inside a closure are two possible solutions to overcome the immediate evaluation of arguments and receivers.
   
@@ -242,7 +242,7 @@ In most situations, an error should be handled only once. Logging an error is ha
 
 Ignoring an error, whether during a function call or in a `defer` function, should be done explicitly using the blank identifier. Otherwise, future readers may be confused about whether it was intentional or a miss.
 
-#### #54: Not handling defer errors
+#### #54: Not handling `defer` errors
 
 In many cases, you shouldn’t ignore an error returned by a `defer` function. Either handle it directly or propagate it to the caller, depending on the context. If you want to ignore it, use the blank identifier.
 
@@ -550,3 +550,9 @@ Teiva Harsanyi is a senior software engineer at Docker. He worked in various dom
 > "Not having this will be the 101st mistake a Go programmer could make."
 
 – Anupam Sengupta
+
+## Resources
+
+* How to make mistakes in Go (Go Time - episode #190)
+    * [Episode](https://changelog.com/gotime/190)
+    * [Spotify](https://open.spotify.com/episode/0K1DImrxHCy6E7zVY4AxMZ?si=akroInsPQ1mM5B5V2tHLUw&dl_branch=1)
