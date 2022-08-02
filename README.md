@@ -551,7 +551,7 @@ Teiva Harsanyi is a senior software engineer at Docker. He worked in various dom
 
 – Anupam Sengupta
 
-## Resources
+## Additional Resources
 
 * How to make mistakes in Go (Go Time - episode #190)
     * [Episode](https://changelog.com/gotime/190)
