@@ -4,6 +4,12 @@ Source code of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/b
 
 ![](cover.png)
 
+* [Table of Contents](#table-of-contents)
+* [Author](#author)
+* [Quotes](#quotes)
+* [100 Go Mistakes Map](#100-go-mistakes-map)
+* [References](#references)
+
 ## Table of Contents
 
 ### Chapter 1 - Introduction
@@ -519,10 +525,6 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
 
-# Inside Cover
-
-![](inside-cover.jpg)
-
 ## Author
 
 Teiva Harsanyi is a senior software engineer at Docker. He worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
@@ -550,6 +552,10 @@ Teiva Harsanyi is a senior software engineer at Docker. He worked in various dom
 > "Not having this will be the 101st mistake a Go programmer could make."
 
 – Anupam Sengupta
+
+## 100 Go Mistakes Map
+
+![](inside-cover.jpg)
 
 ## References
 
