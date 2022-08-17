@@ -520,7 +520,7 @@ Reducing allocations is also an essential aspect of optimizing a Go application.
 
 Use the fast-path inlining technique to efficiently reduce the amortized time to call a function.
 
-#### Not using Go diagnostics tooling (profiling [enabling pprof, CPU, heap, goroutines, block, and mutex profiling] and execution tracer (#98)
+#### Not using Go diagnostics tooling (profiling [enabling pprof, CPU, heap, goroutines, block, and mutex profiling] and execution tracer) (#98)
 
 Rely on profiling and the execution tracer to understand how an application performs and the parts to optimize.
 
