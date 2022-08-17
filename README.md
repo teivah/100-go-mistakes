@@ -134,7 +134,7 @@ Working with a slice of pointers or structs with pointer fields, you can avoid m
 
 #### Inefficient map initialization (#27)
 
-See [#22](#21-inefficient-slice-initialization).
+See [#21](#inefficient-slice-initialization-21).
 
 #### Map and memory leaks (#28)
 
@@ -212,7 +212,7 @@ Using named result parameters can be an efficient way to improve the readability
 
 #### Unintended side effects with named result parameters (#44)
 
-See [#43](#43-never-using-named-result-parameters).
+See [#43](#never-using-named-result-parameters-43).
 
 #### Returning a nil receiver (#45)
 
@@ -242,7 +242,7 @@ If you use Go 1.13 error wrapping with the `%w` directive and `fmt.Errorf`, comp
 
 #### Comparing an error value inaccurately (#51)
 
-See [#50](#50-comparing-an-error-type-inaccurately).
+See [#50](#comparing-an-error-type-inaccurately-50).
 
 To convey an expected error, use error sentinels (error values). An unexpected error should be a specific error type.
 
