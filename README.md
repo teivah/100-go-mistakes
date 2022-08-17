@@ -8,7 +8,7 @@ Source code and community space of [100 Go Mistakes and How to Avoid Them](https
 
 ## Common Go Mistakes
 
-🌎 This section contains the 100 mistakes in the book. However, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=). You can check the community propositions [here](https://github.com/teivah/100-go-mistakes/issues?q=is%3Aopen+is%3Aissue+label%3A%22community+mistake%22) and vote using the 👍 or the 👎 reactions on the issue itself. If an issue reaches a significant ratio, it will be added to the corresponding section below.
+🌎 This section contains the 100 mistakes in the book. However, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=). You can check the community propositions [here](https://github.com/teivah/100-go-mistakes/issues?q=is%3Aopen+is%3Aissue+label%3A%22community+mistake%22) and vote using the 👍 or the 👎 reactions on the issue itself. If an issue reaches a consensus, it will be added to the corresponding section below.
 
 * [Code and Project Organization](#code-and-project-organization)
 * [Data Types](#data-types)
