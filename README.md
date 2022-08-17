@@ -8,6 +8,18 @@ Source code and community space of [100 Go Mistakes and How to Avoid Them](https
 
 ## Go Mistakes
 
+* [Code and Project Organization](#code-and-project-organization)
+* [Data Types](#data-types)
+* [Control Structures](#control-structures)
+* [Strings](#strings)
+* [Functions and Methods](#functions-and-methods)
+* [Error Management](#error-management)
+* [Concurrency: Foundations](#concurrency-foundations)
+* [Concurrency: Practice](#concurrency-practice)
+* [Standard Library](#standard-library)
+* [Testing](#testing)
+* [Optimizations](#optimizations)
+
 ### Code and Project Organization
 
 #### Unintended variable shadowing (#1)
