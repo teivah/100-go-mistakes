@@ -1,4 +1,4 @@
-# 100 Go Mistakes and How to Avoid Them
+# About the Book: 100 Go Mistakes and How to Avoid Them
 
 Spot errors in your Go code you didn’t even know you were making and boost your productivity by avoiding common mistakes and pitfalls.
 
