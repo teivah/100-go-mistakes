@@ -8,7 +8,7 @@ Source code and community space of [100 Go Mistakes and How to Avoid Them](https
 
 ## Go Mistakes
 
-👐 This section contains the 100 mistakes in the book. However, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=). You can check the community propositions [here](https://github.com/teivah/100-go-mistakes/issues?q=is%3Aopen+is%3Aissue+label%3A%22community+mistake%22) and vote using the 👍 or the 👎 reaction on the issue itself. If an issue reaches a significant ratio, it will be added to the corresponding section below.
+🌎 This section contains the 100 mistakes in the book. However, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=). You can check the community propositions [here](https://github.com/teivah/100-go-mistakes/issues?q=is%3Aopen+is%3Aissue+label%3A%22community+mistake%22) and vote using the 👍 or the 👎 reaction on the issue itself. If an issue reaches a significant ratio, it will be added to the corresponding section below.
 
 * [Code and Project Organization](#code-and-project-organization)
 * [Data Types](#data-types)
@@ -533,11 +533,3 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 #### Not understanding the impacts of running Go in Docker and Kubernetes (#100)
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
-
-## Resources
-
-* How to make mistakes in Go (Go Time - episode #190)
-    * [Episode](https://changelog.com/gotime/190)
-    * [Spotify](https://open.spotify.com/episode/0K1DImrxHCy6E7zVY4AxMZ?si=akroInsPQ1mM5B5V2tHLUw&dl_branch=1)
-
-* 8LU - 100% Test Coverage: [YouTube](https://youtu.be/V3FBDav6wgQ?t=1210)

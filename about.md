@@ -69,3 +69,11 @@ Teiva Harsanyi is a senior software engineer at Docker. He worked in various dom
 > "Not having this will be the 101st mistake a Go programmer could make."
 
 – Anupam Sengupta
+
+## Resources
+
+* How to make mistakes in Go (Go Time - episode #190)
+    * [Episode](https://changelog.com/gotime/190)
+    * [Spotify](https://open.spotify.com/episode/0K1DImrxHCy6E7zVY4AxMZ?si=akroInsPQ1mM5B5V2tHLUw&dl_branch=1)
+
+* 8LU - 100% Test Coverage: [YouTube](https://youtu.be/V3FBDav6wgQ?t=1210)
