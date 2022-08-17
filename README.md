@@ -2,7 +2,7 @@
 
 Source code and community space of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) published by Manning in October 2022 ([about the book](https://github.com/teivah/100-go-mistakes/blob/master/about.md)).
 
-**Note:** If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
+ℹ️ If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
 
 ![](inside-cover.jpg)
 
@@ -21,6 +21,8 @@ Source code and community space of [100 Go Mistakes and How to Avoid Them](https
 * [Optimizations](#optimizations)
 
 ### Code and Project Organization
+
+👐 This section contains the 100 mistakes in the book. However, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=). You can check the community propositions [here](https://github.com/teivah/100-go-mistakes/issues?q=is%3Aopen+is%3Aissue+label%3A%22community+mistake%22) and vote using the 👍 or the 👎 reaction on the issue itself. If an issue reaches a significant ratio, it will be added to the list below.
 
 #### Unintended variable shadowing (#1)
 
