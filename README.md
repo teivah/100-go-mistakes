@@ -1,8 +1,6 @@
 # 📖 100 Go Mistakes and How to Avoid Them
 
-Source code and community space of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) (Manning, Oct. 2022).
-
-[About the book](https://github.com/teivah/100-go-mistakes/blob/master/about.md)
+Source code and community space of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) published by Manning in October 2022 ([about the book](https://github.com/teivah/100-go-mistakes/blob/master/about.md)).
 
 **Note:** If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
 
