@@ -2,7 +2,7 @@
 
 Spot errors in your Go code you didn’t even know you were making and boost your productivity by avoiding common mistakes and pitfalls.
 
-![](cover.png)
+![](inside-cover.jpg)
 
 _100 Go Mistakes and How to Avoid Them_ shows you how to:
 

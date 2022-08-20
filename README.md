@@ -4,7 +4,7 @@ Source code and community space of [100 Go Mistakes and How to Avoid Them](https
 
 ℹ️ If you're struggling to afford the book, please DM me [@teivah](https://twitter.com/teivah).
 
-![](inside-cover.jpg)
+![](cover.png)
 
 ## Common Go Mistakes
 
