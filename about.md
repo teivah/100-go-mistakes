@@ -1,6 +1,6 @@
 # About the Book: 100 Go Mistakes and How to Avoid Them
 
-https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them (-35% with **au35har**)
+https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them (-35% with the code **au35har**)
 
 Spot errors in your Go code you didn’t even know you were making and boost your productivity by avoiding common mistakes and pitfalls.
 
