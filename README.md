@@ -168,7 +168,7 @@ To ensure predictable outputs when using maps, remember that a map data structur
 * Doesn’t have a deterministic iteration order
 * Doesn’t guarantee that an element added during an iteration will be produced during this iteration
 
-#### Ignoring how the `break` statement work (#34)
+#### Ignoring how the `break` statement works (#34)
 
 Using `break` or `continue` with a label enforces breaking a specific statement. This can be helpful with `switch` or `select` statements inside loops.
 
