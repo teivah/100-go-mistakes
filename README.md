@@ -440,7 +440,8 @@ The `httptest` package is helpful for dealing with HTTP applications. It provide
 
 The `iotest` package helps write io.Reader and test that an application is tolerant to errors.
 
-#### Writing inaccurate benchmarks (#89)
+#### [Writing inaccurate benchmarks](https://teivah.medium.com/how-to-write-accurate-benchmarks-in-go-4266d7dd1a95) (#89)
+
 * Not resetting or pausing the timer
 
   Use time methods to preserve the accuracy of a benchmark.
