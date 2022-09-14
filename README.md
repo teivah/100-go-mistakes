@@ -22,6 +22,8 @@ Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](
 
 This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
+![](inside-cover.png)
+
 * [Code and Project Organization](#code-and-project-organization)
 * [Data Types](#data-types)
 * [Control Structures](#control-structures)
@@ -546,10 +548,6 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 #### Not understanding the impacts of running Go in Docker and Kubernetes (#100)
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
-
-## Inside Cover
-
-![](inside-cover.jpg)
 
 ## About the Author
 
