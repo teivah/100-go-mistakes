@@ -8,15 +8,15 @@ Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](
 
 > This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.
 
-– Neeraj Shah
+– _Neeraj Shah_
 
 > "This unique book teaches you good habits by helping you identify bad ones. Harsanyi's writing style is engaging, the examples relevant, and his insights useful. I thought it was a great read, and I think you will too."
 
-– Thad Meyer
+– _Thad Meyer_
 
 > "Not having this will be the 101st mistake a Go programmer could make."
 
-– Anupam Sengupta
+– _Anupam Sengupta_
 
 ## Common Go Mistakes
 
