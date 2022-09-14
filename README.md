@@ -1,12 +1,26 @@
-# 📖 100 Go Mistakes and How to Avoid Them
+# 100 Go Mistakes and How to Avoid Them
 
-Source code and community space of [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) published by Manning in October 2022 ([about the book](https://github.com/teivah/100-go-mistakes/blob/master/about.md)). Made by [@teivah](https://twitter.com/teivah).
+Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) published by Manning in October 2022. Made by [@teivah](https://twitter.com/teivah).
 
 ![](cover.png)
 
+100 Go Mistakes and How to Avoid Them shows you how to replace common programming problems in Go with idiomatic, expressive code. In it, you’ll explore dozens of interesting examples and case studies as you learn to spot mistakes that might appear in your own applications.
+
+> This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.
+
+– Neeraj Shah
+
+> "This unique book teaches you good habits by helping you identify bad ones. Harsanyi's writing style is engaging, the examples relevant, and his insights useful. I thought it was a great read, and I think you will too."
+
+– Thad Meyer
+
+> "Not having this will be the 101st mistake a Go programmer could make."
+
+– Anupam Sengupta
+
 ## Common Go Mistakes
 
-🌎 This section contains the 100 mistakes in the book. However, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=). You can check the community propositions [here](https://github.com/teivah/100-go-mistakes/issues?q=is%3Aopen+is%3Aissue+label%3A%22community+mistake%22) and vote using the 👍 or the 👎 reactions on the issue itself. If an issue reaches a consensus, it will be added to the corresponding section below.
+This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
 * [Code and Project Organization](#code-and-project-organization)
 * [Data Types](#data-types)
@@ -87,7 +101,7 @@ To help clients and maintainers understand your code’s purpose, document expor
 To improve code quality and consistency, use linters and formatters.
 
 ### Data Types
-  
+
 #### Creating confusion with octal literals (#17)
 
 When reading existing code, bear in mind that integer literals starting with 0 are octal numbers. Also, to improve readability, make octal integers explicit by prefixing them with `0o`.
@@ -98,7 +112,7 @@ Because integer overflows and underflows are handled silently in Go, you can imp
 
 #### Not understanding floating-points (#19)
 
-Making floating-point comparisons within a given delta can ensure that your code is portable. 
+Making floating-point comparisons within a given delta can ensure that your code is portable.
 
 When performing addition or subtraction, group the operations with a similar order of magnitude to favor accuracy. Also, perform multiplication and division before addition and subtraction.
 
@@ -144,7 +158,7 @@ A map can always grow in memory, but it never shrinks. Hence, if it leads to som
 
 To compare types in Go, you can use the == and != operators if two types are comparable: Booleans, numerals, strings, pointers, channels, and structs are composed entirely of comparable types. Otherwise, you can either use `reflect.DeepEqual` and pay the price of reflection or use custom implementations and libraries.
 
-### Control Structures  
+### Control Structures
 
 #### Ignoring that elements are copied in `range` loops (#30)
 
@@ -175,7 +189,7 @@ Using `break` or `continue` with a label enforces breaking a specific statement.
 Extracting loop logic inside a function leads to executing a `defer` statement at the end of each iteration.
 
 ### Strings
-  
+
 #### Not understanding the concept of rune (#36)
 
 Understanding that a rune corresponds to the concept of a Unicode code point and that it can be composed of multiple bytes should be part of the Go developer’s core knowledge to work accurately with strings.
@@ -201,7 +215,7 @@ Remembering that the `bytes` package offers the same operations as the `strings`
 Using copies instead of substrings can prevent memory leaks, as the string returned by a substring operation will be backed by the same byte array.
 
 ### Functions and Methods
-  
+
 #### Not knowing which type of receiver to use (#42)
 
 The decision whether to use a value or a pointer receiver should be made based on factors such as the type, whether it has to be mutated, whether it contains a field that can’t be copied, and how large the object is. When in doubt, use a pointer receiver.
@@ -225,7 +239,7 @@ Designing functions to receive `io.Reader` types instead of filenames improves t
 #### Ignoring how `defer` arguments and receivers are evaluated (argument evaluation, pointer, and value receivers) (#47)
 
 Passing a pointer to a `defer` function and wrapping a call inside a closure are two possible solutions to overcome the immediate evaluation of arguments and receivers.
-  
+
 ### Error Management
 
 #### Panicking (#48)
@@ -259,7 +273,7 @@ Ignoring an error, whether during a function call or in a `defer` function, shou
 In many cases, you shouldn’t ignore an error returned by a `defer` function. Either handle it directly or propagate it to the caller, depending on the context. If you want to ignore it, use the blank identifier.
 
 ### Concurrency: Foundations
-  
+
 #### Mixing up concurrency and parallelism (#55)
 
 Understanding the fundamental differences between concurrency and parallelism is a cornerstone of the Go developer’s knowledge. Concurrency is about structure, whereas parallelism is about execution.
@@ -314,7 +328,7 @@ Using nil channels should be part of your concurrency toolset because it allows 
 
 #### Being puzzled about channel size (#67)
 
-Carefully decide on the right channel type to use, given a problem. Only unbuffered channels provide strong synchronization guarantees. 
+Carefully decide on the right channel type to use, given a problem. Only unbuffered channels provide strong synchronization guarantees.
 
 You should have a good reason to specify a channel size other than one for buffered channels.
 
@@ -532,3 +546,19 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 #### Not understanding the impacts of running Go in Docker and Kubernetes (#100)
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
+
+## Inside Cover
+
+![](inside-cover.jpg)
+
+## About the Author
+
+Teiva Harsanyi is a senior software engineer at Docker. He worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
+
+## Resources
+
+* How to make mistakes in Go (Go Time - episode #190)
+    * [Episode](https://changelog.com/gotime/190)
+    * [Spotify](https://open.spotify.com/episode/0K1DImrxHCy6E7zVY4AxMZ?si=akroInsPQ1mM5B5V2tHLUw&dl_branch=1)
+
+* 8LU - 100% Test Coverage: [YouTube](https://youtu.be/V3FBDav6wgQ?t=1210)
