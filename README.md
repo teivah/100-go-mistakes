@@ -4,7 +4,7 @@ Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](
 
 ## Sponsors
 
-Want your company name to appear here? Go to [❤️ Sponsor](https://github.com/sponsors/teivah), One-time, _Sponsor 100 Go Mistakes and How to Avoid Them_.
+_Want your company name to appear here? Go to [❤️ Sponsor](https://github.com/sponsors/teivah), One-time tab, "Sponsor 100 Go Mistakes and How to Avoid Them" tier_.
 
 ## Book Description
 
