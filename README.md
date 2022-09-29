@@ -158,7 +158,7 @@ Working with a slice of pointers or structs with pointer fields, you can avoid m
 
 See [#21](#inefficient-slice-initialization-21).
 
-#### Map and memory leaks (#28)
+#### [Map and memory leaks](https://teivah.medium.com/maps-and-memory-leaks-in-go-a85ebe6e7e69) (#28)
 
 A map can always grow in memory, but it never shrinks. Hence, if it leads to some memory issues, you can try different options, such as forcing Go to recreate the map or using pointers.
 
