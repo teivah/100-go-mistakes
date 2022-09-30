@@ -7,7 +7,7 @@ labels: community mistake
 
 **Describe the mistake**
 
-Describe the mistake and include a context if required.
+Describe the mistake and the context.
 
 **Solution**
 
