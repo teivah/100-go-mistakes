@@ -23,11 +23,11 @@ _Want your company name to appear here? Go to [❤️ Sponsor](https://github.co
 
 – _Neeraj Shah_
 
-> "This unique book teaches you good habits by helping you identify bad ones. Harsanyi's writing style is engaging, the examples relevant, and his insights useful. I thought it was a great read, and I think you will too."
+> This unique book teaches you good habits by helping you identify bad ones. Harsanyi's writing style is engaging, the examples relevant, and his insights useful. I thought it was a great read, and I think you will too.
 
 – _Thad Meyer_
 
-> "Not having this will be the 101st mistake a Go programmer could make."
+> Not having this will be the 101st mistake a Go programmer could make.
 
 – _Anupam Sengupta_
 
