@@ -8,9 +8,16 @@ _Want your company name to appear here? Go to [❤️ Sponsor](https://github.co
 
 ## Book Description
 
-![](inside-cover.png)
+![](cover.png)
 
 100 Go Mistakes and How to Avoid Them shows you how to replace common programming problems in Go with idiomatic, expressive code. In it, you’ll explore dozens of interesting examples and case studies as you learn to spot mistakes that might appear in your own applications.
+
+### Where to Buy?
+
+* [Manning.com](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
+* Amazon: [.com](https://www.amazon.com/dp/1617299596), [.co.uk](https://www.amazon.co.uk/dp/B0BBSNJR6B), [.de](https://www.amazon.de/dp/B0BBHQD8BQ), [.in](https://www.amazon.in/dp/B0BBHQD8BQ), [.co.jp](https://www.amazon.co.jp/dp/B0BBHQD8BQ), [.es](https://www.amazon.es/dp/B0BBHQD8BQ), [.it](https://www.amazon.it/dp/B0BBHQD8BQ), [.com.br](https://www.amazon.com.br/dp/B0BBHQD8BQ) 
+
+### Quotes
 
 > This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.
 
@@ -26,7 +33,7 @@ _Want your company name to appear here? Go to [❤️ Sponsor](https://github.co
 
 ## Common Go Mistakes
 
-![](cover.png)
+![](inside-cover.png)
 
 This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
