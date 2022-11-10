@@ -34,7 +34,7 @@ type customConstraint interface {
 	~int | ~string
 }
 
-func getKeysWithConstraing[K customConstraint, V any](m map[K]V) []K {
+func getKeysWithConstraint[K customConstraint, V any](m map[K]V) []K {
 	return nil
 }
 
