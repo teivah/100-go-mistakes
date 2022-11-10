@@ -131,7 +131,7 @@ Making floating-point comparisons within a given delta can ensure that your code
 
 When performing addition or subtraction, group the operations with a similar order of magnitude to favor accuracy. Also, perform multiplication and division before addition and subtraction.
 
-#### Not understanding slice length and capacity (#20)
+#### [Not understanding slice length and capacity](https://teivah.medium.com/slice-length-vs-capacity-in-go-af71a754b7d8) (#20)
 
 Understanding the difference between slice length and capacity should be part of a Go developer’s core knowledge. The slice length is the number of available elements in the slice, whereas the slice capacity is the number of elements in the backing array.
 
