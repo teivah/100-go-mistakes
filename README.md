@@ -2,9 +2,11 @@
 
 Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) published by Manning in October 2022. Made by [@teivah](https://twitter.com/teivah).
 
+## Book Description
+
 ![](banner.png)
 
-100 Go Mistakes and How to Avoid Them shows you how to replace common programming problems in Go with idiomatic, expressive code. In it, you’ll explore dozens of interesting examples and case studies as you learn to spot mistakes that might appear in your own applications.
+_100 Go Mistakes and How to Avoid Them_ shows you how to replace common programming problems in Go with idiomatic, expressive code. In it, you’ll explore dozens of interesting examples and case studies as you learn to spot mistakes that might appear in your own applications.
 
 ## Sponsors
 
