@@ -132,7 +132,7 @@ This section contains a summary of the 100 mistakes in the book. Meanwhile, it's
   * [Not understanding stack vs. heap](#not-understanding-stack-vs-heap-95)
   * [Not knowing how to reduce allocations](#not-knowing-how-to-reduce-allocations-api-change-compiler-optimizations-and-syncpool-96)
   * [Not relying on inlining](#not-relying-on-inlining-97)
-  * [Not using Go diagnostics tooling](#not-using-go-diagnostics-tooling-profiling-enabling-pprof-cpu-heap-goroutines-block-and-mutex-profiling-and-execution-tracer-98)
+  * [Not using Go diagnostics tooling](#not-using-go-diagnostics-tooling-profiling-enabling-pprof-cpu-heap-goroutines-block-and-mutex-profiling-and-execution-tracer-98) ([Read the full excerpt 👀](https://medium.com/@teivah/profiling-and-execution-tracing-in-go-a5e646970f5b))
   * [Not understanding how the GC works](#not-understanding-how-the-gc-works-99)
   * [Not understanding the impacts of running Go in Docker and Kubernetes](#not-understanding-the-impacts-of-running-go-in-docker-and-kubernetes-100)
 
@@ -637,7 +637,7 @@ Reducing allocations is also an essential aspect of optimizing a Go application.
 
 Use the fast-path inlining technique to efficiently reduce the amortized time to call a function.
 
-#### Not using Go diagnostics tooling (profiling [enabling pprof, CPU, heap, goroutines, block, and mutex profiling] and execution tracer) (#98)
+#### [Not using Go diagnostics tooling](https://medium.com/@teivah/profiling-and-execution-tracing-in-go-a5e646970f5b) (#98)
 
 Rely on profiling and the execution tracer to understand how an application performs and the parts to optimize.
 
