@@ -96,3 +96,56 @@ func listing3() {
 		donation.cond.Broadcast()
 	}
 }
+
+func listing4() {
+	type Donation struct {
+		cond     *sync.Cond
+		jobDone  chan struct{}
+		waitDone chan struct{}
+		balance  int
+	}
+
+	donation := &Donation{
+		cond:     sync.NewCond(&sync.Mutex{}),
+		jobDone:  make(chan struct{}),
+		waitDone: make(chan struct{}),
+	}
+
+	// Listener goroutines
+	f := func(goal int) {
+		for donation.balance < goal {
+			donation.cond.Wait()
+			if donation.balance < goal {
+				donation.waitDone <- struct{}{}
+			}
+		}
+		fmt.Printf("%d$ goal reached\n", donation.balance)
+		donation.jobDone <- struct{}{}
+		donation.cond.L.Unlock()
+	}
+
+	donation.cond.L.Lock()
+	go f(10)
+	donation.cond.L.Lock()
+	go f(15)
+
+	jobNumber := 2
+	// Updater goroutine
+	for jobNumber != 0 {
+		donation.cond.L.Lock()
+		// after get the lock, means all living jobs have been released the lock and in waiting status.
+		waitNumber := jobNumber
+		donation.balance++
+		donation.cond.L.Unlock()
+		donation.cond.Broadcast()
+		for waitNumber != 0 {
+			// no matter job done or wait done, means a job waked and get the lock.
+			select {
+			case <-donation.jobDone:
+				jobNumber -= 1
+			case <-donation.waitDone:
+			}
+			waitNumber -= 1
+		}
+	}
+}
