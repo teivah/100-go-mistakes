@@ -8,10 +8,6 @@ Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](
 
 _100 Go Mistakes and How to Avoid Them_ shows you how to replace common programming problems in Go with idiomatic, expressive code. In it, you’ll explore dozens of interesting examples and case studies as you learn to spot mistakes that might appear in your own applications.
 
-## Sponsors
-
-_Want your company name to appear here? Go to [❤️ Sponsor](https://github.com/sponsors/teivah), One-time tab, "Sponsor 100 Go Mistakes and How to Avoid Them" tier_.
-
 ## Where to Buy?
 
 * [Manning.com](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
