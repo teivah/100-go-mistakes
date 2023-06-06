@@ -38,7 +38,7 @@ func getBalance3(db *sql.DB, clientID string) (balance float32, err error) {
 		closeErr := rows.Close()
 		if err != nil {
 			if closeErr != nil {
-				log.Printf("failed to close rows: %v", err)
+				log.Printf("failed to close rows: %v", closeErr)
 			}
 			return
 		}
