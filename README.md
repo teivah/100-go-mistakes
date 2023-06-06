@@ -20,12 +20,12 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 
 ### Where to Buy?
 
-100 Go Mistakes and How to Avoid Them (English edition: paper, digital, or audiobook):
-* [Manning.com](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
-* Amazon: [.com](https://www.amazon.com/dp/1617299596), [.co.uk](https://www.amazon.co.uk/dp/B0BBSNJR6B), [.de](https://www.amazon.de/dp/B0BBHQD8BQ), [.fr](https://www.amazon.fr/100-Mistakes-How-Avoid-Them/dp/1617299596), [.in](https://www.amazon.in/dp/B0BBHQD8BQ), [.co.jp](https://www.amazon.co.jp/dp/B0BBHQD8BQ), [.es](https://www.amazon.es/dp/B0BBHQD8BQ), [.it](https://www.amazon.it/dp/B0BBHQD8BQ), [.com.br](https://www.amazon.com.br/dp/B0BBHQD8BQ)
+* _100 Go Mistakes and How to Avoid Them_ (English edition: paper, digital, or audiobook):
+  * [Manning.com](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
+  * Amazon: [.com](https://www.amazon.com/dp/1617299596), [.co.uk](https://www.amazon.co.uk/dp/B0BBSNJR6B), [.de](https://www.amazon.de/dp/B0BBHQD8BQ), [.fr](https://www.amazon.fr/100-Mistakes-How-Avoid-Them/dp/1617299596), [.in](https://www.amazon.in/dp/B0BBHQD8BQ), [.co.jp](https://www.amazon.co.jp/dp/B0BBHQD8BQ), [.es](https://www.amazon.es/dp/B0BBHQD8BQ), [.it](https://www.amazon.it/dp/B0BBHQD8BQ), [.com.br](https://www.amazon.com.br/dp/B0BBHQD8BQ)
 
-Go言語100Tips 開発者にありがちな間違いへの対処法 (Japanese edition):
-* Amazon: [.co.jp](https://www.amazon.co.jp/exec/obidos/ASIN/4295017531/)
+* _Go言語100Tips 開発者にありがちな間違いへの対処法_ (Japanese edition):
+  * Amazon: [.co.jp](https://www.amazon.co.jp/exec/obidos/ASIN/4295017531/)
 
 ## Common Go Mistakes
 
