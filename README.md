@@ -4,7 +4,11 @@ Source code and community space of 📖 _100 Go Mistakes and How to Avoid Them_,
 
 ![](cover2.png)
 
-## Book Description
+## ❤️ Sponsor this Repository
+
+Your company is hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=one-time&sponsor=teivah) this repository and let Go developers know it!
+
+## 📖 Book Description
 
 If you're a Go developer looking to improve your skills, this book is for you. With a focus on practical examples, _100 Go Mistakes and How to Avoid Them_ covers a wide range of topics from concurrency and error handling to testing and code organization. You'll learn to write more idiomatic, efficient, and maintainable code and become a proficient Go developer.
 
@@ -27,11 +31,11 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 * _Go言語100Tips 開発者にありがちな間違いへの対処法_ (🇯🇵 edition):
   * Amazon: [.co.jp](https://www.amazon.co.jp/exec/obidos/ASIN/4295017531/)
 
-## About the Author
+## ✍️ About the Author
 
 Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.
 
-## Common Go Mistakes
+## 💡 Common Go Mistakes
 
 This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
@@ -666,7 +670,7 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
 
-## External Resources
+## 🌎 External Resources
 
 ### 🇬🇧
 
