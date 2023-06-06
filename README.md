@@ -1,6 +1,6 @@
 # 100 Go Mistakes and How to Avoid Them
 
-Source code and community space of 📖 100 Go Mistakes and How to Avoid Them, published by Manning in August 2022.
+Source code and community space of 📖 _100 Go Mistakes and How to Avoid Them_, published by Manning in August 2022.
 
 ![](cover2.png)
 
