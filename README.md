@@ -29,7 +29,7 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 
 ## About the Author
 
-Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
+Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.
 
 ## Common Go Mistakes
 
