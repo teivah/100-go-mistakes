@@ -672,8 +672,9 @@ Teiva Harsanyi is a senior software engineer at Docker 🐳. He worked in variou
 * [我为什么放弃Go语言？](https://juejin.cn/post/7241452578125824061)
 
 🇯🇵
-* [最近読んだGo言語の本の紹介：100 Go Mistakes and How to Avoid Them]([https://zhuanlan.zhihu.com/p/592602656](https://qiita.com/kentaro_suzuki/items/c9c31dc81217f237433c))
+* [最近読んだGo言語の本の紹介：100 Go Mistakes and How to Avoid Them](https://qiita.com/kentaro_suzuki/items/c9c31dc81217f237433c)
 * [『100 Go Mistakes and How to Avoid Them』を読む](https://zenn.dev/yukibobier/books/066f07c8a59fa0)
+* [100 Go Mistakes 随记 - 01 Code and project organization](https://zhuanlan.zhihu.com/p/592602656)
 
 🇵🇹
 * [Um ÓTIMO livro para programadores Go](https://www.youtube.com/watch?v=34XShL_jWD4)
