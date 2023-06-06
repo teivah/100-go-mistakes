@@ -658,9 +658,9 @@ To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in min
 
 ## About the Author
 
-Teiva Harsanyi is a senior software engineer at Docker 🐳. He worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
+Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
 
-## Resources
+## External Resources
 
 🇬🇧
 * How to make mistakes in Go (Go Time - episode #190)
