@@ -8,7 +8,7 @@ Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](
 
 If you're a Go developer looking to improve your skills, this book is for you. With a focus on practical examples, _100 Go Mistakes and How to Avoid Them_ covers a wide range of topics from concurrency and error handling to testing and code organization. You'll learn to write more idiomatic, efficient, and maintainable code and become a proficient Go developer.
 
-## Quotes
+### Quotes
 
 > This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.
 
@@ -18,7 +18,7 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 
 – _Anupam Sengupta_
 
-## Where to Buy?
+### Where to Buy?
 
 * [Manning.com](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
 * Amazon: [.com](https://www.amazon.com/dp/1617299596), [.co.uk](https://www.amazon.co.uk/dp/B0BBSNJR6B), [.de](https://www.amazon.de/dp/B0BBHQD8BQ), [.fr](https://www.amazon.fr/100-Mistakes-How-Avoid-Them/dp/1617299596), [.in](https://www.amazon.in/dp/B0BBHQD8BQ), [.co.jp](https://www.amazon.co.jp/dp/B0BBHQD8BQ), [.es](https://www.amazon.es/dp/B0BBHQD8BQ), [.it](https://www.amazon.it/dp/B0BBHQD8BQ), [.com.br](https://www.amazon.com.br/dp/B0BBHQD8BQ)
