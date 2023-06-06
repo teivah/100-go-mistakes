@@ -27,6 +27,10 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 * _Go言語100Tips 開発者にありがちな間違いへの対処法_ (Japanese edition):
   * Amazon: [.co.jp](https://www.amazon.co.jp/exec/obidos/ASIN/4295017531/)
 
+## About the Author
+
+Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
+
 ## Common Go Mistakes
 
 This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
@@ -661,10 +665,6 @@ Understanding how to tune the GC can lead to multiple benefits such as handling 
 #### Not understanding the impacts of running Go in Docker and Kubernetes (#100)
 
 To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
-
-## About the Author
-
-Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable applications.
 
 ## External Resources
 
