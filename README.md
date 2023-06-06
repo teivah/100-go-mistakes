@@ -6,7 +6,7 @@ Source code and community space of 📖 _100 Go Mistakes and How to Avoid Them_,
 
 ## ❤️ Sponsor this Repository
 
-Your company is hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=one-time&sponsor=teivah) this repository and let Go developers know it!
+Your company is hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=one-time&sponsor=teivah) this repository and let Go developers know your opportunities!
 
 ## 📖 Book Description
 
