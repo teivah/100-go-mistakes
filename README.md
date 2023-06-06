@@ -1,12 +1,14 @@
 # 100 Go Mistakes and How to Avoid Them
 
-Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them), published by Manning in 2022.
-
-## Book Description
+Source code and community space of 📖 [100 Go Mistakes and How to Avoid Them](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them), published by Manning in August 2022.
 
 ![](cover2.png)
 
+## Book Description
+
 If you're a Go developer looking to improve your skills, this book is for you. With a focus on practical examples, _100 Go Mistakes and How to Avoid Them_ covers a wide range of topics from concurrency and error handling to testing and code organization. You'll learn to write more idiomatic, efficient, and maintainable code and become a proficient Go developer.
+
+## Quotes
 
 > This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.
 
