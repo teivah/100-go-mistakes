@@ -20,11 +20,11 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 
 ### Where to Buy?
 
-* _100 Go Mistakes and How to Avoid Them_ (English edition: paper, digital, or audiobook):
+* _100 Go Mistakes and How to Avoid Them_ (🇬🇧 edition: paper, digital, or audiobook):
   * [Manning.com](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
   * Amazon: [.com](https://www.amazon.com/dp/1617299596), [.co.uk](https://www.amazon.co.uk/dp/B0BBSNJR6B), [.de](https://www.amazon.de/dp/B0BBHQD8BQ), [.fr](https://www.amazon.fr/100-Mistakes-How-Avoid-Them/dp/1617299596), [.in](https://www.amazon.in/dp/B0BBHQD8BQ), [.co.jp](https://www.amazon.co.jp/dp/B0BBHQD8BQ), [.es](https://www.amazon.es/dp/B0BBHQD8BQ), [.it](https://www.amazon.it/dp/B0BBHQD8BQ), [.com.br](https://www.amazon.com.br/dp/B0BBHQD8BQ)
 
-* _Go言語100Tips 開発者にありがちな間違いへの対処法_ (Japanese edition):
+* _Go言語100Tips 開発者にありがちな間違いへの対処法_ (🇯🇵 edition):
   * Amazon: [.co.jp](https://www.amazon.co.jp/exec/obidos/ASIN/4295017531/)
 
 ## About the Author
@@ -668,7 +668,8 @@ To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in min
 
 ## External Resources
 
-🇬🇧
+### 🇬🇧
+
 * How to make mistakes in Go (Go Time - episode #190)
     * [Episode](https://changelog.com/gotime/190)
     * [Spotify](https://open.spotify.com/episode/0K1DImrxHCy6E7zVY4AxMZ?si=akroInsPQ1mM5B5V2tHLUw&dl_branch=1)
@@ -676,15 +677,18 @@ To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in min
 * [Some Tips I learned from 100 Mistakes in Go](https://raygervais.dev/articles/2023/04/100_mistakes_in_go/)
 * [What can be summarized from 100 Go Mistakes?](https://www.sobyte.net/post/2023-05/summarized-from-100-go-mistakes/)
 
-🇨🇳
+### 🇨🇳
+
 * [深度阅读之《100 Go Mistakes and How to Avoid Them](https://qcrao.com/post/100-go-mistakes-reading-notes/)
 * [100 Go Mistakes 随记](https://zhuanlan.zhihu.com/p/592602656)
 * [我为什么放弃Go语言？](https://juejin.cn/post/7241452578125824061)
 
-🇯🇵
+### 🇯🇵
+
 * [最近読んだGo言語の本の紹介：100 Go Mistakes and How to Avoid Them](https://qiita.com/kentaro_suzuki/items/c9c31dc81217f237433c)
 * [『100 Go Mistakes and How to Avoid Them』を読む](https://zenn.dev/yukibobier/books/066f07c8a59fa0)
 * [100 Go Mistakes 随记 - 01 Code and project organization](https://zhuanlan.zhihu.com/p/592602656)
 
-🇵🇹
+### 🇵🇹
+
 * [Um ÓTIMO livro para programadores Go](https://www.youtube.com/watch?v=34XShL_jWD4)
