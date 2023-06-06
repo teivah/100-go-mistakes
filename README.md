@@ -131,7 +131,7 @@ This section contains a summary of the 100 mistakes in the book. Meanwhile, it's
   * [Not using testing utility packages](#not-using-testing-utility-packages-httptest-and-iotest-88)
   * [Writing inaccurate benchmarks](#writing-inaccurate-benchmarks-89) ([Read the full excerpt 👀](https://teivah.medium.com/how-to-write-accurate-benchmarks-in-go-4266d7dd1a95))
   * [Not exploring all the Go testing features](#not-exploring-all-the-go-testing-features-90)
-  * [Not using fuzzing](#not-using-fuzzing--community-mistake-) (community mistake, credits: [@jeromedoucet](https://github.com/jeromedoucet))
+  * [Not using fuzzing](#not-using-fuzzing-community-mistake) (community mistake, credits: [@jeromedoucet](https://github.com/jeromedoucet))
 * [Optimizations](#optimizations)
   * [Not understanding CPU caches](#not-understanding-cpu-caches-91)
   * [Writing concurrent code that leads to false sharing](#writing-concurrent-code-that-leads-to-false-sharing-92)
