@@ -22,6 +22,10 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 
 – _Anupam Sengupta_
 
+### ✍️ About the Author
+
+Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.
+
 ### Where to Buy?
 
 * _100 Go Mistakes and How to Avoid Them_ (🇬🇧 edition: paper, digital, or audiobook):
@@ -30,10 +34,6 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 
 * _Go言語100Tips 開発者にありがちな間違いへの対処法_ (🇯🇵 edition):
   * Amazon: [.co.jp](https://www.amazon.co.jp/exec/obidos/ASIN/4295017531/)
-
-## ✍️ About the Author
-
-Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.
 
 ## 💡 Common Go Mistakes
 
