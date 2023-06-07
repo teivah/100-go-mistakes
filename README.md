@@ -8,9 +8,9 @@ Your company is hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=o
 
 ## 📖 Book Description
 
-![](inside-cover.png)
-
 If you're a Go developer looking to improve your skills, this book is for you. With a focus on practical examples, _100 Go Mistakes and How to Avoid Them_ covers a wide range of topics from concurrency and error handling to testing and code organization. You'll learn to write more idiomatic, efficient, and maintainable code and become a proficient Go developer.
+
+![](inside-cover.png)
 
 ### Quotes
 
