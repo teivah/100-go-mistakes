@@ -29,7 +29,7 @@ Teiva Harsanyi is a senior software engineer at Google. He has worked in various
 ### Where to Buy?
 
 * _100 Go Mistakes and How to Avoid Them_ (🇬🇧 edition: paper, digital, or audiobook):
-  * [Manning.com](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
+  * [Manning](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them)
   * [O’Reilly](https://www.oreilly.com/library/view/100-go-mistakes/9781617299599/)
   * Amazon: [.com](https://www.amazon.com/dp/1617299596), [.co.uk](https://www.amazon.co.uk/dp/B0BBSNJR6B), [.de](https://www.amazon.de/dp/B0BBHQD8BQ), [.fr](https://www.amazon.fr/100-Mistakes-How-Avoid-Them/dp/1617299596), [.in](https://www.amazon.in/dp/B0BBHQD8BQ), [.co.jp](https://www.amazon.co.jp/dp/B0BBHQD8BQ), [.es](https://www.amazon.es/dp/B0BBHQD8BQ), [.it](https://www.amazon.it/dp/B0BBHQD8BQ), [.com.br](https://www.amazon.com.br/dp/B0BBHQD8BQ)
 
