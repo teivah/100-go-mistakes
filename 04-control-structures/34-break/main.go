@@ -7,10 +7,9 @@ import (
 
 func listing1() {
 	for i := 0; i < 5; i++ {
-		fmt.Printf("%d ", i)
-
 		switch i {
 		default:
+			fmt.Printf("%d ", i)
 		case 2:
 			break
 		}
@@ -20,10 +19,9 @@ func listing1() {
 func listing2() {
 loop:
 	for i := 0; i < 5; i++ {
-		fmt.Printf("%d ", i)
-
 		switch i {
 		default:
+			fmt.Printf("%d ", i)
 		case 2:
 			break loop
 		}
