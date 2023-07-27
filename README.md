@@ -2,6 +2,8 @@
 
 Source code and community space of 📖 _100 Go Mistakes and How to Avoid Them_, published by Manning in August 2022.
 
+This repository is also available in [Chinese 🇨🇳](README.zh_CN.md).
+
 ## ❤️ Sponsor this Repository
 
 Your company is hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=one-time&sponsor=teivah) this repository and let Go developers know your opportunities in this section.
