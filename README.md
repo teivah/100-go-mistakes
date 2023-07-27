@@ -59,7 +59,7 @@ This section contains a summary of the 100 mistakes in the book. Meanwhile, it's
   * [Ignoring package name collisions](#ignoring-package-name-collisions-14)
   * [Missing code documentation](#missing-code-documentation-15)
   * [Not using linters](#not-using-linters-16)
-* [Data Types](#data-types)
+* [Data Types](#data-types) ([Read the full chapter 👀](chapter-3.pdf))
   * [Creating confusion with octal literals](#creating-confusion-with-octal-literals-17)
   * [Neglecting integer overflows](#neglecting-integer-overflows-18)
   * [Not understanding floating-points](#not-understanding-floating-points-19)
@@ -221,7 +221,7 @@ To help clients and maintainers understand your code’s purpose, document expor
 
 To improve code quality and consistency, use linters and formatters.
 
-### Data Types
+### Data Types ([PDF chapter](chapter-3.pdf))
 
 #### Creating confusion with octal literals (#17)
 
