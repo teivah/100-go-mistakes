@@ -6,7 +6,7 @@ This repository is also available in [Chinese 🇨🇳](README.zh_CN.md).
 
 ## ❤️ Sponsor this Repository
 
-Your company is hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=one-time&sponsor=teivah) this repository and let Go developers know your opportunities in this section (traffic: +400 unique visitor per week).
+Is your company hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=one-time&sponsor=teivah) this repository and let Go developers know your opportunities in this section (traffic: +400 unique visitor per week).
 
 ## 📖 Book Description
 
