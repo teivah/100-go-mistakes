@@ -8,6 +8,22 @@ This repository is also available in [Chinese 🇨🇳](README.zh_CN.md).
 
 Is your company hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=one-time&sponsor=teivah) this repository and let Go developers know your opportunities in this section (traffic: +400 unique visitor per week).
 
+For example:
+
+<details>
+
+<summary>[Company] Remote (USA) - $96,000 to $120,000 a year</summary>
+
+### Job Description
+
+...
+
+### Qualifications
+
+...
+
+</details>
+
 ## 📖 Book Description
 
 If you're a Go developer looking to improve your skills, this book is for you. With a focus on practical examples, _100 Go Mistakes and How to Avoid Them_ covers a wide range of topics from concurrency and error handling to testing and code organization. You'll learn to write more idiomatic, efficient, and maintainable code and become a proficient Go developer.
