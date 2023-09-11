@@ -1,0 +1,2520 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+    
+    
+  <title>100 Go Mistakes</title>
+
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#go-mistakes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="📖 100 Go Mistakes" class="md-header__button md-logo" aria-label="📖 100 Go Mistakes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            📖 100 Go Mistakes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Go Mistakes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              Deutsch
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/teivah/100-go-mistakes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="📖 100 Go Mistakes" class="md-nav__button md-logo" aria-label="📖 100 Go Mistakes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    📖 100 Go Mistakes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/teivah/100-go-mistakes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    En
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            En
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Presentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Go Mistakes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Go Mistakes
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sponsor-this-repository" class="md-nav__link">
+    ❤️ Sponsor this Repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-and-project-organization" class="md-nav__link">
+    Code and Project Organization
+  </a>
+  
+    <nav class="md-nav" aria-label="Code and Project Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unintended-variable-shadowing-1" class="md-nav__link">
+    Unintended variable shadowing (#1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unnecessary-nested-code-2" class="md-nav__link">
+    Unnecessary nested code (#2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misusing-init-functions-3" class="md-nav__link">
+    Misusing init functions (#3)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overusing-getters-and-setters-4" class="md-nav__link">
+    Overusing getters and setters (#4)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-pollution-5" class="md-nav__link">
+    Interface pollution (#5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-on-the-producer-side-6" class="md-nav__link">
+    Interface on the producer side (#6)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returning-interfaces-7" class="md-nav__link">
+    Returning interfaces (#7)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-says-nothing-8" class="md-nav__link">
+    any says nothing (#8)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#being-confused-about-when-to-use-generics-9" class="md-nav__link">
+    Being confused about when to use generics (#9)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-being-aware-of-the-possible-problems-with-type-embedding-10" class="md-nav__link">
+    Not being aware of the possible problems with type embedding (#10)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-the-functional-options-pattern-11" class="md-nav__link">
+    Not using the functional options pattern (#11)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-misorganization-project-structure-and-package-organization-12" class="md-nav__link">
+    Project misorganization (project structure and package organization) (#12)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-utility-packages-13" class="md-nav__link">
+    Creating utility packages (#13)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-package-name-collisions-14" class="md-nav__link">
+    Ignoring package name collisions (#14)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-code-documentation-15" class="md-nav__link">
+    Missing code documentation (#15)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-linters-16" class="md-nav__link">
+    Not using linters (#16)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-types-pdf-chapter" class="md-nav__link">
+    Data Types (PDF chapter)
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Types (PDF chapter)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-confusion-with-octal-literals-17" class="md-nav__link">
+    Creating confusion with octal literals (#17)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neglecting-integer-overflows-18" class="md-nav__link">
+    Neglecting integer overflows (#18)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-floating-points-19" class="md-nav__link">
+    Not understanding floating-points (#19)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-slice-length-and-capacity-20" class="md-nav__link">
+    Not understanding slice length and capacity (#20)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inefficient-slice-initialization-21" class="md-nav__link">
+    Inefficient slice initialization (#21)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#being-confused-about-nil-vs-empty-slice-22" class="md-nav__link">
+    Being confused about nil vs. empty slice (#22)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-properly-checking-if-a-slice-is-empty-23" class="md-nav__link">
+    Not properly checking if a slice is empty (#23)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-making-slice-copies-correctly-24" class="md-nav__link">
+    Not making slice copies correctly (#24)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unexpected-side-effects-using-slice-append-25" class="md-nav__link">
+    Unexpected side effects using slice append (#25)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-and-memory-leaks-26" class="md-nav__link">
+    Slice and memory leaks (#26)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inefficient-map-initialization-27" class="md-nav__link">
+    Inefficient map initialization (#27)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-and-memory-leaks-28" class="md-nav__link">
+    Map and memory leaks (#28)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-values-incorrectly-29" class="md-nav__link">
+    Comparing values incorrectly (#29)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-structures" class="md-nav__link">
+    Control Structures
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-that-elements-are-copied-in-range-loops-30" class="md-nav__link">
+    Ignoring that elements are copied in range loops (#30)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-how-arguments-are-evaluated-in-range-loops-channels-and-arrays-31" class="md-nav__link">
+    Ignoring how arguments are evaluated in range loops (channels and arrays) (#31)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-the-impacts-of-using-pointer-elements-in-range-loops-32" class="md-nav__link">
+    Ignoring the impacts of using pointer elements in range loops (#32)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-wrong-assumptions-during-map-iterations-ordering-and-map-insert-during-iteration-33" class="md-nav__link">
+    Making wrong assumptions during map iterations (ordering and map insert during iteration) (#33)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-how-the-break-statement-works-34" class="md-nav__link">
+    Ignoring how the break statement works (#34)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-defer-inside-a-loop-35" class="md-nav__link">
+    Using defer inside a loop (#35)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    Strings
+  </a>
+  
+    <nav class="md-nav" aria-label="Strings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-the-concept-of-rune-36" class="md-nav__link">
+    Not understanding the concept of rune (#36)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inaccurate-string-iteration-37" class="md-nav__link">
+    Inaccurate string iteration (#37)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misusing-trim-functions-38" class="md-nav__link">
+    Misusing trim functions (#38)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#under-optimized-strings-concatenation-39" class="md-nav__link">
+    Under-optimized strings concatenation (#39)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useless-string-conversions-40" class="md-nav__link">
+    Useless string conversions (#40)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substring-and-memory-leaks-41" class="md-nav__link">
+    Substring and memory leaks (#41)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-and-methods" class="md-nav__link">
+    Functions and Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions and Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-knowing-which-type-of-receiver-to-use-42" class="md-nav__link">
+    Not knowing which type of receiver to use (#42)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#never-using-named-result-parameters-43" class="md-nav__link">
+    Never using named result parameters (#43)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unintended-side-effects-with-named-result-parameters-44" class="md-nav__link">
+    Unintended side effects with named result parameters (#44)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returning-a-nil-receiver-45" class="md-nav__link">
+    Returning a nil receiver (#45)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-filename-as-a-function-input-46" class="md-nav__link">
+    Using a filename as a function input (#46)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-how-defer-arguments-and-receivers-are-evaluated-argument-evaluation-pointer-and-value-receivers-47" class="md-nav__link">
+    Ignoring how defer arguments and receivers are evaluated (argument evaluation, pointer, and value receivers) (#47)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-management" class="md-nav__link">
+    Error Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#panicking-48" class="md-nav__link">
+    Panicking (#48)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-when-to-wrap-an-error-49" class="md-nav__link">
+    Ignoring when to wrap an error (#49)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-an-error-type-inaccurately-50" class="md-nav__link">
+    Comparing an error type inaccurately (#50)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-an-error-value-inaccurately-51" class="md-nav__link">
+    Comparing an error value inaccurately (#51)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-an-error-twice-52" class="md-nav__link">
+    Handling an error twice (#52)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-handling-an-error-53" class="md-nav__link">
+    Not handling an error (#53)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-handling-defer-errors-54" class="md-nav__link">
+    Not handling defer errors (#54)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrency-foundations" class="md-nav__link">
+    Concurrency: Foundations
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrency: Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mixing-up-concurrency-and-parallelism-55" class="md-nav__link">
+    Mixing up concurrency and parallelism (#55)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thinking-concurrency-is-always-faster-56" class="md-nav__link">
+    Thinking concurrency is always faster (#56)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#being-puzzled-about-when-to-use-channels-or-mutexes-57" class="md-nav__link">
+    Being puzzled about when to use channels or mutexes (#57)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-race-problems-data-races-vs-race-conditions-and-the-go-memory-model-58" class="md-nav__link">
+    Not understanding race problems (data races vs. race conditions and the Go memory model) (#58)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-the-concurrency-impacts-of-a-workload-type-59" class="md-nav__link">
+    Not understanding the concurrency impacts of a workload type (#59)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misunderstanding-go-contexts-60" class="md-nav__link">
+    Misunderstanding Go contexts (#60)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrency-practice" class="md-nav__link">
+    Concurrency: Practice
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrency: Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#propagating-an-inappropriate-context-61" class="md-nav__link">
+    Propagating an inappropriate context (#61)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-goroutine-without-knowing-when-to-stop-it-62" class="md-nav__link">
+    Starting a goroutine without knowing when to stop it (#62)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-being-careful-with-goroutines-and-loop-variables-63" class="md-nav__link">
+    Not being careful with goroutines and loop variables (#63)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expecting-a-deterministic-behavior-using-select-and-channels-64" class="md-nav__link">
+    Expecting a deterministic behavior using select and channels (#64)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-notification-channels-65" class="md-nav__link">
+    Not using notification channels (#65)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-nil-channels-66" class="md-nav__link">
+    Not using nil channels (#66)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#being-puzzled-about-channel-size-67" class="md-nav__link">
+    Being puzzled about channel size (#67)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forgetting-about-possible-side-effects-with-string-formatting-etcd-data-race-example-and-deadlock-68" class="md-nav__link">
+    Forgetting about possible side effects with string formatting (etcd data race example and deadlock) (#68)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-data-races-with-append-69" class="md-nav__link">
+    Creating data races with append (#69)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-mutexes-inaccurately-with-slices-and-maps-70" class="md-nav__link">
+    Using mutexes inaccurately with slices and maps (#70)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misusing-syncwaitgroup-71" class="md-nav__link">
+    Misusing sync.WaitGroup (#71)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forgetting-about-synccond-72" class="md-nav__link">
+    Forgetting about sync.Cond (#72)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-errgroup-73" class="md-nav__link">
+    Not using errgroup (#73)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-a-sync-type-74" class="md-nav__link">
+    Copying a sync type (#74)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-library" class="md-nav__link">
+    Standard Library
+  </a>
+  
+    <nav class="md-nav" aria-label="Standard Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#providing-a-wrong-time-duration-75" class="md-nav__link">
+    Providing a wrong time duration (#75)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeafter-and-memory-leaks-76" class="md-nav__link">
+    time.After and memory leaks (#76)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-handling-common-mistakes-77" class="md-nav__link">
+    JSON handling common mistakes (#77)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-sql-mistakes-78" class="md-nav__link">
+    Common SQL mistakes (#78)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-closing-transient-resources-http-body-sqlrows-and-osfile-79" class="md-nav__link">
+    Not closing transient resources (HTTP body, sql.Rows, and os.File) (#79)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forgetting-the-return-statement-after-replying-to-an-http-request-80" class="md-nav__link">
+    Forgetting the return statement after replying to an HTTP request (#80)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-default-http-client-and-server-81" class="md-nav__link">
+    Using the default HTTP client and server (#81)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-categorizing-tests-build-tags-environment-variables-and-short-mode-82" class="md-nav__link">
+    Not categorizing tests (build tags, environment variables, and short mode) (#82)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-enabling-the-race-flag-83" class="md-nav__link">
+    Not enabling the race flag (#83)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-test-execution-modes-parallel-and-shuffle-84" class="md-nav__link">
+    Not using test execution modes (parallel and shuffle) (#84)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-table-driven-tests-85" class="md-nav__link">
+    Not using table-driven tests (#85)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleeping-in-unit-tests-86" class="md-nav__link">
+    Sleeping in unit tests (#86)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-dealing-with-the-time-api-efficiently-87" class="md-nav__link">
+    Not dealing with the time API efficiently (#87)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-testing-utility-packages-httptest-and-iotest-88" class="md-nav__link">
+    Not using testing utility packages (httptest and iotest) (#88)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-inaccurate-benchmarks-89" class="md-nav__link">
+    Writing inaccurate benchmarks (#89)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-exploring-all-the-go-testing-features-90" class="md-nav__link">
+    Not exploring all the Go testing features (#90)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-fuzzing-community-mistake" class="md-nav__link">
+    Not using fuzzing (community mistake)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizations" class="md-nav__link">
+    Optimizations
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-cpu-caches-91" class="md-nav__link">
+    Not understanding CPU caches (#91)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-concurrent-code-that-leads-to-false-sharing-92" class="md-nav__link">
+    Writing concurrent code that leads to false sharing (#92)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-taking-into-account-instruction-level-parallelism-93" class="md-nav__link">
+    Not taking into account instruction-level parallelism (#93)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-being-aware-of-data-alignment-94" class="md-nav__link">
+    Not being aware of data alignment (#94)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-stack-vs-heap-95" class="md-nav__link">
+    Not understanding stack vs. heap (#95)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-knowing-how-to-reduce-allocations-api-change-compiler-optimizations-and-syncpool-96" class="md-nav__link">
+    Not knowing how to reduce allocations (API change, compiler optimizations, and sync.Pool) (#96)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-relying-on-inlining-97" class="md-nav__link">
+    Not relying on inlining (#97)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-go-diagnostics-tooling-98" class="md-nav__link">
+    Not using Go diagnostics tooling (#98)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-how-the-gc-works-99" class="md-nav__link">
+    Not understanding how the GC works (#99)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-the-impacts-of-running-go-in-docker-and-kubernetes-100" class="md-nav__link">
+    Not understanding the impacts of running Go in Docker and Kubernetes (#100)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sponsor-this-repository" class="md-nav__link">
+    ❤️ Sponsor this Repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-and-project-organization" class="md-nav__link">
+    Code and Project Organization
+  </a>
+  
+    <nav class="md-nav" aria-label="Code and Project Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unintended-variable-shadowing-1" class="md-nav__link">
+    Unintended variable shadowing (#1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unnecessary-nested-code-2" class="md-nav__link">
+    Unnecessary nested code (#2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misusing-init-functions-3" class="md-nav__link">
+    Misusing init functions (#3)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overusing-getters-and-setters-4" class="md-nav__link">
+    Overusing getters and setters (#4)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-pollution-5" class="md-nav__link">
+    Interface pollution (#5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-on-the-producer-side-6" class="md-nav__link">
+    Interface on the producer side (#6)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returning-interfaces-7" class="md-nav__link">
+    Returning interfaces (#7)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-says-nothing-8" class="md-nav__link">
+    any says nothing (#8)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#being-confused-about-when-to-use-generics-9" class="md-nav__link">
+    Being confused about when to use generics (#9)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-being-aware-of-the-possible-problems-with-type-embedding-10" class="md-nav__link">
+    Not being aware of the possible problems with type embedding (#10)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-the-functional-options-pattern-11" class="md-nav__link">
+    Not using the functional options pattern (#11)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-misorganization-project-structure-and-package-organization-12" class="md-nav__link">
+    Project misorganization (project structure and package organization) (#12)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-utility-packages-13" class="md-nav__link">
+    Creating utility packages (#13)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-package-name-collisions-14" class="md-nav__link">
+    Ignoring package name collisions (#14)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-code-documentation-15" class="md-nav__link">
+    Missing code documentation (#15)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-linters-16" class="md-nav__link">
+    Not using linters (#16)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-types-pdf-chapter" class="md-nav__link">
+    Data Types (PDF chapter)
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Types (PDF chapter)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-confusion-with-octal-literals-17" class="md-nav__link">
+    Creating confusion with octal literals (#17)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neglecting-integer-overflows-18" class="md-nav__link">
+    Neglecting integer overflows (#18)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-floating-points-19" class="md-nav__link">
+    Not understanding floating-points (#19)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-slice-length-and-capacity-20" class="md-nav__link">
+    Not understanding slice length and capacity (#20)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inefficient-slice-initialization-21" class="md-nav__link">
+    Inefficient slice initialization (#21)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#being-confused-about-nil-vs-empty-slice-22" class="md-nav__link">
+    Being confused about nil vs. empty slice (#22)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-properly-checking-if-a-slice-is-empty-23" class="md-nav__link">
+    Not properly checking if a slice is empty (#23)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-making-slice-copies-correctly-24" class="md-nav__link">
+    Not making slice copies correctly (#24)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unexpected-side-effects-using-slice-append-25" class="md-nav__link">
+    Unexpected side effects using slice append (#25)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-and-memory-leaks-26" class="md-nav__link">
+    Slice and memory leaks (#26)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inefficient-map-initialization-27" class="md-nav__link">
+    Inefficient map initialization (#27)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-and-memory-leaks-28" class="md-nav__link">
+    Map and memory leaks (#28)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-values-incorrectly-29" class="md-nav__link">
+    Comparing values incorrectly (#29)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-structures" class="md-nav__link">
+    Control Structures
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Structures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-that-elements-are-copied-in-range-loops-30" class="md-nav__link">
+    Ignoring that elements are copied in range loops (#30)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-how-arguments-are-evaluated-in-range-loops-channels-and-arrays-31" class="md-nav__link">
+    Ignoring how arguments are evaluated in range loops (channels and arrays) (#31)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-the-impacts-of-using-pointer-elements-in-range-loops-32" class="md-nav__link">
+    Ignoring the impacts of using pointer elements in range loops (#32)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-wrong-assumptions-during-map-iterations-ordering-and-map-insert-during-iteration-33" class="md-nav__link">
+    Making wrong assumptions during map iterations (ordering and map insert during iteration) (#33)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-how-the-break-statement-works-34" class="md-nav__link">
+    Ignoring how the break statement works (#34)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-defer-inside-a-loop-35" class="md-nav__link">
+    Using defer inside a loop (#35)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strings" class="md-nav__link">
+    Strings
+  </a>
+  
+    <nav class="md-nav" aria-label="Strings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-the-concept-of-rune-36" class="md-nav__link">
+    Not understanding the concept of rune (#36)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inaccurate-string-iteration-37" class="md-nav__link">
+    Inaccurate string iteration (#37)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misusing-trim-functions-38" class="md-nav__link">
+    Misusing trim functions (#38)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#under-optimized-strings-concatenation-39" class="md-nav__link">
+    Under-optimized strings concatenation (#39)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#useless-string-conversions-40" class="md-nav__link">
+    Useless string conversions (#40)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substring-and-memory-leaks-41" class="md-nav__link">
+    Substring and memory leaks (#41)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-and-methods" class="md-nav__link">
+    Functions and Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions and Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-knowing-which-type-of-receiver-to-use-42" class="md-nav__link">
+    Not knowing which type of receiver to use (#42)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#never-using-named-result-parameters-43" class="md-nav__link">
+    Never using named result parameters (#43)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unintended-side-effects-with-named-result-parameters-44" class="md-nav__link">
+    Unintended side effects with named result parameters (#44)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#returning-a-nil-receiver-45" class="md-nav__link">
+    Returning a nil receiver (#45)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-filename-as-a-function-input-46" class="md-nav__link">
+    Using a filename as a function input (#46)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-how-defer-arguments-and-receivers-are-evaluated-argument-evaluation-pointer-and-value-receivers-47" class="md-nav__link">
+    Ignoring how defer arguments and receivers are evaluated (argument evaluation, pointer, and value receivers) (#47)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-management" class="md-nav__link">
+    Error Management
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#panicking-48" class="md-nav__link">
+    Panicking (#48)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-when-to-wrap-an-error-49" class="md-nav__link">
+    Ignoring when to wrap an error (#49)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-an-error-type-inaccurately-50" class="md-nav__link">
+    Comparing an error type inaccurately (#50)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparing-an-error-value-inaccurately-51" class="md-nav__link">
+    Comparing an error value inaccurately (#51)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-an-error-twice-52" class="md-nav__link">
+    Handling an error twice (#52)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-handling-an-error-53" class="md-nav__link">
+    Not handling an error (#53)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-handling-defer-errors-54" class="md-nav__link">
+    Not handling defer errors (#54)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrency-foundations" class="md-nav__link">
+    Concurrency: Foundations
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrency: Foundations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mixing-up-concurrency-and-parallelism-55" class="md-nav__link">
+    Mixing up concurrency and parallelism (#55)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thinking-concurrency-is-always-faster-56" class="md-nav__link">
+    Thinking concurrency is always faster (#56)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#being-puzzled-about-when-to-use-channels-or-mutexes-57" class="md-nav__link">
+    Being puzzled about when to use channels or mutexes (#57)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-race-problems-data-races-vs-race-conditions-and-the-go-memory-model-58" class="md-nav__link">
+    Not understanding race problems (data races vs. race conditions and the Go memory model) (#58)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-the-concurrency-impacts-of-a-workload-type-59" class="md-nav__link">
+    Not understanding the concurrency impacts of a workload type (#59)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misunderstanding-go-contexts-60" class="md-nav__link">
+    Misunderstanding Go contexts (#60)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concurrency-practice" class="md-nav__link">
+    Concurrency: Practice
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrency: Practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#propagating-an-inappropriate-context-61" class="md-nav__link">
+    Propagating an inappropriate context (#61)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-goroutine-without-knowing-when-to-stop-it-62" class="md-nav__link">
+    Starting a goroutine without knowing when to stop it (#62)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-being-careful-with-goroutines-and-loop-variables-63" class="md-nav__link">
+    Not being careful with goroutines and loop variables (#63)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expecting-a-deterministic-behavior-using-select-and-channels-64" class="md-nav__link">
+    Expecting a deterministic behavior using select and channels (#64)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-notification-channels-65" class="md-nav__link">
+    Not using notification channels (#65)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-nil-channels-66" class="md-nav__link">
+    Not using nil channels (#66)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#being-puzzled-about-channel-size-67" class="md-nav__link">
+    Being puzzled about channel size (#67)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forgetting-about-possible-side-effects-with-string-formatting-etcd-data-race-example-and-deadlock-68" class="md-nav__link">
+    Forgetting about possible side effects with string formatting (etcd data race example and deadlock) (#68)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-data-races-with-append-69" class="md-nav__link">
+    Creating data races with append (#69)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-mutexes-inaccurately-with-slices-and-maps-70" class="md-nav__link">
+    Using mutexes inaccurately with slices and maps (#70)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#misusing-syncwaitgroup-71" class="md-nav__link">
+    Misusing sync.WaitGroup (#71)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forgetting-about-synccond-72" class="md-nav__link">
+    Forgetting about sync.Cond (#72)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-errgroup-73" class="md-nav__link">
+    Not using errgroup (#73)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-a-sync-type-74" class="md-nav__link">
+    Copying a sync type (#74)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standard-library" class="md-nav__link">
+    Standard Library
+  </a>
+  
+    <nav class="md-nav" aria-label="Standard Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#providing-a-wrong-time-duration-75" class="md-nav__link">
+    Providing a wrong time duration (#75)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeafter-and-memory-leaks-76" class="md-nav__link">
+    time.After and memory leaks (#76)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-handling-common-mistakes-77" class="md-nav__link">
+    JSON handling common mistakes (#77)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-sql-mistakes-78" class="md-nav__link">
+    Common SQL mistakes (#78)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-closing-transient-resources-http-body-sqlrows-and-osfile-79" class="md-nav__link">
+    Not closing transient resources (HTTP body, sql.Rows, and os.File) (#79)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forgetting-the-return-statement-after-replying-to-an-http-request-80" class="md-nav__link">
+    Forgetting the return statement after replying to an HTTP request (#80)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-default-http-client-and-server-81" class="md-nav__link">
+    Using the default HTTP client and server (#81)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-categorizing-tests-build-tags-environment-variables-and-short-mode-82" class="md-nav__link">
+    Not categorizing tests (build tags, environment variables, and short mode) (#82)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-enabling-the-race-flag-83" class="md-nav__link">
+    Not enabling the race flag (#83)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-test-execution-modes-parallel-and-shuffle-84" class="md-nav__link">
+    Not using test execution modes (parallel and shuffle) (#84)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-table-driven-tests-85" class="md-nav__link">
+    Not using table-driven tests (#85)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleeping-in-unit-tests-86" class="md-nav__link">
+    Sleeping in unit tests (#86)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-dealing-with-the-time-api-efficiently-87" class="md-nav__link">
+    Not dealing with the time API efficiently (#87)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-testing-utility-packages-httptest-and-iotest-88" class="md-nav__link">
+    Not using testing utility packages (httptest and iotest) (#88)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-inaccurate-benchmarks-89" class="md-nav__link">
+    Writing inaccurate benchmarks (#89)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-exploring-all-the-go-testing-features-90" class="md-nav__link">
+    Not exploring all the Go testing features (#90)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-fuzzing-community-mistake" class="md-nav__link">
+    Not using fuzzing (community mistake)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizations" class="md-nav__link">
+    Optimizations
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-cpu-caches-91" class="md-nav__link">
+    Not understanding CPU caches (#91)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-concurrent-code-that-leads-to-false-sharing-92" class="md-nav__link">
+    Writing concurrent code that leads to false sharing (#92)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-taking-into-account-instruction-level-parallelism-93" class="md-nav__link">
+    Not taking into account instruction-level parallelism (#93)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-being-aware-of-data-alignment-94" class="md-nav__link">
+    Not being aware of data alignment (#94)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-stack-vs-heap-95" class="md-nav__link">
+    Not understanding stack vs. heap (#95)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-knowing-how-to-reduce-allocations-api-change-compiler-optimizations-and-syncpool-96" class="md-nav__link">
+    Not knowing how to reduce allocations (API change, compiler optimizations, and sync.Pool) (#96)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-relying-on-inlining-97" class="md-nav__link">
+    Not relying on inlining (#97)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-using-go-diagnostics-tooling-98" class="md-nav__link">
+    Not using Go diagnostics tooling (#98)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-how-the-gc-works-99" class="md-nav__link">
+    Not understanding how the GC works (#99)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-understanding-the-impacts-of-running-go-in-docker-and-kubernetes-100" class="md-nav__link">
+    Not understanding the impacts of running Go in Docker and Kubernetes (#100)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="go-mistakes">Go Mistakes</h1>
+<p>This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a <a href="https://github.com/teivah/100-go-mistakes/issues/new?assignees=&amp;labels=community+mistake&amp;template=community_mistake.md&amp;title=">community mistake issue</a>.</p>
+<h2 id="sponsor-this-repository">❤️ Sponsor this Repository</h2>
+<p>Is your company hiring? <a href="https://github.com/sponsors/teivah?frequency=one-time&amp;sponsor=teivah">Sponsor</a> this repository and let Go developers know your opportunities in this section (traffic: +400 unique visitor per week).</p>
+<p>For example:</p>
+<details>
+
+<summary>[Company] Remote (USA) - $96,000 to $120,000 a year</summary>
+
+### Job Description
+
+...
+
+### Qualifications
+
+...
+
+</details>
+
+<p><img alt="" src="inside-cover.png" /></p>
+<h2 id="code-and-project-organization">Code and Project Organization</h2>
+<h3 id="unintended-variable-shadowing-1">Unintended variable shadowing (#1)</h3>
+<p>Avoiding shadowed variables can help prevent mistakes like referencing the wrong variable or confusing readers.</p>
+<h3 id="unnecessary-nested-code-2">Unnecessary nested code (#2)</h3>
+<p>Avoiding nested levels and keeping the happy path aligned on the left makes building a mental code model easier.</p>
+<h3 id="misusing-init-functions-3">Misusing init functions (#3)</h3>
+<p>When initializing variables, remember that init functions have limited error handling and make state handling and testing more complex. In most cases, initializations should be handled as specific functions.</p>
+<h3 id="overusing-getters-and-setters-4">Overusing getters and setters (#4)</h3>
+<p>Forcing the use of getters and setters isn’t idiomatic in Go. Being pragmatic and finding the right balance between efficiency and blindly following certain idioms should be the way to go.</p>
+<h3 id="interface-pollution-5">Interface pollution (#5)</h3>
+<p>Abstractions should be discovered, not created. To prevent unnecessary complexity, create an interface when you need it and not when you foresee needing it, or if you can at least prove the abstraction to be a valid one.</p>
+<h3 id="interface-on-the-producer-side-6">Interface on the producer side (#6)</h3>
+<p>Keeping interfaces on the client side avoids unnecessary abstractions.</p>
+<h3 id="returning-interfaces-7">Returning interfaces (#7)</h3>
+<p>To prevent being restricted in terms of flexibility, a function shouldn’t return interfaces but concrete implementations in most cases. Conversely, a function should accept interfaces whenever possible.</p>
+<h3 id="any-says-nothing-8"><code>any</code> says nothing (#8)</h3>
+<p>Only use <code>any</code> if you need to accept or return any possible type, such as <code>json.Marshal</code>. Otherwise, <code>any</code> doesn’t provide meaningful information and can lead to compile-time issues by allowing a caller to call methods with any data type.</p>
+<h3 id="being-confused-about-when-to-use-generics-9"><a href="https://teivah.medium.com/when-to-use-generics-in-go-36d49c1aeda">Being confused about when to use generics</a> (#9)</h3>
+<p>Relying on generics and type parameters can prevent writing boilerplate code to factor out elements or behaviors. However, do not use type parameters prematurely, but only when you see a concrete need for them. Otherwise, they introduce unnecessary abstractions and complexity.</p>
+<h3 id="not-being-aware-of-the-possible-problems-with-type-embedding-10">Not being aware of the possible problems with type embedding (#10)</h3>
+<p>Using type embedding can also help avoid boilerplate code; however, ensure that doing so doesn’t lead to visibility issues where some fields should have remained hidden.</p>
+<h3 id="not-using-the-functional-options-pattern-11">Not using the functional options pattern (#11)</h3>
+<p>To handle options conveniently and in an API-friendly manner, use the functional options pattern.</p>
+<h3 id="project-misorganization-project-structure-and-package-organization-12">Project misorganization (project structure and package organization) (#12)</h3>
+<p>Following a layout such as project-layout can be a good way to start structuring Go projects, especially if you are looking for existing conventions to standardize a new project.</p>
+<h3 id="creating-utility-packages-13">Creating utility packages (#13)</h3>
+<p>Naming is a critical piece of application design. Creating packages such as <code>common</code>, <code>util</code>, and <code>shared</code> doesn’t bring much value for the reader. Refactor such packages into meaningful and specific package names.</p>
+<h3 id="ignoring-package-name-collisions-14">Ignoring package name collisions (#14)</h3>
+<p>To avoid naming collisions between variables and packages, leading to confusion or perhaps even bugs, use unique names for each one. If this isn’t feasible, use an import alias to change the qualifier to differentiate the package name from the variable name, or think of a better name.</p>
+<h3 id="missing-code-documentation-15">Missing code documentation (#15)</h3>
+<p>To help clients and maintainers understand your code’s purpose, document exported elements.</p>
+<h3 id="not-using-linters-16">Not using linters (#16)</h3>
+<p>To improve code quality and consistency, use linters and formatters.</p>
+<h2 id="data-types-pdf-chapter">Data Types (<a href="chapter-3.pdf">PDF chapter</a>)</h2>
+<h3 id="creating-confusion-with-octal-literals-17">Creating confusion with octal literals (#17)</h3>
+<p>When reading existing code, bear in mind that integer literals starting with 0 are octal numbers. Also, to improve readability, make octal integers explicit by prefixing them with <code>0o</code>.</p>
+<h3 id="neglecting-integer-overflows-18">Neglecting integer overflows (#18)</h3>
+<p>Because integer overflows and underflows are handled silently in Go, you can implement your own functions to catch them.</p>
+<h3 id="not-understanding-floating-points-19">Not understanding floating-points (#19)</h3>
+<p>Making floating-point comparisons within a given delta can ensure that your code is portable.</p>
+<p>When performing addition or subtraction, group the operations with a similar order of magnitude to favor accuracy. Also, perform multiplication and division before addition and subtraction.</p>
+<h3 id="not-understanding-slice-length-and-capacity-20"><a href="https://teivah.medium.com/slice-length-vs-capacity-in-go-af71a754b7d8">Not understanding slice length and capacity</a> (#20)</h3>
+<p>Understanding the difference between slice length and capacity should be part of a Go developer’s core knowledge. The slice length is the number of available elements in the slice, whereas the slice capacity is the number of elements in the backing array.</p>
+<h3 id="inefficient-slice-initialization-21">Inefficient slice initialization (#21)</h3>
+<p>When creating a slice, initialize it with a given length or capacity if its length is already known. This reduces the number of allocations and improves performance. The same logic goes for maps, and you need to initialize their size.</p>
+<h3 id="being-confused-about-nil-vs-empty-slice-22">Being confused about nil vs. empty slice (#22)</h3>
+<p>To prevent common confusions such as when using the <code>encoding/json</code> or the <code>reflect</code> package, you need to understand the difference between nil and empty slices. Both are zero-length, zero-capacity slices, but only a nil slice doesn’t require allocation.</p>
+<h3 id="not-properly-checking-if-a-slice-is-empty-23">Not properly checking if a slice is empty (#23)</h3>
+<p>To check if a slice doesn’t contain any element, check its length. This check works regardless of whether the slice is <code>nil</code> or empty. The same goes for maps.</p>
+<p>To design unambiguous APIs, you shouldn’t distinguish between nil and empty slices.</p>
+<h3 id="not-making-slice-copies-correctly-24">Not making slice copies correctly (#24)</h3>
+<p>To copy one slice to another using the <code>copy</code> built-in function, remember that the number of copied elements corresponds to the minimum between the two slice’s lengths.</p>
+<h3 id="unexpected-side-effects-using-slice-append-25">Unexpected side effects using slice append (#25)</h3>
+<p>Using copy or the full slice expression is a way to prevent <code>append</code> from creating conflicts if two different functions use slices backed by the same array. However, only a slice copy prevents memory leaks if you want to shrink a large slice.</p>
+<h3 id="slice-and-memory-leaks-26">Slice and memory leaks (#26)</h3>
+<p>Working with a slice of pointers or structs with pointer fields, you can avoid memory leaks by marking as nil the elements excluded by a slicing operation.</p>
+<h3 id="inefficient-map-initialization-27">Inefficient map initialization (#27)</h3>
+<p>See <a href="#inefficient-slice-initialization-21">#21</a>.</p>
+<h3 id="map-and-memory-leaks-28"><a href="https://teivah.medium.com/maps-and-memory-leaks-in-go-a85ebe6e7e69">Map and memory leaks</a> (#28)</h3>
+<p>A map can always grow in memory, but it never shrinks. Hence, if it leads to some memory issues, you can try different options, such as forcing Go to recreate the map or using pointers.</p>
+<h3 id="comparing-values-incorrectly-29">Comparing values incorrectly (#29)</h3>
+<p>To compare types in Go, you can use the == and != operators if two types are comparable: Booleans, numerals, strings, pointers, channels, and structs are composed entirely of comparable types. Otherwise, you can either use <code>reflect.DeepEqual</code> and pay the price of reflection or use custom implementations and libraries.</p>
+<h2 id="control-structures">Control Structures</h2>
+<h3 id="ignoring-that-elements-are-copied-in-range-loops-30">Ignoring that elements are copied in <code>range</code> loops (#30)</h3>
+<p>The value element in a <code>range</code> loop is a copy. Therefore, to mutate a struct, for example, access it via its index or via a classic <code>for</code> loop (unless the element or the field you want to modify is a pointer).</p>
+<h3 id="ignoring-how-arguments-are-evaluated-in-range-loops-channels-and-arrays-31">Ignoring how arguments are evaluated in <code>range</code> loops (channels and arrays) (#31)</h3>
+<p>Understanding that the expression passed to the <code>range</code> operator is evaluated only once before the beginning of the loop can help you avoid common mistakes such as inefficient assignment in channel or slice iteration.</p>
+<h3 id="ignoring-the-impacts-of-using-pointer-elements-in-range-loops-32">Ignoring the impacts of using pointer elements in <code>range</code> loops (#32)</h3>
+<p>Using a local variable or accessing an element using an index, you can prevent mistakes while copying pointers inside a loop.</p>
+<h3 id="making-wrong-assumptions-during-map-iterations-ordering-and-map-insert-during-iteration-33">Making wrong assumptions during map iterations (ordering and map insert during iteration) (#33)</h3>
+<p>To ensure predictable outputs when using maps, remember that a map data structure:
+* Doesn’t order the data by keys
+* Doesn’t preserve the insertion order
+* Doesn’t have a deterministic iteration order
+* Doesn’t guarantee that an element added during an iteration will be produced during this iteration</p>
+<h3 id="ignoring-how-the-break-statement-works-34">Ignoring how the <code>break</code> statement works (#34)</h3>
+<p>Using <code>break</code> or <code>continue</code> with a label enforces breaking a specific statement. This can be helpful with <code>switch</code> or <code>select</code> statements inside loops.</p>
+<h3 id="using-defer-inside-a-loop-35">Using <code>defer</code> inside a loop (#35)</h3>
+<p>Extracting loop logic inside a function leads to executing a <code>defer</code> statement at the end of each iteration.</p>
+<h2 id="strings">Strings</h2>
+<h3 id="not-understanding-the-concept-of-rune-36">Not understanding the concept of rune (#36)</h3>
+<p>Understanding that a rune corresponds to the concept of a Unicode code point and that it can be composed of multiple bytes should be part of the Go developer’s core knowledge to work accurately with strings.</p>
+<h3 id="inaccurate-string-iteration-37">Inaccurate string iteration (#37)</h3>
+<p>Iterating on a string with the <code>range</code> operator iterates on the runes with the index corresponding to the starting index of the rune’s byte sequence. To access a specific rune index (such as the third rune), convert the string into a <code>[]rune</code>.</p>
+<h3 id="misusing-trim-functions-38">Misusing trim functions (#38)</h3>
+<p><code>strings.TrimRight</code>/<code>strings.TrimLeft</code> removes all the trailing/leading runes contained in a given set, whereas <code>strings.TrimSuffix</code>/<code>strings.TrimPrefix</code> returns a string without a provided suffix/prefix.</p>
+<h3 id="under-optimized-strings-concatenation-39">Under-optimized strings concatenation (#39)</h3>
+<p>Concatenating a list of strings should be done with <code>strings.Builder</code> to prevent allocating a new string during each iteration.</p>
+<h3 id="useless-string-conversions-40">Useless string conversions (#40)</h3>
+<p>Remembering that the <code>bytes</code> package offers the same operations as the <code>strings</code> package can help avoid extra byte/string conversions.</p>
+<h3 id="substring-and-memory-leaks-41">Substring and memory leaks (#41)</h3>
+<p>Using copies instead of substrings can prevent memory leaks, as the string returned by a substring operation will be backed by the same byte array.</p>
+<h2 id="functions-and-methods">Functions and Methods</h2>
+<h3 id="not-knowing-which-type-of-receiver-to-use-42">Not knowing which type of receiver to use (#42)</h3>
+<p>The decision whether to use a value or a pointer receiver should be made based on factors such as the type, whether it has to be mutated, whether it contains a field that can’t be copied, and how large the object is. When in doubt, use a pointer receiver.</p>
+<h3 id="never-using-named-result-parameters-43">Never using named result parameters (#43)</h3>
+<p>Using named result parameters can be an efficient way to improve the readability of a function/method, especially if multiple result parameters have the same type. In some cases, this approach can also be convenient because named result parameters are initialized to their zero value. But be cautious about potential side effects.</p>
+<h3 id="unintended-side-effects-with-named-result-parameters-44">Unintended side effects with named result parameters (#44)</h3>
+<p>See <a href="#never-using-named-result-parameters-43">#43</a>.</p>
+<h3 id="returning-a-nil-receiver-45">Returning a nil receiver (#45)</h3>
+<p>When returning an interface, be cautious about returning not a nil pointer but an explicit nil value. Otherwise, unintended consequences may result because the caller will receive a non-nil value.</p>
+<h3 id="using-a-filename-as-a-function-input-46">Using a filename as a function input (#46)</h3>
+<p>Designing functions to receive <code>io.Reader</code> types instead of filenames improves the reusability of a function and makes testing easier.</p>
+<h3 id="ignoring-how-defer-arguments-and-receivers-are-evaluated-argument-evaluation-pointer-and-value-receivers-47">Ignoring how <code>defer</code> arguments and receivers are evaluated (argument evaluation, pointer, and value receivers) (#47)</h3>
+<p>Passing a pointer to a <code>defer</code> function and wrapping a call inside a closure are two possible solutions to overcome the immediate evaluation of arguments and receivers.</p>
+<h2 id="error-management">Error Management</h2>
+<h3 id="panicking-48">Panicking (#48)</h3>
+<p>Using <code>panic</code> is an option to deal with errors in Go. However, it should only be used sparingly in unrecoverable conditions: for example, to signal a programmer error or when you fail to load a mandatory dependency.</p>
+<h3 id="ignoring-when-to-wrap-an-error-49">Ignoring when to wrap an error (#49)</h3>
+<p>Wrapping an error allows you to mark an error and/or provide additional context. However, error wrapping creates potential coupling as it makes the source error available for the caller. If you want to prevent that, don’t use error wrapping.</p>
+<h3 id="comparing-an-error-type-inaccurately-50">Comparing an error type inaccurately (#50)</h3>
+<p>If you use Go 1.13 error wrapping with the <code>%w</code> directive and <code>fmt.Errorf</code>, comparing an error against a type or a value has to be done using <code>errors.As</code> or <code>errors.Is</code>, respectively. Otherwise, if the returned error you want to check is wrapped, it will fail the checks.</p>
+<h3 id="comparing-an-error-value-inaccurately-51">Comparing an error value inaccurately (#51)</h3>
+<p>See <a href="#comparing-an-error-type-inaccurately-50">#50</a>.</p>
+<p>To convey an expected error, use error sentinels (error values). An unexpected error should be a specific error type.</p>
+<h3 id="handling-an-error-twice-52">Handling an error twice (#52)</h3>
+<p>In most situations, an error should be handled only once. Logging an error is handling an error. Therefore, you have to choose between logging or returning an error. In many cases, error wrapping is the solution as it allows you to provide additional context to an error and return the source error.</p>
+<h3 id="not-handling-an-error-53">Not handling an error (#53)</h3>
+<p>Ignoring an error, whether during a function call or in a <code>defer</code> function, should be done explicitly using the blank identifier. Otherwise, future readers may be confused about whether it was intentional or a miss.</p>
+<h3 id="not-handling-defer-errors-54">Not handling <code>defer</code> errors (#54)</h3>
+<p>In many cases, you shouldn’t ignore an error returned by a <code>defer</code> function. Either handle it directly or propagate it to the caller, depending on the context. If you want to ignore it, use the blank identifier.</p>
+<h2 id="concurrency-foundations">Concurrency: Foundations</h2>
+<h3 id="mixing-up-concurrency-and-parallelism-55">Mixing up concurrency and parallelism (#55)</h3>
+<p>Understanding the fundamental differences between concurrency and parallelism is a cornerstone of the Go developer’s knowledge. Concurrency is about structure, whereas parallelism is about execution.</p>
+<h3 id="thinking-concurrency-is-always-faster-56"><a href="https://teivah.medium.com/concurrency-isnt-always-faster-in-go-de325168907c">Thinking concurrency is always faster</a> (#56)</h3>
+<p>To be a proficient developer, you must acknowledge that concurrency isn’t always faster. Solutions involving parallelization of minimal workloads may not necessarily be faster than a sequential implementation. Benchmarking sequential versus concurrent solutions should be the way to validate assumptions.</p>
+<h3 id="being-puzzled-about-when-to-use-channels-or-mutexes-57">Being puzzled about when to use channels or mutexes (#57)</h3>
+<p>Being aware of goroutine interactions can also be helpful when deciding between channels and mutexes. In general, parallel goroutines require synchronization and hence mutexes. Conversely, concurrent goroutines generally require coordination and orchestration and hence channels.</p>
+<h3 id="not-understanding-race-problems-data-races-vs-race-conditions-and-the-go-memory-model-58">Not understanding race problems (data races vs. race conditions and the Go memory model) (#58)</h3>
+<p>Being proficient in concurrency also means understanding that data races and race conditions are different concepts. Data races occur when multiple goroutines simultaneously access the same memory location and at least one of them is writing. Meanwhile, being data-race-free doesn’t necessarily mean deterministic execution. When a behavior depends on the sequence or the timing of events that can’t be controlled, this is a race condition.</p>
+<p>Understanding the Go memory model and the underlying guarantees in terms of ordering and synchronization is essential to prevent possible data races and/or race conditions.</p>
+<h3 id="not-understanding-the-concurrency-impacts-of-a-workload-type-59">Not understanding the concurrency impacts of a workload type (#59)</h3>
+<p>When creating a certain number of goroutines, consider the workload type. Creating CPU-bound goroutines means bounding this number close to the <code>GOMAXPROCS</code> variable (based by default on the number of CPU cores on the host). Creating I/O-bound goroutines depends on other factors, such as the external system.</p>
+<h3 id="misunderstanding-go-contexts-60">Misunderstanding Go contexts (#60)</h3>
+<p>Go contexts are also one of the cornerstones of concurrency in Go. A context allows you to carry a deadline, a cancellation signal, and/or a list of keys-values.</p>
+<h2 id="concurrency-practice">Concurrency: Practice</h2>
+<h3 id="propagating-an-inappropriate-context-61">Propagating an inappropriate context (#61)</h3>
+<p>Understanding the conditions when a context can be canceled should matter when propagating it: for example, an HTTP handler canceling the context when the response has been sent.</p>
+<h3 id="starting-a-goroutine-without-knowing-when-to-stop-it-62">Starting a goroutine without knowing when to stop it (#62)</h3>
+<p>Avoiding leaks means being mindful that whenever a goroutine is started, you should have a plan to stop it eventually.</p>
+<h3 id="not-being-careful-with-goroutines-and-loop-variables-63">Not being careful with goroutines and loop variables (#63)</h3>
+<p>To avoid bugs with goroutines and loop variables, create local variables or call functions instead of closures.</p>
+<h3 id="expecting-a-deterministic-behavior-using-select-and-channels-64">Expecting a deterministic behavior using select and channels (#64)</h3>
+<p>Understanding that <code>select</code> with multiple channels chooses the case randomly if multiple options are possible prevents making wrong assumptions that can lead to subtle concurrency bugs.</p>
+<h3 id="not-using-notification-channels-65">Not using notification channels (#65)</h3>
+<p>Send notifications using a <code>chan struct{}</code> type.</p>
+<h3 id="not-using-nil-channels-66">Not using nil channels (#66)</h3>
+<p>Using nil channels should be part of your concurrency toolset because it allows you to <em>remove</em> cases from <code>select</code> statements, for example.</p>
+<h3 id="being-puzzled-about-channel-size-67">Being puzzled about channel size (#67)</h3>
+<p>Carefully decide on the right channel type to use, given a problem. Only unbuffered channels provide strong synchronization guarantees.</p>
+<p>You should have a good reason to specify a channel size other than one for buffered channels.</p>
+<h3 id="forgetting-about-possible-side-effects-with-string-formatting-etcd-data-race-example-and-deadlock-68">Forgetting about possible side effects with string formatting (etcd data race example and deadlock) (#68)</h3>
+<p>Being aware that string formatting may lead to calling existing functions means watching out for possible deadlocks and other data races.</p>
+<h3 id="creating-data-races-with-append-69">Creating data races with append (#69)</h3>
+<p>Calling <code>append</code> isn’t always data-race-free; hence, it shouldn’t be used concurrently on a shared slice.</p>
+<h3 id="using-mutexes-inaccurately-with-slices-and-maps-70">Using mutexes inaccurately with slices and maps (#70)</h3>
+<p>Remembering that slices and maps are pointers can prevent common data races.</p>
+<h3 id="misusing-syncwaitgroup-71">Misusing <code>sync.WaitGroup</code> (#71)</h3>
+<p>To accurately use <code>sync.WaitGroup</code>, call the <code>Add</code> method before spinning up goroutines.</p>
+<h3 id="forgetting-about-synccond-72">Forgetting about <code>sync.Cond</code> (#72)</h3>
+<p>You can send repeated notifications to multiple goroutines with <code>sync.Cond</code>.</p>
+<h3 id="not-using-errgroup-73">Not using <code>errgroup</code> (#73)</h3>
+<p>You can synchronize a group of goroutines and handle errors and contexts with the <code>errgroup</code> package.</p>
+<h3 id="copying-a-sync-type-74">Copying a <code>sync</code> type (#74)</h3>
+<p><code>sync</code> types shouldn’t be copied.</p>
+<h2 id="standard-library">Standard Library</h2>
+<h3 id="providing-a-wrong-time-duration-75">Providing a wrong time duration (#75)</h3>
+<p>Remain cautious with functions accepting a <code>time.Duration</code>. Even though passing an integer is allowed, strive to use the time API to prevent any possible confusion.</p>
+<h3 id="timeafter-and-memory-leaks-76"><code>time.After</code> and memory leaks (#76)</h3>
+<p>Avoiding calls to <code>time.After</code> in repeated functions (such as loops or HTTP handlers) can avoid peak memory consumption. The resources created by <code>time.After</code> are released only when the timer expires.</p>
+<h3 id="json-handling-common-mistakes-77">JSON handling common mistakes (#77)</h3>
+<ul>
+<li>Unexpected behavior because of type embedding</li>
+</ul>
+<p>Be careful about using embedded fields in Go structs. Doing so may lead to sneaky bugs like an embedded time.Time field implementing the <code>json.Marshaler</code> interface, hence overriding the default marshaling behavior.</p>
+<ul>
+<li>JSON and the monotonic clock</li>
+</ul>
+<p>When comparing two <code>time.Time</code> structs, recall that <code>time.Time</code> contains both a wall clock and a monotonic clock, and the comparison using the == operator is done on both clocks.</p>
+<ul>
+<li>Map of <code>any</code></li>
+</ul>
+<p>To avoid wrong assumptions when you provide a map while unmarshaling JSON data, remember that numerics are converted to <code>float64</code> by default.</p>
+<h3 id="common-sql-mistakes-78">Common SQL mistakes (#78)</h3>
+<ul>
+<li>Forgetting that <code>sql.Open</code> doesn't necessarily establish connections to a database</li>
+</ul>
+<p>Call the <code>Ping</code> or <code>PingContext</code> method if you need to test your configuration and make sure a database is reachable.</p>
+<ul>
+<li>Forgetting about connections pooling</li>
+</ul>
+<p>Configure the database connection parameters for production-grade applications.</p>
+<ul>
+<li>Not using prepared statements</li>
+</ul>
+<p>Using SQL prepared statements makes queries more efficient and more secure.</p>
+<ul>
+<li>Mishandling null values</li>
+</ul>
+<p>Deal with nullable columns in tables using pointers or <code>sql.NullXXX</code> types.</p>
+<ul>
+<li>Not handling rows iteration errors</li>
+</ul>
+<p>Call the <code>Err</code> method of <code>sql.Rows</code> after row iterations to ensure that you haven’t missed an error while preparing the next row.</p>
+<h3 id="not-closing-transient-resources-http-body-sqlrows-and-osfile-79">Not closing transient resources (HTTP body, <code>sql.Rows</code>, and <code>os.File</code>) (#79)</h3>
+<p>Eventually close all structs implementing <code>io.Closer</code> to avoid possible leaks.</p>
+<h3 id="forgetting-the-return-statement-after-replying-to-an-http-request-80">Forgetting the return statement after replying to an HTTP request (#80)</h3>
+<p>To avoid unexpected behaviors in HTTP handler implementations, make sure you don’t miss the <code>return</code> statement if you want a handler to stop after <code>http.Error</code>.</p>
+<h3 id="using-the-default-http-client-and-server-81">Using the default HTTP client and server (#81)</h3>
+<p>For production-grade applications, don’t use the default HTTP client and server implementations. These implementations are missing timeouts and behaviors that should be mandatory in production.</p>
+<h2 id="testing">Testing</h2>
+<h3 id="not-categorizing-tests-build-tags-environment-variables-and-short-mode-82">Not categorizing tests (build tags, environment variables, and short mode) (#82)</h3>
+<p>Categorizing tests using build flags, environment variables, or short mode makes the testing process more efficient. You can create test categories using build flags or environment variables (for example, unit versus integration tests) and differentiate short from long-running tests to decide which kinds of tests to execute.</p>
+<h3 id="not-enabling-the-race-flag-83">Not enabling the race flag (#83)</h3>
+<p>Enabling the <code>-race</code> flag is highly recommended when writing concurrent applications. Doing so allows you to catch potential data races that can lead to software bugs.</p>
+<h3 id="not-using-test-execution-modes-parallel-and-shuffle-84">Not using test execution modes (parallel and shuffle) (#84)</h3>
+<p>Using the <code>-parallel</code> flag is an efficient way to speed up tests, especially long-running ones.</p>
+<p>Use the <code>-shuffle</code> flag to help ensure that a test suite doesn’t rely on wrong assumptions that could hide bugs.</p>
+<h3 id="not-using-table-driven-tests-85">Not using table-driven tests (#85)</h3>
+<p>Table-driven tests are an efficient way to group a set of similar tests to prevent code duplication and make future updates easier to handle.</p>
+<h3 id="sleeping-in-unit-tests-86">Sleeping in unit tests (#86)</h3>
+<p>Avoid sleeps using synchronization to make a test less flaky and more robust. If synchronization isn’t possible, consider a retry approach.</p>
+<h3 id="not-dealing-with-the-time-api-efficiently-87">Not dealing with the time API efficiently (#87)</h3>
+<p>Understanding how to deal with functions using the time API is another way to make a test less flaky. You can use standard techniques such as handling the time as part of a hidden dependency or asking clients to provide it.</p>
+<h3 id="not-using-testing-utility-packages-httptest-and-iotest-88">Not using testing utility packages (<code>httptest</code> and <code>iotest</code>) (#88)</h3>
+<p>The <code>httptest</code> package is helpful for dealing with HTTP applications. It provides a set of utilities to test both clients and servers.</p>
+<p>The <code>iotest</code> package helps write io.Reader and test that an application is tolerant to errors.</p>
+<h3 id="writing-inaccurate-benchmarks-89"><a href="https://teivah.medium.com/how-to-write-accurate-benchmarks-in-go-4266d7dd1a95">Writing inaccurate benchmarks</a> (#89)</h3>
+<ul>
+<li>Not resetting or pausing the timer</li>
+</ul>
+<p>Use time methods to preserve the accuracy of a benchmark.</p>
+<ul>
+<li>Making wrong assumptions about micro-benchmarks</li>
+</ul>
+<p>Increasing <code>benchtime</code> or using tools such as <code>benchstat</code> can be helpful when dealing with micro-benchmarks.</p>
+<p>Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-benchmark.</p>
+<ul>
+<li>Not being careful about compiler optimizations</li>
+</ul>
+<p>Make sure the function under test leads to a side effect, to prevent compiler optimizations from fooling you about the benchmark results.</p>
+<ul>
+<li>Being fooled by the observer effect</li>
+</ul>
+<p>To prevent the observer effect, force a benchmark to re-create the data used by a CPU-bound function.</p>
+<h3 id="not-exploring-all-the-go-testing-features-90">Not exploring all the Go testing features (#90)</h3>
+<ul>
+<li>Code coverage</li>
+</ul>
+<p>Use code coverage with the <code>-coverprofile</code> flag to quickly see which part of the code needs more attention.</p>
+<ul>
+<li>Testing from a different package</li>
+</ul>
+<p>Place unit tests in a different package to enforce writing tests that focus on an exposed behavior, not internals.</p>
+<ul>
+<li>Utility functions</li>
+</ul>
+<p>Handling errors using the <code>*testing.T</code> variable instead of the classic <code>if err != nil</code> makes code shorter and easier to read.</p>
+<ul>
+<li>Setup and teardown</li>
+</ul>
+<p>You can use setup and teardown functions to configure a complex environment, such as in the case of integration tests.</p>
+<h3 id="not-using-fuzzing-community-mistake">Not using fuzzing (community mistake)</h3>
+<p>Fuzzing is an efficient strategy to detect random, unexpected, or malformed inputs to complex functions and methods in order to discover vulnerabilities, bugs, or even potential crashes.</p>
+<p>Credits: <a href="https://github.com/jeromedoucet">@jeromedoucet</a></p>
+<h2 id="optimizations">Optimizations</h2>
+<h3 id="not-understanding-cpu-caches-91">Not understanding CPU caches (#91)</h3>
+<ul>
+<li>CPU architecture</li>
+</ul>
+<p>Understanding how to use CPU caches is important for optimizing CPU-bound applications because the L1 cache is about 50 to 100 times faster than the main memory.</p>
+<ul>
+<li>Cache line</li>
+</ul>
+<p>Being conscious of the cache line concept is critical to understanding how to organize data in data-intensive applications. A CPU doesn’t fetch memory word by word; instead, it usually copies a memory block to a 64-byte cache line. To get the most out of each individual cache line, enforce spatial locality.</p>
+<ul>
+<li>
+<p>Slice of structs vs. struct of slices</p>
+</li>
+<li>
+<p>Predictability</p>
+</li>
+</ul>
+<p>Making code predictable for the CPU can also be an efficient way to optimize certain functions. For example, a unit or constant stride is predictable for the CPU, but a non-unit stride (for example, a linked list) isn’t predictable.</p>
+<ul>
+<li>Cache placement policy</li>
+</ul>
+<p>To avoid a critical stride, hence utilizing only a tiny portion of the cache, be aware that caches are partitioned.</p>
+<h3 id="writing-concurrent-code-that-leads-to-false-sharing-92">Writing concurrent code that leads to false sharing (#92)</h3>
+<p>Knowing that lower levels of CPU caches aren’t shared across all the cores helps avoid performance-degrading patterns such as false sharing while writing concurrency code. Sharing memory is an illusion.</p>
+<h3 id="not-taking-into-account-instruction-level-parallelism-93">Not taking into account instruction-level parallelism (#93)</h3>
+<p>Use instruction-level parallelism (ILP) to optimize specific parts of your code to allow a CPU to execute as many parallel instructions as possible. Identifying data hazards is one of the main steps.</p>
+<h3 id="not-being-aware-of-data-alignment-94">Not being aware of data alignment (#94)</h3>
+<p>You can avoid common mistakes by remembering that in Go, basic types are aligned with their own size. For example, keep in mind that reorganizing the fields of a struct by size in descending order can lead to more compact structs (less memory allocation and potentially a better spatial locality).</p>
+<h3 id="not-understanding-stack-vs-heap-95">Not understanding stack vs. heap (#95)</h3>
+<p>Understanding the fundamental differences between heap and stack should also be part of your core knowledge when optimizing a Go application. Stack allocations are almost free, whereas heap allocations are slower and rely on the GC to clean the memory.</p>
+<h3 id="not-knowing-how-to-reduce-allocations-api-change-compiler-optimizations-and-syncpool-96">Not knowing how to reduce allocations (API change, compiler optimizations, and <code>sync.Pool</code>) (#96)</h3>
+<p>Reducing allocations is also an essential aspect of optimizing a Go application. This can be done in different ways, such as designing the API carefully to prevent sharing up, understanding the common Go compiler optimizations, and using <code>sync.Pool</code>.</p>
+<h3 id="not-relying-on-inlining-97">Not relying on inlining (#97)</h3>
+<p>Use the fast-path inlining technique to efficiently reduce the amortized time to call a function.</p>
+<h3 id="not-using-go-diagnostics-tooling-98"><a href="https://medium.com/@teivah/profiling-and-execution-tracing-in-go-a5e646970f5b">Not using Go diagnostics tooling</a> (#98)</h3>
+<p>Rely on profiling and the execution tracer to understand how an application performs and the parts to optimize.</p>
+<h3 id="not-understanding-how-the-gc-works-99">Not understanding how the GC works (#99)</h3>
+<p>Understanding how to tune the GC can lead to multiple benefits such as handling sudden load increases more efficiently.</p>
+<h3 id="not-understanding-the-impacts-of-running-go-in-docker-and-kubernetes-100">Not understanding the impacts of running Go in Docker and Kubernetes (#100)</h3>
+<p>To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,30 @@
+site_name: 100 Go Mistakes
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  logo: Go-Logo_Black.svg
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+      primary: green
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+      primary: blue grey
+repo_url: https://github.com/teivah/100-go-mistakes
+plugins:
+  - search
+extra:
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: Chinese (Simplified)
+      link: /chinese/
+      lang: zh
