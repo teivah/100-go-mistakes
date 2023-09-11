@@ -6,6 +6,8 @@ This section contains a summary of the 100 mistakes in the book. Meanwhile, it's
 
 <!-- TODO Include full excerpts -->
 
+<!-- TODO Include chapter-1.md -->
+
 ![](inside-cover.png)
 
 ## Code and Project Organization
@@ -141,6 +143,8 @@ The `any` type can be helpful if there is a genuine need for accepting or return
 ### Being confused about when to use generics (#9)
 
 **TL;DR**: Relying on generics and type parameters can prevent writing boilerplate code to factor out elements or behaviors. However, do not use type parameters prematurely, but only when you see a concrete need for them. Otherwise, they introduce unnecessary abstractions and complexity.
+
+<!-- TODO Include 9-generics.md file -->
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/02-code-project-organization/9-generics/main.go)
 
