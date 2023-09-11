@@ -70,7 +70,7 @@ To help clients and maintainers understand your code’s purpose, document expor
 
 To improve code quality and consistency, use linters and formatters.
 
-## Data Types ([PDF chapter](chapter-3.pdf))
+## Data Types
 
 ### Creating confusion with octal literals (#17)
 
