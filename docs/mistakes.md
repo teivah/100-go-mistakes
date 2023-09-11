@@ -2,26 +2,6 @@
 
 This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
-## ❤️ Sponsor this Repository
-
-Is your company hiring? [Sponsor](https://github.com/sponsors/teivah?frequency=one-time&sponsor=teivah) this repository and let Go developers know your opportunities in this section (traffic: +400 unique visitor per week).
-
-For example:
-
-<details>
-
-<summary>[Company] Remote (USA) - $96,000 to $120,000 a year</summary>
-
-### Job Description
-
-...
-
-### Qualifications
-
-...
-
-</details>
-
 ![](inside-cover.png)
 
 ## Code and Project Organization
