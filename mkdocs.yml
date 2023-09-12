@@ -6,6 +6,8 @@ theme:
   favicon: Go-Logo_Fuchsia.svg
   language: en
   logo: img/Go-Logo_White.svg
+  icon:
+    repo: fontawesome/brands/github
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -37,6 +39,8 @@ extra:
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/teivah
+    - icon: fontawesome/brands/medium
+      link: http://blog.teivah.io
 nav:
     - book.md
     - chapter-1.md

@@ -8,7 +8,7 @@ Source code and community space of _100 Go Mistakes and How to Avoid Them_, publ
 
 ![](img/cover.png)
 
-## Book Description
+## Description
 
 If you're a Go developer looking to improve your skills, this book is for you. With a focus on practical examples, _100 Go Mistakes and How to Avoid Them_ covers a wide range of topics from concurrency and error handling to testing and code organization. You'll learn to write more idiomatic, efficient, and maintainable code and become a proficient Go developer.
 
@@ -38,4 +38,4 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 
 ## About the Author
 
-Teiva Harsanyi is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.
+[Teiva Harsanyi](http://teivah.io) is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.
