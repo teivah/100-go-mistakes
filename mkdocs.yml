@@ -1,4 +1,5 @@
 site_name: 100 Go Mistakes
+site_url: https://100go.co
 theme:
   name: material
   custom_dir: overrides
@@ -11,7 +12,7 @@ theme:
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
-      primary: green
+      primary: cyan
     # Palette toggle for dark mode
     - scheme: slate
       toggle:
@@ -21,6 +22,7 @@ theme:
 repo_url: https://github.com/teivah/100-go-mistakes
 plugins:
   - search
+  - social
 extra:
   alternate:
     - name: English
