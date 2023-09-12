@@ -55,8 +55,7 @@ nav:
         - external.md
     - Common Go Mistakes:
       - index.md
-      - Chinese (Simplified):
-          - zh/index.md
+      - zh/index.md
     - ❤️ Go Jobs:
       - jobs.md
 markdown_extensions:

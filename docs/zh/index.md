@@ -1,3 +1,7 @@
+---
+title: Chinese (Simplified)
+---
+
 # 100个Go常见错误及如何避免
 
 ## 代码及工程组织
