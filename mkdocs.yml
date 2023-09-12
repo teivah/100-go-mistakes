@@ -37,4 +37,11 @@ extra:
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/teivah
+nav:
+    - book.md
+    - chapter-1.md
+    - index.md
+    - jobs.md
+    - Chinese (Simplified):
+        - zh/index.md
 copyright: Copyright &copy; 2022 - 2023 Teiva Harsanyi

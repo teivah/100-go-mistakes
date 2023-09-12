@@ -1,3 +1,7 @@
+---
+title: Read the First Chapter
+---
+
 # Go: Simple to learn but hard to master
 
 This chapter covers
@@ -63,6 +67,7 @@ To strengthen this facilitative effect, this book accompanies each mistake as mu
 _- Unknown_
 
 This book presents seven main categories of mistakes. Overall, the mistakes can be classified as
+
 * Bugs
 * Needless complexity
 * Weaker readability
