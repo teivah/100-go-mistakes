@@ -1,8 +1,16 @@
-# 💡 Common Go Mistakes
+---
+title: English
+---
+
+# Common Go Mistakes
 
 This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
-**Note:** You're currently viewing a new version that I'm enriching with significantly more content. Yet, this version is still under development; please be gentle if you find an issue, and feel free to create a PR.
+If you want to engage with the community (asking questions, discussing options, etc.), feel free to use the [Discussions](https://github.com/teivah/100-go-mistakes/discussions) space on the GitHub repo.
+
+???+ info
+
+    You're currently viewing a new version that I'm enriching with significantly more content. Yet, this version is still under development; please be gentle if you find an issue, and feel free to create a PR.
 
 <!-- TODO Include full excerpts -->
 
@@ -14,7 +22,9 @@ This section contains a summary of the 100 mistakes in the book. Meanwhile, it's
 
 ### Unintended variable shadowing (#1)
 
-**TL;DR**: Avoiding shadowed variables can help prevent mistakes like referencing the wrong variable or confusing readers.
+???+ info "TL;DR"
+
+    Avoiding shadowed variables can help prevent mistakes like referencing the wrong variable or confusing readers.
 
 Variable shadowing occurs when a variable name is redeclared in an inner block, but this practice is prone to mistakes. Imposing a rule to forbid shadowed variables depends on personal taste. For example, sometimes it can be convenient to reuse an existing variable name like `err` for errors. Yet, in general, we should remain cautious because we now know that we can face a scenario where the code compiles, but the variable that receives the value is not the one expected.
 
@@ -22,7 +32,9 @@ Variable shadowing occurs when a variable name is redeclared in an inner block, 
 
 ### Unnecessary nested code (#2)
 
-**TL;DR**: Avoiding nested levels and keeping the happy path aligned on the left makes building a mental code model easier.
+???+ info "TL;DR"
+
+    Avoiding nested levels and keeping the happy path aligned on the left makes building a mental code model easier.
 
 In general, the more nested levels a function requires, the more complex it is to read and understand. Let’s see some different applications of this rule to optimize our code for readability:
 
@@ -37,7 +49,7 @@ if foo() {
 }
 ```
 
-  Instead, we omit the `else` block like this:
+Instead, we omit the `else` block like this:
 
 ```go
 if foo() {
@@ -73,7 +85,9 @@ Writing readable code is an important challenge for every developer. Striving to
 
 ### Misusing init functions (#3)
 
-**TL;DR**: When initializing variables, remember that init functions have limited error handling and make state handling and testing more complex. In most cases, initializations should be handled as specific functions.
+???+ info "TL;DR"
+
+    When initializing variables, remember that init functions have limited error handling and make state handling and testing more complex. In most cases, initializations should be handled as specific functions.
 
 An init function is a function used to initialize the state of an application. It takes no arguments and returns no result (a `func()` function). When a package is initialized, all the constant and variable declarations in the package are evaluated. Then, the init functions are executed.
 
@@ -88,7 +102,9 @@ We should be cautious with init functions. They can be helpful in some situation
 
 ### Overusing getters and setters (#4)
 
-**TL;DR**: Forcing the use of getters and setters isn’t idiomatic in Go. Being pragmatic and finding the right balance between efficiency and blindly following certain idioms should be the way to go.
+???+ info "TL;DR"
+
+    Forcing the use of getters and setters isn’t idiomatic in Go. Being pragmatic and finding the right balance between efficiency and blindly following certain idioms should be the way to go.
 
 Data encapsulation refers to hiding the values or state of an object. Getters and setters are means to enable encapsulation by providing exported methods on top of unexported object fields.
 
@@ -98,7 +114,9 @@ Remember that Go is a unique language designed for many characteristics, includi
 
 ### Interface pollution (#5)
 
-**TL;DR**: Abstractions should be discovered, not created. To prevent unnecessary complexity, create an interface when you need it and not when you foresee needing it, or if you can at least prove the abstraction to be a valid one.
+???+ info "TL;DR"
+
+    Abstractions should be discovered, not created. To prevent unnecessary complexity, create an interface when you need it and not when you foresee needing it, or if you can at least prove the abstraction to be a valid one.
 
 An interface provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. What makes Go interfaces so different is that they are satisfied implicitly. There is no explicit keyword like `implements` to mark that an object `X` implements interface `Y`.
 
@@ -109,9 +127,9 @@ What’s the main problem if we overuse interfaces? The answer is that they make
 
 We should be cautious when creating abstractions in our code (abstractions should be discovered, not created). It’s common for us, software developers, to overengineer our code by trying to guess what the perfect level of abstraction is, based on what we think we might need later. This process should be avoided because, in most cases, it pollutes our code with unnecessary abstractions, making it more complex to read.
 
-> Don’t design with interfaces, discover them.
+!!! quote "Rob Pike"
 
-–  _Rob Pike_
+    Don’t design with interfaces, discover them.
 
 Let’s not try to solve a problem abstractly but solve what has to be solved now. Last, but not least, if it’s unclear how an interface makes the code better, we should probably consider removing it to make our code simpler.
 
@@ -119,7 +137,9 @@ Let’s not try to solve a problem abstractly but solve what has to be solved no
 
 ### Interface on the producer side (#6)
 
-**TL;DR**: Keeping interfaces on the client side avoids unnecessary abstractions.
+???+ info "TL;DR"
+
+    Keeping interfaces on the client side avoids unnecessary abstractions.
 
 Interfaces are satisfied implicitly in Go, which tends to be a gamechanger compared to languages with an explicit implementation. In most cases, the approach to follow is similar to what we described in the previous section: _abstractions should be discovered, not created_. This means that it’s not up to the producer to force a given abstraction for all the clients. Instead, it’s up to the client to decide whether it needs some form of abstraction and then determine the best abstraction level for its needs.
 
@@ -129,13 +149,17 @@ An interface should live on the consumer side in most cases. However, in particu
 
 ### Returning interfaces (#7)
 
-**TL;DR**: To prevent being restricted in terms of flexibility, a function shouldn’t return interfaces but concrete implementations in most cases. Conversely, a function should accept interfaces whenever possible.
+???+ info "TL;DR"
+
+    To prevent being restricted in terms of flexibility, a function shouldn’t return interfaces but concrete implementations in most cases. Conversely, a function should accept interfaces whenever possible.
 
 In most cases, we shouldn’t return interfaces but concrete implementations. Otherwise, it can make our design more complex due to package dependencies and can restrict flexibility because all the clients would have to rely on the same abstraction. Again, the conclusion is similar to the previous sections: if we know (not foresee) that an abstraction will be helpful for clients, we can consider returning an interface. Otherwise, we shouldn’t force abstractions; they should be discovered by clients. If a client needs to abstract an implementation for whatever reason, it can still do that on the client’s side.
 
 ### `any` says nothing (#8)
 
-**TL;DR**: Only use `any` if you need to accept or return any possible type, such as `json.Marshal`. Otherwise, `any` doesn’t provide meaningful information and can lead to compile-time issues by allowing a caller to call methods with any data type.
+???+ info "TL;DR"
+
+    Only use `any` if you need to accept or return any possible type, such as `json.Marshal`. Otherwise, `any` doesn’t provide meaningful information and can lead to compile-time issues by allowing a caller to call methods with any data type.
 
 The `any` type can be helpful if there is a genuine need for accepting or returning any possible type (for instance, when it comes to marshaling or formatting). In general, we should avoid overgeneralizing the code we write at all costs. Perhaps a little bit of duplicated code might occasionally be better if it improves other aspects such as code expressiveness.
 
@@ -143,7 +167,9 @@ The `any` type can be helpful if there is a genuine need for accepting or return
 
 ### Being confused about when to use generics (#9)
 
-**TL;DR**: Relying on generics and type parameters can prevent writing boilerplate code to factor out elements or behaviors. However, do not use type parameters prematurely, but only when you see a concrete need for them. Otherwise, they introduce unnecessary abstractions and complexity.
+???+ info "TL;DR"
+
+    Relying on generics and type parameters can prevent writing boilerplate code to factor out elements or behaviors. However, do not use type parameters prematurely, but only when you see a concrete need for them. Otherwise, they introduce unnecessary abstractions and complexity.
 
 <!-- TODO Include 9-generics.md file -->
 
@@ -151,7 +177,9 @@ The `any` type can be helpful if there is a genuine need for accepting or return
 
 ### Not being aware of the possible problems with type embedding (#10)
 
-**TL;DR**: Using type embedding can also help avoid boilerplate code; however, ensure that doing so doesn’t lead to visibility issues where some fields should have remained hidden.
+???+ info "TL;DR"
+
+    Using type embedding can also help avoid boilerplate code; however, ensure that doing so doesn’t lead to visibility issues where some fields should have remained hidden.
 
 When creating a struct, Go offers the option to embed types. But this can sometimes lead to unexpected behaviors if we don’t understand all the implications of type embedding. Throughout this section, we look at how to embed types, what these bring, and the possible issues.
 
@@ -184,7 +212,9 @@ Using type embedding consciously by keeping these constraints in mind can help a
 
 ### Not using the functional options pattern (#11)
 
-**TL;DR**: To handle options conveniently and in an API-friendly manner, use the functional options pattern.
+???+ info "TL;DR"
+
+    To handle options conveniently and in an API-friendly manner, use the functional options pattern.
 
 Although there are different implementations with minor variations, the main idea is as follows:
 * An unexported struct holds the configuration: options.
@@ -241,7 +271,9 @@ The functional options pattern provides a handy and API-friendly way to handle o
 
 ### Project misorganization (project structure and package organization) (#12)
 
-**TL;DR**: Following a layout such as [project-layout](https://github.com/golang-standards/project-layout) can be a good way to start structuring Go projects, especially if you are looking for existing conventions to standardize a new project.
+???+ info "TL;DR"
+
+    Following a layout such as [project-layout](https://github.com/golang-standards/project-layout) can be a good way to start structuring Go projects, especially if you are looking for existing conventions to standardize a new project.
 
 Regarding the overall organization, there are different schools of thought. For example, should we organize our application by context or by layer? It depends on our preferences. We may favor grouping code per context (such as the customer context, the contract context, etc.), or we may favor following hexagonal architecture principles and group per technical layer. If the decision we make fits our use case, it cannot be a wrong decision, as long as we remain consistent with it.
 
@@ -256,7 +288,9 @@ Organizing a project isn’t straightforward, but following these rules should h
 
 ### Creating utility packages (#13)
 
-**TL;DR**: Naming is a critical piece of application design. Creating packages such as `common`, `util`, and `shared` doesn’t bring much value for the reader. Refactor such packages into meaningful and specific package names.
+???+ info "TL;DR"
+
+    Naming is a critical piece of application design. Creating packages such as `common`, `util`, and `shared` doesn’t bring much value for the reader. Refactor such packages into meaningful and specific package names.
 
 Also, bear in mind that naming a package after what it provides and not what it contains can be an efficient way to increase its expressiveness.
 
@@ -264,13 +298,17 @@ Also, bear in mind that naming a package after what it provides and not what it 
 
 ### Ignoring package name collisions (#14)
 
-**TL;DR**: To avoid naming collisions between variables and packages, leading to confusion or perhaps even bugs, use unique names for each one. If this isn’t feasible, use an import alias to change the qualifier to differentiate the package name from the variable name, or think of a better name.
+???+ info "TL;DR"
+
+    To avoid naming collisions between variables and packages, leading to confusion or perhaps even bugs, use unique names for each one. If this isn’t feasible, use an import alias to change the qualifier to differentiate the package name from the variable name, or think of a better name.
 
 Package collisions occur when a variable name collides with an existing package name, preventing the package from being reused. We should prevent variable name collisions to avoid ambiguity. If we face a collision, we should either find another meaningful name or use an import alias.
 
 ### Missing code documentation (#15)
 
-**TL;DR**: To help clients and maintainers understand your code’s purpose, document exported elements.
+???+ info "TL;DR"
+
+    To help clients and maintainers understand your code’s purpose, document exported elements.
 
 Documentation is an important aspect of coding. It simplifies how clients can consume an API but can also help in maintaining a project. In Go, we should follow some rules to make our code idiomatic:
 
@@ -286,7 +324,9 @@ Documenting our code shouldn’t be a constraint. We should take the opportunity
 
 ### Not using linters (#16)
 
-**TL;DR**: To improve code quality and consistency, use linters and formatters.
+???+ info "TL;DR"
+
+    To improve code quality and consistency, use linters and formatters.
 
 A linter is an automatic tool to analyze code and catch errors. The scope of this section isn’t to give an exhaustive list of the existing linters; otherwise, it will become deprecated pretty quickly. But we should understand and remember why linters are essential for most Go projects.
 
@@ -308,7 +348,9 @@ Linters and formatters are a powerful way to improve the quality and consistency
 
 ### Creating confusion with octal literals (#17)
 
-**TL;DR**: When reading existing code, bear in mind that integer literals starting with 0 are octal numbers. Also, to improve readability, make octal integers explicit by prefixing them with `0o`.
+???+ info "TL;DR"
+
+    When reading existing code, bear in mind that integer literals starting with 0 are octal numbers. Also, to improve readability, make octal integers explicit by prefixing them with `0o`.
 
 Octal numbers start with a 0 (e.g., `010` is equal to 8 in base 10). To improve readability and avoid potential mistakes for future code readers, we should make octal numbers explicit using the `0o` prefix (e.g., `0o10`).
 
@@ -323,7 +365,9 @@ We can also use an underscore character (_) as a separator for readability. For 
 
 ### Neglecting integer overflows (#18)
 
-**TL;DR**: Because integer overflows and underflows are handled silently in Go, you can implement your own functions to catch them.
+???+ info "TL;DR"
+
+    Because integer overflows and underflows are handled silently in Go, you can implement your own functions to catch them.
 
 In Go, an integer overflow that can be detected at compile time generates a compila- tion error. For example,
 
@@ -341,7 +385,9 @@ However, at run time, an integer overflow or underflow is silent; this does not 
 
 ### Not understanding floating-points (#19)
 
-**TL;DR**: Making floating-point comparisons within a given delta can ensure that your code is portable. When performing addition or subtraction, group the operations with a similar order of magnitude to favor accuracy. Also, perform multiplication and division before addition and subtraction.
+???+ info "TL;DR"
+
+    Making floating-point comparisons within a given delta can ensure that your code is portable. When performing addition or subtraction, group the operations with a similar order of magnitude to favor accuracy. Also, perform multiplication and division before addition and subtraction.
 
 In Go, there are two floating-point types (if we omit imaginary numbers): float32 and float64. The concept of a floating point was invented to solve the major problem with integers: their inability to represent fractional values. To avoid bad surprises, we need to know that floating-point arithmetic is an approximation of real arithmetic.
 
@@ -363,7 +409,9 @@ Because Go’s `float32` and `float64` types are approximations, we have to bear
 
 ### Not understanding slice length and capacity (#20)
 
-**TL;DR**: Understanding the difference between slice length and capacity should be part of a Go developer’s core knowledge. The slice length is the number of available elements in the slice, whereas the slice capacity is the number of elements in the backing array.
+???+ info "TL;DR"
+
+    Understanding the difference between slice length and capacity should be part of a Go developer’s core knowledge. The slice length is the number of available elements in the slice, whereas the slice capacity is the number of elements in the backing array.
 
 <!-- TODO -->
 
@@ -371,7 +419,9 @@ Because Go’s `float32` and `float64` types are approximations, we have to bear
 
 ### Inefficient slice initialization (#21)
 
-**TL;DR**: When creating a slice, initialize it with a given length or capacity if its length is already known. This reduces the number of allocations and improves performance.
+???+ info "TL;DR"
+
+    When creating a slice, initialize it with a given length or capacity if its length is already known. This reduces the number of allocations and improves performance.
 
 While initializing a slice using `make`, we can provide a length and an optional capacity. Forgetting to pass an appropriate value for both of these parameters when it makes sense is a widespread mistake. Indeed, it can lead to multiple copies and additional effort for the GC to clean the temporary backing arrays. Performance-wise, there’s no good reason not to give the Go runtime a helping hand.
 
@@ -381,7 +431,9 @@ Our options are to allocate a slice with either a given capacity or a given leng
 
 ### Being confused about nil vs. empty slice (#22)
 
-**TL;DR**: To prevent common confusions such as when using the `encoding/json` or the `reflect` package, you need to understand the difference between nil and empty slices. Both are zero-length, zero-capacity slices, but only a nil slice doesn’t require allocation.
+???+ info "TL;DR"
+
+    To prevent common confusions such as when using the `encoding/json` or the `reflect` package, you need to understand the difference between nil and empty slices. Both are zero-length, zero-capacity slices, but only a nil slice doesn’t require allocation.
 
 In Go, there is a distinction between nil and empty slices. A nil slice is equals to `nil`, whereas an empty slice has a length of zero. A nil slice is empty, but an empty slice isn’t necessarily `nil`. Meanwhile, a nil slice doesn’t require any allocation. We have seen throughout this section how to initialize a slice depending on the con- text by using
 
@@ -395,7 +447,9 @@ The last option, `[]string{}`, should be avoided if we initialize the slice with
 
 ### Not properly checking if a slice is empty (#23)
 
-**TL;DR**: To check if a slice doesn’t contain any element, check its length. This check works regardless of whether the slice is `nil` or empty. The same goes for maps. To design unambiguous APIs, you shouldn’t distinguish between nil and empty slices.
+???+ info "TL;DR"
+
+    To check if a slice doesn’t contain any element, check its length. This check works regardless of whether the slice is `nil` or empty. The same goes for maps. To design unambiguous APIs, you shouldn’t distinguish between nil and empty slices.
 
 To determine whether a slice has elements, we can either do it by checking if the slice is nil or if its length is equal to 0. Checking the length is the best option to follow as it will cover both if the slice is empty or is the slice is nil.
 
@@ -405,7 +459,9 @@ Meanwhile, when designing interfaces, we should avoid distinguishing nil and emp
 
 ### Not making slice copies correctly (#24)
 
-**TL;DR**: To copy one slice to another using the `copy` built-in function, remember that the number of copied elements corresponds to the minimum between the two slice’s lengths.
+???+ info "TL;DR"
+
+    To copy one slice to another using the `copy` built-in function, remember that the number of copied elements corresponds to the minimum between the two slice’s lengths.
 
 Copying elements from one slice to another is a reasonably frequent operation. When using copy, we must recall that the number of elements copied to the destina- tion corresponds to the minimum between the two slices’ lengths. Also bear in mind that other alternatives exist to copy a slice, so we shouldn’t be surprised if we find them in a codebase.
 
@@ -413,18 +469,23 @@ Copying elements from one slice to another is a reasonably frequent operation. W
 
 ### Unexpected side effects using slice append (#25)
 
-**TL;DR**: Using copy or the full slice expression is a way to prevent `append` from creating conflicts if two different functions use slices backed by the same array. However, only a slice copy prevents memory leaks if you want to shrink a large slice.
+???+ info "TL;DR"
+
+    Using copy or the full slice expression is a way to prevent `append` from creating conflicts if two different functions use slices backed by the same array. However, only a slice copy prevents memory leaks if you want to shrink a large slice.
 
 When using slicing, we must remember that we can face a situation leading to unintended side effects. If the resulting slice has a length smaller than its capacity, append can mutate the original slice. If we want to restrict the range of possible side effects, we can use either a slice copy or the full slice expression, which prevents us from doing a copy.
 
-> [!NOTE]
-> `s[low:high:max]` (full slice expression): This statement creates a slice similar to the one created with `s[low:high]`, except that the resulting slice’s capacity is equal to `max - low`.
+???+ note
+
+    `s[low:high:max]` (full slice expression): This statement creates a slice similar to the one created with `s[low:high]`, except that the resulting slice’s capacity is equal to `max - low`.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/25-slice-append/main.go)
 
 ### Slice and memory leaks (#26)
 
-**TL;DR**: Working with a slice of pointers or structs with pointer fields, you can avoid memory leaks by marking as nil the elements excluded by a slicing operation.
+???+ info "TL;DR"
+
+    Working with a slice of pointers or structs with pointer fields, you can avoid memory leaks by marking as nil the elements excluded by a slicing operation.
 
 #### Leaking capacity
 
@@ -440,7 +501,9 @@ When we use the slicing operation with pointers or structs with pointer fields, 
 
 ### Inefficient map initialization (#27)
 
-**TL;DR**: When creating a map, initialize it with a given length if its length is already known. This reduces the number of allocations and improves performance.
+???+ info "TL;DR"
+
+    When creating a map, initialize it with a given length if its length is already known. This reduces the number of allocations and improves performance.
 
 A map provides an unordered collection of key-value pairs in which all the keys are dis- tinct. In Go, a map is based on the hash table data structure. Internally, a hash table is an array of buckets, and each bucket is a pointer to an array of key-value pairs.
 
@@ -450,7 +513,9 @@ If we know up front the number of elements a map will contain, we should create 
 
 ### [Map and memory leaks](https://teivah.medium.com/maps-and-memory-leaks-in-go-a85ebe6e7e69) (#28)
 
-**TL;DR**: A map can always grow in memory, but it never shrinks. Hence, if it leads to some memory issues, you can try different options, such as forcing Go to recreate the map or using pointers.
+???+ info "TL;DR"
+
+    A map can always grow in memory, but it never shrinks. Hence, if it leads to some memory issues, you can try different options, such as forcing Go to recreate the map or using pointers.
 
 <!-- TODO -->
 
@@ -458,7 +523,9 @@ If we know up front the number of elements a map will contain, we should create 
 
 ### Comparing values incorrectly (#29)
 
-**TL;DR**: To compare types in Go, you can use the == and != operators if two types are comparable: Booleans, numerals, strings, pointers, channels, and structs are composed entirely of comparable types. Otherwise, you can either use `reflect.DeepEqual` and pay the price of reflection or use custom implementations and libraries.
+???+ info "TL;DR"
+
+    To compare types in Go, you can use the == and != operators if two types are comparable: Booleans, numerals, strings, pointers, channels, and structs are composed entirely of comparable types. Otherwise, you can either use `reflect.DeepEqual` and pay the price of reflection or use custom implementations and libraries.
 
 It’s essential to understand how to use `==` and `!=` to make comparisons effectively. We can use these operators on operands that are comparable:
 * _Booleans_—Compare whether two Booleans are equal.
@@ -469,8 +536,9 @@ It’s essential to understand how to use `==` and `!=` to make comparisons effe
 * _Pointers_—Compare whether two pointers point to the same value in memory or if both are nil.
 * _Structs and arrays)—Compare whether they are composed of similar types.
 
-> [!NOTE]
-> We can also use the `?`, `>=`, `<`, and `>` operators with numeric types to compare values and with strings to compare their lexical order.
+???+ note
+
+    We can also use the `?`, `>=`, `<`, and `>` operators with numeric types to compare values and with strings to compare their lexical order.
 
 If operands are not comparable (e.g., slices and maps), we have to use other options such as reflection. Reflection is a form of metaprogramming, and it refers to the ability of an applica- tion to introspect and modify its structure and behavior. For example, in Go, we can use `reflect.DeepEqual`. This function reports whether two elements are deeply equal by recursively traversing two values. The elements it accepts are basic types plus arrays, structs, slices, maps, pointers, interfaces, and functions. Yet, the main catch is the performance penalty.
 
@@ -484,7 +552,9 @@ One additional note: we must remember that the standard library has some exist- 
 
 ### Ignoring that elements are copied in `range` loops (#30)
 
-**TL;DR**: The value element in a `range` loop is a copy. Therefore, to mutate a struct, for example, access it via its index or via a classic `for` loop (unless the element or the field you want to modify is a pointer).
+???+ info "TL;DR"
+
+    The value element in a `range` loop is a copy. Therefore, to mutate a struct, for example, access it via its index or via a classic `for` loop (unless the element or the field you want to modify is a pointer).
 
 A range loop allows iterating over different data structures:
 * String
@@ -502,7 +572,9 @@ Yet, we should remember that the value element in a range loop is a copy. Theref
 
 ### Ignoring how arguments are evaluated in `range` loops (channels and arrays) (#31)
 
-**TL;DR**: Understanding that the expression passed to the `range` operator is evaluated only once before the beginning of the loop can help you avoid common mistakes such as inefficient assignment in channel or slice iteration.
+???+ info "TL;DR"
+
+    Understanding that the expression passed to the `range` operator is evaluated only once before the beginning of the loop can help you avoid common mistakes such as inefficient assignment in channel or slice iteration.
 
 The range loop evaluates the provided expression only once, before the beginning of the loop, by doing a copy (regardless of the type). We should remember this behavior to avoid common mistakes that might, for example, lead us to access the wrong element. For example:
 
@@ -522,7 +594,9 @@ This code updates the last index to 10. However, if we run this code, it does no
 
 ### Ignoring the impacts of using pointer elements in `range` loops (#32)
 
-**TL;DR**: Using a local variable or accessing an element using an index, you can prevent mistakes while copying pointers inside a loop.
+???+ info "TL;DR"
+
+    Using a local variable or accessing an element using an index, you can prevent mistakes while copying pointers inside a loop.
 
 When iterating over a data structure using a `range` loop, we must recall that all the values are assigned to a unique variable with a single unique address. Therefore, if we store a pointer referencing this variable during each iteration, we will end up in a situ- ation where we store the same pointer referencing the same element: the latest one. We can overcome this issue by forcing the creation of a local variable in the loop’s scope or creating a pointer referencing a slice element via its index. Both solutions are fine.
 
@@ -530,7 +604,9 @@ When iterating over a data structure using a `range` loop, we must recall that a
 
 ### Making wrong assumptions during map iterations (ordering and map insert during iteration) (#33)
 
-**TL;DR**: To ensure predictable outputs when using maps, remember that a map data structure:
+???+ info "TL;DR"
+
+    To ensure predictable outputs when using maps, remember that a map data structure:
 * Doesn’t order the data by keys
 * Doesn’t preserve the insertion order
 * Doesn’t have a deterministic iteration order
@@ -542,7 +618,9 @@ When iterating over a data structure using a `range` loop, we must recall that a
 
 ### Ignoring how the `break` statement works (#34)
 
-**TL;DR**: Using `break` or `continue` with a label enforces breaking a specific statement. This can be helpful with `switch` or `select` statements inside loops.
+???+ info "TL;DR"
+
+    Using `break` or `continue` with a label enforces breaking a specific statement. This can be helpful with `switch` or `select` statements inside loops.
 
 A break statement is commonly used to terminate the execution of a loop. When loops are used in conjunction with switch or select, developers frequently make the mistake of breaking the wrong statement. For example:
 
@@ -583,7 +661,9 @@ Here, we associate the `loop` label with the `for` loop. Then, because we provid
 
 ### Using `defer` inside a loop (#35)
 
-**TL;DR**: Extracting loop logic inside a function leads to executing a `defer` statement at the end of each iteration.
+???+ info "TL;DR"
+
+    Extracting loop logic inside a function leads to executing a `defer` statement at the end of each iteration.
 
 The `defer` statement delays a call’s execution until the surrounding function returns. It’s mainly used to reduce boilerplate code. For example, if a resource has to be closed eventually, we can use `defer` to avoid repeating the closure calls before every single `return`.
 
@@ -640,7 +720,9 @@ Another solution is to make the `readFile` function a closure but intrinsically,
 
 ### Not understanding the concept of rune (#36)
 
-**TL;DR**: Understanding that a rune corresponds to the concept of a Unicode code point and that it can be composed of multiple bytes should be part of the Go developer’s core knowledge to work accurately with strings.
+???+ info "TL;DR"
+
+    Understanding that a rune corresponds to the concept of a Unicode code point and that it can be composed of multiple bytes should be part of the Go developer’s core knowledge to work accurately with strings.
 
 As runes are everywhere in Go, it's important to understand the following:
 
@@ -655,7 +737,9 @@ As runes are everywhere in Go, it's important to understand the following:
 
 ### Inaccurate string iteration (#37)
 
-**TL;DR**: Iterating on a string with the `range` operator iterates on the runes with the index corresponding to the starting index of the rune’s byte sequence. To access a specific rune index (such as the third rune), convert the string into a `[]rune`.
+???+ info "TL;DR"
+
+    Iterating on a string with the `range` operator iterates on the runes with the index corresponding to the starting index of the rune’s byte sequence. To access a specific rune index (such as the third rune), convert the string into a `[]rune`.
 
 Iterating on a string is a common operation for developers. Perhaps we want to per- form an operation for each rune in the string or implement a custom function to search for a specific substring. In both cases, we have to iterate on the different runes of a string. But it’s easy to get confused about how iteration works.
 
@@ -725,7 +809,9 @@ fmt.Printf("%c\n", r) // o
 
 ### Misusing trim functions (#38)
 
-**TL;DR**: `strings.TrimRight`/`strings.TrimLeft` removes all the trailing/leading runes contained in a given set, whereas `strings.TrimSuffix`/`strings.TrimPrefix` returns a string without a provided suffix/prefix.
+???+ info "TL;DR"
+
+    `strings.TrimRight`/`strings.TrimLeft` removes all the trailing/leading runes contained in a given set, whereas `strings.TrimSuffix`/`strings.TrimPrefix` returns a string without a provided suffix/prefix.
 
 For example:
 
@@ -745,7 +831,9 @@ On the other side, `strings.TrimSuffix` / `strings.TrimPrefix` returns a string 
 
 ### Under-optimized strings concatenation (#39)
 
-**TL;DR**: Concatenating a list of strings should be done with `strings.Builder` to prevent allocating a new string during each iteration.
+???+ info "TL;DR"
+
+    Concatenating a list of strings should be done with `strings.Builder` to prevent allocating a new string during each iteration.
 
 Let’s consider a `concat` function that concatenates all the string elements of a slice using the `+=` operator:
 
@@ -775,8 +863,9 @@ func concat(values []string) string {
 
 During each iteration, we constructed the resulting string by calling the `WriteString` method that appends the content of value to its internal buffer, hence minimizing memory copying.
 
-> [!NOTE]
-> `WriteString` returns an error as the second output, but we purposely ignore it. Indeed, this method will never return a non-nil error. So what’s the purpose of this method returning an error as part of its signature? `strings.Builder` imple- ments the `io.StringWriter` interface, which contains a single method: `WriteString(s string) (n int, err error)`. Hence, to comply with this interface, `WriteString` must return an error.
+???+ note
+
+    `WriteString` returns an error as the second output, but we purposely ignore it. Indeed, this method will never return a non-nil error. So what’s the purpose of this method returning an error as part of its signature? `strings.Builder` imple- ments the `io.StringWriter` interface, which contains a single method: `WriteString(s string) (n int, err error)`. Hence, to comply with this interface, `WriteString` must return an error.
 
 Internally, `strings.Builder` holds a byte slice. Each call to `WriteString` results in a call to append on this slice. There are two impacts. First, this struct shouldn’t be used concurrently, as the calls to `append` would lead to race conditions. The second impact is something that we saw in [mistake #21, "Inefficient slice initialization"](#inefficient-slice-initialization-21): if the future length of a slice is already known, we should preallocate it. For that purpose, `strings.Builder` exposes a method `Grow(n int)` to guarantee space for another `n` bytes:
 
@@ -812,7 +901,9 @@ As we can see, the latest version is by far the most efficient: 99% faster than 
 
 ### Useless string conversions (#40)
 
-**TL;DR**: Remembering that the `bytes` package offers the same operations as the `strings` package can help avoid extra byte/string conversions.
+???+ info "TL;DR"
+
+    Remembering that the `bytes` package offers the same operations as the `strings` package can help avoid extra byte/string conversions.
 
 When choosing to work with a string or a `[]byte`, most programmers tend to favor strings for convenience. But most I/O is actually done with `[]byte`. For example, `io.Reader`, `io.Writer`, and `io.ReadAll` work with `[]byte`, not strings.
 
@@ -822,7 +913,9 @@ When we’re wondering whether we should work with strings or `[]byte`, let’s 
 
 ### Substring and memory leaks (#41)
 
-**TL;DR**: Using copies instead of substrings can prevent memory leaks, as the string returned by a substring operation will be backed by the same byte array.
+???+ info "TL;DR"
+
+    Using copies instead of substrings can prevent memory leaks, as the string returned by a substring operation will be backed by the same byte array.
 
 In mistake [#26, “Slices and memory leaks,”](#slice-and-memory-leaks--26-) we saw how slicing a slice or array may lead to memory leak situations. This principle also applies to string and substring opera- tions.
 
@@ -834,7 +927,9 @@ We need to keep two things in mind while using the substring operation in Go. Fi
 
 ### Not knowing which type of receiver to use (#42)
 
-**TL;DR**: The decision whether to use a value or a pointer receiver should be made based on factors such as the type, whether it has to be mutated, whether it contains a field that can’t be copied, and how large the object is. When in doubt, use a pointer receiver.
+???+ info "TL;DR"
+
+    The decision whether to use a value or a pointer receiver should be made based on factors such as the type, whether it has to be mutated, whether it contains a field that can’t be copied, and how large the object is. When in doubt, use a pointer receiver.
 
 Choosing between value and pointer receivers isn’t always straightforward. Let’s dis- cuss some of the conditions to help us choose.
 
@@ -874,7 +969,9 @@ Of course, it’s impossible to be exhaustive, as there will always be edge case
 
 ### Never using named result parameters (#43)
 
-**TL;DR**: Using named result parameters can be an efficient way to improve the readability of a function/method, especially if multiple result parameters have the same type. In some cases, this approach can also be convenient because named result parameters are initialized to their zero value. But be cautious about potential side effects.
+???+ info "TL;DR"
+
+    Using named result parameters can be an efficient way to improve the readability of a function/method, especially if multiple result parameters have the same type. In some cases, this approach can also be convenient because named result parameters are initialized to their zero value. But be cautious about potential side effects.
 
 When we return parameters in a function or a method, we can attach names to these parameters and use them as regular variables. When a result parameter is named, it’s initialized to its zero value when the function/method begins. With named result parameters, we can also call a naked return statement (without argu- ments). In that case, the current values of the result parameters are used as the returned values.
 
@@ -895,7 +992,9 @@ In some cases, named result parameters can also increase readability: for exampl
 
 ### Unintended side effects with named result parameters (#44)
 
-**TL;DR**: See [#43](#never-using-named-result-parameters-43).
+???+ info "TL;DR"
+
+    See [#43](#never-using-named-result-parameters-43).
 
 We mentioned why named result parameters can be useful in some situations. But as these result parameters are initialized to their zero value, using them can sometimes lead to subtle bugs if we’re not careful enough. For example, can you spot what’s wrong with this code?
 
@@ -924,7 +1023,9 @@ When using named result parameters, we must recall that each parameter is initia
 
 ### Returning a nil receiver (#45)
 
-**TL;DR**: When returning an interface, be cautious about returning not a nil pointer but an explicit nil value. Otherwise, unintended consequences may result because the caller will receive a non-nil value.
+???+ info "TL;DR"
+
+    When returning an interface, be cautious about returning not a nil pointer but an explicit nil value. Otherwise, unintended consequences may result because the caller will receive a non-nil value.
 
 <!-- TODO -->
 
@@ -932,7 +1033,9 @@ When using named result parameters, we must recall that each parameter is initia
 
 ### Using a filename as a function input (#46)
 
-**TL;DR**: Designing functions to receive `io.Reader` types instead of filenames improves the reusability of a function and makes testing easier.
+???+ info "TL;DR"
+
+    Designing functions to receive `io.Reader` types instead of filenames improves the reusability of a function and makes testing easier.
 
 Accepting a filename as a function input to read from a file should, in most cases, be considered a code smell (except in specific functions such as `os.Open`). Indeed, it makes unit tests more complex because we may have to create multiple files. It also reduces the reusability of a function (although not all functions are meant to be reused). Using the `io.Reader` interface abstracts the data source. Regardless of whether the input is a file, a string, an HTTP request, or a gRPC request, the imple- mentation can be reused and easily tested.
 
@@ -940,7 +1043,9 @@ Accepting a filename as a function input to read from a file should, in most cas
 
 ### Ignoring how `defer` arguments and receivers are evaluated (argument evaluation, pointer, and value receivers) (#47)
 
-**TL;DR**: Passing a pointer to a `defer` function and wrapping a call inside a closure are two possible solutions to overcome the immediate evaluation of arguments and receivers.
+???+ info "TL;DR"
+
+    Passing a pointer to a `defer` function and wrapping a call inside a closure are two possible solutions to overcome the immediate evaluation of arguments and receivers.
 
 In a `defer` function the arguments are evaluated right away, not once the surrounding function returns. For example, in this code, we always call `notify` and `incrementCounter` with the same status: an empty string.
 
@@ -1025,7 +1130,9 @@ Let's also note this behavior applies with method receiver: the receiver is eval
 
 ### Panicking (#48)
 
-**TL;DR**: Using `panic` is an option to deal with errors in Go. However, it should only be used sparingly in unrecoverable conditions: for example, to signal a programmer error or when you fail to load a mandatory dependency.
+???+ info "TL;DR"
+
+    Using `panic` is an option to deal with errors in Go. However, it should only be used sparingly in unrecoverable conditions: for example, to signal a programmer error or when you fail to load a mandatory dependency.
 
 In Go, panic is a built-in function that stops the ordinary flow:
 
@@ -1054,7 +1161,9 @@ Panicking in Go should be used sparingly. There are two prominent cases, one to 
 
 ### Ignoring when to wrap an error (#49)
 
-**TL;DR**: Wrapping an error allows you to mark an error and/or provide additional context. However, error wrapping creates potential coupling as it makes the source error available for the caller. If you want to prevent that, don’t use error wrapping.
+???+ info "TL;DR"
+
+    Wrapping an error allows you to mark an error and/or provide additional context. However, error wrapping creates potential coupling as it makes the source error available for the caller. If you want to prevent that, don’t use error wrapping.
 
 Since Go 1.13, the %w directive allows us to wrap errors conveniently. Error wrapping is about wrapping or packing an error inside a wrapper container that also makes the source error available. In general, the two main use cases for error wrapping are the following:
 
@@ -1067,7 +1176,9 @@ When handling an error, we can decide to wrap it. Wrapping is about adding addit
 
 ### Comparing an error type inaccurately (#50)
 
-**TL;DR**: If you use Go 1.13 error wrapping with the `%w` directive and `fmt.Errorf`, comparing an error against a type has to be done using `errors.As`. Otherwise, if the returned error you want to check is wrapped, it will fail the checks.
+???+ info "TL;DR"
+
+    If you use Go 1.13 error wrapping with the `%w` directive and `fmt.Errorf`, comparing an error against a type has to be done using `errors.As`. Otherwise, if the returned error you want to check is wrapped, it will fail the checks.
 
 <!-- TODO -->
 
@@ -1075,7 +1186,9 @@ When handling an error, we can decide to wrap it. Wrapping is about adding addit
 
 ### Comparing an error value inaccurately (#51)
 
-**TL;DR**: If you use Go 1.13 error wrapping with the `%w` directive and `fmt.Errorf`, comparing an error against or a value has to be done using `errors.As`. Otherwise, if the returned error you want to check is wrapped, it will fail the checks.
+???+ info "TL;DR"
+
+    If you use Go 1.13 error wrapping with the `%w` directive and `fmt.Errorf`, comparing an error against or a value has to be done using `errors.As`. Otherwise, if the returned error you want to check is wrapped, it will fail the checks.
 
 A sentinel error is an error defined as a global variable:
 
@@ -1096,7 +1209,9 @@ If we use error wrapping in our application with the `%w` directive and `fmt.Err
 
 ### Handling an error twice (#52)
 
-**TL;DR**: In most situations, an error should be handled only once. Logging an error is handling an error. Therefore, you have to choose between logging or returning an error. In many cases, error wrapping is the solution as it allows you to provide additional context to an error and return the source error.
+???+ info "TL;DR"
+
+    In most situations, an error should be handled only once. Logging an error is handling an error. Therefore, you have to choose between logging or returning an error. In many cases, error wrapping is the solution as it allows you to provide additional context to an error and return the source error.
 
 Handling an error multiple times is a mistake made frequently by developers, not spe- cifically in Go. This can cause situations where the same error is logged multiple times make debugging harder.
 
@@ -1106,13 +1221,17 @@ Let's reming us that handling an error should be done only once. Logging an erro
 
 ### Not handling an error (#53)
 
-**TL;DR**: Ignoring an error, whether during a function call or in a `defer` function, should be done explicitly using the blank identifier. Otherwise, future readers may be confused about whether it was intentional or a miss.
+???+ info "TL;DR"
+
+    Ignoring an error, whether during a function call or in a `defer` function, should be done explicitly using the blank identifier. Otherwise, future readers may be confused about whether it was intentional or a miss.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/07-error-management/53-not-handling-error/main.go)
 
 ### Not handling `defer` errors (#54)
 
-**TL;DR**: In many cases, you shouldn’t ignore an error returned by a `defer` function. Either handle it directly or propagate it to the caller, depending on the context. If you want to ignore it, use the blank identifier.
+???+ info "TL;DR"
+
+    In many cases, you shouldn’t ignore an error returned by a `defer` function. Either handle it directly or propagate it to the caller, depending on the context. If you want to ignore it, use the blank identifier.
 
 Consider the following code:
 
@@ -1149,21 +1268,29 @@ _ = notify()
 
 ### Mixing up concurrency and parallelism (#55)
 
-**TL;DR**: Understanding the fundamental differences between concurrency and parallelism is a cornerstone of the Go developer’s knowledge. Concurrency is about structure, whereas parallelism is about execution.
+???+ info "TL;DR"
+
+    Understanding the fundamental differences between concurrency and parallelism is a cornerstone of the Go developer’s knowledge. Concurrency is about structure, whereas parallelism is about execution.
 
 ### [Thinking concurrency is always faster](https://teivah.medium.com/concurrency-isnt-always-faster-in-go-de325168907c) (#56)
 
-**TL;DR**: To be a proficient developer, you must acknowledge that concurrency isn’t always faster. Solutions involving parallelization of minimal workloads may not necessarily be faster than a sequential implementation. Benchmarking sequential versus concurrent solutions should be the way to validate assumptions.
+???+ info "TL;DR"
+
+    To be a proficient developer, you must acknowledge that concurrency isn’t always faster. Solutions involving parallelization of minimal workloads may not necessarily be faster than a sequential implementation. Benchmarking sequential versus concurrent solutions should be the way to validate assumptions.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/08-concurrency-foundations/56-faster/)
 
 ### Being puzzled about when to use channels or mutexes (#57)
 
-**TL;DR**: Being aware of goroutine interactions can also be helpful when deciding between channels and mutexes. In general, parallel goroutines require synchronization and hence mutexes. Conversely, concurrent goroutines generally require coordination and orchestration and hence channels.
+???+ info "TL;DR"
+
+    Being aware of goroutine interactions can also be helpful when deciding between channels and mutexes. In general, parallel goroutines require synchronization and hence mutexes. Conversely, concurrent goroutines generally require coordination and orchestration and hence channels.
 
 ### Not understanding race problems (data races vs. race conditions and the Go memory model) (#58)
 
-**TL;DR**: Being proficient in concurrency also means understanding that data races and race conditions are different concepts. Data races occur when multiple goroutines simultaneously access the same memory location and at least one of them is writing. Meanwhile, being data-race-free doesn’t necessarily mean deterministic execution. When a behavior depends on the sequence or the timing of events that can’t be controlled, this is a race condition.
+???+ info "TL;DR"
+
+    Being proficient in concurrency also means understanding that data races and race conditions are different concepts. Data races occur when multiple goroutines simultaneously access the same memory location and at least one of them is writing. Meanwhile, being data-race-free doesn’t necessarily mean deterministic execution. When a behavior depends on the sequence or the timing of events that can’t be controlled, this is a race condition.
 
 Understanding the Go memory model and the underlying guarantees in terms of ordering and synchronization is essential to prevent possible data races and/or race conditions.
 
@@ -1171,13 +1298,17 @@ Understanding the Go memory model and the underlying guarantees in terms of orde
 
 ### Not understanding the concurrency impacts of a workload type (#59)
 
-**TL;DR**: When creating a certain number of goroutines, consider the workload type. Creating CPU-bound goroutines means bounding this number close to the `GOMAXPROCS` variable (based by default on the number of CPU cores on the host). Creating I/O-bound goroutines depends on other factors, such as the external system.
+???+ info "TL;DR"
+
+    When creating a certain number of goroutines, consider the workload type. Creating CPU-bound goroutines means bounding this number close to the `GOMAXPROCS` variable (based by default on the number of CPU cores on the host). Creating I/O-bound goroutines depends on other factors, such as the external system.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/08-concurrency-foundations/59-workload-type/main.go)
 
 ### Misunderstanding Go contexts (#60)
 
-**TL;DR**: Go contexts are also one of the cornerstones of concurrency in Go. A context allows you to carry a deadline, a cancellation signal, and/or a list of keys-values.
+???+ info "TL;DR"
+
+    Go contexts are also one of the cornerstones of concurrency in Go. A context allows you to carry a deadline, a cancellation signal, and/or a list of keys-values.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/08-concurrency-foundations/60-contexts/main.go)
 
@@ -1185,83 +1316,111 @@ Understanding the Go memory model and the underlying guarantees in terms of orde
 
 ### Propagating an inappropriate context (#61)
 
-**TL;DR**: Understanding the conditions when a context can be canceled should matter when propagating it: for example, an HTTP handler canceling the context when the response has been sent.
+???+ info "TL;DR"
+
+    Understanding the conditions when a context can be canceled should matter when propagating it: for example, an HTTP handler canceling the context when the response has been sent.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/61-inappropriate-context/main.go)
 
 ### Starting a goroutine without knowing when to stop it (#62)
 
-**TL;DR**: Avoiding leaks means being mindful that whenever a goroutine is started, you should have a plan to stop it eventually.
+???+ info "TL;DR"
+
+    Avoiding leaks means being mindful that whenever a goroutine is started, you should have a plan to stop it eventually.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/62-starting-goroutine/)
 
 ### Not being careful with goroutines and loop variables (#63)
 
-**TL;DR**: To avoid bugs with goroutines and loop variables, create local variables or call functions instead of closures.
+???+ info "TL;DR"
+
+    To avoid bugs with goroutines and loop variables, create local variables or call functions instead of closures.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/63-goroutines-loop-variables/main.go)
 
 ### Expecting a deterministic behavior using select and channels (#64)
 
-**TL;DR**: Understanding that `select` with multiple channels chooses the case randomly if multiple options are possible prevents making wrong assumptions that can lead to subtle concurrency bugs.
+???+ info "TL;DR"
+
+    Understanding that `select` with multiple channels chooses the case randomly if multiple options are possible prevents making wrong assumptions that can lead to subtle concurrency bugs.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/64-select-behavior/main.go)
 
 ### Not using notification channels (#65)
 
-**TL;DR**: Send notifications using a `chan struct{}` type.
+???+ info "TL;DR"
+
+    Send notifications using a `chan struct{}` type.
 
 ### Not using nil channels (#66)
 
-**TL;DR**: Using nil channels should be part of your concurrency toolset because it allows you to _remove_ cases from `select` statements, for example.
+???+ info "TL;DR"
+
+    Using nil channels should be part of your concurrency toolset because it allows you to _remove_ cases from `select` statements, for example.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/66-nil-channels/main.go)
 
 ### Being puzzled about channel size (#67)
 
-**TL;DR**: Carefully decide on the right channel type to use, given a problem. Only unbuffered channels provide strong synchronization guarantees.
+???+ info "TL;DR"
+
+    Carefully decide on the right channel type to use, given a problem. Only unbuffered channels provide strong synchronization guarantees.
 
 You should have a good reason to specify a channel size other than one for buffered channels.
 
 ### Forgetting about possible side effects with string formatting (etcd data race example and deadlock) (#68)
 
-**TL;DR**: Being aware that string formatting may lead to calling existing functions means watching out for possible deadlocks and other data races.
+???+ info "TL;DR"
+
+    Being aware that string formatting may lead to calling existing functions means watching out for possible deadlocks and other data races.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/68-string-formatting/main.go)
 
 ### Creating data races with append (#69)
 
-**TL;DR**: Calling `append` isn’t always data-race-free; hence, it shouldn’t be used concurrently on a shared slice.
+???+ info "TL;DR"
+
+    Calling `append` isn’t always data-race-free; hence, it shouldn’t be used concurrently on a shared slice.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/69-data-race-append/main.go)
 
 ### Using mutexes inaccurately with slices and maps (#70)
 
-**TL;DR**: Remembering that slices and maps are pointers can prevent common data races.
+???+ info "TL;DR"
+
+    Remembering that slices and maps are pointers can prevent common data races.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/70-mutex-slices-maps/main.go)
 
 ### Misusing `sync.WaitGroup` (#71)
 
-**TL;DR**: To accurately use `sync.WaitGroup`, call the `Add` method before spinning up goroutines.
+???+ info "TL;DR"
+
+    To accurately use `sync.WaitGroup`, call the `Add` method before spinning up goroutines.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/71-wait-group/main.go)
 
 ### Forgetting about `sync.Cond` (#72)
 
-**TL;DR**: You can send repeated notifications to multiple goroutines with `sync.Cond`.
+???+ info "TL;DR"
+
+    You can send repeated notifications to multiple goroutines with `sync.Cond`.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/72-cond/main.go)
 
 ### Not using `errgroup` (#73)
 
-**TL;DR**: You can synchronize a group of goroutines and handle errors and contexts with the `errgroup` package.
+???+ info "TL;DR"
+
+    You can synchronize a group of goroutines and handle errors and contexts with the `errgroup` package.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/73-errgroup/main.go)
 
 ### Copying a `sync` type (#74)
 
-**TL;DR**: `sync` types shouldn’t be copied.
+???+ info "TL;DR"
+
+    `sync` types shouldn’t be copied.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/74-copying-sync/main.go)
 
@@ -1269,13 +1428,17 @@ You should have a good reason to specify a channel size other than one for buffe
 
 ### Providing a wrong time duration (#75)
 
-**TL;DR**: Remain cautious with functions accepting a `time.Duration`. Even though passing an integer is allowed, strive to use the time API to prevent any possible confusion.
+???+ info "TL;DR"
+
+    Remain cautious with functions accepting a `time.Duration`. Even though passing an integer is allowed, strive to use the time API to prevent any possible confusion.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/10-standard-lib/75-wrong-time-duration/main.go)
 
 ### `time.After` and memory leaks (#76)
 
-**TL;DR**: Avoiding calls to `time.After` in repeated functions (such as loops or HTTP handlers) can avoid peak memory consumption. The resources created by `time.After` are released only when the timer expires.
+???+ info "TL;DR"
+
+    Avoiding calls to `time.After` in repeated functions (such as loops or HTTP handlers) can avoid peak memory consumption. The resources created by `time.After` are released only when the timer expires.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/10-standard-lib/76-time-after/main.go)
 
@@ -1331,19 +1494,25 @@ You should have a good reason to specify a channel size other than one for buffe
 
 ### Not closing transient resources (HTTP body, `sql.Rows`, and `os.File`) (#79)
 
-**TL;DR**: Eventually close all structs implementing `io.Closer` to avoid possible leaks.
+???+ info "TL;DR"
+
+    Eventually close all structs implementing `io.Closer` to avoid possible leaks.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/10-standard-lib/79-closing-resources/)
 
 ### Forgetting the return statement after replying to an HTTP request (#80)
 
-**TL;DR**: To avoid unexpected behaviors in HTTP handler implementations, make sure you don’t miss the `return` statement if you want a handler to stop after `http.Error`.
+???+ info "TL;DR"
+
+    To avoid unexpected behaviors in HTTP handler implementations, make sure you don’t miss the `return` statement if you want a handler to stop after `http.Error`.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/10-standard-lib/80-http-return/main.go)
 
 ### Using the default HTTP client and server (#81)
 
-**TL;DR**: For production-grade applications, don’t use the default HTTP client and server implementations. These implementations are missing timeouts and behaviors that should be mandatory in production.
+???+ info "TL;DR"
+
+    For production-grade applications, don’t use the default HTTP client and server implementations. These implementations are missing timeouts and behaviors that should be mandatory in production.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/10-standard-lib/81-default-http-client-server/)
 
@@ -1351,33 +1520,45 @@ You should have a good reason to specify a channel size other than one for buffe
 
 ### Not categorizing tests (build tags, environment variables, and short mode) (#82)
 
-**TL;DR**: Categorizing tests using build flags, environment variables, or short mode makes the testing process more efficient. You can create test categories using build flags or environment variables (for example, unit versus integration tests) and differentiate short from long-running tests to decide which kinds of tests to execute.
+???+ info "TL;DR"
+
+    Categorizing tests using build flags, environment variables, or short mode makes the testing process more efficient. You can create test categories using build flags or environment variables (for example, unit versus integration tests) and differentiate short from long-running tests to decide which kinds of tests to execute.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/82-categorizing-tests/)
 
 ### Not enabling the race flag (#83)
 
-**TL;DR**: Enabling the `-race` flag is highly recommended when writing concurrent applications. Doing so allows you to catch potential data races that can lead to software bugs.
+???+ info "TL;DR"
+
+    Enabling the `-race` flag is highly recommended when writing concurrent applications. Doing so allows you to catch potential data races that can lead to software bugs.
 
 ### Not using test execution modes (parallel and shuffle) (#84)
 
-**TL;DR**: Using the `-parallel` flag is an efficient way to speed up tests, especially long-running ones. Use the `-shuffle` flag to help ensure that a test suite doesn’t rely on wrong assumptions that could hide bugs.
+???+ info "TL;DR"
+
+    Using the `-parallel` flag is an efficient way to speed up tests, especially long-running ones. Use the `-shuffle` flag to help ensure that a test suite doesn’t rely on wrong assumptions that could hide bugs.
 
 ### Not using table-driven tests (#85)
 
-**TL;DR**: Table-driven tests are an efficient way to group a set of similar tests to prevent code duplication and make future updates easier to handle.
+???+ info "TL;DR"
+
+    Table-driven tests are an efficient way to group a set of similar tests to prevent code duplication and make future updates easier to handle.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/85-table-driven-tests/main_test.go)
 
 ### Sleeping in unit tests (#86)
 
-**TL;DR**: Avoid sleeps using synchronization to make a test less flaky and more robust. If synchronization isn’t possible, consider a retry approach.
+???+ info "TL;DR"
+
+    Avoid sleeps using synchronization to make a test less flaky and more robust. If synchronization isn’t possible, consider a retry approach.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/86-sleeping/main_test.go)
 
 ### Not dealing with the time API efficiently (#87)
 
-**TL;DR**: Understanding how to deal with functions using the time API is another way to make a test less flaky. You can use standard techniques such as handling the time as part of a hidden dependency or asking clients to provide it.
+???+ info "TL;DR"
+
+    Understanding how to deal with functions using the time API is another way to make a test less flaky. You can use standard techniques such as handling the time as part of a hidden dependency or asking clients to provide it.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/87-time-api/)
 
@@ -1445,7 +1626,9 @@ You should have a good reason to specify a channel size other than one for buffe
 
 ### Not using fuzzing (community mistake)
 
-**TL;DR**: Fuzzing is an efficient strategy to detect random, unexpected, or malformed inputs to complex functions and methods in order to discover vulnerabilities, bugs, or even potential crashes.
+???+ info "TL;DR"
+
+    Fuzzing is an efficient strategy to detect random, unexpected, or malformed inputs to complex functions and methods in order to discover vulnerabilities, bugs, or even potential crashes.
 
 Credits: [@jeromedoucet](https://github.com/jeromedoucet)
 
@@ -1481,46 +1664,64 @@ Credits: [@jeromedoucet](https://github.com/jeromedoucet)
 
 ### Writing concurrent code that leads to false sharing (#92)
 
-**TL;DR**: Knowing that lower levels of CPU caches aren’t shared across all the cores helps avoid performance-degrading patterns such as false sharing while writing concurrency code. Sharing memory is an illusion.
+???+ info "TL;DR"
+
+    Knowing that lower levels of CPU caches aren’t shared across all the cores helps avoid performance-degrading patterns such as false sharing while writing concurrency code. Sharing memory is an illusion.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/12-optimizations/92-false-sharing/)
 
 ### Not taking into account instruction-level parallelism (#93)
 
-**TL;DR**: Use instruction-level parallelism (ILP) to optimize specific parts of your code to allow a CPU to execute as many parallel instructions as possible. Identifying data hazards is one of the main steps.
+???+ info "TL;DR"
+
+    Use instruction-level parallelism (ILP) to optimize specific parts of your code to allow a CPU to execute as many parallel instructions as possible. Identifying data hazards is one of the main steps.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/12-optimizations/93-instruction-level-parallelism/)
 
 ### Not being aware of data alignment (#94)
 
-**TL;DR**: You can avoid common mistakes by remembering that in Go, basic types are aligned with their own size. For example, keep in mind that reorganizing the fields of a struct by size in descending order can lead to more compact structs (less memory allocation and potentially a better spatial locality).
+???+ info "TL;DR"
+
+    You can avoid common mistakes by remembering that in Go, basic types are aligned with their own size. For example, keep in mind that reorganizing the fields of a struct by size in descending order can lead to more compact structs (less memory allocation and potentially a better spatial locality).
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/12-optimizations/94-data-alignment/)
 
 ### Not understanding stack vs. heap (#95)
 
-**TL;DR**: Understanding the fundamental differences between heap and stack should also be part of your core knowledge when optimizing a Go application. Stack allocations are almost free, whereas heap allocations are slower and rely on the GC to clean the memory.
+???+ info "TL;DR"
+
+    Understanding the fundamental differences between heap and stack should also be part of your core knowledge when optimizing a Go application. Stack allocations are almost free, whereas heap allocations are slower and rely on the GC to clean the memory.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/12-optimizations/95-stack-heap/)
 
 ### Not knowing how to reduce allocations (API change, compiler optimizations, and `sync.Pool`) (#96)
 
-**TL;DR**: Reducing allocations is also an essential aspect of optimizing a Go application. This can be done in different ways, such as designing the API carefully to prevent sharing up, understanding the common Go compiler optimizations, and using `sync.Pool`.
+???+ info "TL;DR"
+
+    Reducing allocations is also an essential aspect of optimizing a Go application. This can be done in different ways, such as designing the API carefully to prevent sharing up, understanding the common Go compiler optimizations, and using `sync.Pool`.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/12-optimizations/96-reduce-allocations/)
 
 ### Not relying on inlining (#97)
 
-**TL;DR**: Use the fast-path inlining technique to efficiently reduce the amortized time to call a function.
+???+ info "TL;DR"
+
+    Use the fast-path inlining technique to efficiently reduce the amortized time to call a function.
 
 ### [Not using Go diagnostics tooling](https://medium.com/@teivah/profiling-and-execution-tracing-in-go-a5e646970f5b) (#98)
 
-**TL;DR**: Rely on profiling and the execution tracer to understand how an application performs and the parts to optimize.
+???+ info "TL;DR"
+
+    Rely on profiling and the execution tracer to understand how an application performs and the parts to optimize.
 
 ### Not understanding how the GC works (#99)
 
-**TL;DR**: Understanding how to tune the GC can lead to multiple benefits such as handling sudden load increases more efficiently.
+???+ info "TL;DR"
+
+    Understanding how to tune the GC can lead to multiple benefits such as handling sudden load increases more efficiently.
 
 ### Not understanding the impacts of running Go in Docker and Kubernetes (#100)
 
-**TL;DR**: To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
+???+ info "TL;DR"
+
+    To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.

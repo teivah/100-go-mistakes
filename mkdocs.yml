@@ -1,13 +1,20 @@
 site_name: 100 Go Mistakes
 site_url: https://100go.co
+repo_name: teivah/100-go-mistakes
 theme:
   name: material
   custom_dir: overrides
-  favicon: Go-Logo_Fuchsia.svg
+  favicon: img/Go-Logo_LightBlue.svg
   language: en
   logo: img/Go-Logo_White.svg
   icon:
     repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - search.highlight
+    - search.share
+    - search.suggest
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -42,14 +49,19 @@ extra:
     - icon: fontawesome/brands/medium
       link: http://blog.teivah.io
 nav:
-    - book.md
-    - chapter-1.md
-    - index.md
-    - jobs.md
-    - Chinese (Simplified):
-        - zh/index.md
-    - external.md
+    - Book:
+        - book.md
+        - chapter-1.md
+        - external.md
+    - Common Go Mistakes:
+      - index.md
+      - Chinese (Simplified):
+          - zh/index.md
+    - ❤️ Go Jobs:
+      - jobs.md
 markdown_extensions:
+  - admonition
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span

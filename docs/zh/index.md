@@ -4,8 +4,6 @@
 
 ### 意外的变量隐藏 (#1)
 
-Avoiding shadowed variables can help prevent mistakes like referencing the wrong variable or confusing readers.
-
 避免变量隐藏（外部作用域变量被内部作用域同名变量隐藏），有助于避免变量引用错误，有助于他人阅读理解。
 
 ### 不必要的代码嵌套 (#2)
@@ -57,8 +55,6 @@ Avoiding shadowed variables can help prevent mistakes like referencing the wrong
 命名是软件设计开发中非常重要的一个部分，创建一些名如 `common`、`util`、`shared` 之类的包名并不会给读者带来太大价值，应该将这些包名重构为更清晰、更聚焦的包名。
 
 ### 忽略了包名冲突 (#14)
-
-To avoid naming collisions between variables and packages, leading to confusion or perhaps even bugs, use unique names for each one. If this isn’t feasible, use an import alias to change the qualifier to differentiate the package name from the variable name, or think of a better name.
 
 为了避免变量名和包名之间的冲突，导致混淆或甚至错误，应为每个变量和包使用唯一的名称。如果这不可行，可以考虑使用导入别名 `import importAlias 'importPath'`，以区分包名和变量名，或者考虑一个更好的变量名。
 

@@ -5,13 +5,16 @@ title: Read the First Chapter
 # Go: Simple to learn but hard to master
 
 This chapter covers
+
 * What makes Go an efficient, scalable, and productive language
 * Exploring why Go is simple to learn but hard to master
 * Presenting the common types of mistakes made by developers
 
 Making mistakes is part of everyone’s life. As Albert Einstein once said,
 
-> A person who never made a mistake never tried anything new.
+!!! quote "Albert Einstein"
+
+    A person who never made a mistake never tried anything new.
 
 What matters in the end isn’t the number of mistakes we make, but our capacity to learn from them. This assertion also applies to programming. The seniority we acquire in a language isn’t a magical process; it involves making many mistakes and learning from them. The purpose of this book is centered around this idea. It will help you, the reader, become a more proficient Go developer by looking at and learning from 100 common mistakes people make in many areas of the language.
 
@@ -27,7 +30,9 @@ In response to these challenges, Google created the Go programming language in 2
 
 Feature-wise, Go has no type inheritance, no exceptions, no macros, no partial functions, no support for lazy variable evaluation or immutability, no operator overloading, no pattern matching, and on and on. Why are these features missing from the language? The official [Go FAQ](https://go.dev/doc/faq) gives us some insight:
 
-> Why does Go not have feature X? Your favorite feature may be missing because it doesn’t fit, because it affects compilation speed or clarity of design, or because it would make the fundamental system model too difficult.
+!!! quote "Go FAQ"
+
+    Why does Go not have feature X? Your favorite feature may be missing because it doesn’t fit, because it affects compilation speed or clarity of design, or because it would make the fundamental system model too difficult.
 
 Judging the quality of a programming language via its number of features is probably not an accurate metric. At least, it’s not an objective of Go. Instead, Go utilizes a few essential characteristics when adopting a language at scale for an organization. These include the following:
 
@@ -62,9 +67,9 @@ In a 2011 article, neuroscientists proved that the best time for brain growth is
 
 To strengthen this facilitative effect, this book accompanies each mistake as much as possible with real-world examples. This book isn’t only about theory; it also helps us get better at avoiding mistakes and making more well-informed, conscious decisions because we now understand the rationale behind them.
 
-> Tell me and I forget. Teach me and I remember. Involve me and I learn.
+!!! quote "Unknown"
 
-_- Unknown_
+    Tell me and I forget. Teach me and I remember. Involve me and I learn.
 
 This book presents seven main categories of mistakes. Overall, the mistakes can be classified as
 
