@@ -14,7 +14,7 @@
         <link rel="prev" href="../jobs/">
       
       
-        <link rel="next" href="../chinese/">
+        <link rel="next" href="../zh/">
       
       
       <link rel="icon" href="../Go-Logo_Fuchsia.svg">
@@ -49,13 +49,23 @@
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HMY1HYDM93"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HMY1HYDM93",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HMY1HYDM93",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
 
     
     
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Common Go Mistakes - 100 Go Mistakes" >
+        <meta  property="og:title"  content="💡 Go Mistakes - 100 Go Mistakes" >
       
         <meta  property="og:description"  content="None" >
       
@@ -71,7 +81,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Common Go Mistakes - 100 Go Mistakes" >
+        <meta  name="twitter:title"  content="💡 Go Mistakes - 100 Go Mistakes" >
       
         <meta  name="twitter:description"  content="None" >
       
@@ -119,7 +129,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="100 Go Mistakes" class="md-header__button md-logo" aria-label="100 Go Mistakes" data-md-component="logo">
       
-  <img src="../Go-Logo_Fuchsia.svg" alt="logo">
+  <img src="../img/Go-Logo_White.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -136,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Common Go Mistakes
+              💡 Go Mistakes
             
           </span>
         </div>
@@ -186,7 +196,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="/chinese/" hreflang="zh" class="md-select__link">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
               Chinese (Simplified)
             </a>
           </li>
@@ -274,7 +284,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="100 Go Mistakes" class="md-nav__button md-logo" aria-label="100 Go Mistakes" data-md-component="logo">
       
-  <img src="../Go-Logo_Fuchsia.svg" alt="logo">
+  <img src="../img/Go-Logo_White.svg" alt="logo">
 
     </a>
     100 Go Mistakes
@@ -304,7 +314,7 @@
         
   
   <span class="md-ellipsis">
-    100 Go Mistakes and How to Avoid Them
+    📖 Book Presentation
   </span>
   
 
@@ -323,7 +333,7 @@
         
   
   <span class="md-ellipsis">
-    Go Jobs
+    ❤️ Go Jobs
   </span>
   
 
@@ -351,7 +361,7 @@
           
   
   <span class="md-ellipsis">
-    Common Go Mistakes
+    💡 Go Mistakes
   </span>
   
 
@@ -362,7 +372,7 @@
         
   
   <span class="md-ellipsis">
-    Common Go Mistakes
+    💡 Go Mistakes
   </span>
   
 
@@ -1281,7 +1291,7 @@
             
   
   <span class="md-ellipsis">
-    Chinese
+    Zh
   </span>
   
 
@@ -1291,7 +1301,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            Chinese
+            Zh
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1301,11 +1311,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../chinese/" class="md-nav__link">
+      <a href="../zh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Index
+    100个Go常见错误及如何避免
   </span>
   
 
@@ -2243,7 +2253,7 @@
 
 <!-- TODO Include chapter-1.md -->
 
-<p><img alt="" src="../inside-cover.png" /></p>
+<p><img alt="" src="../img/inside-cover.png" /></p>
 <h2 id="code-and-project-organization">Code and Project Organization</h2>
 <h3 id="unintended-variable-shadowing-1">Unintended variable shadowing (#1)</h3>
 <p><strong>TL;DR</strong>: Avoiding shadowed variables can help prevent mistakes like referencing the wrong variable or confusing readers.</p>
@@ -2255,34 +2265,36 @@
 <ul>
 <li>When an <code>if</code> block returns, we should omit the <code>else</code> block in all cases. For example, we shouldn’t write:</li>
 </ul>
-<p><code>go
-  if foo() {
-      // ...
-      return true
-  } else {
-      // ...
-  }</code></p>
+<pre><code class="language-go">if foo() {
+    // ...
+    return true
+} else {
+    // ...
+}
+</code></pre>
 <p>Instead, we omit the <code>else</code> block like this:</p>
-<p><code>go
-  if foo() {
-      // ...
-      return true
-  }
-  // ...</code>
-* We can also follow this logic with a non-happy path:</p>
-<p><code>go
-  if s != "" {
-      // ...
-  } else {
-      return errors.New("empty string")
-  }</code></p>
+<pre><code class="language-go">if foo() {
+    // ...
+    return true
+}
+// ...
+</code></pre>
+<ul>
+<li>We can also follow this logic with a non-happy path:</li>
+</ul>
+<pre><code class="language-go">if s != &quot;&quot; {
+    // ...
+} else {
+    return errors.New(&quot;empty string&quot;)
+}
+</code></pre>
 <p>Here, an empty <code>s</code> represents the non-happy path. Hence, we should flip the
   condition like so:</p>
-<p><code>go
-  if s == "" {
-      return errors.New("empty string")
-  }
-  // ...</code></p>
+<pre><code class="language-go">if s == &quot;&quot; {
+    return errors.New(&quot;empty string&quot;)
+}
+// ...
+</code></pre>
 <p>Writing readable code is an important challenge for every developer. Striving to reduce the number of nested blocks, aligning the happy path on the left, and returning as early as possible are concrete means to improve our code’s readability.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/02-code-project-organization/2-nested-code/main.go">Source code</a></p>
 <h3 id="misusing-init-functions-3">Misusing init functions (#3)</h3>
@@ -2355,7 +2367,7 @@ promoted to <code>Foo</code>. Therefore, Baz becomes available from Foo.</p>
 <p>Although there are different implementations with minor variations, the main idea is as follows:
 * An unexported struct holds the configuration: options.
 * Each option is a function that returns the same type: <code>type Option func(options *options)</code> error. For example, <code>WithPort</code> accepts an <code>int</code> argument that represents the port and returns an <code>Option</code> type that represents how to update the <code>options</code> struct.</p>
-<p><img alt="" src="../options.png" /></p>
+<p><img alt="" src="../img/options.png" /></p>
 <pre><code class="language-go">type options struct {
   port *int
 }
@@ -2691,7 +2703,7 @@ len=6
 </ul>
 <p>Let’s start with the last observation. We already mentioned that len returns the num- ber of bytes in a string, not the number of runes. Because we assigned a string literal to <code>s</code>, <code>s</code> is a UTF-8 string. Meanwhile, the special character "ê" isn’t encoded in a single byte; it requires 2 bytes. Therefore, calling <code>len(s)</code> returns 6.</p>
 <p>Meanwhile, in the previous example, we have to understand that we don't iterate over each rune; instead, we iterate over each starting index of a rune:</p>
-<p><img alt="" src="../rune.png" /></p>
+<p><img alt="" src="../img/rune.png" /></p>
 <p>Printing <code>s[i]</code> doesn’t print the ith rune; it prints the UTF-8 representation of the byte at index <code>i</code>. Hence, we printed "hÃllo" instead of "hêllo".</p>
 <p>If we want to print all the different runes, we can either use the value element of the <code>range</code> operator:</p>
 <pre><code class="language-go">s := &quot;hêllo&quot;
@@ -2719,7 +2731,7 @@ fmt.Printf(&quot;%c\n&quot;, r) // o
 <pre><code class="language-cgo">fmt.Println(strings.TrimRight(&quot;123oxo&quot;, &quot;xo&quot;))
 </code></pre>
 <p>The example prints 123:</p>
-<p><img alt="" src="../trim.png" /></p>
+<p><img alt="" src="../img/trim.png" /></p>
 <p>Conversely, <code>strings.TrimLeft</code> removes all the leading runes contained in a set.</p>
 <p>On the other side, <code>strings.TrimSuffix</code> / <code>strings.TrimPrefix</code> returns a string without the provided trailing suffix / prefix.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/05-strings/38-trim/main.go">Source code</a></p>
@@ -3241,6 +3253,8 @@ _ = notify()
 <p><strong>TL;DR</strong>: To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.</p>
 
 
+  
+
 
 
 
@@ -3259,6 +3273,15 @@ _ = notify()
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 - 2023 Teiva Harsanyi
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
   
 </div>
       

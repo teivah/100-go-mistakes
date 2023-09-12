@@ -1,20 +1,3 @@
----
-title: Go Jobs
----
-
 # ❤️ Go Jobs
 
-Is your company hiring? [Sponsor](https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&tier_id=316526&preview=true) this repository and let Go developers know your opportunities in this section (traffic: +400 unique visitor per week).
-
-For example:
-
-# [Company] Remote (USA) - $96,000 to $120,000 a year
-
-## Job Description
-
-...
-
-## Qualifications
-
-...
-
+Is your company hiring? [Sponsor](https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&tier_id=316526&preview=true) this repository and let a significant audience of Go developers know about your opportunities in this section (book sales: +8k, website traffic: +2000 views and +400 unique visitors per week).

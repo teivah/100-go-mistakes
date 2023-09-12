@@ -1,0 +1,2611 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://100go.co/zh/">
+      
+      
+        <link rel="prev" href="../mistakes/">
+      
+      
+      
+      <link rel="icon" href="../Go-Logo_Fuchsia.svg">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+    
+    
+  <title>100 Go Mistakes</title>
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HMY1HYDM93"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HMY1HYDM93",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HMY1HYDM93",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="100个Go常见错误及如何避免 - 100 Go Mistakes" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://100go.co/assets/images/social/zh/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://100go.co/zh/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="100个Go常见错误及如何避免 - 100 Go Mistakes" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://100go.co/assets/images/social/zh/index.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#100go" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="100 Go Mistakes" class="md-header__button md-logo" aria-label="100 Go Mistakes" data-md-component="logo">
+      
+  <img src="../img/Go-Logo_White.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            100 Go Mistakes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              100个Go常见错误及如何避免
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/zh/" hreflang="zh" class="md-select__link">
+              Chinese (Simplified)
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/teivah/100-go-mistakes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="100 Go Mistakes" class="md-nav__button md-logo" aria-label="100 Go Mistakes" data-md-component="logo">
+      
+  <img src="../img/Go-Logo_White.svg" alt="logo">
+
+    </a>
+    100 Go Mistakes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/teivah/100-go-mistakes" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📖 Book Presentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ❤️ Go Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mistakes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    💡 Go Mistakes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Zh
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Zh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    100个Go常见错误及如何避免
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    100个Go常见错误及如何避免
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    代码及工程组织
+  </a>
+  
+    <nav class="md-nav" aria-label="代码及工程组织">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    意外的变量隐藏 (#1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    不必要的代码嵌套 (#2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-3" class="md-nav__link">
+    误用init函数 (#3)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getterssetters-4" class="md-nav__link">
+    滥用getters/setters (#4)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    接口污染 (#5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    将接口定义在实现方一侧 (#6)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    将接口作为返回值 (#7)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-8" class="md-nav__link">
+    any 没传递任何信息 (#8)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    困惑何时该用范型 (#9)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    未意识到类型嵌套的可能问题 (#10)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-option-11" class="md-nav__link">
+    不使用function option模式 (#11)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    工程组织不合理 (工程结构和包的组织) (#12)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    创建工具包 (#13)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    忽略了包名冲突 (#14)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    代码缺少文档 (#15)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linters-16" class="md-nav__link">
+    不使用linters检查 (#16)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据类型
+  </a>
+  
+    <nav class="md-nav" aria-label="数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    八进制字面量引发的困惑 (#17)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    未注意可能的整数溢出 (#18)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    没有透彻理解浮点数 (#19)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-20" class="md-nav__link">
+    不理解slice的长度和容量 (#20)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-21" class="md-nav__link">
+    不高效的slice初始化 (#21)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nilslice-22" class="md-nav__link">
+    困惑于nil和空slice (#22)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-23" class="md-nav__link">
+    没有适当检查slice是否为空 (#23)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-24" class="md-nav__link">
+    没有正确拷贝slice (#24)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-append-25" class="md-nav__link">
+    slice append带来的预期之外的副作用 (#25)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-26" class="md-nav__link">
+    slice和内存泄漏 (#26)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-27" class="md-nav__link">
+    不高效的map初始化 (#27)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-28" class="md-nav__link">
+    map和内存泄漏 (#28)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    不正确的值比较 (#29)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    控制结构
+  </a>
+  
+    <nav class="md-nav" aria-label="控制结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range-30" class="md-nav__link">
+    忽略了 range 循环变量是一个拷贝 (#30)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-channels-arrays-31" class="md-nav__link">
+    忽略了 range 循环中迭代目标值的计算方式 (channels 和 arrays) (#31)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-range-loops-32" class="md-nav__link">
+    忽略了 range 循环中指针元素的影响 range loops (#32)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-33" class="md-nav__link">
+    map迭代过程中的错误假设（遍历顺序 和 迭代过程中插入）(#33)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-34" class="md-nav__link">
+    忽略了 break 语句是如何工作的 (#34)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-35" class="md-nav__link">
+    在循环中使用 defer  (#35)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    字符串
+  </a>
+  
+    <nav class="md-nav" aria-label="字符串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rune-36" class="md-nav__link">
+    没有理解rune (#36)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    不正确的字符串遍历 (#37)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trim-38" class="md-nav__link">
+    误用trim函数 (#38)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    不经优化的字符串拼接操作 (#39)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40" class="md-nav__link">
+    无用的字符串转换 (#40)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    子字符串和内存泄漏 (#41)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    函数和方法
+  </a>
+  
+    <nav class="md-nav" aria-label="函数和方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    不知道使用哪种接收器类型 (#42)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    从不使用命名的返回值 (#43)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    使用命名的返回值时预期外的副作用 (#44)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-45" class="md-nav__link">
+    返回一个nil接收器 (#45)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    使用文件名作为函数入参 (#46)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-value-47" class="md-nav__link">
+    忽略 defer 语句中参数、接收器值的计算方式 (参数值计算, 指针, 和 value类型接收器) (#47)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    错误管理
+  </a>
+  
+    <nav class="md-nav" aria-label="错误管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#panicking-48" class="md-nav__link">
+    Panicking (#48)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-49" class="md-nav__link">
+    未考虑何时才应该包装error (#49)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#50" class="md-nav__link">
+    不正确的错误类型比较 (#50)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    不正确的错误对象值比较 (#51)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    处理同一个错误两次 (#52)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    不处理错误 (#53)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-54" class="md-nav__link">
+    不处理 defer 中的错误 (#54)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    并发编程: 基础
+  </a>
+  
+    <nav class="md-nav" aria-label="并发编程: 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    混淆并发和并行 (#55)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    认为并发总是更快 (#56)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channelsmutexes-57" class="md-nav__link">
+    不清楚何时使用channels或mutexes (#57)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-go-58" class="md-nav__link">
+    不明白竞态问题 (数据竞态 vs. 竞态条件 和 Go内存模型) (#58)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59" class="md-nav__link">
+    不理解不同工作负载类型对并发的影响 (#59)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-contexts-60" class="md-nav__link">
+    误解了Go contexts (#60)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    并发编程: 实践
+  </a>
+  
+    <nav class="md-nav" aria-label="并发编程: 实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-61" class="md-nav__link">
+    传递不合适的context (#61)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goroutine-62" class="md-nav__link">
+    启动了一个goroutine但是不知道它何时会停止 (#62)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goroutines-63" class="md-nav__link">
+    不注意处理 goroutines 和 循环中的迭代变量 (#63)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-channels-64" class="md-nav__link">
+    使用select + channels 时误以为分支选择顺序是确定的 (#64)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channels-65" class="md-nav__link">
+    不正确使用通知 channels (#65)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-channels-66" class="md-nav__link">
+    不使用 nil channels (#66)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-size-67" class="md-nav__link">
+    不清楚该如何确定 channel size (#67)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcd-68" class="md-nav__link">
+    忘记了字符串格式化可能带来的副作用（例如 etcd 数据竞争和死锁）(#68)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append-69" class="md-nav__link">
+    使用 append 不当导致数据竞争 (#69)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutexes-slicesmaps-70" class="md-nav__link">
+    误用 mutexes 和 slices、maps (#70)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syncwaitgroup-71" class="md-nav__link">
+    误用 sync.WaitGroup (#71)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synccond-72" class="md-nav__link">
+    忘记使用 sync.Cond (#72)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errgroup-73" class="md-nav__link">
+    不使用 errgroup (#73)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-74" class="md-nav__link">
+    拷贝一个 sync 下的类型 (#74)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    标准库
+  </a>
+  
+    <nav class="md-nav" aria-label="标准库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeduration-75" class="md-nav__link">
+    使用了错误的 time.Duration (#75)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeafter-76" class="md-nav__link">
+    time.After 和内存泄漏 (#76)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-77" class="md-nav__link">
+    JSON处理中的常见错误 (#77)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-78" class="md-nav__link">
+    常见的 SQL 错误 (#78)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-sqlrows-osfile-79" class="md-nav__link">
+    不关闭临时资源（HTTP 请求体、sql.Rows 和 os.File) (#79)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-80" class="md-nav__link">
+    响应HTTP请求后没有返回语句 (#80)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-clientserver-81" class="md-nav__link">
+    直接使用默认的HTTP client和server (#81)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    测试
+  </a>
+  
+    <nav class="md-nav" aria-label="测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-tags-82" class="md-nav__link">
+    不对测试进行分类 （build tags, 环境变量，短模式）(#82)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-83" class="md-nav__link">
+    不打开 race 开关 (#83)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-shuffle-84" class="md-nav__link">
+    不打开测试的执行模式开关 (parallel 和 shuffle) (#84)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    不使用表驱动的测试 (#85)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-86" class="md-nav__link">
+    在单元测试中执行sleep操作 (#86)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-api-87" class="md-nav__link">
+    没有高效地处理 time API (#87)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httptest-iotest-88" class="md-nav__link">
+    不使用测试相关的工具包 (httptest 和 iotest) (#88)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89" class="md-nav__link">
+    不正确的基准测试 (#89)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-test-90" class="md-nav__link">
+    没有去探索go test所有的特性 (#90)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    不使用模糊测试 (社区反馈错误)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    优化技术
+  </a>
+  
+    <nav class="md-nav" aria-label="优化技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-cache-91" class="md-nav__link">
+    不理解CPU cache (#91)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#false-sharing-92" class="md-nav__link">
+    写的并发处理逻辑会导致false sharing (#92)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    没有考虑指令级的并行 (#93)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    不了解数据对齐 (#94)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack-vs-heap-95" class="md-nav__link">
+    不了解 stack vs. heap (#95)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-compiler-optimizations-and-syncpool-96" class="md-nav__link">
+    不知道如何减少内存分配次数 (API调整, compiler optimizations, and sync.Pool) (#96)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97" class="md-nav__link">
+    不注意使用内联 (#97)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-98" class="md-nav__link">
+    不使用Go问题诊断工具 (#98)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc-99" class="md-nav__link">
+    不理解GC是如何工作的 (#99)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerk8sgo-100" class="md-nav__link">
+    不了解Docker或者K8S对运行的Go应用的性能影响 (#100)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    代码及工程组织
+  </a>
+  
+    <nav class="md-nav" aria-label="代码及工程组织">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    意外的变量隐藏 (#1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    不必要的代码嵌套 (#2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-3" class="md-nav__link">
+    误用init函数 (#3)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getterssetters-4" class="md-nav__link">
+    滥用getters/setters (#4)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    接口污染 (#5)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    将接口定义在实现方一侧 (#6)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    将接口作为返回值 (#7)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-8" class="md-nav__link">
+    any 没传递任何信息 (#8)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    困惑何时该用范型 (#9)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    未意识到类型嵌套的可能问题 (#10)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-option-11" class="md-nav__link">
+    不使用function option模式 (#11)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    工程组织不合理 (工程结构和包的组织) (#12)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    创建工具包 (#13)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    忽略了包名冲突 (#14)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    代码缺少文档 (#15)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linters-16" class="md-nav__link">
+    不使用linters检查 (#16)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据类型
+  </a>
+  
+    <nav class="md-nav" aria-label="数据类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    八进制字面量引发的困惑 (#17)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    未注意可能的整数溢出 (#18)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    没有透彻理解浮点数 (#19)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-20" class="md-nav__link">
+    不理解slice的长度和容量 (#20)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-21" class="md-nav__link">
+    不高效的slice初始化 (#21)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nilslice-22" class="md-nav__link">
+    困惑于nil和空slice (#22)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-23" class="md-nav__link">
+    没有适当检查slice是否为空 (#23)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-24" class="md-nav__link">
+    没有正确拷贝slice (#24)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-append-25" class="md-nav__link">
+    slice append带来的预期之外的副作用 (#25)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-26" class="md-nav__link">
+    slice和内存泄漏 (#26)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-27" class="md-nav__link">
+    不高效的map初始化 (#27)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-28" class="md-nav__link">
+    map和内存泄漏 (#28)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    不正确的值比较 (#29)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    控制结构
+  </a>
+  
+    <nav class="md-nav" aria-label="控制结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range-30" class="md-nav__link">
+    忽略了 range 循环变量是一个拷贝 (#30)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-channels-arrays-31" class="md-nav__link">
+    忽略了 range 循环中迭代目标值的计算方式 (channels 和 arrays) (#31)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-range-loops-32" class="md-nav__link">
+    忽略了 range 循环中指针元素的影响 range loops (#32)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-33" class="md-nav__link">
+    map迭代过程中的错误假设（遍历顺序 和 迭代过程中插入）(#33)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-34" class="md-nav__link">
+    忽略了 break 语句是如何工作的 (#34)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-35" class="md-nav__link">
+    在循环中使用 defer  (#35)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    字符串
+  </a>
+  
+    <nav class="md-nav" aria-label="字符串">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rune-36" class="md-nav__link">
+    没有理解rune (#36)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    不正确的字符串遍历 (#37)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trim-38" class="md-nav__link">
+    误用trim函数 (#38)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    不经优化的字符串拼接操作 (#39)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40" class="md-nav__link">
+    无用的字符串转换 (#40)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    子字符串和内存泄漏 (#41)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    函数和方法
+  </a>
+  
+    <nav class="md-nav" aria-label="函数和方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    不知道使用哪种接收器类型 (#42)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    从不使用命名的返回值 (#43)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    使用命名的返回值时预期外的副作用 (#44)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-45" class="md-nav__link">
+    返回一个nil接收器 (#45)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    使用文件名作为函数入参 (#46)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-value-47" class="md-nav__link">
+    忽略 defer 语句中参数、接收器值的计算方式 (参数值计算, 指针, 和 value类型接收器) (#47)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    错误管理
+  </a>
+  
+    <nav class="md-nav" aria-label="错误管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#panicking-48" class="md-nav__link">
+    Panicking (#48)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-49" class="md-nav__link">
+    未考虑何时才应该包装error (#49)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#50" class="md-nav__link">
+    不正确的错误类型比较 (#50)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    不正确的错误对象值比较 (#51)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    处理同一个错误两次 (#52)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    不处理错误 (#53)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-54" class="md-nav__link">
+    不处理 defer 中的错误 (#54)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    并发编程: 基础
+  </a>
+  
+    <nav class="md-nav" aria-label="并发编程: 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    混淆并发和并行 (#55)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    认为并发总是更快 (#56)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channelsmutexes-57" class="md-nav__link">
+    不清楚何时使用channels或mutexes (#57)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-go-58" class="md-nav__link">
+    不明白竞态问题 (数据竞态 vs. 竞态条件 和 Go内存模型) (#58)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59" class="md-nav__link">
+    不理解不同工作负载类型对并发的影响 (#59)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-contexts-60" class="md-nav__link">
+    误解了Go contexts (#60)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    并发编程: 实践
+  </a>
+  
+    <nav class="md-nav" aria-label="并发编程: 实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-61" class="md-nav__link">
+    传递不合适的context (#61)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goroutine-62" class="md-nav__link">
+    启动了一个goroutine但是不知道它何时会停止 (#62)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goroutines-63" class="md-nav__link">
+    不注意处理 goroutines 和 循环中的迭代变量 (#63)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-channels-64" class="md-nav__link">
+    使用select + channels 时误以为分支选择顺序是确定的 (#64)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channels-65" class="md-nav__link">
+    不正确使用通知 channels (#65)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-channels-66" class="md-nav__link">
+    不使用 nil channels (#66)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-size-67" class="md-nav__link">
+    不清楚该如何确定 channel size (#67)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcd-68" class="md-nav__link">
+    忘记了字符串格式化可能带来的副作用（例如 etcd 数据竞争和死锁）(#68)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append-69" class="md-nav__link">
+    使用 append 不当导致数据竞争 (#69)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutexes-slicesmaps-70" class="md-nav__link">
+    误用 mutexes 和 slices、maps (#70)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syncwaitgroup-71" class="md-nav__link">
+    误用 sync.WaitGroup (#71)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synccond-72" class="md-nav__link">
+    忘记使用 sync.Cond (#72)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errgroup-73" class="md-nav__link">
+    不使用 errgroup (#73)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-74" class="md-nav__link">
+    拷贝一个 sync 下的类型 (#74)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    标准库
+  </a>
+  
+    <nav class="md-nav" aria-label="标准库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timeduration-75" class="md-nav__link">
+    使用了错误的 time.Duration (#75)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeafter-76" class="md-nav__link">
+    time.After 和内存泄漏 (#76)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-77" class="md-nav__link">
+    JSON处理中的常见错误 (#77)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-78" class="md-nav__link">
+    常见的 SQL 错误 (#78)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-sqlrows-osfile-79" class="md-nav__link">
+    不关闭临时资源（HTTP 请求体、sql.Rows 和 os.File) (#79)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-80" class="md-nav__link">
+    响应HTTP请求后没有返回语句 (#80)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-clientserver-81" class="md-nav__link">
+    直接使用默认的HTTP client和server (#81)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    测试
+  </a>
+  
+    <nav class="md-nav" aria-label="测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-tags-82" class="md-nav__link">
+    不对测试进行分类 （build tags, 环境变量，短模式）(#82)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#race-83" class="md-nav__link">
+    不打开 race 开关 (#83)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-shuffle-84" class="md-nav__link">
+    不打开测试的执行模式开关 (parallel 和 shuffle) (#84)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    不使用表驱动的测试 (#85)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-86" class="md-nav__link">
+    在单元测试中执行sleep操作 (#86)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-api-87" class="md-nav__link">
+    没有高效地处理 time API (#87)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httptest-iotest-88" class="md-nav__link">
+    不使用测试相关的工具包 (httptest 和 iotest) (#88)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89" class="md-nav__link">
+    不正确的基准测试 (#89)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-test-90" class="md-nav__link">
+    没有去探索go test所有的特性 (#90)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    不使用模糊测试 (社区反馈错误)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    优化技术
+  </a>
+  
+    <nav class="md-nav" aria-label="优化技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-cache-91" class="md-nav__link">
+    不理解CPU cache (#91)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#false-sharing-92" class="md-nav__link">
+    写的并发处理逻辑会导致false sharing (#92)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    没有考虑指令级的并行 (#93)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    不了解数据对齐 (#94)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack-vs-heap-95" class="md-nav__link">
+    不了解 stack vs. heap (#95)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-compiler-optimizations-and-syncpool-96" class="md-nav__link">
+    不知道如何减少内存分配次数 (API调整, compiler optimizations, and sync.Pool) (#96)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97" class="md-nav__link">
+    不注意使用内联 (#97)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-98" class="md-nav__link">
+    不使用Go问题诊断工具 (#98)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc-99" class="md-nav__link">
+    不理解GC是如何工作的 (#99)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerk8sgo-100" class="md-nav__link">
+    不了解Docker或者K8S对运行的Go应用的性能影响 (#100)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="100go">100个Go常见错误及如何避免</h1>
+<h2 id="_1">代码及工程组织</h2>
+<h3 id="1">意外的变量隐藏 (#1)</h3>
+<p>Avoiding shadowed variables can help prevent mistakes like referencing the wrong variable or confusing readers.</p>
+<p>避免变量隐藏（外部作用域变量被内部作用域同名变量隐藏），有助于避免变量引用错误，有助于他人阅读理解。</p>
+<h3 id="2">不必要的代码嵌套 (#2)</h3>
+<p>避免不必要的、过多的嵌套层次，并且让正常代码路径尽量左对齐（而不是放在分支路径中），有助于构建可读性更好的代码。</p>
+<h3 id="init-3">误用init函数 (#3)</h3>
+<p>初始化变量时，请记住 init 函数具有有限的错误处理能力，并且会使状态处理和测试变得更加复杂。在大多数情况下，初始化应该作为特定函数来处理。</p>
+<h3 id="getterssetters-4">滥用getters/setters (#4)</h3>
+<p>在Go语言中，强制使用getter和setter方法并不符合Go惯例。在实践中，应该找到效率和盲目遵循某些惯用法之间的平衡点。</p>
+<h3 id="5">接口污染 (#5)</h3>
+<p>抽象应该被发现，而不是被创造。为了避免不必要的复杂性，需要时才创建接口，而不是预见到需要它，或者至少可以证明这种抽象是有价值的。</p>
+<h3 id="6">将接口定义在实现方一侧 (#6)</h3>
+<p>将接口保留在引用方一侧（而不是实现方一侧）可以避免不必要的抽象。</p>
+<h3 id="7">将接口作为返回值 (#7)</h3>
+<p>为了避免在灵活性方面受到限制，大多数情况下函数不应该返回接口，而应该返回具体的实现。相反，函数应该尽可能地使用接口作为参数。</p>
+<h3 id="any-8"><code>any</code> 没传递任何信息 (#8)</h3>
+<p>只有在需要接受或返回任意类型时，才使用 <code>any</code>，例如 <code>json.Marshal</code>。其他情况下，因为 <code>any</code> 不提供有意义的信息，可能会导致编译时问题，如允许调用者调用方法处理任意类型数据。</p>
+<h3 id="9"><a href="https://teivah.medium.com/when-to-use-generics-in-go-36d49c1aeda">困惑何时该用范型</a> (#9)</h3>
+<p>使用泛型，可以通过类型参数分离具体的数据类型和行为，避免写很多重复度很高的代码。然而，不要过早地使用泛型、类型参数，只有在你看到真正需要时才使用。否则，它们会引入不必要的抽象和复杂性。</p>
+<h3 id="10">未意识到类型嵌套的可能问题 (#10)</h3>
+<p>使用类型嵌套也可以避免写一些重复代码，然而，在使用时需要确保不会导致不合理的可见性问题，比如有些字段应该对外隐藏不应该被暴漏。</p>
+<h3 id="function-option-11">不使用function option模式 (#11)</h3>
+<p>为了设计并提供更友好的API（可选参数），为了更好地处理选项，应该使用function option模式。</p>
+<h3 id="12">工程组织不合理 (工程结构和包的组织) (#12)</h3>
+<p>遵循像 project-layout 的建议来组织Go工程是一个不错的方法，特别是你正在寻找一些类似的经验、惯例来组织一个新的Go工程的时候。</p>
+<h3 id="13">创建工具包 (#13)</h3>
+<p>命名是软件设计开发中非常重要的一个部分，创建一些名如 <code>common</code>、<code>util</code>、<code>shared</code> 之类的包名并不会给读者带来太大价值，应该将这些包名重构为更清晰、更聚焦的包名。</p>
+<h3 id="14">忽略了包名冲突 (#14)</h3>
+<p>To avoid naming collisions between variables and packages, leading to confusion or perhaps even bugs, use unique names for each one. If this isn’t feasible, use an import alias to change the qualifier to differentiate the package name from the variable name, or think of a better name.</p>
+<p>为了避免变量名和包名之间的冲突，导致混淆或甚至错误，应为每个变量和包使用唯一的名称。如果这不可行，可以考虑使用导入别名 <code>import importAlias 'importPath'</code>，以区分包名和变量名，或者考虑一个更好的变量名。</p>
+<h3 id="15">代码缺少文档 (#15)</h3>
+<p>为了让使用方、维护人员能更清晰地了解你的代码的意图，导出的元素（函数、类型、字段）需要添加godoc注释。</p>
+<h3 id="linters-16">不使用linters检查 (#16)</h3>
+<p>为了改善代码质量、整体代码的一致性，应该使用linters、formatters。</p>
+<h2 id="_2">数据类型</h2>
+<h3 id="17">八进制字面量引发的困惑 (#17)</h3>
+<p>在阅读现有代码时，请记住以 0 开头的整数字面量是八进制数。此外，为了提高可读性，可以通过在前面加上 0o 来显式地表示八进制整数。</p>
+<h3 id="18">未注意可能的整数溢出 (#18)</h3>
+<p>在 Go 中整数上溢出和下溢是静默处理的，所以你可以实现自己的函数来捕获它们。</p>
+<h3 id="19">没有透彻理解浮点数 (#19)</h3>
+<p>比较浮点数时，通过比较二者的delta值是否介于一定的范围内，能让你写出可移植性更好的代码。</p>
+<p>在进行加法或减法时，将具有相似数量级的操作分成同一组以提高精度 (过早指数对齐丢失精度)。此外，在进行加法和减法之前，应先进行乘法和除法 (加减法误差会被乘除放大)。</p>
+<h3 id="slice-20"><a href="https://teivah.medium.com/slice-length-vs-capacity-in-go-af71a754b7d8">不理解slice的长度和容量</a> (#20)</h3>
+<p>理解slice的长度和容量的区别，是一个Go开发者的核心知识点之一。slice的长度指的是slice已经存储的元素的数量，而容量指的是slice当前底层开辟的数组最多能容纳的元素的数量。</p>
+<h3 id="slice-21">不高效的slice初始化 (#21)</h3>
+<p>当创建一个slice时，如果其长度可以预先确定，那么可以在定义时指定它的长度和容量。这可以改善后期append时一次或者多次的内存分配操作，从而改善性能。对于map的初始化也是这样的。</p>
+<h3 id="nilslice-22">困惑于nil和空slice (#22)</h3>
+<p>为了避免常见的对nil和empty slice处理行为的混淆，例如在使用 encoding/json 或 reflect 包时，你需要理解 nil 和 empty slice的区别。两者都是长度为零、容量为零的切片，但是 nil 切片不需要分配内存。</p>
+<h3 id="slice-23">没有适当检查slice是否为空 (#23)</h3>
+<p>检查一个slice的是否包含任何元素，可以检查其长度，不管slice是nil还是empty，检查长度都是有效的。这个检查方法也适用于map。</p>
+<p>为了设计更明确的API，API不应区分nil和空切片。</p>
+<h3 id="slice-24">没有正确拷贝slice (#24)</h3>
+<p>使用 <code>copy</code> 拷贝一个slice元素到另一个slice时，需要记得，实际拷贝的元素数量是二者slice长度中的较小值。</p>
+<h3 id="slice-append-25">slice append带来的预期之外的副作用 (#25)</h3>
+<p>如果两个不同的函数操作的slice复用了相同的底层数组，它们对slice执行append操作时可能会产生冲突。使用copy来完整复制一个slice或者使用完整的slice表达式[low:high:max]限制最大容量，有助于避免产生冲突。当想对一个大slice进行shrink操作时，两种方式中，只有copy才可以避免内存泄漏。</p>
+<h3 id="slice-26">slice和内存泄漏 (#26)</h3>
+<p>对于slice元素为指针，或者slice元素为struct但是该struct含有指针字段，当通过slice[low:high]操作取subslice时，对于那些不可访问的元素可以显示设置为nil来避免内存泄露。</p>
+<h3 id="map-27">不高效的map初始化 (#27)</h3>
+<p>见 <a href="#inefficient-slice-initialization-21">#21</a>.</p>
+<h3 id="map-28"><a href="https://teivah.medium.com/maps-and-memory-leaks-in-go-a85ebe6e7e69">map和内存泄漏</a> (#28)</h3>
+<p>一个map的buckets占用的内存只会增长，不会缩减。因此，如果它导致了一些内存占用的问题，你需要尝试不同的选项来解决，比如重新创建一个map代替原来的（原来的map会被GC掉），或者map[keyType]valueType中的valueType使用指针代替长度固定的数组或者sliceHeader来缓解过多的内存占用。</p>
+<h3 id="29">不正确的值比较 (#29)</h3>
+<p>Go中比较两个类型值时，如果是可比较类型，那么可以使用 <code>==</code> 或者 <code>!=</code> 运算符进行比较，比如：booleans、numerals、strings、pointers、channels，以及字段全部是可比较类型的structs。其他情况下，你可以使用 <code>reflect.DeepEqual</code> 来比较，用反射的话会牺牲一点性能，也可以使用自定义的实现和其他库来完成。</p>
+<h2 id="_3">控制结构</h2>
+<h3 id="range-30">忽略了 <code>range</code> 循环变量是一个拷贝 (#30)</h3>
+<p><code>range</code> 循环中的循环变量是遍历容器中元素值的一个拷贝。因此，如果元素值是一个struct并且想在 <code>range</code> 中修改它，可以通过索引值来访问并修改它，或者使用经典的for循环+索引值的写法（除非遍历的元素是一个指针）。</p>
+<h3 id="range-channels-arrays-31">忽略了 <code>range</code> 循环中迭代目标值的计算方式 (channels 和 arrays) (#31)</h3>
+<p>传递给 <code>range</code> 操作的迭代目标对应的表达式的值，只会在循环执行前被计算一次，理解这个有助于避免犯一些常见的错误，例如不高效的channel赋值操作、slice迭代操作。</p>
+<h3 id="range-range-loops-32">忽略了 <code>range</code> 循环中指针元素的影响 <code>range</code> loops (#32)</h3>
+<p>这里其实强调的是 <code>range</code> 迭代过程中，迭代变量实际上是一个拷贝，假设给另外一个容器元素（指针类型）赋值，且需要对迭代变量取地址转换成指针再赋值的话，这里潜藏着一个错误，就是for循环迭代变量是 per-variable-per-loop 而不是 per-variable-per-iteration。如果是通过局部变量（用迭代变量来初始化）或者使用索引值来直接引用迭代的元素，将有助于避免拷贝指针(迭代变量的地址)之类的bug。</p>
+<h3 id="map-33">map迭代过程中的错误假设（遍历顺序 和 迭代过程中插入）(#33)</h3>
+<p>使用map时，为了能得到确定一致的结果，应该记住Go中的map数据结构：
+* 不会按照key对data进行排序，遍历时不是按key有序的；
+* 遍历时的顺序，也不是按照插入时的顺序；
+* 没有一个确定性的遍历顺序，每次遍历顺序是不同的；
+* 不能保证迭代过程中新插入的元素，在当前迭代中能够被遍历到；</p>
+<h3 id="break-34">忽略了 <code>break</code> 语句是如何工作的 (#34)</h3>
+<p>配合label使用 <code>break</code> 和 <code>continue</code>，能够跳过一个特定的语句，在某些循环中存在 <code>switch</code>和<code>select</code>语句的场景中就比较有帮助。</p>
+<h3 id="defer-35">在循环中使用 <code>defer</code>  (#35)</h3>
+<p>在循环中使用defer不能在每轮迭代结束时执行defer语句，但是将循环逻辑提取到函数内部会在每次迭代结束时执行 defer 语句。</p>
+<h2 id="_4">字符串</h2>
+<h3 id="rune-36">没有理解rune (#36)</h3>
+<p>理解rune类型对应的是一个unicode码点，每一个unicode码点其实是一个多字节的序列，不是一个byte。这应该是Go开发者的核心知识点之一，理解了这个有助于更准确地处理字符串。</p>
+<h3 id="37">不正确的字符串遍历 (#37)</h3>
+<p>使用 <code>range</code> 操作符对一个string进行遍历实际上是对string对应的 <code>[]rune</code> 进行遍历，迭代变量中的索引值，表示的当前rune对应的 <code>[]byte</code> 在整个 <code>[]byte(string)</code> 中的起始索引。如果要访问string中的某一个rune（比如第三个），首先要将字符串转换为 <code>[]rune</code> 然后再按索引值访问。</p>
+<h3 id="trim-38">误用trim函数 (#38)</h3>
+<p><code>strings.TrimRight</code>/<code>strings.TrimLeft</code> 移除在字符串尾部或者开头出现的一些runes，函数会指定一个rune集合，出现在集合中的rune将被从字符串移除。而 <code>strings.TrimSuffix</code>/<code>strings.TrimPrefix</code> 是移除字符串的一个后缀/前缀。</p>
+<h3 id="39">不经优化的字符串拼接操作 (#39)</h3>
+<p>对一个字符串列表进行遍历拼接操作，应该通过 <code>strings.Builder</code> 来完成，以避免每次迭代拼接时都分配一个新的string对象出来。</p>
+<h3 id="40">无用的字符串转换 (#40)</h3>
+<p><code>bytes</code> 包提供了一些和 <code>strings</code> 包相似的操作，可以帮助避免 []byte/string 之间的转换。</p>
+<h3 id="41">子字符串和内存泄漏 (#41)</h3>
+<p>使用一个子字符串的拷贝，有助于避免内存泄漏，因为对一个字符串的s[low:high]操作返回的子字符串，其使用了和原字符串s相同的底层数组。</p>
+<h2 id="_5">函数和方法</h2>
+<h3 id="42">不知道使用哪种接收器类型 (#42)</h3>
+<p>对于接收器类型是采用value类型还是pointer类型，应该取决于下面这几种因素，比如：方法内是否会对它进行修改，它是否包含了一个不能被拷贝的字段，以及它表示的对象有多大。如果有疑问，接收器可以考虑使用pointer类型。</p>
+<h3 id="43">从不使用命名的返回值 (#43)</h3>
+<p>使用命名的返回值，是一种有效改善函数、方法可读性的方法，特别是返回值列表中有多个类型相同的参数。另外，因为返回值列表中的参数是经过零值初始化过的，某些场景下也会简化函数、方法的实现。但是需要注意它的一些潜在副作用。</p>
+<h3 id="44">使用命名的返回值时预期外的副作用 (#44)</h3>
+<p>见 <a href="#从不使用命名的返回值-43">#43</a>.</p>
+<p>使用命名的返回值，因为它已经被初始化了零值，需要注意在某些情况下异常返回时是否需要给它赋予一个不同的值，比如返回值列表定义了一个有名参数 <code>err error</code>，需要注意 <code>return err</code> 时是否正确地对 <code>err</code> 进行了赋值。</p>
+<h3 id="nil-45">返回一个nil接收器 (#45)</h3>
+<p>当返回一个interface参数时，需要小心，不要返回一个nil指针，而是应该显示返回一个nil值。否则，可能会发生一些预期外的问题，因为调用方会收到一个非nil的值。</p>
+<h3 id="46">使用文件名作为函数入参 (#46)</h3>
+<p>设计函数时使用 <code>io.Reader</code> 类型作为入参，而不是文件名，将有助于改善函数的可复用性、易测试性。</p>
+<h3 id="defer-value-47">忽略 <code>defer</code> 语句中参数、接收器值的计算方式 (参数值计算, 指针, 和 value类型接收器) (#47)</h3>
+<p>为了避免 <code>defer</code> 语句执行时就立即计算对defer要执行的函数的参数进行计算，可以考虑将要执行的函数放到闭包里面，然后通过指针传递参数给闭包内函数（或者通过闭包捕获外部变量），来解决这个问题。</p>
+<h2 id="_6">错误管理</h2>
+<h3 id="panicking-48">Panicking (#48)</h3>
+<p>使用 <code>panic</code> 是Go中一种处理错误的方式，但是只能在遇到不可恢复的错误时使用，例如：通知开发人员一个强依赖的模块加载失败了。</p>
+<h3 id="error-49">未考虑何时才应该包装error (#49)</h3>
+<p>Wrapping（包装）错误允许您标记错误、提供额外的上下文信息。然而，包装错误会创建潜在的耦合，因为它使得原来的错误对调用者可见。如果您想要防止这种情况，请不要使用包装错误的方式。</p>
+<h3 id="50">不正确的错误类型比较 (#50)</h3>
+<p>如果你使用 Go 1.13 引入的特性 <code>fmt.Errorf</code> + <code>%w</code> 来包装一个错误，当进行错误比较时，如果想判断该包装后的错误是不是指定的错误类型，就需要使用 <code>errors.As</code>，如果想判断是不是指定的error对象就需要用 <code>errors.Is</code>。</p>
+<h3 id="51">不正确的错误对象值比较 (#51)</h3>
+<p>见 <a href="#不正确的错误类型比较-50">#50</a>.</p>
+<p>为了表达一个预期内的错误，请使用错误值的方式，并通过 <code>==</code> 或者 <code>errors.Is</code> 来比较。而对于意外错误，则应使用特定的错误类型（可以通过 <code>errors.As</code> 来比较）。</p>
+<h3 id="52">处理同一个错误两次 (#52)</h3>
+<p>大多数情况下，错误仅需要处理一次。打印错误日志也是一种错误处理。因此，当函数内发生错误时，应该在打印日志和返回错误中选择其中一种。包装错误也可以提供问题发生的额外上下文信息，也包括了原来的错误（可考虑交给调用方负责打日志）。</p>
+<h3 id="53">不处理错误 (#53)</h3>
+<p>不管是在函数调用时，还是在一个 <code>defer</code> 函数执行时，如果想要忽略一个错误，应该显示地通过 <code>_</code> 来忽略（可注明忽略的原因）。否则，将来的读者就会感觉到困惑，忽略这个错误是有意为之还是无意中漏掉了。</p>
+<h3 id="defer-54">不处理 <code>defer</code> 中的错误 (#54)</h3>
+<p>大多数情况下，你不应该忽略 <code>defer</code> 函数执行时返回的错误，或者显示处理它，或者将它传递给调用方处理，可以根据情景进行选择。如果你确定要忽略这个错误，请显示使用 <code>_</code> 来忽略。</p>
+<h2 id="_7">并发编程: 基础</h2>
+<h3 id="55">混淆并发和并行 (#55)</h3>
+<p>理解并发（concurrency）、并行（parallelism）之间的本质区别是Go开发人员必须要掌握的。并发是关于结构设计上的，并行是关于具体执行上的。</p>
+<h3 id="56"><a href="https://teivah.medium.com/concurrency-isnt-always-faster-in-go-de325168907c">认为并发总是更快</a> (#56)</h3>
+<p>要成为一名熟练的开发人员，您必须意识到并非所有场景下都是并发的方案更快。对于任务中的最小工作负载部分，对它们进行并行化处理并不一定就有明显收益或者比串行化方案更快。对串行化、并发方案进行benchmark测试，是验证假设的好办法。</p>
+<h3 id="channelsmutexes-57">不清楚何时使用channels或mutexes (#57)</h3>
+<p>了解 goroutine 之间的交互也可以在选择使用channels或mutexes时有所帮助。一般来说，并行的 goroutine 需要同步，因此需要使用mutexes。相反，并发的 goroutine 通常需要协调和编排，因此需要使用channels。</p>
+<h3 id="vs-go-58">不明白竞态问题 (数据竞态 vs. 竞态条件 和 Go内存模型) (#58)</h3>
+<p>掌握并发意味着要认识到数据竞争（data races）和竞态条件（race conditions）是两个不同的概念。数据竞争，指的是有多个goroutines同时访问相同内存区域时，没有必要的同步控制，且其中至少有一个goroutine是执行的写操作。同时要认识到，没有发生数据竞争不代表程序的执行是确定性的、没问题的。当在某个特定的操作顺序或者特定的事件发生顺序下，如果最终的行为是不可控的，这就是竞态条件。</p>
+<blockquote>
+<p>ps：数据竞争是竞态条件的子集，竞态条件不仅局限于访存未同步，它可以发生在更高的层面。<code>go test -race</code> 检测的是数据竞争，需要同步来解决，而开发者还需要关注面更广的竞态条件，它需要对多个goroutines的执行进行编排。</p>
+</blockquote>
+<p>理解 Go 的内存模型以及有关顺序和同步的底层保证是防止可能的数据竞争和竞态条件的关键。</p>
+<h3 id="59">不理解不同工作负载类型对并发的影响 (#59)</h3>
+<p>当创建一定数量的goroutines是，需要考虑工作负载的类型。如果工作负载是CPU密集型的，那么goroutines数量应该接近于 <code>GOMAXPROCS</code> 的值（该值取决于主机处理器核心数）。如果工作负载是IO密集型的，goroutines数量就需要考虑多种因素，比如外部系统（考虑请求、响应速率）。</p>
+<h3 id="go-contexts-60">误解了Go contexts (#60)</h3>
+<p>Go 的上下文（context）也是 Go 并发编程的基石之一。上下文允许您携带截止时间、取消信号和键值列表。</p>
+<h2 id="_8">并发编程: 实践</h2>
+<h3 id="context-61">传递不合适的context (#61)</h3>
+<p>当我们传递了一个context，我们需要知道这个context什么时候可以被取消，这点很重要，例如：一个HTTP请求处理器在发送完响应后取消context。</p>
+<blockquote>
+<p>ps: 实际上context表达的是一个动作可以持续多久之后被停止。</p>
+</blockquote>
+<h3 id="goroutine-62">启动了一个goroutine但是不知道它何时会停止 (#62)</h3>
+<p>避免goroutine泄漏，要有这种意识，当创建并启动一个goroutine的时候，应该有对应的设计让它能正常退出。</p>
+<h3 id="goroutines-63">不注意处理 goroutines 和 循环中的迭代变量 (#63)</h3>
+<p>为了避免goroutines和循环中的迭代变量问题，可以考虑创建局部变量并将迭代变量赋值给局部变量，或者goroutine调用带参数的函数，将迭代变量值作为参数值传入，来代替goroutine调用闭包。</p>
+<h3 id="select-channels-64">使用select + channels 时误以为分支选择顺序是确定的 (#64)</h3>
+<p>要明白，<code>select</code> 多个channels时，如果多个channels上的操作都就绪，那么会随机选择一个 <code>case</code> 分支来执行，因此要避免有分支选择顺序是从上到下的这种错误预设，这可能会导致设计上的bug。</p>
+<h3 id="channels-65">不正确使用通知 channels (#65)</h3>
+<p>发送通知时使用 <code>chan struct{}</code> 类型。</p>
+<blockquote>
+<p>ps: 先明白什么是通知channels，一个通知channels指的是只是用来做通知，而其中传递的数据没有意义，或者理解成不传递数据的channels，这种称为通知channels。其中传递的数据的类型struct{}更合适。</p>
+</blockquote>
+<h3 id="nil-channels-66">不使用 nil channels (#66)</h3>
+<p>使用 nil channels 应该是并发处理方式中的一部分，例如，它能够帮助禁用 <code>select</code> 语句中的特定的分支。</p>
+<h3 id="channel-size-67">不清楚该如何确定 channel size (#67)</h3>
+<p>根据指定的场景仔细评估应该使用哪一种 channel 类型（带缓冲的，不带缓冲的）。只有不带缓冲的 channels 可以提供强同步保证。</p>
+<p>使用带缓冲的 channels 时如果不确定 size 该如何设置，可以先设为1，如果有合理的理由再去指定 channels size。</p>
+<blockquote>
+<p>ps: 根据disruptor这个高性能内存消息队列的实践，在某种读写pacing下，队列要么满要么空，不大可能处于某种介于中间的稳态。</p>
+</blockquote>
+<h3 id="etcd-68">忘记了字符串格式化可能带来的副作用（例如 etcd 数据竞争和死锁）(#68)</h3>
+<p>意识到字符串格式化可能会导致调用现有函数，这意味着需要注意可能的死锁和其他数据竞争问题。</p>
+<blockquote>
+<p>ps: 核心是要关注 <code>fmt.Sprintf</code> + <code>%v</code> 进行字符串格式化时 <code>%v</code> 具体到不同的类型值时，实际上执行的操作是什么。比如 <code>%v</code> 这个placeholder对应的值时一个 <code>context.Context</code>，那么会就遍历其通过 <code>context.WithValue</code> 附加在其中的 values，这个过程可能涉及到数据竞争问题。书中提及的另一个导致死锁的案例本质上也是一样的问题，只不过又额外牵扯到了 <code>sync.RWMutex</code> 不可重入的问题。</p>
+</blockquote>
+<h3 id="append-69">使用 append 不当导致数据竞争 (#69)</h3>
+<p>调用 <code>append</code> 不总是没有数据竞争的，因此不要在一个共享的 <code>slice</code> 上并发地执行 <code>append</code>。</p>
+<h3 id="mutexes-slicesmaps-70">误用 mutexes 和 slices、maps (#70)</h3>
+<p>请记住 slices 和 maps 引用类型，有助于避免常见的数据竞争问题。</p>
+<blockquote>
+<p>ps: 这里实际是因为错误理解了 slices 和 maps，导致写出了错误的拷贝 slices 和 maps 的代码，进而导致锁保护无效、出现数据竞争问题。</p>
+</blockquote>
+<h3 id="syncwaitgroup-71">误用 <code>sync.WaitGroup</code> (#71)</h3>
+<p>正确地使用 <code>sync.WaitGroup</code> 需要在启动 goroutines 之前先调用 <code>Add</code> 方法。</p>
+<h3 id="synccond-72">忘记使用 <code>sync.Cond</code> (#72)</h3>
+<p>你可以使用 <code>sync.Cond</code> 向多个 goroutines 发送重复的通知。</p>
+<h3 id="errgroup-73">不使用 <code>errgroup</code> (#73)</h3>
+<p>你可以使用 <code>errgroup</code> 包来同步一组 goroutines 并处理错误和上下文。</p>
+<h3 id="sync-74">拷贝一个 <code>sync</code> 下的类型 (#74)</h3>
+<p><code>sync</code> 包下的类型不应该被拷贝。</p>
+<h2 id="_9">标准库</h2>
+<h3 id="timeduration-75">使用了错误的 time.Duration (#75)</h3>
+<p>注意有些函数接收一个 <code>time.Duration</code> 类型的参数时，尽管直接传递一个整数是可以的，但最好还是使用 time API 中的方法来传递 duration，以避免可能造成的困惑、bug。</p>
+<blockquote>
+<p>ps: 重点是注意 time.Duration 定义的是 nanoseconds 数。</p>
+</blockquote>
+<h3 id="timeafter-76"><code>time.After</code> 和内存泄漏 (#76)</h3>
+<p>避免在重复执行很多次的函数 （如循环中或HTTP处理函数）中调用 <code>time.After</code>，这可以避免内存峰值消耗。由 <code>time.After</code> 创建的资源仅在计时器超时才会被释放。</p>
+<h3 id="json-77">JSON处理中的常见错误 (#77)</h3>
+<ul>
+<li>类型嵌套导致的预料外的行为</li>
+</ul>
+<p>要当心在Go结构体中嵌入字段，这样做可能会导致诸如嵌入的 <code>time.Time</code> 字段实现 <code>json.Marshaler</code> 接口，从而覆盖默认的json序列。</p>
+<ul>
+<li>JSON 和 单调时钟</li>
+</ul>
+<p>当对两个 <code>time.Time</code> 类型值进行比较时，需要记住 <code>time.Time</code> 包含了一个墙上时钟（wall clock）和一个单调时钟 （monotonic clock），而使用 <code>==</code> 运算符进行比较时会同时比较这两个。</p>
+<ul>
+<li>Map 键对应值为 <code>any</code></li>
+</ul>
+<p>当提供一个map用来unmarshal JSON数据时，为了避免不确定的value结构我们会使用 <code>any</code> 来作为value的类型而不是定义一个struct，这种情况下需要记得数值默认会被转换为 <code>float64</code>。</p>
+<h3 id="sql-78">常见的 SQL 错误 (#78)</h3>
+<ul>
+<li>忘记了 <code>sql.Open</code> 并没有与db服务器建立实际连接</li>
+</ul>
+<p>需要调用 <code>Ping</code> 或者 <code>PingContext</code> 方法来测试配置并确保数据库是可达的。</p>
+<ul>
+<li>忘记了使用连接池</li>
+</ul>
+<p>作为生产级别的应用，访问数据库时应该关注配置数据库连接池参数。</p>
+<ul>
+<li>没有使用 prepared 语句</li>
+</ul>
+<p>使用 SQL prepared 语句能够让查询更加高效和安全。</p>
+<ul>
+<li>误处理 null 值</li>
+</ul>
+<p>使用 <code>sql.NullXXX</code> 类型处理表中的可空列。</p>
+<ul>
+<li>不处理行迭代时的错误</li>
+</ul>
+<p>调用 <code>sql.Rows</code> 的 <code>Err</code> 方法来确保在准备下一个行时没有遗漏错误。</p>
+<h3 id="http-sqlrows-osfile-79">不关闭临时资源（HTTP 请求体、<code>sql.Rows</code> 和 <code>os.File</code>) (#79)</h3>
+<p>最终要注意关闭所有实现 <code>io.Closer</code> 接口的结构体,以避免可能的泄漏。</p>
+<h3 id="http-80">响应HTTP请求后没有返回语句 (#80)</h3>
+<p>为了避免在HTTP处理函数中出现某些意外的问题，如果想在发生 <code>http.Error</code> 后让HTTP处理函数停止，那么就不要忘记使用<code>return</code>语句来阻止后续代码的执行。</p>
+<h3 id="http-clientserver-81">直接使用默认的HTTP client和server (#81)</h3>
+<p>对于生产级别的应用，不要使用默认的HTTP client和server实现。这些实现缺少超时和生产环境中应该强制使用的行为。</p>
+<h2 id="_10">测试</h2>
+<h3 id="build-tags-82">不对测试进行分类 （build tags, 环境变量，短模式）(#82)</h3>
+<p>对测试进行必要的分类，可以借助 build tags、环境变量以及短模式，来使得测试过程更加高效。你可以使用 build tags 或环境变量来创建测试类别（例如单元测试与集成测试），并区分短测试与长时间测试，来决定执行哪种类型的。</p>
+<blockquote>
+<p>ps: 了解下go build tags，以及 <code>go test -short</code>。</p>
+</blockquote>
+<h3 id="race-83">不打开 race 开关 (#83)</h3>
+<p>打开 <code>-race</code> 开关在编写并发应用时非常重要。这能帮助你捕获可能的数据竞争,从而避免软件bug。</p>
+<h3 id="parallel-shuffle-84">不打开测试的执行模式开关 (parallel 和 shuffle) (#84)</h3>
+<p>打开开关 <code>-parallel</code> 有助于加速测试的执行，特别是测试中包含一些需要长期运行的用例的时候。</p>
+<p>打开开关 <code>-shuffle</code> 能够打乱测试用例执行的顺序，避免一个测试依赖于某些不符合真实情况的预设，有助于及早暴漏bug。</p>
+<h3 id="85">不使用表驱动的测试 (#85)</h3>
+<p>表驱动的测试是一种有效的方式,可以将一组相似的测试分组在一起,以避免代码重复和使未来的更新更容易处理。</p>
+<h3 id="sleep-86">在单元测试中执行sleep操作 (#86)</h3>
+<p>使用同步的方式、避免sleep，来尽量减少测试的不稳定性和提高鲁棒性。如果无法使用同步手段,可以考虑重试的方式。</p>
+<h3 id="time-api-87">没有高效地处理 time API (#87)</h3>
+<p>理解如何处理使用 time API 的函数，是使测试更加稳定的另一种方式。您可以使用标准技术，例如将时间作为隐藏依赖项的一部分来处理，或者要求客户端提供时间。</p>
+<h3 id="httptest-iotest-88">不使用测试相关的工具包 (<code>httptest</code> 和 <code>iotest</code>) (#88)</h3>
+<p>这个 <code>httptest</code> 包对处理HTTP应用程序很有帮助。它提供了一组实用程序来测试客户端和服务器。</p>
+<p>这个 <code>iotest</code> 包有助于编写 io.Reader 并测试应用程序是否能够容忍错误。</p>
+<h3 id="89"><a href="https://teivah.medium.com/how-to-write-accurate-benchmarks-in-go-4266d7dd1a95">不正确的基准测试</a> (#89)</h3>
+<ul>
+<li>不要重置或者暂停timer</li>
+</ul>
+<p>使用 time 方法来保持基准测试的准确性。</p>
+<ul>
+<li>做出错误的微基准测试假设</li>
+</ul>
+<p>增加 <code>benchtime</code> 或者使用 <code>benchstat</code> 等工具可以有助于微基准测试。</p>
+<p>小心微基准测试的结果,如果最终运行应用程序的系统与运行微基准测试的系统不同。</p>
+<ul>
+<li>对编译期优化要足够小心</li>
+</ul>
+<p>确保测试函数是否会产生一些副作用，防止编译器优化欺骗你得到的基准测试结果。</p>
+<ul>
+<li>被观察者效应所欺骗</li>
+</ul>
+<p>为了避免被观察者效应欺骗,强制重新创建CPU密集型函数使用的数据。</p>
+<h3 id="go-test-90">没有去探索go test所有的特性 (#90)</h3>
+<ul>
+<li>代码覆盖率</li>
+</ul>
+<p>使用 <code>-coverprofile</code> 参数可以快速查看代码的测试覆盖情况，方便快速查看哪个部分需要更多的关注。</p>
+<ul>
+<li>在一个不同包中执行测试</li>
+</ul>
+<p>单元测试组织到一个独立的包中，对于对外层暴漏的接口，需要写一些测试用例。测试应该关注公开的行为，而非内部实现细节。</p>
+<ul>
+<li>Utility 函数</li>
+</ul>
+<p>处理错误时,使用 <code>*testing.T</code> 变量而不是经典的 <code>if err != nil</code> 可以让代码更加简洁易读。</p>
+<ul>
+<li>设置和销毁</li>
+</ul>
+<p>你可以使用setup和teardown函数来配置一个复杂的环境，比如在集成测试的情况下。</p>
+<h3 id="_11">不使用模糊测试 (社区反馈错误)</h3>
+<p>模糊测试是一种高效的策略，使用它能检测出随机、意料外的和一些恶意的数据输入，来完成一些复杂的操作。</p>
+<p>见: <a href="https://github.com/jeromedoucet">@jeromedoucet</a></p>
+<h2 id="_12">优化技术</h2>
+<h3 id="cpu-cache-91">不理解CPU cache (#91)</h3>
+<ul>
+<li>CPU架构</li>
+</ul>
+<p>理解CPU缓存的使用对于优化CPU密集型应用很重要，因为L1缓存比主存快50到100倍。</p>
+<ul>
+<li>Cache line</li>
+</ul>
+<p>意识到 cache line 概念对于理解如何在数据密集型应用中组织数据非常关键。CPU 并不是一个一个字来获取内存。相反，它通常复制一个 64字节长度的 cache line。为了获得每个 cache line 的最大效用，需要实施空间局部性。</p>
+<ul>
+<li>
+<p>一系列struct元素构成的slice vs. 多个slice字段构成的struct</p>
+</li>
+<li>
+<p>概率性的问题</p>
+</li>
+</ul>
+<p>提高CPU执行代码时的可预测性，也是优化某些函数的一个有效方法。比如，固定步长或连续访问对CPU来说是可预测的，但非连续访问（例如链表）就是不可预测的。</p>
+<ul>
+<li>cache放置策略</li>
+</ul>
+<p>要注意现代缓存是分区的（set associative placement，组相连映射），要注意避免使用 <code>critical stride</code>，这种步长情况下只能利用 cache 的一小部分。</p>
+<blockquote>
+<p>critical stride，这种类型的步长，指的是内存访问的步长刚好等于 cache 大小。这种情况下，只有少部分 cacheline 被利用。</p>
+</blockquote>
+<h3 id="false-sharing-92">写的并发处理逻辑会导致false sharing (#92)</h3>
+<p>了解 CPU 缓存的较低层的 L1、L2 cache 不会在所有核间共享，编写并发处理逻辑时能避免写出一些降低性能的问题，比如伪共享（false sharing）。内存共享只是一种假象。</p>
+<h3 id="93">没有考虑指令级的并行 (#93)</h3>
+<p>使用指令级并行（ILP）优化代码的特定部分，以允许CPU尽可能执行更多可以并行执行的指令。识别指令的数据依赖问题（data hazards）是主要步骤之一。</p>
+<h3 id="94">不了解数据对齐 (#94)</h3>
+<p>记住Go中基本类型与其自身大小对齐，例如，按降序从大到小重新组织结构体的字段可以形成更紧凑的结构体（减少内存分配，更好的空间局部性），这有助于避免一些常见的错误。</p>
+<h3 id="stack-vs-heap-95">不了解 stack vs. heap (#95)</h3>
+<p>了解堆和栈之间的区别是开发人员的核心知识点，特别是要去优化一个Go程序时。栈分配的开销几乎为零，而堆分配则较慢，并且依赖GC来清理内存。</p>
+<h3 id="api-compiler-optimizations-and-syncpool-96">不知道如何减少内存分配次数 (API调整, compiler optimizations, and <code>sync.Pool</code>) (#96)</h3>
+<p>减少内存分配次数也是优化Go应用的一个重要方面。这可以通过不同的方式来实现,比如仔细设计API来避免不必要的拷贝，以及使用 <code>sync.Pool</code> 来对待分配对象进行池化。</p>
+<h3 id="97">不注意使用内联 (#97)</h3>
+<p>使用快速路径的内联技术来更加有效地减少调用函数的摊销时间。</p>
+<h3 id="go-98"><a href="https://medium.com/@teivah/profiling-and-execution-tracing-in-go-a5e646970f5b">不使用Go问题诊断工具</a> (#98)</h3>
+<p>了解Go profilng工具、执行时tracer来辅助判断一个应用程序是否正常，以及列出需要优化的部分。</p>
+<h3 id="gc-99">不理解GC是如何工作的 (#99)</h3>
+<p>理解如何调优GC能够带来很多收益，例如有助于更高效地处理突增的负载。</p>
+<h3 id="dockerk8sgo-100">不了解Docker或者K8S对运行的Go应用的性能影响 (#100)</h3>
+<p>为了避免CPU throttling（CPU限频）问题，当我们在Docker和Kubernetes部署应用时，要知道Go语言对CFS(完全公平调度器)无感知。</p>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 - 2023 Teiva Harsanyi
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/teivah" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

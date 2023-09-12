@@ -5,7 +5,7 @@ theme:
   custom_dir: overrides
   favicon: Go-Logo_Fuchsia.svg
   language: en
-  logo: Go-Logo_Fuchsia.svg
+  logo: img/Go-Logo_White.svg
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -24,15 +24,17 @@ plugins:
   - search
   - social
 extra:
+  analytics:
+    provider: google
+    property: G-HMY1HYDM93
   alternate:
     - name: English
       link: /
       lang: en
     - name: Chinese (Simplified)
-      link: /chinese/
+      link: /zh/
       lang: zh
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/teivah
-  generator: false
-
+copyright: Copyright &copy; 2022 - 2023 Teiva Harsanyi

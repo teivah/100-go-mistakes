@@ -1,7 +1,3 @@
----
-title: Common Go Mistakes
----
-
 # 💡 Go Mistakes
 
 This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
@@ -12,7 +8,7 @@ This section contains a summary of the 100 mistakes in the book. Meanwhile, it's
 
 <!-- TODO Include chapter-1.md -->
 
-![](inside-cover.png)
+![](img/inside-cover.png)
 
 ## Code and Project Organization
 
@@ -32,43 +28,44 @@ In general, the more nested levels a function requires, the more complex it is t
 
 * When an `if` block returns, we should omit the `else` block in all cases. For example, we shouldn’t write:
 
-  ```go
-  if foo() {
-      // ...
-      return true
-  } else {
-      // ...
-  }
-  ```
+```go
+if foo() {
+    // ...
+    return true
+} else {
+    // ...
+}
+```
 
   Instead, we omit the `else` block like this:
 
-  ```go
-  if foo() {
-      // ...
-      return true
-  }
-  // ...
-  ```
+```go
+if foo() {
+    // ...
+    return true
+}
+// ...
+```
+
 * We can also follow this logic with a non-happy path:
 
-  ```go
-  if s != "" {
-      // ...
-  } else {
-      return errors.New("empty string")
-  }
-  ```
+```go
+if s != "" {
+    // ...
+} else {
+    return errors.New("empty string")
+}
+```
 
   Here, an empty `s` represents the non-happy path. Hence, we should flip the
   condition like so:
 
-  ```go
-  if s == "" {
-      return errors.New("empty string")
-  }
-  // ...
-  ```
+```go
+if s == "" {
+    return errors.New("empty string")
+}
+// ...
+```
 
 Writing readable code is an important challenge for every developer. Striving to reduce the number of nested blocks, aligning the happy path on the left, and returning as early as possible are concrete means to improve our code’s readability.
 
@@ -193,7 +190,7 @@ Although there are different implementations with minor variations, the main ide
 * An unexported struct holds the configuration: options.
 * Each option is a function that returns the same type: `type Option func(options *options)` error. For example, `WithPort` accepts an `int` argument that represents the port and returns an `Option` type that represents how to update the `options` struct.
 
-![](options.png)
+![](img/options.png)
 
 ```go
 type options struct {
@@ -691,7 +688,7 @@ Let’s start with the last observation. We already mentioned that len returns t
 
 Meanwhile, in the previous example, we have to understand that we don't iterate over each rune; instead, we iterate over each starting index of a rune:
 
-![](rune.png)
+![](img/rune.png)
 
 Printing `s[i]` doesn’t print the ith rune; it prints the UTF-8 representation of the byte at index `i`. Hence, we printed "hÃllo" instead of "hêllo".
 
@@ -738,7 +735,7 @@ fmt.Println(strings.TrimRight("123oxo", "xo"))
 
 The example prints 123:
 
-![](trim.png)
+![](img/trim.png)
 
 Conversely, `strings.TrimLeft` removes all the leading runes contained in a set.
 

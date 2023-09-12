@@ -1,12 +1,8 @@
----
-title: 100 Go Mistakes and How to Avoid Them
----
-
 # 📖 Book Presentation
 
 Source code and community space of _100 Go Mistakes and How to Avoid Them_, published by Manning in 2022.
 
-![](cover.png)
+![](img/cover.png)
 
 ## Book Description
 
