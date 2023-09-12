@@ -12,7 +12,7 @@ If you're a Go developer looking to improve your skills, this book is for you. W
 
 > This is an exceptional book. Usually, if a book contains either high-quality explanations or is written succinctly, I consider myself lucky to have found it. This one combines these two characteristics, which is super rare. It's another Go book for me and I still had quite a lot of "a-ha!" moments while reading it, and all of that without the unnecessary fluff, just straight to the point.
 
-- Krystian (Goodreads user)
+– Krystian (Goodreads user)
 
 > This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.
 
