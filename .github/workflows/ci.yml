@@ -9,6 +9,12 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: 100go.co
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -24,3 +30,4 @@ jobs:
       - run: pip install mkdocs-material
       - run: pip install pillow cairosvg
       - run: mkdocs gh-deploy --force
+      - uses: actions/deploy-pages@v2

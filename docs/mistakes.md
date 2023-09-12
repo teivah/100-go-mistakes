@@ -1,3 +1,7 @@
+---
+title: Common Go Mistakes
+---
+
 # 💡 Go Mistakes
 
 This section contains a summary of the 100 mistakes in the book. Meanwhile, it's also a section open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
