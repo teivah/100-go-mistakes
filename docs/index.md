@@ -157,7 +157,7 @@ When creating a struct, Go offers the option to embed types. But this can someti
 
 In Go, a struct field is called embedded if it’s declared without a name. For example,
 
-```cgo
+```go
 type Foo struct {
     Bar // Embedded field
 }

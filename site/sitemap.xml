@@ -16,6 +16,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://100go.co/external/</loc>
+         <lastmod>2023-09-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://100go.co/jobs/</loc>
          <lastmod>2023-09-12</lastmod>
          <changefreq>daily</changefreq>
