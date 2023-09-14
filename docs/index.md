@@ -1,7 +1,3 @@
----
-title: Introduction
----
-
 # 100 Go Mistakes and How to Avoid Them
 
 Source code and community space of _100 Go Mistakes and How to Avoid Them_, published by Manning in 2022.
