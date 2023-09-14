@@ -1,4 +1,8 @@
-# Being confused about when to use generics (#9)
+---
+title: Being confused about when to use generics (#9)
+---
+
+# Being confused about when to use generics
 
 Generics is a fresh addition to the language. In a nutshell, it allows writing code with types that can be specified later and instantiated when needed. However, it can be pretty easy to be confused about when to use generics and when not to. Throughout this post, we will describe the concept of generics in Go and then delve into common use and misuses.
 
@@ -112,33 +116,32 @@ Note that Go can infer that `getKeys` is called with a `string` type argument. T
 keys := getKeys[string](m)
 ```
 
----
-**NOTE:** What’s the difference between a constraint using `~int` or `int`? Using `int` restricts it to that type, whereas `~int` restricts all the types whose underlying type is an `int`.
+???+ note
 
-To illustrate it, let’s imagine a constraint where we would like to restrict a type to any `int` type implementing the `String() string` method:
+    What’s the difference between a constraint using `~int` or `int`? Using `int` restricts it to that type, whereas `~int` restricts all the types whose underlying type is an `int`.
 
-```go
-type customConstraint interface {
-   ~int
-   String() string
-}
-```
+    To illustrate it, let’s imagine a constraint where we would like to restrict a type to any `int` type implementing the `String() string` method:
 
-Using this constraint will restrict type arguments to custom types like this one:
+    ```go
+    type customConstraint interface {
+       ~int
+       String() string
+    }
+    ```
 
-```cgo
-type customInt int
+    Using this constraint will restrict type arguments to custom types like this one:
 
-func (i customInt) String() string {
-   return strconv.Itoa(int(i))
-}
-```
+    ```go
+    type customInt int
 
-As `customInt` is an `int` and implements the `String() string` method, the `customInt` type satisfies the constraint defined.
+    func (i customInt) String() string {
+       return strconv.Itoa(int(i))
+    }
+    ```
 
-However, if we change the constraint to contain an `int` instead of an `~int`, using `customInt` would lead to a compilation error because the `int` type doesn’t implement `String() string`.
+    As `customInt` is an `int` and implements the `String() string` method, the `customInt` type satisfies the constraint defined.
 
----
+    However, if we change the constraint to contain an `int` instead of an `~int`, using `customInt` would lead to a compilation error because the `int` type doesn’t implement `String() string`.
 
 Let’s also note the `constraints` package contains a set of common constraints such as `Signed` that includes all the signed integer types. Let’s ensure that a constraint doesn’t already exist in this package before creating a new one.
 
@@ -146,7 +149,7 @@ So far, we have discussed examples using generics for functions. However, we can
 
 For example, we will create a linked list containing values of any type. Meanwhile, we will write an `Add` method to append a node:
 
-```cgo
+```go
 type Node[T any] struct { // Use type parameter
    Val  T
    next *Node[T]
@@ -180,7 +183,7 @@ So when are generics useful? Let’s discuss a couple of common uses where gener
 * Data structures. For example, we can use generics to factor out the element type if we implement a binary tree, a linked list, or a heap.
 * Functions working with slices, maps, and channels of any type. For example, a function to merge two channels would work with any channel type. Hence, we could use type parameters to factor out the channel type:
 
-  ```cgo
+  ```go
   func merge[T any](ch1, ch2 <-chan T) <-chan T {
       // ...
   }
@@ -203,7 +206,7 @@ Conversely, when is it recommended **not** to use generics?
 
 * When just calling a method of the type argument. For example, consider a function that receives an `io.Writer` and call the `Write` method:
 
-  ```cgo
+  ```go
   func foo[T io.Writer](w T) {
      b := getBytes()
      _, _ = w.Write(b)

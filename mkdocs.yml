@@ -57,6 +57,8 @@ nav:
         - external.md
     - Go Mistakes:
       - mistakes.md
+      - Full Sections:
+        - 9-generics.md
       - zh.md
     - ❤️ Go Jobs:
       - jobs.md
