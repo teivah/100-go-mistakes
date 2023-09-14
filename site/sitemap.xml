@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://100go.co/</loc>
-         <lastmod>2023-09-12</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://100go.co/book/</loc>
-         <lastmod>2023-09-12</lastmod>
+         <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/chapter-1/</loc>
-         <lastmod>2023-09-12</lastmod>
+         <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/external/</loc>
-         <lastmod>2023-09-12</lastmod>
+         <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/jobs/</loc>
-         <lastmod>2023-09-12</lastmod>
+         <lastmod>2023-09-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://100go.co/mistakes/</loc>
+         <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/zh/</loc>
-         <lastmod>2023-09-12</lastmod>
+         <lastmod>2023-09-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

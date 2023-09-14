@@ -1,4 +1,4 @@
-site_name: 100 Go Mistakes
+site_name: 100 Go Mistakes and How to Avoid Them
 site_url: https://100go.co
 repo_name: teivah/100-go-mistakes
 theme:
@@ -31,7 +31,9 @@ theme:
 repo_url: https://github.com/teivah/100-go-mistakes
 plugins:
   - search
-  - social
+  - social:
+      cards_layout_options:
+        logo: img/cover.png
 extra:
   analytics:
     provider: google
@@ -50,12 +52,12 @@ extra:
       link: http://blog.teivah.io
 nav:
     - Book:
-        - book.md
+        - index.md
         - chapter-1.md
         - external.md
-    - Common Go Mistakes:
-      - index.md
-      - zh/index.md
+    - Go Mistakes:
+      - mistakes.md
+      - zh.md
     - ❤️ Go Jobs:
       - jobs.md
 markdown_extensions:

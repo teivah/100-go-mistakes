@@ -1,5 +1,5 @@
 ---
-title: Chinese (Simplified)
+title: Chinese (Simplified) Version
 ---
 
 # 100个Go常见错误及如何避免
