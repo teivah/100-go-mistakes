@@ -59,6 +59,7 @@ nav:
       - mistakes.md
       - Full Sections:
         - 9-generics.md
+        - 98-profiling-execution-tracing.md
       - zh.md
     - ❤️ Go Jobs:
       - jobs.md

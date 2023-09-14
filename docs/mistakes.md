@@ -1712,6 +1712,8 @@ Credits: [@jeromedoucet](https://github.com/jeromedoucet)
 
     Rely on profiling and the execution tracer to understand how an application performs and the parts to optimize.
 
+Read the full section [here](98-profiling-execution-tracing.md).
+
 ### Not understanding how the GC works (#99)
 
 ???+ info "TL;DR"
