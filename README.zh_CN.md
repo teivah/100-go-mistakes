@@ -728,7 +728,6 @@ Go 的上下文（context）也是 Go 并发编程的基石之一。上下文允
 
 * [最近読んだGo言語の本の紹介：100 Go Mistakes and How to Avoid Them](https://qiita.com/kentaro_suzuki/items/c9c31dc81217f237433c)
 * [『100 Go Mistakes and How to Avoid Them』を読む](https://zenn.dev/yukibobier/books/066f07c8a59fa0)
-* [100 Go Mistakes 随记 - 01 Code and project organization](https://zhuanlan.zhihu.com/p/592602656)
 
 ### 葡萄牙资料
 
