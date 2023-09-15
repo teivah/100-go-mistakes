@@ -52,11 +52,11 @@ extra:
       link: http://blog.teivah.io
 nav:
     - Book:
-        - index.md
+        - book.md
         - chapter-1.md
         - external.md
     - Go Mistakes:
-      - mistakes.md
+      - index.md
       - Full Sections:
         - 9-generics.md
         - 98-profiling-execution-tracing.md
