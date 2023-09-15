@@ -357,7 +357,7 @@ We should also note the other integer literal representations:
 * _Hexadecimal_—Uses an `0x` or `0X` prefix (for example, `0xF` is equal to 15 in base 10)
 * _Imaginary_—Uses an `i` suffix (for example, `3i`)
 
-We can also use an underscore character (_) as a separator for readability. For example, we can write 1 billion this way: `1_000_000_000`. We can also use the under- score character with other representations (for example, `0b00_00_01`).
+We can also use an underscore character (_) as a separator for readability. For example, we can write 1 billion this way: `1_000_000_000`. We can also use the underscore character with other representations (for example, `0b00_00_01`).
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/17-octal-literals/main.go)
 
@@ -367,9 +367,9 @@ We can also use an underscore character (_) as a separator for readability. For 
 
     Because integer overflows and underflows are handled silently in Go, you can implement your own functions to catch them.
 
-In Go, an integer overflow that can be detected at compile time generates a compila- tion error. For example,
+In Go, an integer overflow that can be detected at compile time generates a compilation error. For example,
 
-```cgo
+```go
 var counter int32 = math.MaxInt32 + 1
 ```
 
@@ -433,13 +433,13 @@ Our options are to allocate a slice with either a given capacity or a given leng
 
     To prevent common confusions such as when using the `encoding/json` or the `reflect` package, you need to understand the difference between nil and empty slices. Both are zero-length, zero-capacity slices, but only a nil slice doesn’t require allocation.
 
-In Go, there is a distinction between nil and empty slices. A nil slice is equals to `nil`, whereas an empty slice has a length of zero. A nil slice is empty, but an empty slice isn’t necessarily `nil`. Meanwhile, a nil slice doesn’t require any allocation. We have seen throughout this section how to initialize a slice depending on the con- text by using
+In Go, there is a distinction between nil and empty slices. A nil slice is equals to `nil`, whereas an empty slice has a length of zero. A nil slice is empty, but an empty slice isn’t necessarily `nil`. Meanwhile, a nil slice doesn’t require any allocation. We have seen throughout this section how to initialize a slice depending on the context by using
 
 * `var s []string` if we aren’t sure about the final length and the slice can be empty
 * `[]string(nil)` as syntactic sugar to create a nil and empty slice
 * `make([]string, length)` if the future length is known
 
-The last option, `[]string{}`, should be avoided if we initialize the slice without ele- ments. Finally, let’s check whether the libraries we use make the distinctions between nil and empty slices to prevent unexpected behaviors.
+The last option, `[]string{}`, should be avoided if we initialize the slice without elements. Finally, let’s check whether the libraries we use make the distinctions between nil and empty slices to prevent unexpected behaviors.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/22-nil-empty-slice/)
 
@@ -451,7 +451,7 @@ The last option, `[]string{}`, should be avoided if we initialize the slice with
 
 To determine whether a slice has elements, we can either do it by checking if the slice is nil or if its length is equal to 0. Checking the length is the best option to follow as it will cover both if the slice is empty or is the slice is nil.
 
-Meanwhile, when designing interfaces, we should avoid distinguishing nil and empty slices, which leads to subtle programming errors. When returning slices, it should make neither a seman- tic nor a technical difference if we return a nil or empty slice. Both should mean the same thing for the callers. This principle is the same with maps. To check if a map is empty, check its length, not whether it’s nil.
+Meanwhile, when designing interfaces, we should avoid distinguishing nil and empty slices, which leads to subtle programming errors. When returning slices, it should make neither a semantic nor a technical difference if we return a nil or empty slice. Both should mean the same thing for the callers. This principle is the same with maps. To check if a map is empty, check its length, not whether it’s nil.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/23-checking-slice-empty/main.go)
 
@@ -461,7 +461,7 @@ Meanwhile, when designing interfaces, we should avoid distinguishing nil and emp
 
     To copy one slice to another using the `copy` built-in function, remember that the number of copied elements corresponds to the minimum between the two slice’s lengths.
 
-Copying elements from one slice to another is a reasonably frequent operation. When using copy, we must recall that the number of elements copied to the destina- tion corresponds to the minimum between the two slices’ lengths. Also bear in mind that other alternatives exist to copy a slice, so we shouldn’t be surprised if we find them in a codebase.
+Copying elements from one slice to another is a reasonably frequent operation. When using copy, we must recall that the number of elements copied to the destination corresponds to the minimum between the two slices’ lengths. Also bear in mind that other alternatives exist to copy a slice, so we shouldn’t be surprised if we find them in a codebase.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/24-slice-copy/main.go)
 
@@ -503,7 +503,7 @@ When we use the slicing operation with pointers or structs with pointer fields, 
 
     When creating a map, initialize it with a given length if its length is already known. This reduces the number of allocations and improves performance.
 
-A map provides an unordered collection of key-value pairs in which all the keys are dis- tinct. In Go, a map is based on the hash table data structure. Internally, a hash table is an array of buckets, and each bucket is a pointer to an array of key-value pairs.
+A map provides an unordered collection of key-value pairs in which all the keys are distinct. In Go, a map is based on the hash table data structure. Internally, a hash table is an array of buckets, and each bucket is a pointer to an array of key-value pairs.
 
 If we know up front the number of elements a map will contain, we should create it by providing an initial size. Doing this avoids potential map growth, which is quite heavy computation-wise because it requires reallocating enough space and rebalancing all the elements.
 
@@ -538,10 +538,10 @@ It’s essential to understand how to use `==` and `!=` to make comparisons effe
 
     We can also use the `?`, `>=`, `<`, and `>` operators with numeric types to compare values and with strings to compare their lexical order.
 
-If operands are not comparable (e.g., slices and maps), we have to use other options such as reflection. Reflection is a form of metaprogramming, and it refers to the ability of an applica- tion to introspect and modify its structure and behavior. For example, in Go, we can use `reflect.DeepEqual`. This function reports whether two elements are deeply equal by recursively traversing two values. The elements it accepts are basic types plus arrays, structs, slices, maps, pointers, interfaces, and functions. Yet, the main catch is the performance penalty.
+If operands are not comparable (e.g., slices and maps), we have to use other options such as reflection. Reflection is a form of metaprogramming, and it refers to the ability of an application to introspect and modify its structure and behavior. For example, in Go, we can use `reflect.DeepEqual`. This function reports whether two elements are deeply equal by recursively traversing two values. The elements it accepts are basic types plus arrays, structs, slices, maps, pointers, interfaces, and functions. Yet, the main catch is the performance penalty.
 
 If performance is crucial at run time, implementing our custom method might be the best solution.
-One additional note: we must remember that the standard library has some exist- ing comparison methods. For example, we can use the optimized `bytes.Compare` function to compare two slices of bytes. Before implementing a custom method, we need to make sure we don’t reinvent the wheel.
+One additional note: we must remember that the standard library has some existing comparison methods. For example, we can use the optimized `bytes.Compare` function to compare two slices of bytes. Before implementing a custom method, we need to make sure we don’t reinvent the wheel.
 
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/29-comparing-values/main.go)
@@ -596,7 +596,7 @@ This code updates the last index to 10. However, if we run this code, it does no
 
     Using a local variable or accessing an element using an index, you can prevent mistakes while copying pointers inside a loop.
 
-When iterating over a data structure using a `range` loop, we must recall that all the values are assigned to a unique variable with a single unique address. Therefore, if we store a pointer referencing this variable during each iteration, we will end up in a situ- ation where we store the same pointer referencing the same element: the latest one. We can overcome this issue by forcing the creation of a local variable in the loop’s scope or creating a pointer referencing a slice element via its index. Both solutions are fine.
+When iterating over a data structure using a `range` loop, we must recall that all the values are assigned to a unique variable with a single unique address. Therefore, if we store a pointer referencing this variable during each iteration, we will end up in a situation where we store the same pointer referencing the same element: the latest one. We can overcome this issue by forcing the creation of a local variable in the loop’s scope or creating a pointer referencing a slice element via its index. Both solutions are fine.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/04-control-structures/32-range-loop-pointers/)
 
@@ -636,7 +636,7 @@ for i := 0; i < 5; i++ {
 
 The break statement doesn’t terminate the `for` loop: it terminates the `switch` statement, instead. Hence, instead of iterating from 0 to 2, this code iterates from 0 to 4: `0 1 2 3 4`.
 
-One essential rule to keep in mind is that a `break` statement terminates the execu- tion of the innermost `for`, `switch`, or `select` statement. In the previous example, it terminates the `switch` statement.
+One essential rule to keep in mind is that a `break` statement terminates the execution of the innermost `for`, `switch`, or `select` statement. In the previous example, it terminates the `switch` statement.
 
 To break the loop instead of the `switch` statement, the most idiomatic way is to use a label:
 
@@ -739,7 +739,7 @@ As runes are everywhere in Go, it's important to understand the following:
 
     Iterating on a string with the `range` operator iterates on the runes with the index corresponding to the starting index of the rune’s byte sequence. To access a specific rune index (such as the third rune), convert the string into a `[]rune`.
 
-Iterating on a string is a common operation for developers. Perhaps we want to per- form an operation for each rune in the string or implement a custom function to search for a specific substring. In both cases, we have to iterate on the different runes of a string. But it’s easy to get confused about how iteration works.
+Iterating on a string is a common operation for developers. Perhaps we want to perform an operation for each rune in the string or implement a custom function to search for a specific substring. In both cases, we have to iterate on the different runes of a string. But it’s easy to get confused about how iteration works.
 
 For example, consider the following example:
 
@@ -766,7 +766,7 @@ Let's highlight three points that might be confusing:
 * We jumped from position 1 to position 3: what is at position 2?
 * len returns a count of 6, whereas s contains only 5 runes.
 
-Let’s start with the last observation. We already mentioned that len returns the num- ber of bytes in a string, not the number of runes. Because we assigned a string literal to `s`, `s` is a UTF-8 string. Meanwhile, the special character "ê" isn’t encoded in a single byte; it requires 2 bytes. Therefore, calling `len(s)` returns 6.
+Let’s start with the last observation. We already mentioned that len returns the number of bytes in a string, not the number of runes. Because we assigned a string literal to `s`, `s` is a UTF-8 string. Meanwhile, the special character "ê" isn’t encoded in a single byte; it requires 2 bytes. Therefore, calling `len(s)` returns 6.
 
 Meanwhile, in the previous example, we have to understand that we don't iterate over each rune; instead, we iterate over each starting index of a rune:
 
@@ -785,7 +785,7 @@ for i, r := range s {
 
 Or, we can convert the string into a slice of runes and iterate over it:
 
-```cgo
+```go
 s := "hêllo"
 runes := []rune(s)
 for i, r := range runes {
@@ -797,7 +797,7 @@ Note that this solution introduces a run-time overhead compared to the previous 
 
 However, if we want to access the ith rune of a string with the first option, we don’t have access to the rune index; rather, we know the starting index of a rune in the byte sequence.
 
-```cgo
+```go
 s := "hêllo"
 r := []rune(s)[4]
 fmt.Printf("%c\n", r) // o
@@ -813,7 +813,7 @@ fmt.Printf("%c\n", r) // o
 
 For example:
 
-```cgo
+```go
 fmt.Println(strings.TrimRight("123oxo", "xo"))
 ```
 
@@ -863,7 +863,7 @@ During each iteration, we constructed the resulting string by calling the `Write
 
 ???+ note
 
-    `WriteString` returns an error as the second output, but we purposely ignore it. Indeed, this method will never return a non-nil error. So what’s the purpose of this method returning an error as part of its signature? `strings.Builder` imple- ments the `io.StringWriter` interface, which contains a single method: `WriteString(s string) (n int, err error)`. Hence, to comply with this interface, `WriteString` must return an error.
+    `WriteString` returns an error as the second output, but we purposely ignore it. Indeed, this method will never return a non-nil error. So what’s the purpose of this method returning an error as part of its signature? `strings.Builder` implements the `io.StringWriter` interface, which contains a single method: `WriteString(s string) (n int, err error)`. Hence, to comply with this interface, `WriteString` must return an error.
 
 Internally, `strings.Builder` holds a byte slice. Each call to `WriteString` results in a call to append on this slice. There are two impacts. First, this struct shouldn’t be used concurrently, as the calls to `append` would lead to race conditions. The second impact is something that we saw in [mistake #21, "Inefficient slice initialization"](#inefficient-slice-initialization-21): if the future length of a slice is already known, we should preallocate it. For that purpose, `strings.Builder` exposes a method `Grow(n int)` to guarantee space for another `n` bytes:
 
@@ -883,7 +883,7 @@ func concat(values []string) string {
 }
 ```
 
-Let’s run a benchmark to compare the three versions (v1 using `+=`; v2 using `strings.Builder{}` without preallocation; and v3 using `strings.Builder{}` with pre- allocation). The input slice contains 1,000 strings, and each string contains 1,000 bytes:
+Let’s run a benchmark to compare the three versions (v1 using `+=`; v2 using `strings.Builder{}` without preallocation; and v3 using `strings.Builder{}` with preallocation). The input slice contains 1,000 strings, and each string contains 1,000 bytes:
 
 ```
 BenchmarkConcatV1-4             16      72291485 ns/op
@@ -893,7 +893,7 @@ BenchmarkConcatV3-4           5922        190340 ns/op
 
 As we can see, the latest version is by far the most efficient: 99% faster than v1 and 78% faster than v2.
 
-`strings.Builder` is the recommended solution to concatenate a list of strings. Usually, this solution should be used within a loop. Indeed, if we just have to concate- nate a few strings (such as a name and a surname), using `strings.Builder` is not rec- ommended as doing so will make the code a bit less readable than using the `+=` operator or `fmt.Sprintf`.
+`strings.Builder` is the recommended solution to concatenate a list of strings. Usually, this solution should be used within a loop. Indeed, if we just have to concatenate a few strings (such as a name and a surname), using `strings.Builder` is not recommended as doing so will make the code a bit less readable than using the `+=` operator or `fmt.Sprintf`.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/05-strings/39-string-concat/)
 
@@ -915,7 +915,7 @@ When we’re wondering whether we should work with strings or `[]byte`, let’s 
 
     Using copies instead of substrings can prevent memory leaks, as the string returned by a substring operation will be backed by the same byte array.
 
-In mistake [#26, “Slices and memory leaks,”](#slice-and-memory-leaks--26-) we saw how slicing a slice or array may lead to memory leak situations. This principle also applies to string and substring opera- tions.
+In mistake [#26, “Slices and memory leaks,”](#slice-and-memory-leaks--26-) we saw how slicing a slice or array may lead to memory leak situations. This principle also applies to string and substring operations.
 
 We need to keep two things in mind while using the substring operation in Go. First, the interval provided is based on the number of bytes, not the number of runes. Second, a substring operation may lead to a memory leak as the resulting substring will share the same backing array as the initial string. The solutions to prevent this case from happening are to perform a string copy manually or to use `strings.Clone` from Go 1.18.
 
@@ -929,13 +929,13 @@ We need to keep two things in mind while using the substring operation in Go. Fi
 
     The decision whether to use a value or a pointer receiver should be made based on factors such as the type, whether it has to be mutated, whether it contains a field that can’t be copied, and how large the object is. When in doubt, use a pointer receiver.
 
-Choosing between value and pointer receivers isn’t always straightforward. Let’s dis- cuss some of the conditions to help us choose.
+Choosing between value and pointer receivers isn’t always straightforward. Let’s discuss some of the conditions to help us choose.
 
 A receiver _must_ be a pointer
 
 * If the method needs to mutate the receiver. This rule is also valid if the receiver is a slice and a method needs to append elements:
 
-  ```cgo
+  ```go
   type slice []int
 
   func (s *slice) add(element int) {
@@ -947,7 +947,7 @@ A receiver _must_ be a pointer
 
 A receiver _should_ be a pointer
 
-* If the receiver is a large object. Using a pointer can make the call more effi- cient, as doing so prevents making an extensive copy. When in doubt about how large is large, benchmarking can be the solution; it’s pretty much impossible to state a specific size, because it depends on many factors.
+* If the receiver is a large object. Using a pointer can make the call more efficient, as doing so prevents making an extensive copy. When in doubt about how large is large, benchmarking can be the solution; it’s pretty much impossible to state a specific size, because it depends on many factors.
 
 A receiver _must_ be a value
 
@@ -971,7 +971,7 @@ Of course, it’s impossible to be exhaustive, as there will always be edge case
 
     Using named result parameters can be an efficient way to improve the readability of a function/method, especially if multiple result parameters have the same type. In some cases, this approach can also be convenient because named result parameters are initialized to their zero value. But be cautious about potential side effects.
 
-When we return parameters in a function or a method, we can attach names to these parameters and use them as regular variables. When a result parameter is named, it’s initialized to its zero value when the function/method begins. With named result parameters, we can also call a naked return statement (without argu- ments). In that case, the current values of the result parameters are used as the returned values.
+When we return parameters in a function or a method, we can attach names to these parameters and use them as regular variables. When a result parameter is named, it’s initialized to its zero value when the function/method begins. With named result parameters, we can also call a naked return statement (without arguments). In that case, the current values of the result parameters are used as the returned values.
 
 Here’s an example that uses a named result parameter `b`:
 
@@ -1015,7 +1015,7 @@ func (l loc) getCoordinates(ctx context.Context, address string) (
 The error might not be obvious at first glance. Here, the error returned in the `if ctx.Err() != nil` scope is `err`. But we haven’t assigned any value to the `err` variable. It’s still assigned to the zero value of an `error` type: `nil`. Hence, this code will always return a nil error.
 
 
-When using named result parameters, we must recall that each parameter is initial- ized to its zero value. As we have seen in this section, this can lead to subtle bugs that aren’t always straightforward to spot while reading code. Therefore, let’s remain cau- tious when using named result parameters, to avoid potential side effects.
+When using named result parameters, we must recall that each parameter is initialized to its zero value. As we have seen in this section, this can lead to subtle bugs that aren’t always straightforward to spot while reading code. Therefore, let’s remain cautious when using named result parameters, to avoid potential side effects.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/06-functions-methods/44-side-effects-named-result-parameters/main.go)
 
@@ -1035,7 +1035,7 @@ When using named result parameters, we must recall that each parameter is initia
 
     Designing functions to receive `io.Reader` types instead of filenames improves the reusability of a function and makes testing easier.
 
-Accepting a filename as a function input to read from a file should, in most cases, be considered a code smell (except in specific functions such as `os.Open`). Indeed, it makes unit tests more complex because we may have to create multiple files. It also reduces the reusability of a function (although not all functions are meant to be reused). Using the `io.Reader` interface abstracts the data source. Regardless of whether the input is a file, a string, an HTTP request, or a gRPC request, the imple- mentation can be reused and easily tested.
+Accepting a filename as a function input to read from a file should, in most cases, be considered a code smell (except in specific functions such as `os.Open`). Indeed, it makes unit tests more complex because we may have to create multiple files. It also reduces the reusability of a function (although not all functions are meant to be reused). Using the `io.Reader` interface abstracts the data source. Regardless of whether the input is a file, a string, an HTTP request, or a gRPC request, the implementation can be reused and easily tested.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/06-functions-methods/46-function-input/)
 
@@ -1106,7 +1106,7 @@ Using `defer` evaluates the arguments right away: here, the address of status. Y
 
 There’s another solution: calling a closure (an anonymous function value that references variables from outside its body) as a `defer` statement:
 
-```cgo
+```go
 func f() error {
     var status string
     defer func() {
@@ -1153,7 +1153,7 @@ main.main()
         main.go:7 +0xb3
 ```
 
-Panicking in Go should be used sparingly. There are two prominent cases, one to signal a programmer error (e.g., [`sql.Register`](https://cs.opensource.google/go/go/+/refs/tags/go1.20.7:src/database/sql/sql.go;l=44) that panics if the driver is `nil` or has already been register) and another where our application fails to create a man- datory dependency. Hence, exceptional conditions that lead us to stop the application. In most other cases, error management should be done with a function that returns a proper error type as the last return argument.
+Panicking in Go should be used sparingly. There are two prominent cases, one to signal a programmer error (e.g., [`sql.Register`](https://cs.opensource.google/go/go/+/refs/tags/go1.20.7:src/database/sql/sql.go;l=44) that panics if the driver is `nil` or has already been register) and another where our application fails to create a mandatory dependency. Hence, exceptional conditions that lead us to stop the application. In most other cases, error management should be done with a function that returns a proper error type as the last return argument.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/07-error-management/48-panic/main.go)
 
@@ -1190,7 +1190,7 @@ When handling an error, we can decide to wrap it. Wrapping is about adding addit
 
 A sentinel error is an error defined as a global variable:
 
-```cgo
+```go
 import "errors"
 
 var ErrFoo = errors.New("foo")
@@ -1211,9 +1211,9 @@ If we use error wrapping in our application with the `%w` directive and `fmt.Err
 
     In most situations, an error should be handled only once. Logging an error is handling an error. Therefore, you have to choose between logging or returning an error. In many cases, error wrapping is the solution as it allows you to provide additional context to an error and return the source error.
 
-Handling an error multiple times is a mistake made frequently by developers, not spe- cifically in Go. This can cause situations where the same error is logged multiple times make debugging harder.
+Handling an error multiple times is a mistake made frequently by developers, not specifically in Go. This can cause situations where the same error is logged multiple times make debugging harder.
 
-Let's reming us that handling an error should be done only once. Logging an error is handling an error. Hence, we should either log or return an error. By doing this, we simplify our code and gain better insights into the error situation. Using error wrap- ping is the most convenient approach as it allows us to propagate the source error and add context to an error.
+Let's remind us that handling an error should be done only once. Logging an error is handling an error. Hence, we should either log or return an error. By doing this, we simplify our code and gain better insights into the error situation. Using error wrapping is the most convenient approach as it allows us to propagate the source error and add context to an error.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/07-error-management/52-handling-error-twice/main.go)
 
