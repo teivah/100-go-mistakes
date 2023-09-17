@@ -89,7 +89,18 @@
       
     
     
-  </head>
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -763,11 +774,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#slice-and-memory-leaks-26" class="md-nav__link">
-    Slice and memory leaks (#26)
+  <a href="#slices-and-memory-leaks-26" class="md-nav__link">
+    Slices and memory leaks (#26)
   </a>
   
-    <nav class="md-nav" aria-label="Slice and memory leaks (#26)">
+    <nav class="md-nav" aria-label="Slices and memory leaks (#26)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -797,8 +808,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#map-and-memory-leaks-28" class="md-nav__link">
-    Map and memory leaks (#28)
+  <a href="#maps-and-memory-leaks-28" class="md-nav__link">
+    Maps and memory leaks (#28)
   </a>
   
 </li>
@@ -1505,6 +1516,46 @@
   
   
     <li class="md-nav__item">
+      <a href="28-maps-memory-leaks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maps and memory leaks (#28)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="89-benchmarks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Writing inaccurate benchmarks (#89)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="98-profiling-execution-tracing/" class="md-nav__link">
         
   
@@ -1838,11 +1889,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#slice-and-memory-leaks-26" class="md-nav__link">
-    Slice and memory leaks (#26)
+  <a href="#slices-and-memory-leaks-26" class="md-nav__link">
+    Slices and memory leaks (#26)
   </a>
   
-    <nav class="md-nav" aria-label="Slice and memory leaks (#26)">
+    <nav class="md-nav" aria-label="Slices and memory leaks (#26)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1872,8 +1923,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#map-and-memory-leaks-28" class="md-nav__link">
-    Map and memory leaks (#28)
+  <a href="#maps-and-memory-leaks-28" class="md-nav__link">
+    Maps and memory leaks (#28)
   </a>
   
 </li>
@@ -2540,7 +2591,7 @@
 
 <!-- TODO Include chapter-1.md -->
 
-<p><img alt="" src="img/inside-cover.png" /></p>
+<p><a class="glightbox" href="img/inside-cover.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="img/inside-cover.png" /></a></p>
 <h2 id="code-and-project-organization">Code and Project Organization</h2>
 <h3 id="unintended-variable-shadowing-1">Unintended variable shadowing (#1)</h3>
 <details class="info" open="open">
@@ -2653,8 +2704,6 @@ What’s the main problem if we overuse interfaces? The answer is that they make
 <p>Relying on generics and type parameters can prevent writing boilerplate code to factor out elements or behaviors. However, do not use type parameters prematurely, but only when you see a concrete need for them. Otherwise, they introduce unnecessary abstractions and complexity.</p>
 </details>
 <p>Read the full section <a href="9-generics/">here</a>.</p>
-<!-- TODO Include 9-generics.md file -->
-
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/02-code-project-organization/9-generics/main.go">Source code</a></p>
 <h3 id="not-being-aware-of-the-possible-problems-with-type-embedding-10">Not being aware of the possible problems with type embedding (#10)</h3>
 <details class="info" open="open">
@@ -2688,7 +2737,7 @@ promoted to <code>Foo</code>. Therefore, Baz becomes available from Foo.</p>
 <p>Although there are different implementations with minor variations, the main idea is as follows:
 * An unexported struct holds the configuration: options.
 * Each option is a function that returns the same type: <code>type Option func(options *options)</code> error. For example, <code>WithPort</code> accepts an <code>int</code> argument that represents the port and returns an <code>Option</code> type that represents how to update the <code>options</code> struct.</p>
-<p><img alt="" src="img/options.png" /></p>
+<p><a class="glightbox" href="img/options.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="img/options.png" /></a></p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nx">port</span><span class="w"> </span><span class="o">*</span><span class="kt">int</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span>
@@ -2881,7 +2930,7 @@ Meanwhile, we should also look at golangci-lint (https://github.com/golangci/ go
 <p><code>s[low:high:max]</code> (full slice expression): This statement creates a slice similar to the one created with <code>s[low:high]</code>, except that the resulting slice’s capacity is equal to <code>max - low</code>.</p>
 </details>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/25-slice-append/main.go">Source code</a></p>
-<h3 id="slice-and-memory-leaks-26">Slice and memory leaks (#26)</h3>
+<h3 id="slices-and-memory-leaks-26">Slices and memory leaks (#26)</h3>
 <details class="info" open="open">
 <summary>TL;DR</summary>
 <p>Working with a slice of pointers or structs with pointer fields, you can avoid memory leaks by marking as nil the elements excluded by a slicing operation.</p>
@@ -2900,13 +2949,12 @@ Meanwhile, we should also look at golangci-lint (https://github.com/golangci/ go
 <p>A map provides an unordered collection of key-value pairs in which all the keys are distinct. In Go, a map is based on the hash table data structure. Internally, a hash table is an array of buckets, and each bucket is a pointer to an array of key-value pairs.</p>
 <p>If we know up front the number of elements a map will contain, we should create it by providing an initial size. Doing this avoids potential map growth, which is quite heavy computation-wise because it requires reallocating enough space and rebalancing all the elements.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/27-map-init/main_test.go">Source code</a></p>
-<h3 id="map-and-memory-leaks-28"><a href="https://teivah.medium.com/maps-and-memory-leaks-in-go-a85ebe6e7e69">Map and memory leaks</a> (#28)</h3>
+<h3 id="maps-and-memory-leaks-28">Maps and memory leaks (#28)</h3>
 <details class="info" open="open">
 <summary>TL;DR</summary>
 <p>A map can always grow in memory, but it never shrinks. Hence, if it leads to some memory issues, you can try different options, such as forcing Go to recreate the map or using pointers.</p>
 </details>
-<!-- TODO -->
-
+<p>Read the full section <a href="28-maps-memory-leaks/">here</a>.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/28-map-memory-leak/main.go">Source code</a></p>
 <h3 id="comparing-values-incorrectly-29">Comparing values incorrectly (#29)</h3>
 <details class="info" open="open">
@@ -3104,7 +3152,7 @@ One additional note: we must remember that the standard library has some existin
 </ul>
 <p>Let’s start with the last observation. We already mentioned that len returns the number of bytes in a string, not the number of runes. Because we assigned a string literal to <code>s</code>, <code>s</code> is a UTF-8 string. Meanwhile, the special character "ê" isn’t encoded in a single byte; it requires 2 bytes. Therefore, calling <code>len(s)</code> returns 6.</p>
 <p>Meanwhile, in the previous example, we have to understand that we don't iterate over each rune; instead, we iterate over each starting index of a rune:</p>
-<p><img alt="" src="img/rune.png" /></p>
+<p><a class="glightbox" href="img/rune.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="img/rune.png" /></a></p>
 <p>Printing <code>s[i]</code> doesn’t print the ith rune; it prints the UTF-8 representation of the byte at index <code>i</code>. Hence, we printed "hÃllo" instead of "hêllo".</p>
 <p>If we want to print all the different runes, we can either use the value element of the <code>range</code> operator:</p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;hêllo&quot;</span>
@@ -3135,7 +3183,7 @@ One additional note: we must remember that the standard library has some existin
 <div class="language-go highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">TrimRight</span><span class="p">(</span><span class="s">&quot;123oxo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;xo&quot;</span><span class="p">))</span>
 </span></code></pre></div>
 <p>The example prints 123:</p>
-<p><img alt="" src="img/trim.png" /></p>
+<p><a class="glightbox" href="img/trim.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="img/trim.png" /></a></p>
 <p>Conversely, <code>strings.TrimLeft</code> removes all the leading runes contained in a set.</p>
 <p>On the other side, <code>strings.TrimSuffix</code> / <code>strings.TrimPrefix</code> returns a string without the provided trailing suffix / prefix.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/05-strings/38-trim/main.go">Source code</a></p>
@@ -3702,28 +3750,20 @@ One additional note: we must remember that the standard library has some existin
 <li>The <code>iotest</code> package helps write io.Reader and test that an application is tolerant to errors.</li>
 </ul>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/88-utility-package/iotest/main_test.go">Source code</a></p>
-<h3 id="writing-inaccurate-benchmarks-89"><a href="https://teivah.medium.com/how-to-write-accurate-benchmarks-in-go-4266d7dd1a95">Writing inaccurate benchmarks</a> (#89)</h3>
+<h3 id="writing-inaccurate-benchmarks-89">Writing inaccurate benchmarks (#89)</h3>
+<details class="info" open="open">
+<summary>TL;DR</summary>
+<p>Regarding benchmarks:</p>
 <ul>
-<li>Not resetting or pausing the timer</li>
+<li>Use time methods to preserve the accuracy of a benchmark.</li>
+<li>Increasing benchtime or using tools such as benchstat can be helpful when dealing with micro-benchmarks.</li>
+<li>Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-bench- mark.</li>
+<li>Make sure the function under test leads to a side effect, to prevent compiler optimizations from fooling you about the benchmark results.</li>
+<li>To prevent the observer effect, force a benchmark to re-create the data used by a CPU-bound function.</li>
 </ul>
-<p>Use time methods to preserve the accuracy of a benchmark.</p>
-<p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/timer/main_test.go">Source code</a></p>
-<ul>
-<li>Making wrong assumptions about micro-benchmarks</li>
-</ul>
-<p>Increasing <code>benchtime</code> or using tools such as <code>benchstat</code> can be helpful when dealing with micro-benchmarks.</p>
-<p>Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-benchmark.</p>
-<p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/wrong-assumptions/main_test.go">Source code</a></p>
-<ul>
-<li>Not being careful about compiler optimizations</li>
-</ul>
-<p>Make sure the function under test leads to a side effect, to prevent compiler optimizations from fooling you about the benchmark results.</p>
-<p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/compiler-optimizations/main_test.go">Source code</a></p>
-<ul>
-<li>Being fooled by the observer effect</li>
-</ul>
-<p>To prevent the observer effect, force a benchmark to re-create the data used by a CPU-bound function.</p>
-<p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/observer-effect/main_test.go">Source code</a></p>
+</details>
+<p>Read the full section <a href="89-benchmarks/">here</a>.</p>
+<p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/">Source code</a></p>
 <h3 id="not-exploring-all-the-go-testing-features-90">Not exploring all the Go testing features (#90)</h3>
 <ul>
 <li>Code coverage</li>
@@ -3896,11 +3936,11 @@ One additional note: we must remember that the standard library has some existin
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.highlight", "search.share", "search.suggest"], "search": "assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.highlight", "search.share", "search.suggest", "content.code.copy"], "search": "assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="assets/javascripts/bundle.dff1b7c8.min.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

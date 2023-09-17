@@ -63,7 +63,7 @@ This book aims to help accelerate our journey toward proficiency by delving into
 
 Why should we read a book about common Go mistakes? Why not deepen our knowledge with an ordinary book that would dig into different topics?
 
-In a 2011 article, neuroscientists proved that the best time for brain growth is when we’re facing mistakes. Haven’t we all experienced the process of learning from a mistake and recalling that occasion after months or even years, when some context related to it? As presented in another article, by Janet Metcalfe, this happens because mistakes have a facilitative effect. The main idea is that we can remember not only the error but also the context surrounding the mistake. This is one of the reasons why learning from mistakes is so efficient.
+In a 2011 article, neuroscientists proved that the best time for brain growth is when we’re facing mistakes. [^1] Haven’t we all experienced the process of learning from a mistake and recalling that occasion after months or even years, when some context related to it? As presented in another article, by Janet Metcalfe, this happens because mistakes have a facilitative effect. [^2] The main idea is that we can remember not only the error but also the context surrounding the mistake. This is one of the reasons why learning from mistakes is so efficient.
 
 To strengthen this facilitative effect, this book accompanies each mistake as much as possible with real-world examples. This book isn’t only about theory; it also helps us get better at avoiding mistakes and making more well-informed, conscious decisions because we now understand the rationale behind them.
 
@@ -85,7 +85,7 @@ We introduce each mistake category next.
 
 ### Bugs
 
-The first type of mistake and probably the most obvious is software bugs. In 2020, a study conducted by Synopsys estimated the cost of software bugs in the U.S. alone to be over $2 trillion.
+The first type of mistake and probably the most obvious is software bugs. In 2020, a study conducted by Synopsys estimated the cost of software bugs in the U.S. alone to be over $2 trillion. [^3]
 
 Furthermore, bugs can also lead to tragic impacts. We can, for example, mention cases such as Therac-25, a radiation therapy machine produced by Atomic Energy of Canada Limited (AECL). Because of a race condition, the machine gave its patients radiation doses that were hundreds of times greater than expected, leading to the death of three patients. Hence, software bugs aren’t only about money. As developers, we should remember how impactful our jobs are.
 
@@ -130,3 +130,7 @@ In this book, we will cover many cases and concrete examples that will help us t
 * Go is a modern programming language that enables developer productivity, which is crucial for most companies today.
 * Go is simple to learn but not easy to master. This is why we need to deepen our knowledge to make the most effective use of the language.
 * Learning via mistakes and concrete examples is a powerful way to be proficient in a language. This book will accelerate our path to proficiency by exploring 100 common mistakes.
+
+[^1]: J. S. Moser, H. S. Schroder, et al., “Mind Your Errors: Evidence for a Neural Mechanism Linking Growth Mindset to Adaptive Posterror Adjustments,” Psychological Science, vol. 22, no. 12, pp. 1484–1489, Dec. 2011. 
+[^2]: J. Metcalfe, “Learning from Errors,” Annual Review of Psychology, vol. 68, pp. 465–489, Jan. 2017.
+[^3]: Synopsys, “The Cost of Poor Software Quality in the US: A 2020 Report.” 2020. [https://news.synopsys.com/2021-01-06-Synopsys-Sponsored-CISQ-Research-Estimates-Cost-of-Poor-Software-Quality-in-the-US-2-08-Trillion-in-2020](https://news.synopsys.com/2021-01-06-Synopsys-Sponsored-CISQ-Research-Estimates-Cost-of-Poor-Software-Quality-in-the-US-2-08-Trillion-in-2020). 

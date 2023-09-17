@@ -169,8 +169,6 @@ The `any` type can be helpful if there is a genuine need for accepting or return
 
 Read the full section [here](9-generics.md).
 
-<!-- TODO Include 9-generics.md file -->
-
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/02-code-project-organization/9-generics/main.go)
 
 ### Not being aware of the possible problems with type embedding (#10)
@@ -479,7 +477,7 @@ When using slicing, we must remember that we can face a situation leading to uni
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/25-slice-append/main.go)
 
-### Slice and memory leaks (#26)
+### Slices and memory leaks (#26)
 
 ???+ info "TL;DR"
 
@@ -509,13 +507,13 @@ If we know up front the number of elements a map will contain, we should create 
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/27-map-init/main_test.go)
 
-### [Map and memory leaks](https://teivah.medium.com/maps-and-memory-leaks-in-go-a85ebe6e7e69) (#28)
+### Maps and memory leaks (#28)
 
 ???+ info "TL;DR"
 
     A map can always grow in memory, but it never shrinks. Hence, if it leads to some memory issues, you can try different options, such as forcing Go to recreate the map or using pointers.
 
-<!-- TODO -->
+Read the full section [here](28-maps-memory-leaks.md).
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/28-map-memory-leak/main.go)
 
@@ -1570,33 +1568,21 @@ You should have a good reason to specify a channel size other than one for buffe
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/88-utility-package/iotest/main_test.go)
 
-### [Writing inaccurate benchmarks](https://teivah.medium.com/how-to-write-accurate-benchmarks-in-go-4266d7dd1a95) (#89)
+### Writing inaccurate benchmarks (#89)
 
-* Not resetting or pausing the timer
+???+ info "TL;DR"
 
-  Use time methods to preserve the accuracy of a benchmark.
+    Regarding benchmarks:
 
- [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/timer/main_test.go)
+    * Use time methods to preserve the accuracy of a benchmark.
+    * Increasing benchtime or using tools such as benchstat can be helpful when dealing with micro-benchmarks.
+    * Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-bench- mark.
+    * Make sure the function under test leads to a side effect, to prevent compiler optimizations from fooling you about the benchmark results.
+    * To prevent the observer effect, force a benchmark to re-create the data used by a CPU-bound function.
 
-* Making wrong assumptions about micro-benchmarks
+Read the full section [here](89-benchmarks.md).
 
-  Increasing `benchtime` or using tools such as `benchstat` can be helpful when dealing with micro-benchmarks.
-
-  Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-benchmark.
-
- [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/wrong-assumptions/main_test.go)
-
-* Not being careful about compiler optimizations
-
-  Make sure the function under test leads to a side effect, to prevent compiler optimizations from fooling you about the benchmark results.
-
- [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/compiler-optimizations/main_test.go)
-
-* Being fooled by the observer effect
-
-  To prevent the observer effect, force a benchmark to re-create the data used by a CPU-bound function.
-
- [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/observer-effect/main_test.go)
+ [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/11-testing/89-benchmark/)
 
 ### Not exploring all the Go testing features (#90)
 

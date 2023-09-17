@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://100go.co/98-profiling-execution-tracing/">
       
       
-        <link rel="prev" href="../9-generics/">
+        <link rel="prev" href="../89-benchmarks/">
       
       
         <link rel="next" href="../zh/">
@@ -89,7 +89,18 @@
       
     
     
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -595,6 +606,46 @@
                 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../28-maps-memory-leaks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maps and memory leaks (#28)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../89-benchmarks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Writing inaccurate benchmarks (#89)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -961,9 +1012,17 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ go tool pprof -http=:8080 &lt;file&gt;
 </span></code></pre></div>
 <p>This command opens a web UI showing the call graph. The next figure shows an example taken from an application. The larger the arrow, the more it was a hot path. We can then navigate into this graph and get execution insights.</p>
-<p><img alt="" src="../img/screen-pprof-cpu.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-pprof-cpu.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-pprof-cpu.png" /></a>
+  </p>
+<figcaption>Figure 1: The call graph of an application during 30 seconds.</figcaption>
+</figure>
 <p>For example, the graph in the next figure tells us that during 30 seconds, 0.06 seconds were spent in the <code>decode</code> method (<code>*FetchResponse</code> receiver). Of these 0.06 seconds, 0.02 were spent in <code>RecordBatch.decode</code> and 0.01 in <code>makemap</code> (creating a map).</p>
-<p><img alt="" src="../img/screen-pprof-sarama.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-pprof-sarama.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-pprof-sarama.png" /></a>
+  </p>
+<figcaption>Figure 2: Example call graph.</figcaption>
+</figure>
 <p>We can also access this kind of information from the web UI with different representations. For example, the Top view sorts the functions per execution time, and Flame Graph visualizes the execution time hierarchy. The UI can even display the expensive parts of the source code line by line.</p>
 <details class="note" open="open">
 <summary>Note</summary>
@@ -984,7 +1043,11 @@
 <p>Heap profiling allows us to get statistics about the current heap usage. Like CPU profiling, heap profiling is sample-based. We can change this rate, but we shouldn’t be too granular because the more we decrease the rate, the more effort heap profiling will require to collect data. By default, samples are profiled at one allocation for every 512 KB of heap allocation.</p>
 <p>If we reach /debug/pprof/heap/, we get raw data that can be hard to read. However, we can download a heap profile using /debug/pprof/heap/?debug=0 and then open it with <code>go tool</code> (the same command as in the previous section) to navigate into the data using the web UI.</p>
 <p>The next figure shows an example of a heap graph. Calling the <code>MetadataResponse.decode</code> method leads to allocating 1536 KB of heap data (which represents 6.32% of the total heap). However, 0 out of these 1536 KB were allocated by this function directly, so we need to inspect the second call. The <code>TopicMetadata.decode</code> method allocated 512 KB out of the 1536 KB; the rest — 1024 KB — were allocated in another method.</p>
-<p><img alt="" src="../img/screen-pprof-heap.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-pprof-heap.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-pprof-heap.png" /></a>
+  </p>
+<figcaption>Figure 3: A heap graph.</figcaption>
+</figure>
 <p>This is how we can navigate the call chain to understand what part of an application is responsible for most of the heap allocations. We can also look at different sample types:</p>
 <ul>
 <li><code>alloc_objects</code>— Total number of objects allocated</li>
@@ -1012,14 +1075,22 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ go tool pprof -http=:8080 -diff_base &lt;file2&gt; &lt;file1&gt;
 </span></code></pre></div>
 <p>The next figure shows the kind of data we can access. For example, the amount of heap memory held by the newTopicProducer method (top left) has decreased (–513 KB). In contrast, the amount held by updateMetadata (bottom right) has increased (+512 KB). Slow increases are normal. The second heap profile may have been calculated in the middle of a service call, for example. We can repeat this process or wait longer; the important part is to track steady increases in allocations of a specific object.</p>
-<p><img alt="" src="../img/screen-pprof-heap-diff.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-pprof-heap-diff.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-pprof-heap-diff.png" /></a>
+  </p>
+<figcaption>Figure 4: The differences between the two heap profiles.</figcaption>
+</figure>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>Another type of profiling related to the heap is <code>allocs</code>, which reports allocations. Heap profiling shows the current state of the heap memory. To get insights about past memory allocations since the application started, we can use allocations profiling. As discussed, because stack allocations are cheap, they aren’t part of this profiling, which only focuses on the heap.</p>
 </details>
 <h3 id="goroutine-profiling">Goroutine Profiling</h3>
 <p>The <code>goroutine</code> profile reports the stack trace of all the current goroutines in an application. We can download a file using /debug/pprof/goroutine/?debug=0 and use go tool again. The next figure shows the kind of information we can get.</p>
-<p><img alt="" src="../img/screen-pprof-goroutines.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-pprof-goroutines.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-pprof-goroutines.png" /></a>
+  </p>
+<figcaption>Figure 5: Goroutine graph.</figcaption>
+</figure>
 <p>We can see the current state of the application and how many goroutines were created per function. In this case, <code>withRecover</code> has created 296 ongoing goroutines (63%), and 29 were related to a call to <code>responseFeeder</code>.</p>
 <p>This kind of information is also beneficial if we suspect goroutine leaks. We can look at goroutine profiler data to know which part of a system is the suspect.</p>
 <h3 id="block-profiling">Block Profiling</h3>
@@ -1077,13 +1148,29 @@
 </span></code></pre></div>
 <p>The web browser opens, and we can click View Trace to see all the traces during a specific timeframe, as shown in the next figure. This figure represents about 150 ms. We can see multiple helpful metrics, such as the goroutine count and the heap size. The heap size grows steadily until a GC is triggered. We can also observe the activity of the Go application per CPU core. The timeframe starts with user-level code; then a “stop the
 world” is executed, which occupies the four CPU cores for approximately 40 ms.</p>
-<p><img alt="" src="../img/tracing.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/tracing.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/tracing.png" /></a>
+  </p>
+<figcaption>Figure 6: Showing goroutine activity and runtime events such as a GC phase.</figcaption>
+</figure>
 <p>Regarding concurrency, we can see that this version uses all the available CPU cores on the machine. However, the next figure zooms in on a portion of 1 ms. Each bar corresponds to a single goroutine execution. Having too many small bars doesn’t look right: it means execution that is poorly parallelized.</p>
-<p><img alt="" src="../img/screen-mergesort1.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-mergesort1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-mergesort1.png" /></a>
+  </p>
+<figcaption>Figure 7: Too many small bars mean poorly parallelized execution.</figcaption>
+</figure>
 <p>The next figure zooms even closer to see how these goroutines are orchestrated. Roughly 50% of the CPU time isn’t spent executing application code. The white spaces represent the time the Go runtime takes to spin up and orchestrate new goroutines.</p>
-<p><img alt="" src="../img/screen-mergesort11.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-mergesort11.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-mergesort11.png" /></a>
+  </p>
+<figcaption>Figure 8: About 50% of CPU time is spent handling goroutine switches.</figcaption>
+</figure>
 <p>Let’s compare this with the second parallel implementation, which was about an order of magnitude faster. The next figure again zooms to a 1 ms timeframe.</p>
-<p><img alt="" src="../img/screen-mergesort2.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-mergesort2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-mergesort2.png" /></a>
+  </p>
+<figcaption>Figure 9: The number of white spaces has been significantly reduced, proving that the CPU is more fully occupied.</figcaption>
+</figure>
 <p>Each goroutine takes more time to execute, and the number of white spaces has been significantly reduced. Hence, the CPU is much more occupied executing application code than it was in the first version. Each millisecond of CPU time is spent more efficiently, explaining the benchmark differences.</p>
 <p>Note that the granularity of the traces is per goroutine, not per function like CPU profiling. However, it’s possible to define user-level tasks to get insights per function or group of functions using the <code>runtime/trace</code> package.</p>
 <p>For example, imagine a function that computes a Fibonacci number and then writes it to a global variable using atomic. We can define two different tasks:</p>
@@ -1103,7 +1190,11 @@ world” is executed, which occupies the four CPU cores for approximately 40 ms.
 </span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="nx">fibStore</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 </span></code></pre></div>
 <p>Using <code>go tool</code>, we can get more precise information about how these two tasks perform. In the previous trace UI, we can see the boundaries for each task per goroutine. In User-Defined Tasks, we can follow the duration distribution:</p>
-<p><img alt="" src="../img/screen-tracing-user-level.png" /></p>
+<figure>
+<p><a class="glightbox" href="../img/screen-tracing-user-level.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/screen-tracing-user-level.png" /></a>
+  </p>
+<figcaption>Figure 10: Distribution of user-level tasks.</figcaption>
+</figure>
 <p>We see that in most cases, the <code>fibonacci</code> task is executed in less than 15 microseconds, whereas the <code>store</code> task takes less than 6309 nanoseconds.</p>
 <p>In the previous section, we discussed the kinds of information we can get from CPU profiling. What are the main differences compared to the data we can get from user-level traces?</p>
 <ul>
@@ -1190,11 +1281,11 @@ world” is executed, which occupies the four CPU cores for approximately 40 ms.
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.highlight", "search.share", "search.suggest"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.highlight", "search.share", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
