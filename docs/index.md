@@ -88,6 +88,7 @@ Writing readable code is an important challenge for every developer. Striving to
 An init function is a function used to initialize the state of an application. It takes no arguments and returns no result (a `func()` function). When a package is initialized, all the constant and variable declarations in the package are evaluated. Then, the init functions are executed.
 
 Init functions can lead to some issues:
+
 * They can limit error management.
 * They can complicate how to implement tests (for example, an external dependency must be set up, which may not be necessary for the scope of unit tests).
 * If the initialization requires us to set a state, that has to be done through global variables.
@@ -199,6 +200,7 @@ promoted to `Foo`. Therefore, Baz becomes available from Foo.
 What can we say about type embedding? First, let’s note that it’s rarely a necessity, and it means that whatever the use case, we can probably solve it as well without type embedding. Type embedding is mainly used for convenience: in most cases, to promote behaviors.
 
 If we decide to use type embedding, we need to keep two main constraints in mind:
+
 * It shouldn’t be used solely as some syntactic sugar to simplify accessing a field (such as `Foo.Baz()` instead of `Foo.Bar.Baz()`). If this is the only rationale, let’s not embed the inner type and use a field instead.
 * It shouldn’t promote data (fields) or a behavior (methods) we want to hide from the outside: for example, if it allows clients to access a locking behavior that should remain private to the struct.
 
@@ -213,6 +215,7 @@ Using type embedding consciously by keeping these constraints in mind can help a
     To handle options conveniently and in an API-friendly manner, use the functional options pattern.
 
 Although there are different implementations with minor variations, the main idea is as follows:
+
 * An unexported struct holds the configuration: options.
 * Each option is a function that returns the same type: `type Option func(options *options)` error. For example, `WithPort` accepts an `int` argument that represents the port and returns an `Option` type that represents how to update the `options` struct.
 
@@ -327,16 +330,17 @@ Documenting our code shouldn’t be a constraint. We should take the opportunity
 A linter is an automatic tool to analyze code and catch errors. The scope of this section isn’t to give an exhaustive list of the existing linters; otherwise, it will become deprecated pretty quickly. But we should understand and remember why linters are essential for most Go projects.
 
 However, if you’re not a regular user of linters, here is a list that you may want to use daily:
-* https://golang.org/cmd/vet/—A standard Go analyzer
-* https://github.com/kisielk/errcheck—An error checker
-* https://github.com/fzipp/gocyclo—A cyclomatic complexity analyzer
-* https://github.com/jgautheron/goconst—A repeated string constants analyzer
+
+* [https://golang.org/cmd/vet](https://golang.org/cmd/vet)—A standard Go analyzer
+* [https://github.com/kisielk/errcheck](https://github.com/kisielk/errcheck)—An error checker
+* [https://github.com/fzipp/gocyclo](https://github.com/fzipp/gocyclo)—A cyclomatic complexity analyzer
+* [https://github.com/jgautheron/goconst](https://github.com/jgautheron/goconst)—A repeated string constants analyzer
 *
 Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:
-* https://golang.org/cmd/gofmt/—A standard Go code formatter
-* https://godoc.org/golang.org/x/tools/cmd/goimports—A standard Go imports formatter
+* [https://golang.org/cmd/gofmt](https://golang.org/cmd/gofmt)—A standard Go code formatter
+* [https://godoc.org/golang.org/x/tools/cmd/goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)—A standard Go imports formatter
 *
-Meanwhile, we should also look at golangci-lint (https://github.com/golangci/ golangci-lint). It’s a linting tool that provides a facade on top of many useful linters and formatters. Also, it allows running the linters in parallel to improve analysis speed, which is quite handy.
+Meanwhile, we should also look at golangci-lint ([https://github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint)). It’s a linting tool that provides a facade on top of many useful linters and formatters. Also, it allows running the linters in parallel to improve analysis speed, which is quite handy.
 
 Linters and formatters are a powerful way to improve the quality and consistency of our codebase. Let’s take the time to understand which one we should use and make sure we automate their execution (such as a CI or Git precommit hook).
 
@@ -346,11 +350,12 @@ Linters and formatters are a powerful way to improve the quality and consistency
 
 ???+ info "TL;DR"
 
-    When reading existing code, bear in mind that integer literals starting with 0 are octal numbers. Also, to improve readability, make octal integers explicit by prefixing them with `0o`.
+    When reading existing code, bear in mind that integer literals starting with `0` are octal numbers. Also, to improve readability, make octal integers explicit by prefixing them with `0o`.
 
 Octal numbers start with a 0 (e.g., `010` is equal to 8 in base 10). To improve readability and avoid potential mistakes for future code readers, we should make octal numbers explicit using the `0o` prefix (e.g., `0o10`).
 
 We should also note the other integer literal representations:
+
 * _Binary_—Uses a `0b` or `0B` prefix (for example, `0b100` is equal to 4 in base 10)
 * _Hexadecimal_—Uses an `0x` or `0X` prefix (for example, `0xF` is equal to 15 in base 10)
 * _Imaginary_—Uses an `i` suffix (for example, `3i`)
@@ -397,6 +402,7 @@ fmt.Println(n * n)
 We may expect this code to print the result of 1.0001 * 1.0001 = 1.00020001, right? However, running it on most x86 processors prints 1.0002, instead.
 
 Because Go’s `float32` and `float64` types are approximations, we have to bear a few rules in mind:
+
 * When comparing two floating-point numbers, check that their difference is within an acceptable range.
 * When performing additions or subtractions, group operations with a similar order of magnitude for better accuracy.
 * To favor accuracy, if a sequence of operations requires addition, subtraction, multiplication, or division, perform the multiplication and division operations first.
@@ -409,7 +415,7 @@ Because Go’s `float32` and `float64` types are approximations, we have to bear
 
     Understanding the difference between slice length and capacity should be part of a Go developer’s core knowledge. The slice length is the number of available elements in the slice, whereas the slice capacity is the number of elements in the backing array.
 
-<!-- TODO -->
+Read the full section [here](20-slice.md).
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/20-slice-length-cap/main.go)
 
@@ -524,6 +530,7 @@ Read the full section [here](28-maps-memory-leaks.md).
     To compare types in Go, you can use the == and != operators if two types are comparable: Booleans, numerals, strings, pointers, channels, and structs are composed entirely of comparable types. Otherwise, you can either use `reflect.DeepEqual` and pay the price of reflection or use custom implementations and libraries.
 
 It’s essential to understand how to use `==` and `!=` to make comparisons effectively. We can use these operators on operands that are comparable:
+
 * _Booleans_—Compare whether two Booleans are equal.
 * _Numerics (int, float, and complex types)_—Compare whether two numerics are equal.
 * _Strings_—Compare whether two strings are equal.
@@ -553,6 +560,7 @@ One additional note: we must remember that the standard library has some existin
     The value element in a `range` loop is a copy. Therefore, to mutate a struct, for example, access it via its index or via a classic `for` loop (unless the element or the field you want to modify is a pointer).
 
 A range loop allows iterating over different data structures:
+
 * String
 * Array
 * Pointer to an array
@@ -603,6 +611,7 @@ When iterating over a data structure using a `range` loop, we must recall that a
 ???+ info "TL;DR"
 
     To ensure predictable outputs when using maps, remember that a map data structure:
+
 * Doesn’t order the data by keys
 * Doesn’t preserve the insertion order
 * Doesn’t have a deterministic iteration order
@@ -1692,7 +1701,7 @@ Credits: [@jeromedoucet](https://github.com/jeromedoucet)
 
     Use the fast-path inlining technique to efficiently reduce the amortized time to call a function.
 
-### [Not using Go diagnostics tooling](https://medium.com/@teivah/profiling-and-execution-tracing-in-go-a5e646970f5b) (#98)
+### Not using Go diagnostics tooling (#98)
 
 ???+ info "TL;DR"
 

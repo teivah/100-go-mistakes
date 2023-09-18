@@ -8,11 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://100go.co/book/">
+        <link rel="canonical" href="https://100go.co/20-slice/">
       
       
+        <link rel="prev" href="../9-generics/">
       
-        <link rel="next" href="../chapter-1/">
+      
+        <link rel="next" href="../28-maps-memory-leaks/">
       
       
       <link rel="icon" href="../img/Go-Logo_LightBlue.svg">
@@ -63,11 +65,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="100 Go Mistakes and How to Avoid Them - 100 Go Mistakes and How to Avoid Them" >
+        <meta  property="og:title"  content="Not understanding slice length and capacity (#20) - 100 Go Mistakes and How to Avoid Them" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://100go.co/assets/images/social/book.png" >
+        <meta  property="og:image"  content="https://100go.co/assets/images/social/20-slice.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -75,15 +77,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://100go.co/book/" >
+        <meta  property="og:url"  content="https://100go.co/20-slice/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="100 Go Mistakes and How to Avoid Them - 100 Go Mistakes and How to Avoid Them" >
+        <meta  name="twitter:title"  content="Not understanding slice length and capacity (#20) - 100 Go Mistakes and How to Avoid Them" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://100go.co/assets/images/social/book.png" >
+        <meta  name="twitter:image"  content="https://100go.co/assets/images/social/20-slice.png" >
       
     
     
@@ -120,7 +122,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#100-go-mistakes-and-how-to-avoid-them" class="md-skip">
+        <a href="#not-understanding-slice-length-and-capacity" class="md-skip">
           Skip to content
         </a>
       
@@ -155,7 +157,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              100 Go Mistakes and How to Avoid Them
+              Not understanding slice length and capacity (#20)
             
           </span>
         </div>
@@ -284,13 +286,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../book/" class="md-tabs__link">
           
   
   Book
@@ -304,10 +304,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href=".." class="md-tabs__link">
           
   
@@ -391,19 +393,17 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
@@ -416,7 +416,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Book
@@ -427,29 +427,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    100 Go Mistakes and How to Avoid Them
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../book/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -458,54 +438,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quotes" class="md-nav__link">
-    Quotes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-buy" class="md-nav__link">
-    Where to Buy?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-the-author" class="md-nav__link">
-    About the Author
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -562,17 +494,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -585,7 +519,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Go Mistakes
@@ -616,17 +550,19 @@
                 
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
@@ -639,7 +575,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Full Sections
@@ -670,9 +606,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../20-slice/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -681,6 +626,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -862,42 +808,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quotes" class="md-nav__link">
-    Quotes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#where-to-buy" class="md-nav__link">
-    Where to Buy?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-the-author" class="md-nav__link">
-    About the Author
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -914,43 +824,96 @@
   
 
 
-<h1 id="100-go-mistakes-and-how-to-avoid-them">100 Go Mistakes and How to Avoid Them</h1>
-<p>Community space of <em>100 Go Mistakes and How to Avoid Them</em>, published by Manning in 2022.</p>
-<p><a class="glightbox" href="../img/cover.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/cover.png" /></a></p>
-<h2 id="description">Description</h2>
-<p>If you're a Go developer looking to improve your skills, this book is for you. With a focus on practical examples, <em>100 Go Mistakes and How to Avoid Them</em> covers a wide range of topics from concurrency and error handling to testing and code organization. You'll learn to write more idiomatic, efficient, and maintainable code and become a proficient Go developer.</p>
-<h2 id="quotes">Quotes</h2>
-<blockquote>
-<p>This is an exceptional book. Usually, if a book contains either high-quality explanations or is written succinctly, I consider myself lucky to have found it. This one combines these two characteristics, which is super rare. It's another Go book for me and I still had quite a lot of "a-ha!" moments while reading it, and all of that without the unnecessary fluff, just straight to the point.</p>
-</blockquote>
-<p>– Krystian (Goodreads user)</p>
-<blockquote>
-<p>This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.</p>
-</blockquote>
-<p>– <em>Neeraj Shah</em></p>
-<blockquote>
-<p>Not having this will be the 101st mistake a Go programmer could make.</p>
-</blockquote>
-<p>– <em>Anupam Sengupta</em></p>
-<h2 id="where-to-buy">Where to Buy?</h2>
-<ul>
-<li>
-<p><em>100 Go Mistakes and How to Avoid Them</em> (🇬🇧 edition: paper, digital, or audiobook)</p>
-<ul>
-<li><a href="https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them">Manning</a> (make sure to use my personal discount code for -35%: <code>au35har</code>)</li>
-<li><a href="https://www.oreilly.com/library/view/100-go-mistakes/9781617299599/">O’Reilly</a></li>
-<li>Amazon: <a href="https://www.amazon.com/dp/1617299596">.com</a>, <a href="https://www.amazon.co.uk/dp/B0BBSNJR6B">.co.uk</a>, <a href="https://www.amazon.de/dp/B0BBHQD8BQ">.de</a>, <a href="https://www.amazon.fr/100-Mistakes-How-Avoid-Them/dp/1617299596">.fr</a>, <a href="https://www.amazon.in/dp/B0BBHQD8BQ">.in</a>, <a href="https://www.amazon.co.jp/dp/B0BBHQD8BQ">.co.jp</a>, <a href="https://www.amazon.es/dp/B0BBHQD8BQ">.es</a>, <a href="https://www.amazon.it/dp/B0BBHQD8BQ">.it</a>, <a href="https://www.amazon.com.br/dp/B0BBHQD8BQ">.com.br</a></li>
-</ul>
-</li>
-<li>
-<p><em>Go言語100Tips 開発者にありがちな間違いへの対処法</em> (🇯🇵 edition)</p>
-<ul>
-<li>Amazon: <a href="https://www.amazon.co.jp/exec/obidos/ASIN/4295017531/">.co.jp</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="about-the-author">About the Author</h2>
-<p><a href="http://teivah.io">Teiva Harsanyi</a> is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.</p>
+<h1 id="not-understanding-slice-length-and-capacity">Not understanding slice length and capacity</h1>
+<p>It’s pretty common for Go developers to mix slice length and capacity or not understand them thoroughly. Assimilating these two concepts is essential for efficiently handling core operations such as slice initialization and adding elements with append, copying, or slicing. This misunderstanding can lead to using slices suboptimally or even to memory leaks.</p>
+<p>In Go, a slice is backed by an array. That means the slice’s data is stored contiguously in an array data structure. A slice also handles the logic of adding an element if the backing array is full or shrinking the backing array if it’s almost empty.</p>
+<p>Internally, a slice holds a pointer to the backing array plus a length and a capacity. The length is the number of elements the slice contains, whereas the capacity is the number of elements in the backing array, counting from the first element in the slice. Let’s go through a few examples to make things clearer. First, let’s initialize a slice with a given length and capacity:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="c1">// Three-length, six-capacity slice</span>
+</span></code></pre></div>
+<p>The first argument, representing the length, is mandatory. However, the second argument representing the capacity is optional. Figure 1 shows the result of this code in memory.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-1.png" /></a>
+  </p>
+<figcaption>Figure 1: A three-length, six-capacity slice.</figcaption>
+</figure>
+<p>In this case, <code>make</code> creates an array of six elements (the capacity). But because the length was set to 3, Go initializes only the first three elements. Also, because the slice is an <code>[]int</code> type, the first three elements are initialized to the zeroed value of an <code>int</code>: 0. The grayed elements are allocated but not yet used.</p>
+<p>If we print this slice, we get the elements within the range of the length, <code>[0 0 0]</code>. If we set <code>s[1]</code> to 1, the second element of the slice updates without impacting its length or capacity. Figure 2 illustrates this.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-2.png" /></a>
+  </p>
+<figcaption>Figure 2: Updating the slice’s second element: s[1] = 1.</figcaption>
+</figure>
+<p>However, accessing an element outside the length range is forbidden, even though it’s already allocated in memory. For example, <code>s[4]</code> = 0 would lead to the following panic:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>panic: runtime error: index out of range [4] with length 3
+</span></code></pre></div>
+<p>How can we use the remaining space of the slice? By using the <code>append</code> built-in function:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div>
+<p>This code appends to the existing <code>s</code> slice a new element. It uses the first grayed element (which was allocated but not yet used) to store element 2, as figure 3 shows.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-3.png" /></a>
+  </p>
+<figcaption>Figure 3: Appending an element to s.</figcaption>
+</figure>
+<p>The length of the slice is updated from 3 to 4 because the slice now contains four elements. Now, what happens if we add three more elements so that the backing array isn’t large enough?</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></code></pre></div>
+<p>If we run this code, we see that the slice was able to cope with our request:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[0 1 0 2 3 4 5]
+</span></code></pre></div>
+<p>Because an array is a fixed-size structure, it can store the new elements until element 4. When we want to insert element 5, the array is already full: Go internally creates another array by doubling the capacity, copying all the elements, and then inserting element 5. Figure 4 shows this process.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-4.png" /></a>
+  </p>
+<figcaption>Figure 4: Because the initial backing array is full, Go creates another array and copies all the elements.</figcaption>
+</figure>
+<p>The slice now references the new backing array. What will happen to the previous backing array? If it’s no longer referenced, it’s eventually freed by the garbage collector (GC) if allocated on the heap. (We discuss heap memory in mistake #95, “<a href="https://100go.co#not-understanding-stack-vs-heap-95">Not understanding stack vs. heap</a>,” and we look at how the GC works in mistake #99, “<a href="https://100go.co#not-understanding-how-the-gc-works-99">Not understanding how the GC works</a>.”)</p>
+<p>What happens with slicing? Slicing is an operation done on an array or a slice, providing a half-open range; the first index is included, whereas the second is excluded. The following example shows the impact, and figure 5 displays the result in memory:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">s1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="c1">// Three-length, six-capacity slice</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">s2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="c1">// Slicing from indices 1 to 3</span>
+</span></code></pre></div>
+<figure>
+<p><a class="glightbox" href="../img/slice-5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-5.png" /></a>
+  </p>
+<figcaption>Figure 5: The slices s1 and s2 reference the same backing array with different lengths and capacities.</figcaption>
+</figure>
+<p>First, <code>s1</code> is created as a three-length, six-capacity slice. When <code>s2</code> is created by slicing <code>s1</code>, both slices reference the same backing array. However, <code>s2</code> starts from a different index, 1. Therefore, its length and capacity (a two-length, five-capacity slice) differ from s1. If we update <code>s1[1]</code> or <code>s2[0]</code>, the change is made to the same array, hence, visible in both slices, as figure 6 shows.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-6.png" /></a>
+  </p>
+<figcaption>Figure 6: Because s1 and s2 are backed by the same array, updating a common element makes the change visible in both slices.</figcaption>
+</figure>
+<p>Now, what happens if we append an element to <code>s2</code>? Does the following code change <code>s1</code> as well?</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The shared backing array is modified, but only the length of <code>s2</code> changes. Figure 7 shows the result of appending an element to <code>s2</code>.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-7.png" /></a>
+  </p>
+<figcaption>Figure 7: Appending an element to s2.</figcaption>
+</figure>
+<p><code>s1</code> remains a three-length, six-capacity slice. Therefore, if we print <code>s1</code> and <code>s2</code>, the added element is only visible for <code>s2</code>:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">s1</span><span class="p">=[</span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="nx">s2</span><span class="p">=[</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div>
+<p>It’s important to understand this behavior so that we don’t make wrong assumptions while using append.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>In these examples, the backing array is internal and not available directly to the Go developer. The only exception is when a slice is created from slicing an existing array.</p>
+</details>
+<p>One last thing to note: what if we keep appending elements to <code>s2</code> until the backing array is full? What will the state be, memory-wise? Let’s add three more elements so that the backing array will not have enough capacity:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">// At this stage, the backing is already full</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nx">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</span></code></pre></div>
+<p>This code leads to creating another backing array. Figure 8 displays the results in memory.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-8.png" /></a>
+  </p>
+<figcaption>Figure 8: Appending elements to s2 until the backing array is full.</figcaption>
+</figure>
+<p><code>s1</code> and <code>s2</code> now reference two different arrays. As <code>s1</code> is still a three-length, six-capacity slice, it still has some available buffer, so it keeps referencing the initial array. Also, the new backing array was made by copying the initial one from the first index of <code>s2</code>. That’s why the new array starts with element 1, not 0.</p>
+<p>To summarize, the slice length is the number of available elements in the slice, whereas the slice capacity is the number of elements in the backing array. Adding an element to a full slice (length == capacity) leads to creating a new backing array with a new capacity, copying all the elements from the previous array, and updating the slice pointer to the new array.</p>
 
 
   

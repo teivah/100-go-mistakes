@@ -1516,6 +1516,26 @@
   
   
     <li class="md-nav__item">
+      <a href="20-slice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Not understanding slice length and capacity (#20)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="28-maps-memory-leaks/" class="md-nav__link">
         
   
@@ -2647,10 +2667,12 @@
 <p>When initializing variables, remember that init functions have limited error handling and make state handling and testing more complex. In most cases, initializations should be handled as specific functions.</p>
 </details>
 <p>An init function is a function used to initialize the state of an application. It takes no arguments and returns no result (a <code>func()</code> function). When a package is initialized, all the constant and variable declarations in the package are evaluated. Then, the init functions are executed.</p>
-<p>Init functions can lead to some issues:
-* They can limit error management.
-* They can complicate how to implement tests (for example, an external dependency must be set up, which may not be necessary for the scope of unit tests).
-* If the initialization requires us to set a state, that has to be done through global variables.</p>
+<p>Init functions can lead to some issues:</p>
+<ul>
+<li>They can limit error management.</li>
+<li>They can complicate how to implement tests (for example, an external dependency must be set up, which may not be necessary for the scope of unit tests).</li>
+<li>If the initialization requires us to set a state, that has to be done through global variables.</li>
+</ul>
 <p>We should be cautious with init functions. They can be helpful in some situations, however, such as defining static configuration. Otherwise, and in most cases, we should handle initializations through ad hoc functions.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/02-code-project-organization/3-init-functions/">Source code</a></p>
 <h3 id="overusing-getters-and-setters-4">Overusing getters and setters (#4)</h3>
@@ -2724,9 +2746,11 @@ What’s the main problem if we overuse interfaces? The answer is that they make
 <p>We use embedding to promote the fields and methods of an embedded type. Because Bar contains a Baz field, this field is
 promoted to <code>Foo</code>. Therefore, Baz becomes available from Foo.</p>
 <p>What can we say about type embedding? First, let’s note that it’s rarely a necessity, and it means that whatever the use case, we can probably solve it as well without type embedding. Type embedding is mainly used for convenience: in most cases, to promote behaviors.</p>
-<p>If we decide to use type embedding, we need to keep two main constraints in mind:
-* It shouldn’t be used solely as some syntactic sugar to simplify accessing a field (such as <code>Foo.Baz()</code> instead of <code>Foo.Bar.Baz()</code>). If this is the only rationale, let’s not embed the inner type and use a field instead.
-* It shouldn’t promote data (fields) or a behavior (methods) we want to hide from the outside: for example, if it allows clients to access a locking behavior that should remain private to the struct.</p>
+<p>If we decide to use type embedding, we need to keep two main constraints in mind:</p>
+<ul>
+<li>It shouldn’t be used solely as some syntactic sugar to simplify accessing a field (such as <code>Foo.Baz()</code> instead of <code>Foo.Bar.Baz()</code>). If this is the only rationale, let’s not embed the inner type and use a field instead.</li>
+<li>It shouldn’t promote data (fields) or a behavior (methods) we want to hide from the outside: for example, if it allows clients to access a locking behavior that should remain private to the struct.</li>
+</ul>
 <p>Using type embedding consciously by keeping these constraints in mind can help avoid boilerplate code with additional forwarding methods. However, let’s make sure we don’t do it solely for cosmetics and not promote elements that should remain hidden.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/02-code-project-organization/10-type-embedding/main.go">Source code</a></p>
 <h3 id="not-using-the-functional-options-pattern-11">Not using the functional options pattern (#11)</h3>
@@ -2734,9 +2758,11 @@ promoted to <code>Foo</code>. Therefore, Baz becomes available from Foo.</p>
 <summary>TL;DR</summary>
 <p>To handle options conveniently and in an API-friendly manner, use the functional options pattern.</p>
 </details>
-<p>Although there are different implementations with minor variations, the main idea is as follows:
-* An unexported struct holds the configuration: options.
-* Each option is a function that returns the same type: <code>type Option func(options *options)</code> error. For example, <code>WithPort</code> accepts an <code>int</code> argument that represents the port and returns an <code>Option</code> type that represents how to update the <code>options</code> struct.</p>
+<p>Although there are different implementations with minor variations, the main idea is as follows:</p>
+<ul>
+<li>An unexported struct holds the configuration: options.</li>
+<li>Each option is a function that returns the same type: <code>type Option func(options *options)</code> error. For example, <code>WithPort</code> accepts an <code>int</code> argument that represents the port and returns an <code>Option</code> type that represents how to update the <code>options</code> struct.</li>
+</ul>
 <p><a class="glightbox" href="img/options.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="img/options.png" /></a></p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nx">port</span><span class="w"> </span><span class="o">*</span><span class="kt">int</span>
@@ -2822,29 +2848,33 @@ Granularity is another essential thing to consider. We should avoid having dozen
 <p>To improve code quality and consistency, use linters and formatters.</p>
 </details>
 <p>A linter is an automatic tool to analyze code and catch errors. The scope of this section isn’t to give an exhaustive list of the existing linters; otherwise, it will become deprecated pretty quickly. But we should understand and remember why linters are essential for most Go projects.</p>
-<p>However, if you’re not a regular user of linters, here is a list that you may want to use daily:
-* https://golang.org/cmd/vet/—A standard Go analyzer
-* https://github.com/kisielk/errcheck—An error checker
-* https://github.com/fzipp/gocyclo—A cyclomatic complexity analyzer
-* https://github.com/jgautheron/goconst—A repeated string constants analyzer
+<p>However, if you’re not a regular user of linters, here is a list that you may want to use daily:</p>
+<ul>
+<li><a href="https://golang.org/cmd/vet">https://golang.org/cmd/vet</a>—A standard Go analyzer</li>
+<li><a href="https://github.com/kisielk/errcheck">https://github.com/kisielk/errcheck</a>—An error checker</li>
+<li><a href="https://github.com/fzipp/gocyclo">https://github.com/fzipp/gocyclo</a>—A cyclomatic complexity analyzer</li>
+<li><a href="https://github.com/jgautheron/goconst">https://github.com/jgautheron/goconst</a>—A repeated string constants analyzer
 *
-Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:
-* https://golang.org/cmd/gofmt/—A standard Go code formatter
-* https://godoc.org/golang.org/x/tools/cmd/goimports—A standard Go imports formatter
+Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:</li>
+<li><a href="https://golang.org/cmd/gofmt">https://golang.org/cmd/gofmt</a>—A standard Go code formatter</li>
+<li><a href="https://godoc.org/golang.org/x/tools/cmd/goimports">https://godoc.org/golang.org/x/tools/cmd/goimports</a>—A standard Go imports formatter
 *
-Meanwhile, we should also look at golangci-lint (https://github.com/golangci/ golangci-lint). It’s a linting tool that provides a facade on top of many useful linters and formatters. Also, it allows running the linters in parallel to improve analysis speed, which is quite handy.</p>
+Meanwhile, we should also look at golangci-lint (<a href="https://github.com/golangci/golangci-lint">https://github.com/golangci/golangci-lint</a>). It’s a linting tool that provides a facade on top of many useful linters and formatters. Also, it allows running the linters in parallel to improve analysis speed, which is quite handy.</li>
+</ul>
 <p>Linters and formatters are a powerful way to improve the quality and consistency of our codebase. Let’s take the time to understand which one we should use and make sure we automate their execution (such as a CI or Git precommit hook).</p>
 <h2 id="data-types">Data Types</h2>
 <h3 id="creating-confusion-with-octal-literals-17">Creating confusion with octal literals (#17)</h3>
 <details class="info" open="open">
 <summary>TL;DR</summary>
-<p>When reading existing code, bear in mind that integer literals starting with 0 are octal numbers. Also, to improve readability, make octal integers explicit by prefixing them with <code>0o</code>.</p>
+<p>When reading existing code, bear in mind that integer literals starting with <code>0</code> are octal numbers. Also, to improve readability, make octal integers explicit by prefixing them with <code>0o</code>.</p>
 </details>
 <p>Octal numbers start with a 0 (e.g., <code>010</code> is equal to 8 in base 10). To improve readability and avoid potential mistakes for future code readers, we should make octal numbers explicit using the <code>0o</code> prefix (e.g., <code>0o10</code>).</p>
-<p>We should also note the other integer literal representations:
-* <em>Binary</em>—Uses a <code>0b</code> or <code>0B</code> prefix (for example, <code>0b100</code> is equal to 4 in base 10)
-* <em>Hexadecimal</em>—Uses an <code>0x</code> or <code>0X</code> prefix (for example, <code>0xF</code> is equal to 15 in base 10)
-* <em>Imaginary</em>—Uses an <code>i</code> suffix (for example, <code>3i</code>)</p>
+<p>We should also note the other integer literal representations:</p>
+<ul>
+<li><em>Binary</em>—Uses a <code>0b</code> or <code>0B</code> prefix (for example, <code>0b100</code> is equal to 4 in base 10)</li>
+<li><em>Hexadecimal</em>—Uses an <code>0x</code> or <code>0X</code> prefix (for example, <code>0xF</code> is equal to 15 in base 10)</li>
+<li><em>Imaginary</em>—Uses an <code>i</code> suffix (for example, <code>3i</code>)</li>
+</ul>
 <p>We can also use an underscore character (_) as a separator for readability. For example, we can write 1 billion this way: <code>1_000_000_000</code>. We can also use the underscore character with other representations (for example, <code>0b00_00_01</code>).</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/17-octal-literals/main.go">Source code</a></p>
 <h3 id="neglecting-integer-overflows-18">Neglecting integer overflows (#18)</h3>
@@ -2870,18 +2900,19 @@ Meanwhile, we should also look at golangci-lint (https://github.com/golangci/ go
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">n</span><span class="p">)</span>
 </span></code></pre></div>
 <p>We may expect this code to print the result of 1.0001 * 1.0001 = 1.00020001, right? However, running it on most x86 processors prints 1.0002, instead.</p>
-<p>Because Go’s <code>float32</code> and <code>float64</code> types are approximations, we have to bear a few rules in mind:
-* When comparing two floating-point numbers, check that their difference is within an acceptable range.
-* When performing additions or subtractions, group operations with a similar order of magnitude for better accuracy.
-* To favor accuracy, if a sequence of operations requires addition, subtraction, multiplication, or division, perform the multiplication and division operations first.</p>
+<p>Because Go’s <code>float32</code> and <code>float64</code> types are approximations, we have to bear a few rules in mind:</p>
+<ul>
+<li>When comparing two floating-point numbers, check that their difference is within an acceptable range.</li>
+<li>When performing additions or subtractions, group operations with a similar order of magnitude for better accuracy.</li>
+<li>To favor accuracy, if a sequence of operations requires addition, subtraction, multiplication, or division, perform the multiplication and division operations first.</li>
+</ul>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/19-floating-points/main.go">Source code</a></p>
 <h3 id="not-understanding-slice-length-and-capacity-20">Not understanding slice length and capacity (#20)</h3>
 <details class="info" open="open">
 <summary>TL;DR</summary>
 <p>Understanding the difference between slice length and capacity should be part of a Go developer’s core knowledge. The slice length is the number of available elements in the slice, whereas the slice capacity is the number of elements in the backing array.</p>
 </details>
-<!-- TODO -->
-
+<p>Read the full section <a href="20-slice/">here</a>.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/20-slice-length-cap/main.go">Source code</a></p>
 <h3 id="inefficient-slice-initialization-21">Inefficient slice initialization (#21)</h3>
 <details class="info" open="open">
@@ -2961,14 +2992,16 @@ Meanwhile, we should also look at golangci-lint (https://github.com/golangci/ go
 <summary>TL;DR</summary>
 <p>To compare types in Go, you can use the == and != operators if two types are comparable: Booleans, numerals, strings, pointers, channels, and structs are composed entirely of comparable types. Otherwise, you can either use <code>reflect.DeepEqual</code> and pay the price of reflection or use custom implementations and libraries.</p>
 </details>
-<p>It’s essential to understand how to use <code>==</code> and <code>!=</code> to make comparisons effectively. We can use these operators on operands that are comparable:
-* <em>Booleans</em>—Compare whether two Booleans are equal.
-* <em>Numerics (int, float, and complex types)</em>—Compare whether two numerics are equal.
-* <em>Strings</em>—Compare whether two strings are equal.
-* <em>Channels</em>—Compare whether two channels were created by the same call to make or if both are nil.
-* <em>Interfaces</em>—Compare whether two interfaces have identical dynamic types and equal dynamic values or if both are nil.
-* <em>Pointers</em>—Compare whether two pointers point to the same value in memory or if both are nil.
-* _Structs and arrays)—Compare whether they are composed of similar types.</p>
+<p>It’s essential to understand how to use <code>==</code> and <code>!=</code> to make comparisons effectively. We can use these operators on operands that are comparable:</p>
+<ul>
+<li><em>Booleans</em>—Compare whether two Booleans are equal.</li>
+<li><em>Numerics (int, float, and complex types)</em>—Compare whether two numerics are equal.</li>
+<li><em>Strings</em>—Compare whether two strings are equal.</li>
+<li><em>Channels</em>—Compare whether two channels were created by the same call to make or if both are nil.</li>
+<li><em>Interfaces</em>—Compare whether two interfaces have identical dynamic types and equal dynamic values or if both are nil.</li>
+<li><em>Pointers</em>—Compare whether two pointers point to the same value in memory or if both are nil.</li>
+<li>_Structs and arrays)—Compare whether they are composed of similar types.</li>
+</ul>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>We can also use the <code>?</code>, <code>&gt;=</code>, <code>&lt;</code>, and <code>&gt;</code> operators with numeric types to compare values and with strings to compare their lexical order.</p>
@@ -2983,13 +3016,15 @@ One additional note: we must remember that the standard library has some existin
 <summary>TL;DR</summary>
 <p>The value element in a <code>range</code> loop is a copy. Therefore, to mutate a struct, for example, access it via its index or via a classic <code>for</code> loop (unless the element or the field you want to modify is a pointer).</p>
 </details>
-<p>A range loop allows iterating over different data structures:
-* String
-* Array
-* Pointer to an array
-* Slice
-* Map
-* Receiving channel</p>
+<p>A range loop allows iterating over different data structures:</p>
+<ul>
+<li>String</li>
+<li>Array</li>
+<li>Pointer to an array</li>
+<li>Slice</li>
+<li>Map</li>
+<li>Receiving channel</li>
+</ul>
 <p>Compared to a classic for <code>loop</code>, a <code>range</code> loop is a convenient way to iterate over all the elements of one of these data structures, thanks to its concise syntax.</p>
 <p>Yet, we should remember that the value element in a range loop is a copy. Therefore, if the value is a struct we need to mutate, we will only update the copy, not the element itself, unless the value or field we modify is a pointer. The favored options are to access the element via the index using a range loop or a classic for loop.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/04-control-structures/30-range-loop-element-copied/">Source code</a></p>
@@ -3851,7 +3886,7 @@ One additional note: we must remember that the standard library has some existin
 <summary>TL;DR</summary>
 <p>Use the fast-path inlining technique to efficiently reduce the amortized time to call a function.</p>
 </details>
-<h3 id="not-using-go-diagnostics-tooling-98"><a href="https://medium.com/@teivah/profiling-and-execution-tracing-in-go-a5e646970f5b">Not using Go diagnostics tooling</a> (#98)</h3>
+<h3 id="not-using-go-diagnostics-tooling-98">Not using Go diagnostics tooling (#98)</h3>
 <details class="info" open="open">
 <summary>TL;DR</summary>
 <p>Rely on profiling and the execution tracer to understand how an application performs and the parts to optimize.</p>

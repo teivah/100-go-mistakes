@@ -61,6 +61,7 @@ nav:
       - index.md
       - Full Sections:
         - 9-generics.md
+        - 20-slice.md
         - 28-maps-memory-leaks.md
         - 89-benchmarks.md
         - 98-profiling-execution-tracing.md
