@@ -84,4 +84,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - footnotes
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 copyright: Copyright &copy; 2022 - 2023 Teiva Harsanyi
