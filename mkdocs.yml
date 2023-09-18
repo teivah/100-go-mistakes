@@ -52,6 +52,8 @@ extra:
       link: https://twitter.com/teivah
     - icon: fontawesome/brands/medium
       link: http://blog.teivah.io
+extra_css:
+  - stylesheets/extra.css
 nav:
     - Book:
         - book.md
