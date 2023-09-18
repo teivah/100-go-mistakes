@@ -1,6 +1,6 @@
 # 100 Go Mistakes and How to Avoid Them
 
-Community space of _100 Go Mistakes and How to Avoid Them_, published by Manning in 2022.
+Community space of 📖 _100 Go Mistakes and How to Avoid Them_, published by Manning in 2022.
 
 ![](img/cover.png)
 
@@ -8,19 +8,25 @@ Community space of _100 Go Mistakes and How to Avoid Them_, published by Manning
 
 If you're a Go developer looking to improve your skills, this book is for you. With a focus on practical examples, _100 Go Mistakes and How to Avoid Them_ covers a wide range of topics from concurrency and error handling to testing and code organization. You'll learn to write more idiomatic, efficient, and maintainable code and become a proficient Go developer.
 
+Read a summary of the 100 mistakes [here](https://100go.co).
+
 ## Quotes and Ratings
 
-> This is an exceptional book. Usually, if a book contains either high-quality explanations or is written succinctly, I consider myself lucky to have found it. This one combines these two characteristics, which is super rare. It's another Go book for me and I still had quite a lot of "a-ha!" moments while reading it, and all of that without the unnecessary fluff, just straight to the point.
+!!! quote "Krystian (Goodreads user)"
 
-– Krystian (Goodreads user)
+    This is an **exceptional book**. Usually, if a book contains either high-quality explanations or is written succinctly, I consider myself lucky to have found it. This one combines these two characteristics, which is **super rare**. It's another Go book for me and I still had quite a lot of "a-ha!" moments while reading it, and all of that without the unnecessary fluff, just straight to the point.
 
-> This should be the required reading for all Golang developers before they touch code in Production... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.
+!!! quote "Akash Chetty"
 
-– _Neeraj Shah_
+    The book is completely **exceptional**, especially the examples carved out for each topic are really great. There is one topic that I struggled to understand is Concurrency but the way it is explained in this book is truly an art of genius.
 
-> Not having this will be the 101st mistake a Go programmer could make.
+!!! quote "Neeraj Shah"
 
-– _Anupam Sengupta_
+    This should be the **required reading** for all Golang developers before they touch code in **Production**... It's the Golang equivalent of the legendary 'Effective Java' by Joshua Bloch.
+
+!!! quote "Anupam Sengupta"
+
+    Not having this will be the **101st mistake** a Go programmer could make.
 
 <figure markdown>
   ![](img/ratings-manning.png)

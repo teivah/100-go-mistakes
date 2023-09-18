@@ -4,7 +4,7 @@ This page is a summary of all the mistakes in the 100 Go Mistakes book. Meanwhil
 
 If you want to engage with the community (asking questions, discussing options, etc.), feel free to use the [Discussions](https://github.com/teivah/100-go-mistakes/discussions) space on the GitHub repo.
 
-???+ info
+???+ warning
 
     You're currently viewing a new version that I'm enriching with significantly more content. Yet, this version is still under development; please be gentle if you find an issue, and feel free to create a PR.
 
