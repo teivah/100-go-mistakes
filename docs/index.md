@@ -475,7 +475,7 @@ When using slicing, we must remember that we can face a situation leading to uni
 
     `s[low:high:max]` (full slice expression): This statement creates a slice similar to the one created with `s[low:high]`, except that the resulting slice’s capacity is equal to `max - low`.
 
- [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/25-slice-append/main.go)
+ [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/03-data-types/25-slice-append/25-slice-append.go)
 
 ### Slices and memory leaks (#26)
 
