@@ -1270,11 +1270,22 @@ _ = notify()
 
     Understanding the fundamental differences between concurrency and parallelism is a cornerstone of the Go developer’s knowledge. Concurrency is about structure, whereas parallelism is about execution.
 
+Concurrency and parallelism are not the same:
+
+* Concurrency is about structure. We can change a sequential implementation into a concurrent one by introducing different steps that separate concurrent goroutines can tackle.
+* Meanwhile, parallelism is about execution. We can use parallism at the steps level by adding more parallel goroutines.
+
+In summary, concurrency provides a structure to solve a problem with parts that may be parallelized. Therefore, _concurrency enables parallelism_.
+
+<!-- TODO Include Rob Pike's talk link-->
+
 ### [Thinking concurrency is always faster](https://teivah.medium.com/concurrency-isnt-always-faster-in-go-de325168907c) (#56)
 
 ???+ info "TL;DR"
 
     To be a proficient developer, you must acknowledge that concurrency isn’t always faster. Solutions involving parallelization of minimal workloads may not necessarily be faster than a sequential implementation. Benchmarking sequential versus concurrent solutions should be the way to validate assumptions.
+
+<!-- TODO Include link to post-->
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/08-concurrency-foundations/56-faster/)
 
@@ -1284,13 +1295,50 @@ _ = notify()
 
     Being aware of goroutine interactions can also be helpful when deciding between channels and mutexes. In general, parallel goroutines require synchronization and hence mutexes. Conversely, concurrent goroutines generally require coordination and orchestration and hence channels.
 
+Given a concurrency problem, it may not always be clear whether we can implement a
+solution using channels or mutexes. Because Go promotes sharing memory by communication, one mistake could be to always force the use of channels, regardless of
+the use case. However, we should see the two options as complementary. 
+
+When should we use channels or mutexes? We will use the example in the next figure as a backbone. Our example has three different goroutines with specific relationships:
+
+* G1 and G2 are parallel goroutines. They may be two goroutines executing the same function that keeps receiving messages from a channel, or perhaps two goroutines executing the same HTTP handler at the same time.
+* On the other hand, G1 and G3 are concurrent goroutines, as are G2 and G3. All the goroutines are part of an overall concurrent structure, but G1 and G2 perform the first step, whereas G3 does the next step.
+
+<!-- TODO Include figure-->
+
+In general, parallel goroutines have to _synchronize_: for example, when they need to access or mutate a shared resource such as a slice. Synchronization is enforced with mutexes but not with any channel types (not with buffered channels). Hence, in general, synchronization between parallel goroutines should be achieved via mutexes.
+
+Conversely, in general, concurrent goroutines have to _coordinate and orchestrate_. For example, if G3 needs to aggregate results from both G1 and G2, G1 and G2 need to signal to G3 that a new intermediate result is available. This coordination falls under the scope of communication—therefore, channels.
+
+Regarding concurrent goroutines, there’s also the case where we want to transfer the ownership of a resource from one step (G1 and G2) to another (G3); for example, if G1 and G2 are enriching a shared resource and at some point, we consider this job as complete. Here, we should use channels to signal that a specific resource is ready and handle the ownership transfer.
+
+Mutexes and channels have different semantics. Whenever we want to share a state or access a shared resource, mutexes ensure exclusive access to this resource. Conversely, channels are a mechanic for signaling with or without data (`chan struct{}` or not). Coordination or ownership transfer should be achieved via channels. It’s important to know whether goroutines are parallel or concurrent because, in general, we need mutexes for parallel goroutines and channels for concurrent ones.
+
 ### Not understanding race problems (data races vs. race conditions and the Go memory model) (#58)
 
 ???+ info "TL;DR"
 
     Being proficient in concurrency also means understanding that data races and race conditions are different concepts. Data races occur when multiple goroutines simultaneously access the same memory location and at least one of them is writing. Meanwhile, being data-race-free doesn’t necessarily mean deterministic execution. When a behavior depends on the sequence or the timing of events that can’t be controlled, this is a race condition.
 
-Understanding the Go memory model and the underlying guarantees in terms of ordering and synchronization is essential to prevent possible data races and/or race conditions.
+Race problems can be among the hardest and most insidious bugs a programmer can face. As Go developers, we must understand crucial aspects such as data races and race conditions, their possible impacts, and how to avoid them.
+
+#### Data Race
+
+A data race occurs when two or more goroutines simultaneously access the same memory location and at least one is writing. In this case, the result can be hazardous. Even worse, in some situations, the memory location may end up holding a value containing a meaningless combination of bits.
+
+We can prevent a data race from happening using different techniques. For example: 
+
+* Using the `sync/atomic` package
+* In synchronizing the two goroutines with an ad how data structure like a mutex
+* Using channels to make the two goroutines communicating to ensure that a variable is updated by only one goroutine at a time
+
+#### Race Condition
+
+Depending on the operation we want to perform, does a data-race-free application necessarily mean a deterministic result? Not necessarily.
+
+A race condition occurs when the behavior depends on the sequence or the timing of events that can’t be controlled. Here, the timing of events is the goroutines’ execution order.
+
+In summary, when we work in concurrent applications, it’s essential to understand that a data race is different from a race condition. A data race occurs when multiple goroutines simultaneously access the same memory location and at least one of them is writing. A data race means unexpected behavior. However, a data-race-free application doesn’t necessarily mean deterministic results. An application can be free of data races but still have behavior that depends on uncontrolled events (such as goroutine execution, how fast a message is published to a channel, or how long a call to a database lasts); this is a race condition. Understanding both concepts is crucial to becoming proficient in designing concurrent applications.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/08-concurrency-foundations/58-races/)
 
@@ -1300,6 +1348,19 @@ Understanding the Go memory model and the underlying guarantees in terms of orde
 
     When creating a certain number of goroutines, consider the workload type. Creating CPU-bound goroutines means bounding this number close to the `GOMAXPROCS` variable (based by default on the number of CPU cores on the host). Creating I/O-bound goroutines depends on other factors, such as the external system.
 
+In programming, the execution time of a workload is limited by one of the following:
+
+* The speed of the CPU—For example, running a merge sort algorithm. The workload is called CPU-bound.
+* The speed of I/O—For example, making a REST call or a database query. The workload is called I/O-bound.
+* The amount of available memory—The workload is called memory-bound.
+
+???+ note
+
+    The last is the rarest nowadays, given that memory has become very cheap in recent decades. Hence, this section focuses on the two first workload types: CPU- and I/O-bound.
+
+If the workload executed by the workers is I/O-bound, the value mainly depends on the external system. Conversely, if the workload is CPU-bound, the optimal number of goroutines is close to the number of available CPU cores (a best practice can be to use `runtime.GOMAXPROCS`). Knowing the workload type (I/O or CPU) is crucial when designing concurrent applications.
+
+
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/08-concurrency-foundations/59-workload-type/main.go)
 
 ### Misunderstanding Go contexts (#60)
@@ -1307,6 +1368,40 @@ Understanding the Go memory model and the underlying guarantees in terms of orde
 ???+ info "TL;DR"
 
     Go contexts are also one of the cornerstones of concurrency in Go. A context allows you to carry a deadline, a cancellation signal, and/or a list of keys-values.
+
+!!! quote "https://pkg.go.dev/context"
+
+    A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+#### Deadline
+
+A deadline refers to a specific point in time determined with one of the following:
+
+* A `time.Duration` from now (for example, in 250 ms)
+* A `time.Time` (for example, 2023-02-07 00:00:00 UTC)
+
+The semantics of a deadline convey that an ongoing activity should be stopped if this deadline is met. An activity is, for example, an I/O request or a goroutine waiting to receive a message from a channel.
+
+#### Cancellation signals
+
+Another use case for Go contexts is to carry a cancellation signal. Let’s imagine that we want to create an application that calls `CreateFileWatcher(ctx context.Context, filename string)` within another goroutine. This function creates a specific file watcher that keeps reading from a file and catches updates. When the provided context expires or is canceled, this function handles it to close the file descriptor.
+
+#### Context values
+
+The last use case for Go contexts is to carry a key-value list. What’s the point of having a context carrying a key-value list? Because Go contexts are generic and mainstream, there are infinite use cases.
+
+For example, if we use tracing, we may want different subfunctions to share the same correlation ID. Some developers may consider this ID too invasive to be part of the function signature. In this regard, we could also decide to include it as part of the provided context.
+
+#### Catching a context cancellation
+
+The `context.Context` type exports a `Done` method that returns a receive-only notification channel: `<-chan struct{}`. This channel is closed when the work associated with the context should be canceled. For example,
+
+* The Done channel related to a context created with `context.WithCancel` is closed when the cancel function is called.
+* The Done channel related to a context created with `context.WithDeadline` is closed when the deadline has expired.
+
+One thing to note is that the internal channel should be closed when a context is canceled or has met a deadline, instead of when it receives a specific value, because the closure of a channel is the only channel action that all the consumer goroutines will receive. This way, all the consumers will be notified once a context is canceled or a deadline is reached.
+
+In summary, to be a proficient Go developer, we have to understand what a context is and how to use it. In general, a function that users wait for should take a context, as doing so allows upstream callers to decide when calling this function should be aborted. 
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/08-concurrency-foundations/60-contexts/main.go)
 
@@ -1318,6 +1413,42 @@ Understanding the Go memory model and the underlying guarantees in terms of orde
 
     Understanding the conditions when a context can be canceled should matter when propagating it: for example, an HTTP handler canceling the context when the response has been sent.
 
+In many situations, it is recommended to propagate Go contexts. However, context propagation can sometimes lead to subtle bugs, preventing subfunctions from being correctly executed.
+
+Let’s consider the following example. We expose an HTTP handler that performs some tasks and returns a response. But just before returning the response, we also want to send it to a Kafka topic. We don’t want to penalize the HTTP consumer latency-wise, so we want the publish action to be handled asynchronously within a new goroutine. We assume that we have at our disposal a `publish` function that accepts a context so the action of publishing a message can be interrupted if the context is canceled, for example. Here is a possible implementation:
+
+```go
+func handler(w http.ResponseWriter, r *http.Request) {
+    response, err := doSomeTask(r.Context(), r)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    return
+    }
+    go func() {
+        err := publish(r.Context(), response)
+        // Do something with err
+    }()
+    writeResponse(response)
+}
+```
+
+What’s wrong with this piece of code? We have to know that the context attached to an HTTP request can cancel in different conditions:
+
+* When the client’s connection closes
+* In the case of an HTTP/2 request, when the request is canceled
+* When the response has been written back to the client
+
+In the first two cases, we probably handle things correctly. For example, if we get a response from doSomeTask but the client has closed the connection, it’s probably OK to call publish with a context already canceled so the message isn’t published. But what about the last case?
+
+When the response has been written to the client, the context associated with the request will be canceled. Therefore, we are facing a race condition:
+
+* If the response is written after the Kafka publication, we both return a response and publish a message successfully
+* However, if the response is written before or during the Kafka publication, the message shouldn’t be published.
+
+In the latter case, calling publish will return an error because we returned the HTTP response quickly.
+
+In summary, propagating a context should be done cautiously.
+
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/61-inappropriate-context/main.go)
 
 ### Starting a goroutine without knowing when to stop it (#62)
@@ -1325,6 +1456,68 @@ Understanding the Go memory model and the underlying guarantees in terms of orde
 ???+ info "TL;DR"
 
     Avoiding leaks means being mindful that whenever a goroutine is started, you should have a plan to stop it eventually.
+
+Goroutines are easy and cheap to start—so easy and cheap that we may not necessarily have a plan for when to stop a new goroutine, which can lead to leaks. Not knowing when to stop a goroutine is a design issue and a common concurrency mistake in Go.
+
+Let’s discuss a concrete example. We will design an application that needs to watch some external configuration (for example, using a database connection). Here’s a first implementation:
+
+```go
+func main() {
+    newWatcher()
+    // Run the application
+}
+
+type watcher struct { /* Some resources */ }
+
+func newWatcher() {
+    w := watcher{}
+    go w.watch() // Creates a goroutine that watches some external configuration
+}
+```
+
+The problem with this code is that when the main goroutine exits (perhaps because of an OS signal or because it has a finite workload), the application is stopped. Hence, the resources created by watcher aren’t closed gracefully. How can we prevent this from happening?
+
+One option could be to pass to newWatcher a context that will be canceled when main returns:
+
+```go
+func main() {
+    ctx, cancel := context.WithCancel(context.Background())
+    defer cancel()
+    newWatcher(ctx)
+    // Run the application
+}
+
+func newWatcher(ctx context.Context) {
+    w := watcher{}
+    go w.watch(ctx)
+}
+```
+
+We propagate the context created to the watch method. When the context is canceled, the watcher struct should close its resources. However, can we guarantee that watch will have time to do so? Absolutely not—and that’s a design flaw.
+
+ The problem is that we used signaling to convey that a goroutine had to be stopped. We didn’t block the parent goroutine until the resources had been closed.  Let’s make sure we do:
+
+```go
+func main() {
+    w := newWatcher()
+    defer w.close()
+    // Run the application
+}
+
+func newWatcher() watcher {
+    w := watcher{}
+    go w.watch()
+    return w
+}
+
+func (w watcher) close() {
+    // Close the resources
+}
+```
+
+Instead of signaling `watcher` that it’s time to close its resources, we now call this `close` method, using `defer` to guarantee that the resources are closed before the application exits.
+
+In summary, let’s be mindful that a goroutine is a resource like any other that must eventually be closed to free memory or other resources. Starting a goroutine without knowing when to stop it is a design issue. Whenever a goroutine is started, we should have a clear plan about when it will stop. Last but not least, if a goroutine creates resources and its lifetime is bound to the lifetime of the application, it’s probably safer to wait for this goroutine to complete before exiting the application. This way, we can ensure that the resources can be freed.
 
  [Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/62-starting-goroutine/)
 
