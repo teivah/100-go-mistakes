@@ -1284,11 +1284,13 @@ In summary, concurrency provides a structure to solve a problem with parts that 
 
 <!-- TODO Include Rob Pike's talk link-->
 
-### [Thinking concurrency is always faster](https://teivah.medium.com/concurrency-isnt-always-faster-in-go-de325168907c) (#56)
+### Thinking concurrency is always faster (#56)
 
 ???+ info "TL;DR"
 
     To be a proficient developer, you must acknowledge that concurrency isn’t always faster. Solutions involving parallelization of minimal workloads may not necessarily be faster than a sequential implementation. Benchmarking sequential versus concurrent solutions should be the way to validate assumptions.
+
+Read the full section [here](56-concurrency-faster.md).
 
  [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/08-concurrency-foundations/56-faster/)
 
