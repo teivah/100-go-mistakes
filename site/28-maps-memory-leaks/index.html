@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://100go.co/chapter-1/">
+        <link rel="canonical" href="https://100go.co/28-maps-memory-leaks/">
       
       
-        <link rel="prev" href="../book/">
+        <link rel="prev" href="../20-slice/">
       
       
-        <link rel="next" href="../external/">
+        <link rel="next" href="../89-benchmarks/">
       
       
       <link rel="icon" href="../img/Go-Logo_LightBlue.svg">
@@ -67,11 +67,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Read the First Chapter - 100 Go Mistakes and How to Avoid Them" >
+        <meta  property="og:title"  content="Maps and memory leaks (#28) - 100 Go Mistakes and How to Avoid Them" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://100go.co/assets/images/social/chapter-1.png" >
+        <meta  property="og:image"  content="https://100go.co/assets/images/social/28-maps-memory-leaks.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -79,15 +79,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://100go.co/chapter-1/" >
+        <meta  property="og:url"  content="https://100go.co/28-maps-memory-leaks/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Read the First Chapter - 100 Go Mistakes and How to Avoid Them" >
+        <meta  name="twitter:title"  content="Maps and memory leaks (#28) - 100 Go Mistakes and How to Avoid Them" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://100go.co/assets/images/social/chapter-1.png" >
+        <meta  name="twitter:image"  content="https://100go.co/assets/images/social/28-maps-memory-leaks.png" >
       
     
     
@@ -124,7 +124,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#go-simple-to-learn-but-hard-to-master" class="md-skip">
+        <a href="#maps-and-memory-leaks" class="md-skip">
           Skip to content
         </a>
       
@@ -159,7 +159,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Read the First Chapter
+              Maps and memory leaks (#28)
             
           </span>
         </div>
@@ -288,12 +288,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../book/" class="md-tabs__link">
           
   
@@ -308,10 +306,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href=".." class="md-tabs__link">
           
   
@@ -395,19 +395,17 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
@@ -420,7 +418,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Book
@@ -451,29 +449,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Read the First Chapter
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../chapter-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -482,109 +460,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#go-outline" class="md-nav__link">
-    Go outline
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#simple-doesnt-mean-easy" class="md-nav__link">
-    Simple doesn’t mean easy
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#100-go-mistakes" class="md-nav__link">
-    100 Go mistakes
-  </a>
-  
-    <nav class="md-nav" aria-label="100 Go mistakes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bugs" class="md-nav__link">
-    Bugs
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#needless-complexity" class="md-nav__link">
-    Needless complexity
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#weaker-readability" class="md-nav__link">
-    Weaker readability
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#suboptimal-or-unidiomatic-organization" class="md-nav__link">
-    Suboptimal or unidiomatic organization
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lack-of-api-convenience" class="md-nav__link">
-    Lack of API convenience
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#under-optimized-code" class="md-nav__link">
-    Under-optimized code
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lack-of-productivity" class="md-nav__link">
-    Lack of productivity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    Summary
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -621,17 +496,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -644,7 +521,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Go Mistakes
@@ -675,17 +552,19 @@
                 
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
@@ -698,7 +577,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Full Sections
@@ -749,9 +628,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../28-maps-memory-leaks/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -760,6 +648,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -921,97 +810,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#go-outline" class="md-nav__link">
-    Go outline
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#simple-doesnt-mean-easy" class="md-nav__link">
-    Simple doesn’t mean easy
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#100-go-mistakes" class="md-nav__link">
-    100 Go mistakes
-  </a>
-  
-    <nav class="md-nav" aria-label="100 Go mistakes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bugs" class="md-nav__link">
-    Bugs
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#needless-complexity" class="md-nav__link">
-    Needless complexity
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#weaker-readability" class="md-nav__link">
-    Weaker readability
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#suboptimal-or-unidiomatic-organization" class="md-nav__link">
-    Suboptimal or unidiomatic organization
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lack-of-api-convenience" class="md-nav__link">
-    Lack of API convenience
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#under-optimized-code" class="md-nav__link">
-    Under-optimized code
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lack-of-productivity" class="md-nav__link">
-    Lack of productivity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    Summary
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1028,105 +826,107 @@
   
 
 
-<h1 id="go-simple-to-learn-but-hard-to-master">Go: Simple to learn but hard to master</h1>
-<p>This chapter covers</p>
-<ul>
-<li>What makes Go an efficient, scalable, and productive language</li>
-<li>Exploring why Go is simple to learn but hard to master</li>
-<li>Presenting the common types of mistakes made by developers</li>
-</ul>
-<p>Making mistakes is part of everyone’s life. As Albert Einstein once said,</p>
-<div class="admonition quote">
-<p class="admonition-title">Albert Einstein</p>
-<p>A person who never made a mistake never tried anything new.</p>
-</div>
-<p>What matters in the end isn’t the number of mistakes we make, but our capacity to learn from them. This assertion also applies to programming. The seniority we acquire in a language isn’t a magical process; it involves making many mistakes and learning from them. The purpose of this book is centered around this idea. It will help you, the reader, become a more proficient Go developer by looking at and learning from 100 common mistakes people make in many areas of the language.</p>
-<p>This chapter presents a quick refresher as to why Go has become mainstream over the years. We’ll discuss why, despite Go being considered simple to learn, mastering its nuances can be challenging. Finally, we’ll introduce the concepts this book covers.</p>
-<h2 id="go-outline">Go outline</h2>
-<p>If you are reading this book, it’s likely that you’re already sold on Go. Therefore, this section provides a brief reminder about what makes Go such a powerful language.</p>
-<p>Software engineering has evolved considerably during the past decades. Most modern systems are no longer written by a single person but by teams consisting of multiple programmers—sometimes even hundreds, if not thousands. Nowadays, code must be readable, expressive, and maintainable to guarantee a system’s durability over the years. Meanwhile, in our fast-moving world, maximizing agility and reducing the time to market is critical for most organizations. Programming should also follow this trend, and companies strive to ensure that software engineers are as productive as possible when reading, writing, and maintaining code.</p>
-<p>In response to these challenges, Google created the Go programming language in 2007. Since then, many organizations have adopted the language to support various use cases: APIs, automation, databases, CLIs (command-line interfaces), and so on. Many today consider Go the language of the cloud.</p>
-<p>Feature-wise, Go has no type inheritance, no exceptions, no macros, no partial functions, no support for lazy variable evaluation or immutability, no operator overloading, no pattern matching, and on and on. Why are these features missing from the language? The official <a href="https://go.dev/doc/faq">Go FAQ</a> gives us some insight:</p>
-<div class="admonition quote">
-<p class="admonition-title">Go FAQ</p>
-<p>Why does Go not have feature X? Your favorite feature may be missing because it doesn’t fit, because it affects compilation speed or clarity of design, or because it would make the fundamental system model too difficult.</p>
-</div>
-<p>Judging the quality of a programming language via its number of features is probably not an accurate metric. At least, it’s not an objective of Go. Instead, Go utilizes a few essential characteristics when adopting a language at scale for an organization. These include the following:</p>
-<ul>
-<li><em>Stability</em>—Even though Go receives frequent updates (including improvements and security patches), it remains a stable language. Some may even consider this one of the best features of the language.</li>
-<li><em>Expressivity</em>—We can define expressivity in a programming language by how naturally and intuitively we can write and read code. A reduced number of keywords and limited ways to solve common problems make Go an expressive language for large codebases.</li>
-<li><em>Compilation</em>—As developers, what can be more exasperating than having to wait for a build to test our application? Targeting fast compilation times has always been a conscious goal for the language designers. This, in turn, enables productivity.</li>
-<li><em>Safety</em>—Go is a strong, statically typed language. Hence, it has strict compiletime rules, which ensure the code is type-safe in most cases.</li>
-</ul>
-<p>Go was built from the ground up with solid features such as outstanding concurrency primitives with goroutines and channels. There’s not a strong need to rely on external libraries to build efficient concurrent applications. Observing how important concurrency is these days also demonstrates why Go is such a suitable language for the present and probably for the foreseeable future.</p>
-<p>Some also consider Go a simple language. And, in a sense, this isn’t necessarily wrong. For example, a newcomer can learn the language’s main features in less than a day. So why read a book centered on the concept of mistakes if Go is simple?</p>
-<h2 id="simple-doesnt-mean-easy">Simple doesn’t mean easy</h2>
-<p>There is a subtle difference between simple and easy. <em>Simple</em>, applied to a technology, means not complicated to learn or understand. However, <em>easy</em> means that we can achieve anything without much effort. Go is simple to learn but not necessarily easy to master.</p>
-<p>Let’s take concurrency, for example. In 2019, a study focusing on concurrency bugs was published: <a href="https://songlh.github.io/paper/go-study.pdf">Understanding Real-World Concurrency Bugs in Go</a>. This study was the first systematic analysis of concurrency bugs. It focused on multiple popular Go repositories such as Docker, gRPC, and Kubernetes. One of the most important takeaways from this study is that most of the blocking bugs are caused by inaccurate use of the message-passing paradigm via channels, despite the belief that message passing is easier to handle and less error-prone than sharing memory.</p>
-<p>What should be an appropriate reaction to such a takeaway? Should we consider that the language designers were wrong about message passing? Should we reconsider how we deal with concurrency in our project? Of course not.</p>
-<p>It’s not a question of confronting message passing versus sharing memory and determining the winner. However, it’s up to us as Go developers to thoroughly understand how to use concurrency, its implications on modern processors, when to favor one approach over the other, and how to avoid common traps. This example highlights that although a concept such as channels and goroutines can be simple to learn, it isn’t an easy topic in practice.</p>
-<p>This leitmotif—simple doesn’t mean easy—can be generalized to many aspects of Go, not only concurrency. Hence, to be proficient Go developers, we must have a thorough understanding of many aspects of the language, which requires time, effort, and mistakes.</p>
-<p>This book aims to help accelerate our journey toward proficiency by delving into 100 Go mistakes.</p>
-<h2 id="100-go-mistakes">100 Go mistakes</h2>
-<p>Why should we read a book about common Go mistakes? Why not deepen our knowledge with an ordinary book that would dig into different topics?</p>
-<p>In a 2011 article, neuroscientists proved that the best time for brain growth is when we’re facing mistakes. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> Haven’t we all experienced the process of learning from a mistake and recalling that occasion after months or even years, when some context related to it? As presented in another article, by Janet Metcalfe, this happens because mistakes have a facilitative effect. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> The main idea is that we can remember not only the error but also the context surrounding the mistake. This is one of the reasons why learning from mistakes is so efficient.</p>
-<p>To strengthen this facilitative effect, this book accompanies each mistake as much as possible with real-world examples. This book isn’t only about theory; it also helps us get better at avoiding mistakes and making more well-informed, conscious decisions because we now understand the rationale behind them.</p>
-<div class="admonition quote">
-<p class="admonition-title">Unknown</p>
-<p>Tell me and I forget. Teach me and I remember. Involve me and I learn.</p>
-</div>
-<p>This book presents seven main categories of mistakes. Overall, the mistakes can be classified as</p>
-<ul>
-<li>Bugs</li>
-<li>Needless complexity</li>
-<li>Weaker readability</li>
-<li>Suboptimal or unidiomatic organization </li>
-<li>Lack of API convenience</li>
-<li>Under-optimized code</li>
-<li>Lack of productivity</li>
-</ul>
-<p>We introduce each mistake category next.</p>
-<h3 id="bugs">Bugs</h3>
-<p>The first type of mistake and probably the most obvious is software bugs. In 2020, a study conducted by Synopsys estimated the cost of software bugs in the U.S. alone to be over $2 trillion. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
-<p>Furthermore, bugs can also lead to tragic impacts. We can, for example, mention cases such as Therac-25, a radiation therapy machine produced by Atomic Energy of Canada Limited (AECL). Because of a race condition, the machine gave its patients radiation doses that were hundreds of times greater than expected, leading to the death of three patients. Hence, software bugs aren’t only about money. As developers, we should remember how impactful our jobs are.</p>
-<p>This book covers plenty of cases that could lead to various software bugs, including data races, leaks, logic errors, and other defects. Although accurate tests should be a way to discover such bugs as early as possible, we may sometimes miss cases because of different factors such as time constraints or complexity. Therefore, as a Go developer, it’s essential to make sure we avoid common bugs.</p>
-<h3 id="needless-complexity">Needless complexity</h3>
-<p>The next category of mistakes is related to unnecessary complexity. A significant part of software complexity comes from the fact that, as developers, we strive to think about imaginary futures. Instead of solving concrete problems right now, it can be tempting to build evolutionary software that could tackle whatever future use case arises. However, this leads to more drawbacks than benefits in most cases because it can make a codebase more complex to understand and reason about.</p>
-<p>Getting back to Go, we can think of plenty of use cases where developers might be tempted to design abstractions for future needs, such as interfaces or generics. This book discusses topics where we should remain careful not to harm a codebase with needless complexity.</p>
-<h3 id="weaker-readability">Weaker readability</h3>
-<p>Another kind of mistake is to weaken readability. As Robert C. Martin wrote in his book <em>Clean Code: A Handbook of Agile Software Craftsmanship</em>, the ratio of time spent reading versus writing is well over 10 to 1. Most of us started to program on solo projects where readability wasn’t that important. However, today’s software engineering is programming with a time dimension: making sure we can still work with and maintain an application months, years, or perhaps even decades later.</p>
-<p>When programming in Go, we can make many mistakes that can harm readability. These mistakes may include nested code, data type representations, or not using named result parameters in some cases. Throughout this book, we will learn how to write readable code and care for future readers (including our future selves).</p>
-<h3 id="suboptimal-or-unidiomatic-organization">Suboptimal or unidiomatic organization</h3>
-<p>Be it while working on a new project or because we acquire inaccurate reflexes, another type of mistake is organizing our code and a project suboptimally and unidiomatically. Such issues can make a project harder to reason about and maintain. This book covers some of these common mistakes in Go. For example, we’ll look at how to structure a project and deal with utility packages or init functions. All in all, looking at these mistakes should help us organize our code and projects more efficiently and idiomatically.</p>
-<h3 id="lack-of-api-convenience">Lack of API convenience</h3>
-<p>Making common mistakes that weaken how convenient an API is for our clients is another type of mistake. If an API isn’t user-friendly, it will be less expressive and, hence, harder to understand and more error-prone.</p>
-<p>We can think about many situations such as overusing any types, using the wrong creational pattern to deal with options, or blindly applying standard practices from object-oriented programming that affect the usability of our APIs. This book covers common mistakes that prevent us from exposing convenient APIs for our users.</p>
-<h3 id="under-optimized-code">Under-optimized code</h3>
-<p>Under-optimized code is another type of mistake made by developers. It can happen for various reasons, such as not understanding language features or even a lack of fundamental knowledge. Performance is one of the most obvious impacts of this mistake, but not the only one.</p>
-<p>We can think about optimizing code for other goals, such as accuracy. For example, this book provides some common techniques to ensure that floating-point operations are accurate. Meanwhile, we will cover plenty of cases that can negatively impact performance code because of poorly parallelized executions, not knowing how to reduce allocations, or the impacts of data alignment, for example. We will tackle optimization via different prisms.</p>
-<h3 id="lack-of-productivity">Lack of productivity</h3>
-<p>In most cases, what’s the best language we can choose when working on a new project? The one we’re the most productive with. Being comfortable with how a language works and exploiting it to get the best out of it is crucial to reach proficiency.</p>
-<p>In this book, we will cover many cases and concrete examples that will help us to be more productive while working in Go. For instance, we’ll look at writing efficient tests to ensure that our code works, relying on the standard library to be more effective, and getting the best out of the profiling tools and linters. Now, it’s time to delve into those 100 common Go mistakes.</p>
-<h2 id="summary">Summary</h2>
-<ul>
-<li>Go is a modern programming language that enables developer productivity, which is crucial for most companies today.</li>
-<li>Go is simple to learn but not easy to master. This is why we need to deepen our knowledge to make the most effective use of the language.</li>
-<li>Learning via mistakes and concrete examples is a powerful way to be proficient in a language. This book will accelerate our path to proficiency by exploring 100 common mistakes.</li>
-</ul>
-<div class="footnote">
-<hr />
+<h1 id="maps-and-memory-leaks">Maps and memory leaks</h1>
+<p>When working with maps in Go, we need to understand some important characteristics of how a map grows and shrinks. Let’s delve into this to prevent issues that can cause memory leaks.</p>
+<p>First, to view a concrete example of this problem, let’s design a scenario where we will work with the following map:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">][</span><span class="mi">128</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Each value of m is an array of 128 bytes. We will do the following:</p>
 <ol>
-<li id="fn:1">
-<p>J. S. Moser, H. S. Schroder, et al., “Mind Your Errors: Evidence for a Neural Mechanism Linking Growth Mindset to Adaptive Posterror Adjustments,” Psychological Science, vol. 22, no. 12, pp. 1484–1489, Dec. 2011.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>J. Metcalfe, “Learning from Errors,” Annual Review of Psychology, vol. 68, pp. 465–489, Jan. 2017.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>Synopsys, “The Cost of Poor Software Quality in the US: A 2020 Report.” 2020. <a href="https://news.synopsys.com/2021-01-06-Synopsys-Sponsored-CISQ-Research-Estimates-Cost-of-Poor-Software-Quality-in-the-US-2-08-Trillion-in-2020">https://news.synopsys.com/2021-01-06-Synopsys-Sponsored-CISQ-Research-Estimates-Cost-of-Poor-Software-Quality-in-the-US-2-08-Trillion-in-2020</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
+<li>Allocate an empty map.</li>
+<li>Add 1 million elements.</li>
+<li>Remove all the elements, and run a Garbage Collection (GC).</li>
 </ol>
-</div>
+<p>After each step, we want to print the size of the heap (using a <code>printAlloc</code> utility function). This shows us how this example behaves memory-wise:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">n</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="nx">_000_000</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">][</span><span class="mi">128</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">printAlloc</span><span class="p">()</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Adds 1 million elements</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nx">m</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">128</span><span class="p">]</span><span class="kt">byte</span><span class="p">{}</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nx">printAlloc</span><span class="p">()</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Deletes 1 million elements</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="nb">delete</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">GC</span><span class="p">()</span><span class="w"> </span><span class="c1">// Triggers a manual GC</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="nx">printAlloc</span><span class="p">()</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">KeepAlive</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// Keeps a reference to m so that the map isn’t collected</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">}</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="kd">func</span><span class="w"> </span><span class="nx">printAlloc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">MemStats</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">ReadMemStats</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m</span><span class="p">)</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%d KB\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">Alloc</span><span class="o">/</span><span class="mi">1024</span><span class="p">)</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>We allocate an empty map, add 1 million elements, remove 1 million elements, and then run a GC. We also make sure to keep a reference to the map using <a href="https://pkg.go.dev/runtime#KeepAlive"><code>runtime.KeepAlive</code></a> so that the map isn’t collected as well. Let’s run this example:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>0 MB   &lt;-- After m is allocated
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>461 MB &lt;-- After we add 1 million elements
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>293 MB &lt;-- After we remove 1 million elements
+</span></code></pre></div>
+<p>What can we observe? At first, the heap size is minimal. Then it grows significantly after having added 1 million elements to the map. But if we expected the heap size to decrease after removing all the elements, this isn’t how maps work in Go. In the end, even though the GC has collected all the elements, the heap size is still 293 MB. So the memory shrunk, but not as we might have expected. What’s the rationale? We need to delve into how a map works in Go.</p>
+<p>A map provides an unordered collection of key-value pairs in which all the keys are distinct. In Go, a map is based on the hash table data structure: an array where each element is a pointer to a bucket of key-value pairs, as shown in figure 1.</p>
+<figure>
+<p><a class="glightbox" href="../img/map-leak-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/map-leak-1.png" /></a>
+  </p>
+<figcaption>Figure 1: A hash table example with a focus on bucket 0.</figcaption>
+</figure>
+<p>Each bucket is a fixed-size array of eight elements. In the case of an insertion into a bucket that is already full (a bucket overflow), Go creates another bucket of eight elements and links the previous one to it. Figure 2 shows an example:</p>
+<figure>
+<p><a class="glightbox" href="../img/map-leak-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/map-leak-2.png" /></a>
+  </p>
+<figcaption>Figure 2: In case of a bucket overflow, Go allocates a new bucket and links the previous bucket to it.</figcaption>
+</figure>
+<p>Under the hood, a Go map is a pointer to a runtime.hmap struct. This struct contains multiple fields, including a B field, giving the number of buckets in the map:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">hmap</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">B</span><span class="w"> </span><span class="kt">uint8</span><span class="w"> </span><span class="c1">// log_2 of # of buckets</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">            </span><span class="c1">// (can hold up to loadFactor * 2^B items)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>After adding 1 million elements, the value of B equals 18, which means 2¹⁸ = 262,144 buckets. When we remove 1 million elements, what’s the value of B? Still 18. Hence, the map still contains the same number of buckets.</p>
+<p>The reason is that the number of buckets in a map cannot shrink. Therefore, removing elements from a map doesn’t impact the number of existing buckets; it just zeroes the slots in the buckets. A map can only grow and have more buckets; it never shrinks.</p>
+<p>In the previous example, we went from 461 MB to 293 MB because the elements were collected, but running the GC didn’t impact the map itself. Even the number of extra buckets (the buckets created because of overflows) remains the same.</p>
+<p>Let’s take a step back and discuss when the fact that a map cannot shrink can be a problem. Imagine building a cache using a <code>map[int][128]byte</code>. This map holds per customer ID (the <code>int</code>), a sequence of 128 bytes. Now, suppose we want to save the last 1,000 customers. The map size will remain constant, so we shouldn’t worry about the fact that a map cannot shrink.</p>
+<p>However, let’s say we want to store one hour of data. Meanwhile, our company has decided to have a big promotion for Black Friday: in one hour, we may have millions of customers connected to our system. But a few days after Black Friday, our map will contain the same number of buckets as during the peak time. This explains why we can experience high memory consumption that doesn’t significantly decrease in such a scenario.</p>
+<p>What are the solutions if we don’t want to manually restart our service to clean the amount of memory consumed by the map? One solution could be to re-create a copy of the current map at a regular pace. For example, every hour, we can build a new map, copy all the elements, and release the previous one. The main drawback of this option is that following the copy and until the next garbage collection, we may consume twice the current memory for a short period.</p>
+<p>Another solution would be to change the map type to store an array pointer: <code>map[int]*[128]byte</code>. It doesn’t solve the fact that we will have a significant number of buckets; however, each bucket entry will reserve the size of a pointer for the value instead of 128 bytes (8 bytes on 64-bit systems and 4 bytes on 32-bit systems).</p>
+<p>Coming back to the original scenario, let’s compare the memory consumption for each map type following each step. The following table shows the comparison.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th><code>map[int][128]byte</code></th>
+<th><code>map[int]*[128]byte</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allocate an empty map</td>
+<td>0 MB</td>
+<td>0 MB</td>
+</tr>
+<tr>
+<td>Add 1 million elements</td>
+<td>461 MB</td>
+<td>182 MB</td>
+</tr>
+<tr>
+<td>Remove all the elements and run a GC</td>
+<td>293 MB</td>
+<td>38 MB</td>
+</tr>
+</tbody>
+</table>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>If a key or a value is over 128 bytes, Go won’t store it directly in the map bucket. Instead, Go stores a pointer to reference the key or the value.</p>
+</details>
+<p>As we have seen, adding n elements to a map and then deleting all the elements means keeping the same number of buckets in memory. So, we must remember that because a Go map can only grow in size, so does its memory consumption. There is no automated strategy to shrink it. If this leads to high memory consumption, we can try different options such as forcing Go to re-create the map or using pointers to check if it can be optimized.</p>
 
 
   

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://100go.co/chapter-1/">
+        <link rel="canonical" href="https://100go.co/20-slice/">
       
       
-        <link rel="prev" href="../book/">
+        <link rel="prev" href="../9-generics/">
       
       
-        <link rel="next" href="../external/">
+        <link rel="next" href="../28-maps-memory-leaks/">
       
       
       <link rel="icon" href="../img/Go-Logo_LightBlue.svg">
@@ -67,11 +67,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Read the First Chapter - 100 Go Mistakes and How to Avoid Them" >
+        <meta  property="og:title"  content="Not understanding slice length and capacity (#20) - 100 Go Mistakes and How to Avoid Them" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://100go.co/assets/images/social/chapter-1.png" >
+        <meta  property="og:image"  content="https://100go.co/assets/images/social/20-slice.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -79,15 +79,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://100go.co/chapter-1/" >
+        <meta  property="og:url"  content="https://100go.co/20-slice/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Read the First Chapter - 100 Go Mistakes and How to Avoid Them" >
+        <meta  name="twitter:title"  content="Not understanding slice length and capacity (#20) - 100 Go Mistakes and How to Avoid Them" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://100go.co/assets/images/social/chapter-1.png" >
+        <meta  name="twitter:image"  content="https://100go.co/assets/images/social/20-slice.png" >
       
     
     
@@ -124,7 +124,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#go-simple-to-learn-but-hard-to-master" class="md-skip">
+        <a href="#not-understanding-slice-length-and-capacity" class="md-skip">
           Skip to content
         </a>
       
@@ -159,7 +159,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Read the First Chapter
+              Not understanding slice length and capacity (#20)
             
           </span>
         </div>
@@ -288,12 +288,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../book/" class="md-tabs__link">
           
   
@@ -308,10 +306,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href=".." class="md-tabs__link">
           
   
@@ -395,19 +395,17 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
         
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
@@ -420,7 +418,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Book
@@ -451,29 +449,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Read the First Chapter
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../chapter-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -482,109 +460,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#go-outline" class="md-nav__link">
-    Go outline
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#simple-doesnt-mean-easy" class="md-nav__link">
-    Simple doesn’t mean easy
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#100-go-mistakes" class="md-nav__link">
-    100 Go mistakes
-  </a>
-  
-    <nav class="md-nav" aria-label="100 Go mistakes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bugs" class="md-nav__link">
-    Bugs
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#needless-complexity" class="md-nav__link">
-    Needless complexity
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#weaker-readability" class="md-nav__link">
-    Weaker readability
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#suboptimal-or-unidiomatic-organization" class="md-nav__link">
-    Suboptimal or unidiomatic organization
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lack-of-api-convenience" class="md-nav__link">
-    Lack of API convenience
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#under-optimized-code" class="md-nav__link">
-    Under-optimized code
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lack-of-productivity" class="md-nav__link">
-    Lack of productivity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    Summary
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -621,17 +496,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -644,7 +521,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Go Mistakes
@@ -675,17 +552,19 @@
                 
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
@@ -698,7 +577,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Full Sections
@@ -729,9 +608,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../20-slice/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -740,6 +628,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -921,97 +810,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#go-outline" class="md-nav__link">
-    Go outline
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#simple-doesnt-mean-easy" class="md-nav__link">
-    Simple doesn’t mean easy
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#100-go-mistakes" class="md-nav__link">
-    100 Go mistakes
-  </a>
-  
-    <nav class="md-nav" aria-label="100 Go mistakes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bugs" class="md-nav__link">
-    Bugs
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#needless-complexity" class="md-nav__link">
-    Needless complexity
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#weaker-readability" class="md-nav__link">
-    Weaker readability
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#suboptimal-or-unidiomatic-organization" class="md-nav__link">
-    Suboptimal or unidiomatic organization
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lack-of-api-convenience" class="md-nav__link">
-    Lack of API convenience
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#under-optimized-code" class="md-nav__link">
-    Under-optimized code
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lack-of-productivity" class="md-nav__link">
-    Lack of productivity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#summary" class="md-nav__link">
-    Summary
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1028,105 +826,96 @@
   
 
 
-<h1 id="go-simple-to-learn-but-hard-to-master">Go: Simple to learn but hard to master</h1>
-<p>This chapter covers</p>
-<ul>
-<li>What makes Go an efficient, scalable, and productive language</li>
-<li>Exploring why Go is simple to learn but hard to master</li>
-<li>Presenting the common types of mistakes made by developers</li>
-</ul>
-<p>Making mistakes is part of everyone’s life. As Albert Einstein once said,</p>
-<div class="admonition quote">
-<p class="admonition-title">Albert Einstein</p>
-<p>A person who never made a mistake never tried anything new.</p>
-</div>
-<p>What matters in the end isn’t the number of mistakes we make, but our capacity to learn from them. This assertion also applies to programming. The seniority we acquire in a language isn’t a magical process; it involves making many mistakes and learning from them. The purpose of this book is centered around this idea. It will help you, the reader, become a more proficient Go developer by looking at and learning from 100 common mistakes people make in many areas of the language.</p>
-<p>This chapter presents a quick refresher as to why Go has become mainstream over the years. We’ll discuss why, despite Go being considered simple to learn, mastering its nuances can be challenging. Finally, we’ll introduce the concepts this book covers.</p>
-<h2 id="go-outline">Go outline</h2>
-<p>If you are reading this book, it’s likely that you’re already sold on Go. Therefore, this section provides a brief reminder about what makes Go such a powerful language.</p>
-<p>Software engineering has evolved considerably during the past decades. Most modern systems are no longer written by a single person but by teams consisting of multiple programmers—sometimes even hundreds, if not thousands. Nowadays, code must be readable, expressive, and maintainable to guarantee a system’s durability over the years. Meanwhile, in our fast-moving world, maximizing agility and reducing the time to market is critical for most organizations. Programming should also follow this trend, and companies strive to ensure that software engineers are as productive as possible when reading, writing, and maintaining code.</p>
-<p>In response to these challenges, Google created the Go programming language in 2007. Since then, many organizations have adopted the language to support various use cases: APIs, automation, databases, CLIs (command-line interfaces), and so on. Many today consider Go the language of the cloud.</p>
-<p>Feature-wise, Go has no type inheritance, no exceptions, no macros, no partial functions, no support for lazy variable evaluation or immutability, no operator overloading, no pattern matching, and on and on. Why are these features missing from the language? The official <a href="https://go.dev/doc/faq">Go FAQ</a> gives us some insight:</p>
-<div class="admonition quote">
-<p class="admonition-title">Go FAQ</p>
-<p>Why does Go not have feature X? Your favorite feature may be missing because it doesn’t fit, because it affects compilation speed or clarity of design, or because it would make the fundamental system model too difficult.</p>
-</div>
-<p>Judging the quality of a programming language via its number of features is probably not an accurate metric. At least, it’s not an objective of Go. Instead, Go utilizes a few essential characteristics when adopting a language at scale for an organization. These include the following:</p>
-<ul>
-<li><em>Stability</em>—Even though Go receives frequent updates (including improvements and security patches), it remains a stable language. Some may even consider this one of the best features of the language.</li>
-<li><em>Expressivity</em>—We can define expressivity in a programming language by how naturally and intuitively we can write and read code. A reduced number of keywords and limited ways to solve common problems make Go an expressive language for large codebases.</li>
-<li><em>Compilation</em>—As developers, what can be more exasperating than having to wait for a build to test our application? Targeting fast compilation times has always been a conscious goal for the language designers. This, in turn, enables productivity.</li>
-<li><em>Safety</em>—Go is a strong, statically typed language. Hence, it has strict compiletime rules, which ensure the code is type-safe in most cases.</li>
-</ul>
-<p>Go was built from the ground up with solid features such as outstanding concurrency primitives with goroutines and channels. There’s not a strong need to rely on external libraries to build efficient concurrent applications. Observing how important concurrency is these days also demonstrates why Go is such a suitable language for the present and probably for the foreseeable future.</p>
-<p>Some also consider Go a simple language. And, in a sense, this isn’t necessarily wrong. For example, a newcomer can learn the language’s main features in less than a day. So why read a book centered on the concept of mistakes if Go is simple?</p>
-<h2 id="simple-doesnt-mean-easy">Simple doesn’t mean easy</h2>
-<p>There is a subtle difference between simple and easy. <em>Simple</em>, applied to a technology, means not complicated to learn or understand. However, <em>easy</em> means that we can achieve anything without much effort. Go is simple to learn but not necessarily easy to master.</p>
-<p>Let’s take concurrency, for example. In 2019, a study focusing on concurrency bugs was published: <a href="https://songlh.github.io/paper/go-study.pdf">Understanding Real-World Concurrency Bugs in Go</a>. This study was the first systematic analysis of concurrency bugs. It focused on multiple popular Go repositories such as Docker, gRPC, and Kubernetes. One of the most important takeaways from this study is that most of the blocking bugs are caused by inaccurate use of the message-passing paradigm via channels, despite the belief that message passing is easier to handle and less error-prone than sharing memory.</p>
-<p>What should be an appropriate reaction to such a takeaway? Should we consider that the language designers were wrong about message passing? Should we reconsider how we deal with concurrency in our project? Of course not.</p>
-<p>It’s not a question of confronting message passing versus sharing memory and determining the winner. However, it’s up to us as Go developers to thoroughly understand how to use concurrency, its implications on modern processors, when to favor one approach over the other, and how to avoid common traps. This example highlights that although a concept such as channels and goroutines can be simple to learn, it isn’t an easy topic in practice.</p>
-<p>This leitmotif—simple doesn’t mean easy—can be generalized to many aspects of Go, not only concurrency. Hence, to be proficient Go developers, we must have a thorough understanding of many aspects of the language, which requires time, effort, and mistakes.</p>
-<p>This book aims to help accelerate our journey toward proficiency by delving into 100 Go mistakes.</p>
-<h2 id="100-go-mistakes">100 Go mistakes</h2>
-<p>Why should we read a book about common Go mistakes? Why not deepen our knowledge with an ordinary book that would dig into different topics?</p>
-<p>In a 2011 article, neuroscientists proved that the best time for brain growth is when we’re facing mistakes. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> Haven’t we all experienced the process of learning from a mistake and recalling that occasion after months or even years, when some context related to it? As presented in another article, by Janet Metcalfe, this happens because mistakes have a facilitative effect. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> The main idea is that we can remember not only the error but also the context surrounding the mistake. This is one of the reasons why learning from mistakes is so efficient.</p>
-<p>To strengthen this facilitative effect, this book accompanies each mistake as much as possible with real-world examples. This book isn’t only about theory; it also helps us get better at avoiding mistakes and making more well-informed, conscious decisions because we now understand the rationale behind them.</p>
-<div class="admonition quote">
-<p class="admonition-title">Unknown</p>
-<p>Tell me and I forget. Teach me and I remember. Involve me and I learn.</p>
-</div>
-<p>This book presents seven main categories of mistakes. Overall, the mistakes can be classified as</p>
-<ul>
-<li>Bugs</li>
-<li>Needless complexity</li>
-<li>Weaker readability</li>
-<li>Suboptimal or unidiomatic organization </li>
-<li>Lack of API convenience</li>
-<li>Under-optimized code</li>
-<li>Lack of productivity</li>
-</ul>
-<p>We introduce each mistake category next.</p>
-<h3 id="bugs">Bugs</h3>
-<p>The first type of mistake and probably the most obvious is software bugs. In 2020, a study conducted by Synopsys estimated the cost of software bugs in the U.S. alone to be over $2 trillion. <sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
-<p>Furthermore, bugs can also lead to tragic impacts. We can, for example, mention cases such as Therac-25, a radiation therapy machine produced by Atomic Energy of Canada Limited (AECL). Because of a race condition, the machine gave its patients radiation doses that were hundreds of times greater than expected, leading to the death of three patients. Hence, software bugs aren’t only about money. As developers, we should remember how impactful our jobs are.</p>
-<p>This book covers plenty of cases that could lead to various software bugs, including data races, leaks, logic errors, and other defects. Although accurate tests should be a way to discover such bugs as early as possible, we may sometimes miss cases because of different factors such as time constraints or complexity. Therefore, as a Go developer, it’s essential to make sure we avoid common bugs.</p>
-<h3 id="needless-complexity">Needless complexity</h3>
-<p>The next category of mistakes is related to unnecessary complexity. A significant part of software complexity comes from the fact that, as developers, we strive to think about imaginary futures. Instead of solving concrete problems right now, it can be tempting to build evolutionary software that could tackle whatever future use case arises. However, this leads to more drawbacks than benefits in most cases because it can make a codebase more complex to understand and reason about.</p>
-<p>Getting back to Go, we can think of plenty of use cases where developers might be tempted to design abstractions for future needs, such as interfaces or generics. This book discusses topics where we should remain careful not to harm a codebase with needless complexity.</p>
-<h3 id="weaker-readability">Weaker readability</h3>
-<p>Another kind of mistake is to weaken readability. As Robert C. Martin wrote in his book <em>Clean Code: A Handbook of Agile Software Craftsmanship</em>, the ratio of time spent reading versus writing is well over 10 to 1. Most of us started to program on solo projects where readability wasn’t that important. However, today’s software engineering is programming with a time dimension: making sure we can still work with and maintain an application months, years, or perhaps even decades later.</p>
-<p>When programming in Go, we can make many mistakes that can harm readability. These mistakes may include nested code, data type representations, or not using named result parameters in some cases. Throughout this book, we will learn how to write readable code and care for future readers (including our future selves).</p>
-<h3 id="suboptimal-or-unidiomatic-organization">Suboptimal or unidiomatic organization</h3>
-<p>Be it while working on a new project or because we acquire inaccurate reflexes, another type of mistake is organizing our code and a project suboptimally and unidiomatically. Such issues can make a project harder to reason about and maintain. This book covers some of these common mistakes in Go. For example, we’ll look at how to structure a project and deal with utility packages or init functions. All in all, looking at these mistakes should help us organize our code and projects more efficiently and idiomatically.</p>
-<h3 id="lack-of-api-convenience">Lack of API convenience</h3>
-<p>Making common mistakes that weaken how convenient an API is for our clients is another type of mistake. If an API isn’t user-friendly, it will be less expressive and, hence, harder to understand and more error-prone.</p>
-<p>We can think about many situations such as overusing any types, using the wrong creational pattern to deal with options, or blindly applying standard practices from object-oriented programming that affect the usability of our APIs. This book covers common mistakes that prevent us from exposing convenient APIs for our users.</p>
-<h3 id="under-optimized-code">Under-optimized code</h3>
-<p>Under-optimized code is another type of mistake made by developers. It can happen for various reasons, such as not understanding language features or even a lack of fundamental knowledge. Performance is one of the most obvious impacts of this mistake, but not the only one.</p>
-<p>We can think about optimizing code for other goals, such as accuracy. For example, this book provides some common techniques to ensure that floating-point operations are accurate. Meanwhile, we will cover plenty of cases that can negatively impact performance code because of poorly parallelized executions, not knowing how to reduce allocations, or the impacts of data alignment, for example. We will tackle optimization via different prisms.</p>
-<h3 id="lack-of-productivity">Lack of productivity</h3>
-<p>In most cases, what’s the best language we can choose when working on a new project? The one we’re the most productive with. Being comfortable with how a language works and exploiting it to get the best out of it is crucial to reach proficiency.</p>
-<p>In this book, we will cover many cases and concrete examples that will help us to be more productive while working in Go. For instance, we’ll look at writing efficient tests to ensure that our code works, relying on the standard library to be more effective, and getting the best out of the profiling tools and linters. Now, it’s time to delve into those 100 common Go mistakes.</p>
-<h2 id="summary">Summary</h2>
-<ul>
-<li>Go is a modern programming language that enables developer productivity, which is crucial for most companies today.</li>
-<li>Go is simple to learn but not easy to master. This is why we need to deepen our knowledge to make the most effective use of the language.</li>
-<li>Learning via mistakes and concrete examples is a powerful way to be proficient in a language. This book will accelerate our path to proficiency by exploring 100 common mistakes.</li>
-</ul>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>J. S. Moser, H. S. Schroder, et al., “Mind Your Errors: Evidence for a Neural Mechanism Linking Growth Mindset to Adaptive Posterror Adjustments,” Psychological Science, vol. 22, no. 12, pp. 1484–1489, Dec. 2011.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>J. Metcalfe, “Learning from Errors,” Annual Review of Psychology, vol. 68, pp. 465–489, Jan. 2017.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p>Synopsys, “The Cost of Poor Software Quality in the US: A 2020 Report.” 2020. <a href="https://news.synopsys.com/2021-01-06-Synopsys-Sponsored-CISQ-Research-Estimates-Cost-of-Poor-Software-Quality-in-the-US-2-08-Trillion-in-2020">https://news.synopsys.com/2021-01-06-Synopsys-Sponsored-CISQ-Research-Estimates-Cost-of-Poor-Software-Quality-in-the-US-2-08-Trillion-in-2020</a>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+<h1 id="not-understanding-slice-length-and-capacity">Not understanding slice length and capacity</h1>
+<p>It’s pretty common for Go developers to mix slice length and capacity or not understand them thoroughly. Assimilating these two concepts is essential for efficiently handling core operations such as slice initialization and adding elements with append, copying, or slicing. This misunderstanding can lead to using slices suboptimally or even to memory leaks.</p>
+<p>In Go, a slice is backed by an array. That means the slice’s data is stored contiguously in an array data structure. A slice also handles the logic of adding an element if the backing array is full or shrinking the backing array if it’s almost empty.</p>
+<p>Internally, a slice holds a pointer to the backing array plus a length and a capacity. The length is the number of elements the slice contains, whereas the capacity is the number of elements in the backing array, counting from the first element in the slice. Let’s go through a few examples to make things clearer. First, let’s initialize a slice with a given length and capacity:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="c1">// Three-length, six-capacity slice</span>
+</span></code></pre></div>
+<p>The first argument, representing the length, is mandatory. However, the second argument representing the capacity is optional. Figure 1 shows the result of this code in memory.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-1.png" /></a>
+  </p>
+<figcaption>Figure 1: A three-length, six-capacity slice.</figcaption>
+</figure>
+<p>In this case, <code>make</code> creates an array of six elements (the capacity). But because the length was set to 3, Go initializes only the first three elements. Also, because the slice is an <code>[]int</code> type, the first three elements are initialized to the zeroed value of an <code>int</code>: 0. The grayed elements are allocated but not yet used.</p>
+<p>If we print this slice, we get the elements within the range of the length, <code>[0 0 0]</code>. If we set <code>s[1]</code> to 1, the second element of the slice updates without impacting its length or capacity. Figure 2 illustrates this.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-2.png" /></a>
+  </p>
+<figcaption>Figure 2: Updating the slice’s second element: s[1] = 1.</figcaption>
+</figure>
+<p>However, accessing an element outside the length range is forbidden, even though it’s already allocated in memory. For example, <code>s[4]</code> = 0 would lead to the following panic:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>panic: runtime error: index out of range [4] with length 3
+</span></code></pre></div>
+<p>How can we use the remaining space of the slice? By using the <code>append</code> built-in function:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div>
+<p>This code appends to the existing <code>s</code> slice a new element. It uses the first grayed element (which was allocated but not yet used) to store element 2, as figure 3 shows.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-3.png" /></a>
+  </p>
+<figcaption>Figure 3: Appending an element to s.</figcaption>
+</figure>
+<p>The length of the slice is updated from 3 to 4 because the slice now contains four elements. Now, what happens if we add three more elements so that the backing array isn’t large enough?</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></code></pre></div>
+<p>If we run this code, we see that the slice was able to cope with our request:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[0 1 0 2 3 4 5]
+</span></code></pre></div>
+<p>Because an array is a fixed-size structure, it can store the new elements until element 4. When we want to insert element 5, the array is already full: Go internally creates another array by doubling the capacity, copying all the elements, and then inserting element 5. Figure 4 shows this process.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-4.png" /></a>
+  </p>
+<figcaption>Figure 4: Because the initial backing array is full, Go creates another array and copies all the elements.</figcaption>
+</figure>
+<p>The slice now references the new backing array. What will happen to the previous backing array? If it’s no longer referenced, it’s eventually freed by the garbage collector (GC) if allocated on the heap. (We discuss heap memory in mistake #95, “<a href="https://100go.co#not-understanding-stack-vs-heap-95">Not understanding stack vs. heap</a>,” and we look at how the GC works in mistake #99, “<a href="https://100go.co#not-understanding-how-the-gc-works-99">Not understanding how the GC works</a>.”)</p>
+<p>What happens with slicing? Slicing is an operation done on an array or a slice, providing a half-open range; the first index is included, whereas the second is excluded. The following example shows the impact, and figure 5 displays the result in memory:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">s1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="c1">// Three-length, six-capacity slice</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">s2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="c1">// Slicing from indices 1 to 3</span>
+</span></code></pre></div>
+<figure>
+<p><a class="glightbox" href="../img/slice-5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-5.png" /></a>
+  </p>
+<figcaption>Figure 5: The slices s1 and s2 reference the same backing array with different lengths and capacities.</figcaption>
+</figure>
+<p>First, <code>s1</code> is created as a three-length, six-capacity slice. When <code>s2</code> is created by slicing <code>s1</code>, both slices reference the same backing array. However, <code>s2</code> starts from a different index, 1. Therefore, its length and capacity (a two-length, five-capacity slice) differ from s1. If we update <code>s1[1]</code> or <code>s2[0]</code>, the change is made to the same array, hence, visible in both slices, as figure 6 shows.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-6.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-6.png" /></a>
+  </p>
+<figcaption>Figure 6: Because s1 and s2 are backed by the same array, updating a common element makes the change visible in both slices.</figcaption>
+</figure>
+<p>Now, what happens if we append an element to <code>s2</code>? Does the following code change <code>s1</code> as well?</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The shared backing array is modified, but only the length of <code>s2</code> changes. Figure 7 shows the result of appending an element to <code>s2</code>.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-7.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-7.png" /></a>
+  </p>
+<figcaption>Figure 7: Appending an element to s2.</figcaption>
+</figure>
+<p><code>s1</code> remains a three-length, six-capacity slice. Therefore, if we print <code>s1</code> and <code>s2</code>, the added element is only visible for <code>s2</code>:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">s1</span><span class="p">=[</span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="nx">s2</span><span class="p">=[</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div>
+<p>It’s important to understand this behavior so that we don’t make wrong assumptions while using append.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>In these examples, the backing array is internal and not available directly to the Go developer. The only exception is when a slice is created from slicing an existing array.</p>
+</details>
+<p>One last thing to note: what if we keep appending elements to <code>s2</code> until the backing array is full? What will the state be, memory-wise? Let’s add three more elements so that the backing array will not have enough capacity:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">// At this stage, the backing is already full</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nx">s2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</span></code></pre></div>
+<p>This code leads to creating another backing array. Figure 8 displays the results in memory.</p>
+<figure>
+<p><a class="glightbox" href="../img/slice-8.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/slice-8.png" /></a>
+  </p>
+<figcaption>Figure 8: Appending elements to s2 until the backing array is full.</figcaption>
+</figure>
+<p><code>s1</code> and <code>s2</code> now reference two different arrays. As <code>s1</code> is still a three-length, six-capacity slice, it still has some available buffer, so it keeps referencing the initial array. Also, the new backing array was made by copying the initial one from the first index of <code>s2</code>. That’s why the new array starts with element 1, not 0.</p>
+<p>To summarize, the slice length is the number of available elements in the slice, whereas the slice capacity is the number of elements in the backing array. Adding an element to a full slice (length == capacity) leads to creating a new backing array with a new capacity, copying all the elements from the previous array, and updating the slice pointer to the new array.</p>
 
 
   

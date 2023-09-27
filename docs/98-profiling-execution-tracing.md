@@ -67,11 +67,17 @@ $ go tool pprof -http=:8080 <file>
 
 This command opens a web UI showing the call graph. The next figure shows an example taken from an application. The larger the arrow, the more it was a hot path. We can then navigate into this graph and get execution insights.
 
-![](img/screen-pprof-cpu.png)
+<figure markdown>
+  ![](img/screen-pprof-cpu.png)
+  <figcaption>Figure 1: The call graph of an application during 30 seconds.</figcaption>
+</figure>
 
 For example, the graph in the next figure tells us that during 30 seconds, 0.06 seconds were spent in the `decode` method (`*FetchResponse` receiver). Of these 0.06 seconds, 0.02 were spent in `RecordBatch.decode` and 0.01 in `makemap` (creating a map).
 
-![](img/screen-pprof-sarama.png)
+<figure markdown>
+  ![](img/screen-pprof-sarama.png)
+  <figcaption>Figure 2: Example call graph.</figcaption>
+</figure>
 
 We can also access this kind of information from the web UI with different representations. For example, the Top view sorts the functions per execution time, and Flame Graph visualizes the execution time hierarchy. The UI can even display the expensive parts of the source code line by line.
 
@@ -99,7 +105,10 @@ If we reach /debug/pprof/heap/, we get raw data that can be hard to read. Howeve
 
 The next figure shows an example of a heap graph. Calling the `MetadataResponse.decode` method leads to allocating 1536 KB of heap data (which represents 6.32% of the total heap). However, 0 out of these 1536 KB were allocated by this function directly, so we need to inspect the second call. The `TopicMetadata.decode` method allocated 512 KB out of the 1536 KB; the rest — 1024 KB — were allocated in another method.
 
-![](img/screen-pprof-heap.png)
+<figure markdown>
+  ![](img/screen-pprof-heap.png)
+  <figcaption>Figure 3: A heap graph.</figcaption>
+</figure>
 
 This is how we can navigate the call chain to understand what part of an application is responsible for most of the heap allocations. We can also look at different sample types:
 
@@ -132,7 +141,10 @@ $ go tool pprof -http=:8080 -diff_base <file2> <file1>
 
 The next figure shows the kind of data we can access. For example, the amount of heap memory held by the newTopicProducer method (top left) has decreased (–513 KB). In contrast, the amount held by updateMetadata (bottom right) has increased (+512 KB). Slow increases are normal. The second heap profile may have been calculated in the middle of a service call, for example. We can repeat this process or wait longer; the important part is to track steady increases in allocations of a specific object.
 
-![](img/screen-pprof-heap-diff.png)
+<figure markdown>
+  ![](img/screen-pprof-heap-diff.png)
+  <figcaption>Figure 4: The differences between the two heap profiles.</figcaption>
+</figure>
 
 ???+ note
 
@@ -142,7 +154,10 @@ The next figure shows the kind of data we can access. For example, the amount of
 
 The `goroutine` profile reports the stack trace of all the current goroutines in an application. We can download a file using /debug/pprof/goroutine/?debug=0 and use go tool again. The next figure shows the kind of information we can get.
 
-![](img/screen-pprof-goroutines.png)
+<figure markdown>
+  ![](img/screen-pprof-goroutines.png)
+  <figcaption>Figure 5: Goroutine graph.</figcaption>
+</figure>
 
 We can see the current state of the application and how many goroutines were created per function. In this case, `withRecover` has created 296 ongoing goroutines (63%), and 29 were related to a call to `responseFeeder`.
 
@@ -222,19 +237,31 @@ $ go tool trace trace.out
 The web browser opens, and we can click View Trace to see all the traces during a specific timeframe, as shown in the next figure. This figure represents about 150 ms. We can see multiple helpful metrics, such as the goroutine count and the heap size. The heap size grows steadily until a GC is triggered. We can also observe the activity of the Go application per CPU core. The timeframe starts with user-level code; then a “stop the
 world” is executed, which occupies the four CPU cores for approximately 40 ms.
 
-![](img/tracing.png)
+<figure markdown>
+  ![](img/tracing.png)
+  <figcaption>Figure 6: Showing goroutine activity and runtime events such as a GC phase.</figcaption>
+</figure>
 
 Regarding concurrency, we can see that this version uses all the available CPU cores on the machine. However, the next figure zooms in on a portion of 1 ms. Each bar corresponds to a single goroutine execution. Having too many small bars doesn’t look right: it means execution that is poorly parallelized.
 
-![](img/screen-mergesort1.png)
+<figure markdown>
+  ![](img/screen-mergesort1.png)
+  <figcaption>Figure 7: Too many small bars mean poorly parallelized execution.</figcaption>
+</figure>
 
 The next figure zooms even closer to see how these goroutines are orchestrated. Roughly 50% of the CPU time isn’t spent executing application code. The white spaces represent the time the Go runtime takes to spin up and orchestrate new goroutines.
 
-![](img/screen-mergesort11.png)
+<figure markdown>
+  ![](img/screen-mergesort11.png)
+  <figcaption>Figure 8: About 50% of CPU time is spent handling goroutine switches.</figcaption>
+</figure>
 
 Let’s compare this with the second parallel implementation, which was about an order of magnitude faster. The next figure again zooms to a 1 ms timeframe.
 
-![](img/screen-mergesort2.png)
+<figure markdown>
+  ![](img/screen-mergesort2.png)
+  <figcaption>Figure 9: The number of white spaces has been significantly reduced, proving that the CPU is more fully occupied.</figcaption>
+</figure>
 
 Each goroutine takes more time to execute, and the number of white spaces has been significantly reduced. Hence, the CPU is much more occupied executing application code than it was in the first version. Each millisecond of CPU time is spent more efficiently, explaining the benchmark differences.
 
@@ -261,7 +288,12 @@ fibStore.End()
 
 Using `go tool`, we can get more precise information about how these two tasks perform. In the previous trace UI, we can see the boundaries for each task per goroutine. In User-Defined Tasks, we can follow the duration distribution:
 
-![](img/screen-tracing-user-level.png)
+<figure markdown>
+  ![](img/screen-tracing-user-level.png)
+  <figcaption>Figure 10: Distribution of user-level tasks.</figcaption>
+</figure>
+
+
 
 We see that in most cases, the `fibonacci` task is executed in less than 15 microseconds, whereas the `store` task takes less than 6309 nanoseconds.
 

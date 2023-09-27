@@ -15,6 +15,7 @@ theme:
     - search.highlight
     - search.share
     - search.suggest
+    - content.code.copy
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -31,6 +32,7 @@ theme:
 repo_url: https://github.com/teivah/100-go-mistakes
 plugins:
   - search
+  - glightbox
   - social:
       cards_layout_options:
         logo: img/cover.png
@@ -50,6 +52,8 @@ extra:
       link: https://twitter.com/teivah
     - icon: fontawesome/brands/medium
       link: http://blog.teivah.io
+extra_css:
+  - stylesheets/extra.css
 nav:
     - Book:
         - book.md
@@ -59,6 +63,9 @@ nav:
       - index.md
       - Full Sections:
         - 9-generics.md
+        - 20-slice.md
+        - 28-maps-memory-leaks.md
+        - 89-benchmarks.md
         - 98-profiling-execution-tracing.md
       - zh.md
     - ❤️ Go Jobs:
@@ -73,4 +80,11 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - tables
+  - attr_list
+  - md_in_html
+  - footnotes
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 copyright: Copyright &copy; 2022 - 2023 Teiva Harsanyi

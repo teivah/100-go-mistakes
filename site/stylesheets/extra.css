@@ -1,0 +1,15 @@
+.md-typeset figure img {
+  display: inline;
+}
+
+.md-tabs__link {
+  color: red;
+}
+
+.md-tabs__link:hover {
+  color: green;
+}
+
+.md-tabs__link:focus {
+  color: blue;
+}
