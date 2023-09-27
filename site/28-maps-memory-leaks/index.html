@@ -847,6 +847,7 @@
 
 
 <h1 id="maps-and-memory-leaks">Maps and memory leaks</h1>
+<p><a class="glightbox" href="../img/28-maps-memory-leaks.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/28-maps-memory-leaks.png" /></a></p>
 <p>When working with maps in Go, we need to understand some important characteristics of how a map grows and shrinks. Let’s delve into this to prevent issues that can cause memory leaks.</p>
 <p>First, to view a concrete example of this problem, let’s design a scenario where we will work with the following map:</p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">][</span><span class="mi">128</span><span class="p">]</span><span class="kt">byte</span><span class="p">)</span>

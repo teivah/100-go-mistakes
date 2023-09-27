@@ -5,6 +5,8 @@ comments: true
 
 # Maps and memory leaks
 
+![](img/28-maps-memory-leaks.png)
+
 When working with maps in Go, we need to understand some important characteristics of how a map grows and shrinks. Let’s delve into this to prevent issues that can cause memory leaks.
 
 First, to view a concrete example of this problem, let’s design a scenario where we will work with the following map:

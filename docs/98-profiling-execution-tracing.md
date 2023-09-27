@@ -5,6 +5,8 @@ comments: true
 
 # Not using Go diagnostics tooling
 
+![](img/98-profiling-execution-tracing.png)
+
 Go offers a few excellent diagnostics tools to help us get insights into how an application performs. This post focuses on the most important ones: profiling and the execution tracer. Both tools are so important that they should be part of the core toolset of any Go developer who is interested in optimization. First, let’s discuss profiling.
 
 ## Profiling

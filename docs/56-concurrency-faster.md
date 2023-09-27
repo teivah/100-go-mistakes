@@ -5,6 +5,8 @@ comments: true
 
 # Thinking concurrency is always faster
 
+![](img/56-concurrency-faster.png)
+
 A misconception among many developers is believing that a concurrent solution is always faster than a sequential one. This couldn’t be more wrong. The overall performance of a solution depends on many factors, such as the efficiency of our code structure (concurrency), which parts can be tackled in parallel, and the level of contention among the computation units. This post reminds us about some fundamental knowledge of concurrency in Go; then we will see a concrete example where a concurrent solution isn’t necessarily faster.
 
 ## Go Scheduling

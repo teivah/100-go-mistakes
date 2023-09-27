@@ -927,6 +927,7 @@
 
 
 <h1 id="thinking-concurrency-is-always-faster">Thinking concurrency is always faster</h1>
+<p><a class="glightbox" href="../img/56-concurrency-faster.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/56-concurrency-faster.png" /></a></p>
 <p>A misconception among many developers is believing that a concurrent solution is always faster than a sequential one. This couldn’t be more wrong. The overall performance of a solution depends on many factors, such as the efficiency of our code structure (concurrency), which parts can be tackled in parallel, and the level of contention among the computation units. This post reminds us about some fundamental knowledge of concurrency in Go; then we will see a concrete example where a concurrent solution isn’t necessarily faster.</p>
 <h2 id="go-scheduling">Go Scheduling</h2>
 <p>A thread is the smallest unit of processing that an OS can perform. If a process wants to execute multiple actions simultaneously, it spins up multiple threads. These threads can be:</p>

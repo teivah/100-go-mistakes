@@ -5,6 +5,8 @@ comments: true
 
 # Writing inaccurate benchmarks
 
+![](img/89-benchmarks.png)
+
 In general, we should never guess about performance. When writing optimizations, so many factors may come into play that even if we have a strong opinion about the results, it’s rarely a bad idea to test them. However, writing benchmarks isn’t straightforward. It can be pretty simple to write inaccurate benchmarks and make wrong assumptions based on them. The goal of this post is to examine four common and concrete traps leading to inaccuracy:
 
 * Not resetting or pausing the timer
