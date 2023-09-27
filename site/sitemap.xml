@@ -6,6 +6,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://100go.co/20-slice/</loc>
+         <lastmod>2023-09-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://100go.co/28-maps-memory-leaks/</loc>
+         <lastmod>2023-09-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://100go.co/89-benchmarks/</loc>
+         <lastmod>2023-09-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://100go.co/9-generics/</loc>
          <lastmod>2023-09-27</lastmod>
          <changefreq>daily</changefreq>
