@@ -1,5 +1,6 @@
 ---
 title: Not using Go diagnostics tooling (#98)
+comments: true
 ---
 
 # Not using Go diagnostics tooling

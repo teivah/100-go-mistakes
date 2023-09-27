@@ -1,5 +1,6 @@
 ---
 title: Not understanding slice length and capacity (#20)
+comments: true
 ---
 
 # Not understanding slice length and capacity

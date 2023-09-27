@@ -1,5 +1,6 @@
 ---
 title: Writing inaccurate benchmarks (#89)
+comments: true
 ---
 
 # Writing inaccurate benchmarks

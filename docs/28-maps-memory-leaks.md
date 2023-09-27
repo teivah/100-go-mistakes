@@ -1,5 +1,6 @@
 ---
 title: Maps and memory leaks (#28)
+comments: true
 ---
 
 # Maps and memory leaks
