@@ -65,6 +65,7 @@ nav:
         - 9-generics.md
         - 20-slice.md
         - 28-maps-memory-leaks.md
+        - 56-concurrency-faster.md
         - 89-benchmarks.md
         - 98-profiling-execution-tracing.md
       - zh.md

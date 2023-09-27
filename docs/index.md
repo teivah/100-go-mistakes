@@ -6,8 +6,6 @@ comments: true
 
 This page is a summary of all the mistakes in the 100 Go Mistakes book. Meanwhile, it's also a page open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
-If you want to engage with the community (asking questions, discussing options, etc.), feel free to use the [Discussions](https://github.com/teivah/100-go-mistakes/discussions) space on the GitHub repo.
-
 ???+ warning
 
     You're currently viewing a new version that I'm enriching with significantly more content. Yet, this version is still under development; please be gentle if you find an issue, and feel free to create a PR.
@@ -270,10 +268,6 @@ The functional options pattern provides a handy and API-friendly way to handle o
 
 ### Project misorganization (project structure and package organization) (#12)
 
-???+ info "TL;DR"
-
-    Following a layout such as [project-layout](https://github.com/golang-standards/project-layout) can be a good way to start structuring Go projects, especially if you are looking for existing conventions to standardize a new project.
-
 Regarding the overall organization, there are different schools of thought. For example, should we organize our application by context or by layer? It depends on our preferences. We may favor grouping code per context (such as the customer context, the contract context, etc.), or we may favor following hexagonal architecture principles and group per technical layer. If the decision we make fits our use case, it cannot be a wrong decision, as long as we remain consistent with it.
 
 Regarding packages, there are multiple best practices that we should follow. First, we should avoid premature packaging because it might cause us to overcomplicate a project. Sometimes, it’s better to use a simple organization and have our project evolve when we understand what it contains rather than forcing ourselves to make the perfect structure up front.
@@ -284,6 +278,10 @@ Package naming should also be considered with care. As we all know (as developer
 Regarding what to export, the rule is pretty straightforward. We should minimize what should be exported as much as possible to reduce the coupling between packages and keep unnecessary exported elements hidden. If we are unsure whether to export an element or not, we should default to not exporting it. Later, if we discover that we need to export it, we can adjust our code. Let’s also keep in mind some exceptions, such as making fields exported so that a struct can be unmarshaled with encoding/json.
 
 Organizing a project isn’t straightforward, but following these rules should help make it easier to maintain. However, remember that consistency is also vital to ease maintainability. Therefore, let’s make sure that we keep things as consistent as possible within a codebase.
+
+???+ note
+
+    In 2023, the Go team has published an official guideline for organizing / structuring a Go project: [go.dev/doc/modules/layout](https://go.dev/doc/modules/layout)
 
 ### Creating utility packages (#13)
 
@@ -1527,17 +1525,62 @@ In summary, let’s be mindful that a goroutine is a resource like any other tha
 
 ### Not being careful with goroutines and loop variables (#63)
 
-???+ info "TL;DR"
+???+ warning
 
-    To avoid bugs with goroutines and loop variables, create local variables or call functions instead of closures.
-
- [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/63-goroutines-loop-variables/main.go)
+    This mistake isn't relevant anymore from Go 1.22 ([source](https://go.dev/blog/loopvar-preview)).
 
 ### Expecting a deterministic behavior using select and channels (#64)
 
 ???+ info "TL;DR"
 
     Understanding that `select` with multiple channels chooses the case randomly if multiple options are possible prevents making wrong assumptions that can lead to subtle concurrency bugs.
+
+One common mistake made by Go developers while working with channels is to make wrong assumptions about how select behaves with multiple channels.
+
+For example, let's consider the following case (`disconnectCh` is a buffered channel):
+
+```go
+go func() {
+  for i := 0; i < 10; i++ {
+      messageCh <- i
+    }
+    disconnectCh <- struct{}{}
+}()
+
+for {
+    select {
+    case v := <-messageCh:
+        fmt.Println(v)
+    case <-disconnectCh:
+        fmt.Println("disconnection, return")
+        return
+    }
+}
+```
+
+If we run this example multiple times, the result will be random:
+
+```
+0
+1
+2
+disconnection, return
+
+0
+disconnection, return
+```
+
+Instead of consuming the 10 messages, we only received a few of them. What’s the reason? It lies in the specification of the select statement with multiple channels (https:// go.dev/ref/spec):
+
+!!! quote 
+
+    If one or more of the communications can proceed, a single one that can proceed is chosen via a uniform pseudo-random selection.
+
+Unlike a switch statement, where the first case with a match wins, the select state- ment selects randomly if multiple options are possible.
+
+This behavior might look odd at first, but there’s a good reason for it: to prevent possible starvation. Suppose the first possible communication chosen is based on the source order. In that case, we may fall into a situation where, for example, we only receive from one channel because of a fast sender. To prevent this, the language designers decided to use a random selection.
+
+When using `select` with multiple channels, we must remember that if multiple options are possible, the first case in the source order does not automatically win. Instead, Go selects randomly, so there’s no guarantee about which option will be chosen. To overcome this behavior, in the case of a single producer goroutine, we can use either unbuffered channels or a single channel.
 
  [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/64-select-behavior/main.go)
 
@@ -1547,11 +1590,73 @@ In summary, let’s be mindful that a goroutine is a resource like any other tha
 
     Send notifications using a `chan struct{}` type.
 
+Channels are a mechanism for communicating across goroutines via signaling. A signal can be either with or without data.
+
+Let’s look at a concrete example. We will create a channel that will notify us whenever a certain disconnection occurs. One idea is to handle it as a `chan bool`:
+
+```go
+disconnectCh := make(chan bool)
+```
+
+Now, let’s say we interact with an API that provides us with such a channel. Because it’s a channel of Booleans, we can receive either `true` or `false` messages. It’s probably clear what `true` conveys. But what does `false` mean? Does it mean we haven’t been disconnected? And in this case, how frequently will we receive such a signal? Does it mean we have reconnected? Should we even expect to receive `false`? Perhaps we should only expect to receive `true` messages.
+
+If that’s the case, meaning we don’t need a specific value to convey some information, we need a channel _without_ data. The idiomatic way to handle it is a channel of empty structs: `chan struct{}`.
+
 ### Not using nil channels (#66)
 
 ???+ info "TL;DR"
 
     Using nil channels should be part of your concurrency toolset because it allows you to _remove_ cases from `select` statements, for example.
+
+What should this code do?
+
+```go
+var ch chan int
+<-ch
+```
+
+`ch` is a `chan int` type. The zero value of a channel being nil, `ch` is `nil`. The goroutine won’t panic; however, it will block forever.
+
+The principle is the same if we send a message to a nil channel. This goroutine blocks forever:
+
+```go
+var ch chan int
+ch <- 0
+```
+
+Then what’s the purpose of Go allowing messages to be received from or sent to a nil channel? For example, we can use nil channels to implement an idiomatic way to merge two channels:
+
+```go
+func merge(ch1, ch2 <-chan int) <-chan int {
+    ch := make(chan int, 1)
+
+    go func() {
+        for ch1 != nil || ch2 != nil { // Continue if at least one channel isn’t nil
+            select {
+            case v, open := <-ch1:
+                if !open {
+                    ch1 = nil // Assign ch1 to a nil channel once closed
+                    break
+                }
+                ch <- v
+            case v, open := <-ch2:
+                if !open {
+                    ch2 = nil // Assigns ch2 to a nil channel once closed
+                    break
+                }
+                ch <- v
+            }
+        }
+        close(ch)
+    }()
+
+    return ch
+}
+```
+
+This elegant solution relies on nil channels to somehow _remove_ one case from the `select` statement.
+
+Let’s keep this idea in mind: nil channels are useful in some conditions and should be part of the Go developer’s toolset when dealing with concurrent code.
 
  [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/66-nil-channels/main.go)
 
