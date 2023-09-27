@@ -1,5 +1,6 @@
 ---
 title: Being confused about when to use generics (#9)
+comments: true
 ---
 
 # Being confused about when to use generics
