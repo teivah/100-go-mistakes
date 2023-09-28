@@ -1,6 +1,8 @@
 ---
 title: Not understanding slice length and capacity (#20)
 comments: true
+hide:
+- toc
 ---
 
 # Not understanding slice length and capacity

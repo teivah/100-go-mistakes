@@ -1,6 +1,8 @@
 ---
 title: Thinking concurrency is always faster (#56)
 comments: true
+hide:
+- toc
 ---
 
 # Thinking concurrency is always faster

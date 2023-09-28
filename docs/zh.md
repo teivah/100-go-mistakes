@@ -39,7 +39,7 @@ comments: true
 
 只有在需要接受或返回任意类型时，才使用 `any`，例如 `json.Marshal`。其他情况下，因为 `any` 不提供有意义的信息，可能会导致编译时问题，如允许调用者调用方法处理任意类型数据。
 
-### [困惑何时该用范型](https://teivah.medium.com/when-to-use-generics-in-go-36d49c1aeda) (#9)
+### [困惑何时该用范型](https://100go.co/9-generics/) (#9)
 
 使用泛型，可以通过类型参数分离具体的数据类型和行为，避免写很多重复度很高的代码。然而，不要过早地使用泛型、类型参数，只有在你看到真正需要时才使用。否则，它们会引入不必要的抽象和复杂性。
 
@@ -87,7 +87,7 @@ comments: true
 
 在进行加法或减法时，将具有相似数量级的操作分成同一组以提高精度 (过早指数对齐丢失精度)。此外，在进行加法和减法之前，应先进行乘法和除法 (加减法误差会被乘除放大)。
 
-### [不理解slice的长度和容量](https://teivah.medium.com/slice-length-vs-capacity-in-go-af71a754b7d8) (#20)
+### [不理解slice的长度和容量](https://100go.co/20-slice/) (#20)
 
 理解slice的长度和容量的区别，是一个Go开发者的核心知识点之一。slice的长度指的是slice已经存储的元素的数量，而容量指的是slice当前底层开辟的数组最多能容纳的元素的数量。
 
@@ -121,7 +121,7 @@ comments: true
 
 见 [#21](#inefficient-slice-initialization-21).
 
-### [map和内存泄漏](https://teivah.medium.com/maps-and-memory-leaks-in-go-a85ebe6e7e69) (#28)
+### [map和内存泄漏](https://100go.co/28-maps-memory-leaks/) (#28)
 
 一个map的buckets占用的内存只会增长，不会缩减。因此，如果它导致了一些内存占用的问题，你需要尝试不同的选项来解决，比如重新创建一个map代替原来的（原来的map会被GC掉），或者map[keyType]valueType中的valueType使用指针代替长度固定的数组或者sliceHeader来缓解过多的内存占用。
 
@@ -251,7 +251,7 @@ Wrapping（包装）错误允许您标记错误、提供额外的上下文信息
 
 理解并发（concurrency）、并行（parallelism）之间的本质区别是Go开发人员必须要掌握的。并发是关于结构设计上的，并行是关于具体执行上的。
 
-### [认为并发总是更快](https://teivah.medium.com/concurrency-isnt-always-faster-in-go-de325168907c) (#56)
+### [认为并发总是更快](https://100go.co/56-concurrency-faster/) (#56)
 
 要成为一名熟练的开发人员，您必须意识到并非所有场景下都是并发的方案更快。对于任务中的最小工作负载部分，对它们进行并行化处理并不一定就有明显收益或者比串行化方案更快。对串行化、并发方案进行benchmark测试，是验证假设的好办法。
 
@@ -441,7 +441,7 @@ Go 的上下文（context）也是 Go 并发编程的基石之一。上下文允
 
 这个 `iotest` 包有助于编写 io.Reader 并测试应用程序是否能够容忍错误。
 
-### [不正确的基准测试](https://teivah.medium.com/how-to-write-accurate-benchmarks-in-go-4266d7dd1a95) (#89)
+### [不正确的基准测试](https://100go.co/89-benchmarks/) (#89)
 
 * 不要重置或者暂停timer
 
@@ -533,7 +533,7 @@ Go 的上下文（context）也是 Go 并发编程的基石之一。上下文允
 
 使用快速路径的内联技术来更加有效地减少调用函数的摊销时间。
 
-### [不使用Go问题诊断工具](https://medium.com/@teivah/profiling-and-execution-tracing-in-go-a5e646970f5b) (#98)
+### [不使用Go问题诊断工具](https://100go.co/98-profiling-execution-tracing/) (#98)
 
 了解Go profilng工具、执行时tracer来辅助判断一个应用程序是否正常，以及列出需要优化的部分。
 

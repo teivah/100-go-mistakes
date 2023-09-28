@@ -1,3 +1,8 @@
+---
+hide:
+- toc
+---
+
 # External Resources
 
 ## English

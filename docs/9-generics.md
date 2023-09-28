@@ -1,6 +1,8 @@
 ---
 title: Being confused about when to use generics (#9)
 comments: true
+hide:
+- toc
 ---
 
 # Being confused about when to use generics

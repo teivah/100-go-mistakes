@@ -1,5 +1,7 @@
 ---
 title: Read the First Chapter
+hide:
+- toc
 ---
 
 # Go: Simple to learn but hard to master

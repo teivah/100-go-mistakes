@@ -1,3 +1,8 @@
+---
+hide:
+- toc
+---
+
 # 100 Go Mistakes and How to Avoid Them
 
 Community space of 📖 _100 Go Mistakes and How to Avoid Them_, published by Manning in 2022.
@@ -29,19 +34,13 @@ Read a summary of the 100 mistakes [here](https://100go.co).
     Not having this will be the **101st mistake** a Go programmer could make.
 
 <figure markdown>
-  ![](img/ratings-manning.png)
   ![](img/ratings-goodreads.png){width="300"}
   ![](img/ratings-amazon.png){width="300"}
+  ![](img/ratings-manning.png)
   <figcaption>Manning, Goodreads, and Amazon reviews: 4.7/5 avg rating</figcaption>
 </figure>
 
 ## Where to Buy?
-
-<figure markdown>
-  ![](img/cover-en.jpg){width="200"}
-  ![](img/cover-jp.jpg){width="200"}
-  <figcaption>English and Japanese front covers</figcaption>
-</figure>
 
 * _100 Go Mistakes and How to Avoid Them_ (🇬🇧 edition: paper, digital, or audiobook)
 	* [Manning](https://www.manning.com/books/100-go-mistakes-and-how-to-avoid-them) (make sure to use my personal discount code for -35%: `au35har`)
@@ -50,6 +49,12 @@ Read a summary of the 100 mistakes [here](https://100go.co).
 
 * _Go言語100Tips 開発者にありがちな間違いへの対処法_ (🇯🇵 edition: paper or digital)
 	* Amazon: [.co.jp](https://www.amazon.co.jp/exec/obidos/ASIN/4295017531/)
+
+<figure markdown>
+  ![](img/cover-en.jpg){width="200"}
+  ![](img/cover-jp.jpg){width="200"}
+  <figcaption>English and Japanese covers</figcaption>
+</figure>
 
 ## About the Author
 

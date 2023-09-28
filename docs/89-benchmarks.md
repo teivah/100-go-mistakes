@@ -1,6 +1,8 @@
 ---
 title: Writing inaccurate benchmarks (#89)
 comments: true
+hide:
+- toc
 ---
 
 # Writing inaccurate benchmarks

@@ -16,6 +16,9 @@ theme:
     - search.share
     - search.suggest
     - content.code.copy
+    - navigation.expand
+    - navigation.instant
+    - navigation.sections
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -23,12 +26,14 @@ theme:
         icon: material/brightness-7 
         name: Switch to dark mode
       primary: cyan
+      accent: pink
     # Palette toggle for dark mode
     - scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
       primary: blue grey
+      accent: blue
 repo_url: https://github.com/teivah/100-go-mistakes
 plugins:
   - search
@@ -41,17 +46,15 @@ extra:
     provider: google
     property: G-HMY1HYDM93
   alternate:
-    - name: English
+    - name: 🇬🇧 English
       link: /
       lang: en
-    - name: Chinese (Simplified)
+    - name: 🇨🇳 Chinese (Simplified)
       link: /zh/
       lang: zh
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/teivah
-    - icon: fontawesome/brands/medium
-      link: http://blog.teivah.io
 extra_css:
   - stylesheets/extra.css
 nav:
@@ -68,7 +71,6 @@ nav:
         - 56-concurrency-faster.md
         - 89-benchmarks.md
         - 98-profiling-execution-tracing.md
-      - zh.md
     - ❤️ Go Jobs:
       - jobs.md
 markdown_extensions:

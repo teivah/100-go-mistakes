@@ -1,6 +1,8 @@
 ---
 title: Maps and memory leaks (#28)
 comments: true
+hide:
+- toc
 ---
 
 # Maps and memory leaks
