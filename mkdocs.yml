@@ -26,7 +26,7 @@ theme:
         icon: material/brightness-7 
         name: Switch to dark mode
       primary: cyan
-      accent: pink
+      accent: deep orange
     # Palette toggle for dark mode
     - scheme: slate
       toggle:
