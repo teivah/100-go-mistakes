@@ -535,7 +535,7 @@ It’s essential to understand how to use `==` and `!=` to make comparisons effe
 * _Channels_—Compare whether two channels were created by the same call to make or if both are nil.
 * _Interfaces_—Compare whether two interfaces have identical dynamic types and equal dynamic values or if both are nil.
 * _Pointers_—Compare whether two pointers point to the same value in memory or if both are nil.
-* _Structs and arrays)—Compare whether they are composed of similar types.
+* _Structs and arrays_—Compare whether they are composed of similar types.
 
 ???+ note
 
@@ -645,7 +645,7 @@ One essential rule to keep in mind is that a `break` statement terminates the ex
 
 To break the loop instead of the `switch` statement, the most idiomatic way is to use a label:
 
-```go
+```go hl_lines="1 8"
 loop:
     for i := 0; i < 5; i++ {
         fmt.Printf("%d ", i)
@@ -790,7 +790,7 @@ for i, r := range s {
 
 Or, we can convert the string into a slice of runes and iterate over it:
 
-```go
+```go hl_lines="2"
 s := "hêllo"
 runes := []rune(s)
 for i, r := range runes {
@@ -854,7 +854,7 @@ During each iteration, the `+=` operator concatenates `s` with the value string.
 
 Fortunately, there is a solution to deal with this problem, using `strings.Builder`:
 
-```go
+```go hl_lines="2 4"
 func concat(values []string) string {
     sb := strings.Builder{}
     for _, value := range values {
@@ -944,7 +944,7 @@ A receiver _must_ be a pointer
   type slice []int
 
   func (s *slice) add(element int) {
-            *s = append(*s, element)
+      *s = append(*s, element)
   }
   ```
 
@@ -1085,25 +1085,13 @@ Two leading options if we want to keep using `defer`.
 
 The first solution is to pass a string pointer:
 
-```go
+```go hl_lines="3 4"
 func f() error {
     var status string
     defer notify(&status) 
     defer incrementCounter(&status)
 
     // The rest of the function unchanged
-    if err := foo(); err != nil {
-        status = StatusErrorFoo
-        return err
-    }
-
-    if err := bar(); err != nil {
-        status = StatusErrorBar
-        return err
-    }
-
-    status = StatusSuccess
-    return nil
 }
 ```
 
@@ -1111,7 +1099,7 @@ Using `defer` evaluates the arguments right away: here, the address of status. Y
 
 There’s another solution: calling a closure (an anonymous function value that references variables from outside its body) as a `defer` statement:
 
-```go
+```go hl_lines="3 4 5 6"
 func f() error {
     var status string
     defer func() {
@@ -1628,7 +1616,7 @@ ch <- 0
 
 Then what’s the purpose of Go allowing messages to be received from or sent to a nil channel? For example, we can use nil channels to implement an idiomatic way to merge two channels:
 
-```go
+```go hl_lines="5 9 15"
 func merge(ch1, ch2 <-chan int) <-chan int {
     ch := make(chan int, 1)
 
