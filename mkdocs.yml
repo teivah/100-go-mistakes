@@ -33,7 +33,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
       primary: blue grey
-      accent: blue
+      accent: teal
 repo_url: https://github.com/teivah/100-go-mistakes
 plugins:
   - search
