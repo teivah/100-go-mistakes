@@ -80,7 +80,7 @@ To handle the map, we defined two kinds of type parameters. First, the values ca
 var m map[[]byte]int
 ```
 
-This code leads to a compilation error: `invalid map key type []byte`. Therefore, instead of accepting any key type, we are obliged to restrict type arguments so that the key type meets specific requirements. Here, being comparable (we can use `==` or `!=`). Hence, we defined `K` as `comparable` instead of `a``ny`.
+This code leads to a compilation error: `invalid map key type []byte`. Therefore, instead of accepting any key type, we are obliged to restrict type arguments so that the key type meets specific requirements. Here, being comparable (we can use `==` or `!=`). Hence, we defined `K` as `comparable` instead of `any`.
 
 Restricting type arguments to match specific requirements is called a constraint. A constraint is an interface type that can contain:
 
