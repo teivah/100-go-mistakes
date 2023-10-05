@@ -1527,7 +1527,7 @@ In summary, let’s be mindful that a goroutine is a resource like any other tha
 
 One common mistake made by Go developers while working with channels is to make wrong assumptions about how select behaves with multiple channels.
 
-For example, let's consider the following case (`disconnectCh` is a buffered channel):
+For example, let's consider the following case (`disconnectCh` is a unbuffered channel):
 
 ```go
 go func() {
