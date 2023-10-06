@@ -1028,7 +1028,7 @@ When using named result parameters, we must recall that each parameter is initia
 
 ???+ info "TL;DR"
 
-    When returning an interface, be cautious about returning not a nil pointer but an explicit nil value. Otherwise, unintended consequences may result because the caller will receive a non-nil value.
+    When returning an interface, be cautious about not returning a nil pointer but an explicit nil value. Otherwise, unintended consequences may occur and the caller will receive a non-nil value.
 
 <!-- TODO -->
 
