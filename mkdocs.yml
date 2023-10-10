@@ -49,9 +49,12 @@ extra:
     - name: 🇬🇧 English
       link: /
       lang: en
-    - name: 🇨🇳 Chinese (Simplified)
+    - name: 🇨🇳 Chinese Simplified
       link: /zh/
       lang: zh
+    - name: 🇯🇵 Japanese (進行中)
+      link: /ja/
+      lang: ja
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/teivah

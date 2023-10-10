@@ -220,7 +220,13 @@ This repo is open to <a href="https://hacktoberfest.com/">Hacktoberfest</a>! �
         
           <li class="md-select__item">
             <a href="/zh/" hreflang="zh" class="md-select__link">
-              🇨🇳 Chinese (Simplified)
+              🇨🇳 Chinese Simplified
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/ja/" hreflang="ja" class="md-select__link">
+              🇯🇵 Japanese (進行中)
             </a>
           </li>
         
@@ -980,7 +986,7 @@ This repo is open to <a href="https://hacktoberfest.com/">Hacktoberfest</a>! �
 <p>To handle the map, we defined two kinds of type parameters. First, the values can be of any type: <code>V any</code>. However, in Go, the map keys can’t be of any type. For example, we cannot use slices:</p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="kd">map</span><span class="p">[[]</span><span class="kt">byte</span><span class="p">]</span><span class="kt">int</span>
 </span></code></pre></div>
-<p>This code leads to a compilation error: <code>invalid map key type []byte</code>. Therefore, instead of accepting any key type, we are obliged to restrict type arguments so that the key type meets specific requirements. Here, being comparable (we can use <code>==</code> or <code>!=</code>). Hence, we defined <code>K</code> as <code>comparable</code> instead of <code>a``ny</code>.</p>
+<p>This code leads to a compilation error: <code>invalid map key type []byte</code>. Therefore, instead of accepting any key type, we are obliged to restrict type arguments so that the key type meets specific requirements. Here, being comparable (we can use <code>==</code> or <code>!=</code>). Hence, we defined <code>K</code> as <code>comparable</code> instead of <code>any</code>.</p>
 <p>Restricting type arguments to match specific requirements is called a constraint. A constraint is an interface type that can contain:</p>
 <ul>
 <li>A set of behaviors (methods)</li>

@@ -220,7 +220,13 @@ This repo is open to <a href="https://hacktoberfest.com/">Hacktoberfest</a>! �
         
           <li class="md-select__item">
             <a href="/zh/" hreflang="zh" class="md-select__link">
-              🇨🇳 Chinese (Simplified)
+              🇨🇳 Chinese Simplified
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/ja/" hreflang="ja" class="md-select__link">
+              🇯🇵 Japanese (進行中)
             </a>
           </li>
         
@@ -3492,7 +3498,7 @@ One additional note: we must remember that the standard library has some existin
 <h3 id="returning-a-nil-receiver-45">Returning a nil receiver (#45)</h3>
 <details class="info" open="open">
 <summary>TL;DR</summary>
-<p>When returning an interface, be cautious about returning not a nil pointer but an explicit nil value. Otherwise, unintended consequences may result because the caller will receive a non-nil value.</p>
+<p>When returning an interface, be cautious about not returning a nil pointer but an explicit nil value. Otherwise, unintended consequences may occur and the caller will receive a non-nil value.</p>
 </details>
 <!-- TODO -->
 
@@ -3800,6 +3806,10 @@ the use case. However, we should see the two options as complementary. </p>
 <li>However, if the response is written before or during the Kafka publication, the message shouldn’t be published.</li>
 </ul>
 <p>In the latter case, calling publish will return an error because we returned the HTTP response quickly.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>From Go 1.21, there is a way to create a new context without cancel. <a href="https://pkg.go.dev/context#WithoutCancel"><code>context.WithoutCancel</code></a> returns a copy of parent that is not canceled when parent is canceled.</p>
+</details>
 <p>In summary, propagating a context should be done cautiously.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/61-inappropriate-context/main.go">Source code <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span></a></p>
 <h3 id="starting-a-goroutine-without-knowing-when-to-stop-it-62">Starting a goroutine without knowing when to stop it (#62)</h3>
@@ -3867,7 +3877,7 @@ the use case. However, we should see the two options as complementary. </p>
 <p>Understanding that <code>select</code> with multiple channels chooses the case randomly if multiple options are possible prevents making wrong assumptions that can lead to subtle concurrency bugs.</p>
 </details>
 <p>One common mistake made by Go developers while working with channels is to make wrong assumptions about how select behaves with multiple channels.</p>
-<p>For example, let's consider the following case (<code>disconnectCh</code> is a buffered channel):</p>
+<p>For example, let's consider the following case (<code>disconnectCh</code> is a unbuffered channel):</p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="w">      </span><span class="nx">messageCh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">i</span>
