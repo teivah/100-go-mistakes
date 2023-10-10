@@ -1439,6 +1439,10 @@ When the response has been written to the client, the context associated with th
 
 In the latter case, calling publish will return an error because we returned the HTTP response quickly.
 
+???+ note
+
+    From Go 1.21, there is a way to create a new context without cancel. [`context.WithoutCancel`](https://pkg.go.dev/context#WithoutCancel) returns a copy of parent that is not canceled when parent is canceled.
+
 In summary, propagating a context should be done cautiously.
 
  [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/61-inappropriate-context/main.go)
