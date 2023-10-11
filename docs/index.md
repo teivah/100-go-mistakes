@@ -1672,7 +1672,7 @@ ch3 <- 1 // non-blocking
 ch3 <- 2 // blocking
 ```
 There is no guarantee that a receiver goroutine will receive a message before producer goroutine continue its execution.
-When considering the channel size, we should choose 1 as a default channel size, expect for the following cases:
+When considering the channel size, we should choose 1 as a default channel size, except for the following cases:
 * When a fixed number of worker goroutines send a data to a shared channel.
 * When using channel for rate-limiting problems.
 Other than the above mentioned scenarios, you should have a good reason to specify a channel size other than one for buffered channels.
