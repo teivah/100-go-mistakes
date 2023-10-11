@@ -1660,7 +1660,23 @@ Let’s keep this idea in mind: nil channels are useful in some conditions and s
 
     Carefully decide on the right channel type to use, given a problem. Only unbuffered channels provide strong synchronization guarantees.
 
-You should have a good reason to specify a channel size other than one for buffered channels.
+A unbuffered channel provide a synchronization between participant goroutines, which mean there is a guarantee that a producer goroutine can continue its execution only after the receiver goroutine received a message. A unbuffered channel can create by either of the following ways:
+```go
+ch1 := make(chan int) // by omitting the channel size.
+ch2 := make(chan int,0) // by providing 0 as a channel size.
+```
+On the other hand, a buffered channel doesn't provide any synchronization between participant goroutines, since a producer goroutine can send a message to buffered channel without blocking until it is full.
+```go
+ch3 := make(chan int, 1)
+ch3 <- 1 // non-blocking
+ch3 <- 2 // blocking
+```
+There is no guarantee that a receiver goroutine will receive a message before producer goroutine continue its execution.
+When considering the channel size, we should choose 1 as a default channel size, expect for the following cases:
+* When a fixed number of worker goroutines send a data to a shared channel.
+* When using channel for rate-limiting problems.
+Other than the above mentioned scenarios, you should have a good reason to specify a channel size other than one for buffered channels.
+A unbuffered channel can slow down the program a bit as compare to buffered channel, since the producer goroutine has to wait until the receiver goroutine ready to accept the message.
 
 ### Forgetting about possible side effects with string formatting (etcd data race example and deadlock) (#68)
 
