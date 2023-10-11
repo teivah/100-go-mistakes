@@ -1676,7 +1676,7 @@ When considering the channel size, we should choose 1 as a default channel size,
 * When a fixed number of worker goroutines send a data to a shared channel.
 * When using channel for rate-limiting problems.
 Other than the above mentioned scenarios, you should have a good reason to specify a channel size other than one for buffered channels.
-A unbuffered channel can slow down the program a bit as compare to buffered channel, since the producer goroutine has to wait until the receiver goroutine ready to accept the message.
+A unbuffered channel can slow down the program as compare to buffered channel, since the producer goroutine has to wait until the receiver goroutine ready to accept the message.
 
 ### Forgetting about possible side effects with string formatting (etcd data race example and deadlock) (#68)
 
