@@ -1676,6 +1676,40 @@ You should have a good reason to specify a channel size other than one for buffe
 
     Calling `append` isn’t always data-race-free; hence, it shouldn’t be used concurrently on a shared slice.
 
+When multiple goroutines try to append the shared slice which has the **non-full** backing array can lead to data race:
+```go
+s := make([]int,0,1)
+
+go func(){
+    s1 := append(s, 1) // data race
+    fmt.Println(s1)
+}()
+
+go func() {
+    s2 := append(s, 1) // data race
+    fmt.Println(s2)
+}()
+
+```
+In the above mentioned code, the slice is created with `make([]int,0,1)`, therefore length is **smaller** than capacity and the backing array isn't full. Both goroutines try to append to the same index(index 0) of the same backing array which can lead to data race. If we want to keep the existing data and append new elements to the slice which backing array isn't full, we can use `copy`:
+```go
+s := make([]int, 0, 1)
+
+go func() {
+    sCopy := make([]int, len(s), cap(s))
+    copy(sCopy, s)
+    s1 := append(sCopy, 1)
+    fmt.Println(s1)
+}()
+
+go func() {
+    sCopy := make([]int, len(s), cap(s))
+    copy(sCopy, s)
+    s2 := append(sCopy, 1)
+    fmt.Println(s2)
+}()
+```
+
  [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/69-data-race-append/main.go)
 
 ### Using mutexes inaccurately with slices and maps (#70)
