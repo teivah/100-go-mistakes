@@ -1684,6 +1684,62 @@ You should have a good reason to specify a channel size other than one for buffe
 
     Remembering that slices and maps are pointers can prevent common data races.
 
+Using mutext without carefully considering the underlying data structure can lead to data race.
+```go
+type Cache struct {
+    mu       sync.RWMutex
+    balances map[string]float64
+}
+
+func (c *Cache) AddBalance(id string, balance float64) {
+    c.mu.Lock()
+    c.balances[id] = balance
+    c.mu.Unlock()
+}
+
+func (c *Cache) AverageBalance() float64 {
+    c.mu.RLock()
+    balances := c.balances
+    c.mu.RUnlock()
+    sum := 0.
+    for _, balance := range balances {
+        sum += balance
+    }
+    return sum / float64(len(balances))
+}
+```
+If two goroutines, one calling `AddBalance` and another one calling `AverageBalance`, doing copy inside `RWMutext.RLock` and `RWMutext.RUnlock` can't prevent data race. Because `c.balances` is a **map** and internally it store the  pointer to the array of key, value pairs. So doing `balances := c.balances` just copy the pointer which reference to the same array of key,value pairs. In order to prevent such data race problem, we can use one of the following techniques:
+* Protecting the whole funtion inside critical section
+* Protect only the copy part and do deep copy
+```go
+// protect the whole function
+func (c *Cache) AverageBalance() float64 {
+    c.mu.RLock()
+    defer c.mu.RUnlock()
+    sum := 0.
+    for _, balance := range c.balances {
+        sum += balance
+    }
+    return sum / float64(len(c.balances))
+}
+
+// protect only the copy part and do deep copy
+func (c *Cache) AverageBalance() float64 {
+    c.mu.RLock()
+    m := make(map[string]float64, len(c.balances))
+    for k, v := range c.balances {
+        m[k] = v 
+    }
+    c.mu.RUnlock()
+    sum := 0.
+    for _, balance := range m {
+        sum += balance
+    }
+    return sum / float64(len(m))
+}
+```
+We should choose the later technique if the operation(calculating `sum` in this case) isn't fast.
+
  [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/70-mutex-slices-maps/main.go)
 
 ### Misusing `sync.WaitGroup` (#71)
