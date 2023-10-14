@@ -7,7 +7,7 @@ hide:
 
 # Being confused about when to use generics
 
-Generics is a fresh addition to the language. In a nutshell, it allows writing code with types that can be specified later and instantiated when needed. However, it can be pretty easy to be confused about when to use generics and when not to. Throughout this post, we will describe the concept of generics in Go and then delve into common use and misuses.
+Generics is a fresh addition to the language. In a nutshell, it allows writing code with types that can be specified later and instantiated when needed. However, it can be pretty easy to be confused about when to use generics and when not to. Throughout this post, we will describe the concept of generics in Go and then delve into common uses and misuses.
 
 ## Concepts
 
@@ -87,7 +87,7 @@ Restricting type arguments to match specific requirements is called a constraint
 * A set of behaviors (methods)
 * But also arbitrary type
 
-Let’s see a concrete example for the latter. Imagine we don’t want to accept any `comparable` type for map key type. For instance, we would like to restrict it to either `int` or `string` types. We can define a custom constraint this way:
+Let’s see a concrete example of the latter. Imagine we don’t want to accept any `comparable` type for the map key type. For instance, we would like to restrict it to either `int` or `string` types. We can define a custom constraint this way:
 
 ```go
 type customConstraint interface {
@@ -207,7 +207,7 @@ So when are generics useful? Let’s discuss a couple of common uses where gener
 
 Conversely, when is it recommended **not** to use generics?
 
-* When just calling a method of the type argument. For example, consider a function that receives an `io.Writer` and call the `Write` method:
+* When just calling a method of the type argument. For example, consider a function that receives an `io.Writer` and calls the `Write` method:
 
   ```go
   func foo[T io.Writer](w T) {
