@@ -179,7 +179,7 @@ AtomicStoreInt32-4  5.10ns ± 1%
 AtomicStoreInt64-4  5.10ns ± 1%
 ```
 
-The results are the same: both functions take on average 5.10 nanoseconds to complete. We also see the percent variation between the executions of a given benchmark: ± 1%. This metric tells us that both benchmarks are stable, giving us more confidence in the computed average results. Therefore, instead of concluding that `atomic.StoreInt32` is faster or slower, we can conclude that its execution time is similar to that of `atomic.StoreInt64` for the usage we tested (in a specific Go version on a particular machine).
+The results are the same: both functions take an average of 5.10 nanoseconds to complete. We also see the percent variation between the executions of a given benchmark: ± 1%. This metric tells us that both benchmarks are stable, giving us more confidence in the computed average results. Therefore, instead of concluding that `atomic.StoreInt32` is faster or slower, we can conclude that its execution time is similar to that of `atomic.StoreInt64` for the usage we tested (in a specific Go version on a particular machine).
 
 In general, we should be cautious about micro-benchmarks. Many factors can significantly impact the results and potentially lead to wrong assumptions. Increasing the benchmark time or repeating the benchmark executions and computing stats with tools such as `benchstat` can be an efficient way to limit external factors and get more accurate results, leading to better conclusions.
 
@@ -220,7 +220,7 @@ cpu: Intel(R) Core(TM) i5-7360U CPU @ 2.30GHz
 BenchmarkPopcnt1-4      1000000000               0.2858 ns/op
 ```
 
-A duration of 0.28 nanoseconds is roughly one clock cycle, so this number is unreasonably low. The problem is that the developer wasn’t careful enough about compiler optimizations. In this case, the function under test is simple enough to be a candidate for inlining: an optimization that replaces a function call with the body of the called function and lets us prevent a function call, which has a small footprint. Once the function is inlined, the compiler notices that the call has no side effects and replaces it with the following benchmark:
+A duration of 0.28 nanoseconds is roughly one clock cycle, so this number is unreasonably low. The problem is that the developer wasn’t careful enough about compiler optimizations. In this case, the function under test is simple enough to be a candidate for inlining: an optimization that replaces a function call with the body of the called function and lets us prevent a function call, that has a small footprint. Once the function is inlined, the compiler notices that the call has no side effects and replaces it with the following benchmark:
 
 ```go
 func BenchmarkPopcnt1(b *testing.B) {
@@ -253,7 +253,7 @@ func BenchmarkPopcnt2(b *testing.B) {
 
 ???+ note
 
-    Why not assign the result of the popcnt call directly to global to simplify the test? Writing to a global variable is slower than writing to a local variable (these concepts are discussed in 100 Go Mistakes, mistake #95: “[Not understanding stack vs. heap](https://100go.co#not-understanding-stack-vs-heap-95)”). Therefore, we should write each result to a local variable to limit the footprint during each loop iteration.
+    Why not assign the result of the popcnt call directly to Global to simplify the test? Writing to a global variable is slower than writing to a local variable (these concepts are discussed in 100 Go Mistakes, mistake #95: “[Not understanding stack vs. heap](https://100go.co#not-understanding-stack-vs-heap-95)”). Therefore, we should write each result to a local variable to limit the footprint during each loop iteration.
 
 If we run these two benchmarks, we now get a significant difference in the results:
 
@@ -271,7 +271,7 @@ Let’s remember the pattern to avoid compiler optimizations fooling benchmark r
 
 In physics, the observer effect is the disturbance of an observed system by the act of observation. This effect can also be seen in benchmarks and can lead to wrong assumptions about results. Let’s look at a concrete example and then try to mitigate it.
 
-We want to implement a function receiving a matrix of `int64` elements. This matrix has a fixed number of 512 columns, and we want to compute the total sum of the first eight columns, as shown in figure 1.
+We want to implement a function receiving a matrix of `int64` elements. This matrix has a fixed number of 512 columns, and we want to compute the total sum of the first eight columns, as shown in Figure 1.
 
 <figure markdown>
   ![](img/matrix.png)
