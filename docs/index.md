@@ -1692,6 +1692,40 @@ You should have a good reason to specify a channel size other than one for buffe
 
     To accurately use `sync.WaitGroup`, call the `Add` method before spinning up goroutines.
 
+Calling `sync.WaitGroup.Add` method inside goroutine can lead to data race since child goroutine can run at any time in any order. There is no guarantee that main go routine will have the correct counter to wait until it become zero.
+```go
+wg := sync.WaitGroup{}
+var v uint64
+for i := 0; i < 3; i++ {
+    go func() {
+        wg.Add(1) // incrementing the counter in an unreliable way.
+        atomic.AddUint64(&v, 1)
+        wg.Done()
+    }()
+}
+wg.Wait()
+fmt.Println(v)
+```
+To deterministically set the counter, the `wg.Add` should be called before spinning up the goroutine:
+```go
+// same code
+for i := 0; i < 3; i++ {
+    wg.Add(1)
+    go func() {
+        atomic.AddUint64(&v, 1)
+        wg.Done()
+    }()
+}
+```
+If we know how many goroutines we will create, we can set the counter before the loop:
+```go
+// same code
+wg.Add(3)
+for i:=0; i < 3 ; i++{
+    // loop body
+}
+```
+
  [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/71-wait-group/main.go)
 
 ### Forgetting about `sync.Cond` (#72)
