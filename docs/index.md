@@ -451,7 +451,7 @@ The last option, `[]string{}`, should be avoided if we initialize the slice with
 
     To check if a slice doesn’t contain any element, check its length. This check works regardless of whether the slice is `nil` or empty. The same goes for maps. To design unambiguous APIs, you shouldn’t distinguish between nil and empty slices.
 
-To determine whether a slice has elements, we can either do it by checking if the slice is nil or if its length is equal to 0. Checking the length is the best option to follow as it will cover both if the slice is empty or is the slice is nil.
+To determine whether a slice has elements, we can either do it by checking if the slice is nil or if its length is equal to 0. Checking the length is the best option to follow as it will cover both if the slice is empty or if the slice is nil.
 
 Meanwhile, when designing interfaces, we should avoid distinguishing nil and empty slices, which leads to subtle programming errors. When returning slices, it should make neither a semantic nor a technical difference if we return a nil or empty slice. Both should mean the same thing for the callers. This principle is the same with maps. To check if a map is empty, check its length, not whether it’s nil.
 
@@ -1322,7 +1322,7 @@ A data race occurs when two or more goroutines simultaneously access the same me
 We can prevent a data race from happening using different techniques. For example: 
 
 * Using the `sync/atomic` package
-* In synchronizing the two goroutines with an ad how data structure like a mutex
+* In synchronizing the two goroutines with an ad hoc data structure like a mutex
 * Using channels to make the two goroutines communicating to ensure that a variable is updated by only one goroutine at a time
 
 #### Race Condition
