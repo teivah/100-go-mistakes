@@ -1716,6 +1716,58 @@ You should have a good reason to specify a channel size other than one for buffe
 
     `sync` types shouldn’t be copied.
 
+Operations can't be in critical section if we accidentally **copy** the synchronization primitives.
+`sync` types can be unintentinally copied in the following situation:
+* Calling a method with a value receiver
+* Calling a function with a sync argument
+* Calling a function with an argument that contains a sync field
+
+Suppose two goroutines try to increment the shared counter(which is `map[string]int`) in a critical section by using `sync.Mutex`:
+```go
+type Counter struct {
+    mu       sync.Mutex
+    counters map[string]int
+}
+func NewCounter() Counter {
+    return Counter{counters: map[string]int{}}
+}
+func (c Counter) Increment(name string){
+    c.mu.Lock()
+    defer c.mu.Unlock()
+    c.counters[name]++
+}
+```
+If two goroutines try to increment the counter there will be a data race:
+```go
+counter := NewCounter()
+go func() {
+    counter.Increment("foo")
+}()
+
+go func() {
+    counter.Increment("bar")
+}()
+```
+The reason is since the receiver of `Increment` method is a value receiver, so everytime `Increment` method get called it will receive the copy of `Counter` struct which also copy the `mu`. In order to shared the same `sync.Mutext`, we can change the receiver type to **pointer** or we can use `*sync.Mutext`:
+```go
+// use pointer receiver
+func (c *Counter) Increment(name string) {
+    // Same code
+}
+
+// change sync.Mutext to pointer
+type Counter struct {
+    mu       *sync.Mutex
+    counters map[string]int
+}
+func NewCounter() Counter {
+    return Counter{
+        mu: &sync.Mutex{}, // need to explicitly initialize "mu" since zero value of pointer is nil.
+        counters: map[string]int{},
+    }
+}
+```
+
  [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/74-copying-sync/main.go)
 
 ## Standard Library
