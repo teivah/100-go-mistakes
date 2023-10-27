@@ -77,7 +77,7 @@ Each bucket is a fixed-size array of eight elements. In the case of an insertion
 </figure>
 
 
-Under the hood, a Go map is a pointer to a runtime.hmap struct. This struct contains multiple fields, including a B field, giving the number of buckets in the map:
+Under the hood, a Go map is a pointer to a [runtime.hmap](https://github.com/golang/go/blob/0262ea1ff9ac3b9fd268a48fcaaa6811c20cbea2/src/runtime/map.go#L117-L131) struct. This struct contains multiple fields, including a B field, giving the number of buckets in the map:
 
 ```go
 type hmap struct {
