@@ -48,7 +48,7 @@ func main() {
 func printAlloc() {
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
-	fmt.Printf("%d KB\n", m.Alloc/1024)
+	fmt.Printf("%d MB\n", m.Alloc/(1024*1024))
 }
 ```
 
