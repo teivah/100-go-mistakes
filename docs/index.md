@@ -1570,7 +1570,7 @@ Instead of consuming the 10 messages, we only received a few of them. What’s t
 
     If one or more of the communications can proceed, a single one that can proceed is chosen via a uniform pseudo-random selection.
 
-Unlike a switch statement, where the first case with a match wins, the select state- ment selects randomly if multiple options are possible.
+Unlike a switch statement, where the first case with a match wins, the select statement selects randomly if multiple options are possible.
 
 This behavior might look odd at first, but there’s a good reason for it: to prevent possible starvation. Suppose the first possible communication chosen is based on the source order. In that case, we may fall into a situation where, for example, we only receive from one channel because of a fast sender. To prevent this, the language designers decided to use a random selection.
 
@@ -1939,7 +1939,7 @@ func handler(w http.ResponseWriter, req *http.Request) {
 
     * Use time methods to preserve the accuracy of a benchmark.
     * Increasing benchtime or using tools such as benchstat can be helpful when dealing with micro-benchmarks.
-    * Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-bench- mark.
+    * Be careful with the results of a micro-benchmark if the system that ends up running the application is different from the one running the micro-benchmark.
     * Make sure the function under test leads to a side effect, to prevent compiler optimizations from fooling you about the benchmark results.
     * To prevent the observer effect, force a benchmark to re-create the data used by a CPU-bound function.
 
