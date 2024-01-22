@@ -215,7 +215,7 @@ Using type embedding consciously by keeping these constraints in mind can help a
 Although there are different implementations with minor variations, the main idea is as follows:
 
 * An unexported struct holds the configuration: options.
-* Each option is a function that returns the same type: `type Option func(options *options)` error. For example, `WithPort` accepts an `int` argument that represents the port and returns an `Option` type that represents how to update the `options` struct.
+* Each option is a function that returns the same type: `type Option func(options *options) error`. For example, `WithPort` accepts an `int` argument that represents the port and returns an `Option` type that represents how to update the `options` struct.
 
 ![](img/options.png)
 
