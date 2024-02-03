@@ -596,13 +596,9 @@ This code updates the last index to 10. However, if we run this code, it does no
 
 ### Ignoring the impacts of using pointer elements in `range` loops (#32)
 
-???+ info "TL;DR"
+???+ warning
 
-    Using a local variable or accessing an element using an index, you can prevent mistakes while copying pointers inside a loop.
-
-When iterating over a data structure using a `range` loop, we must recall that all the values are assigned to a unique variable with a single unique address. Therefore, if we store a pointer referencing this variable during each iteration, we will end up in a situation where we store the same pointer referencing the same element: the latest one. We can overcome this issue by forcing the creation of a local variable in the loop’s scope or creating a pointer referencing a slice element via its index. Both solutions are fine.
-
- [Source code :simple-github:](https://github.com/teivah/100-go-mistakes/tree/master/src/04-control-structures/32-range-loop-pointers/)
+    This mistake isn't relevant anymore from Go 1.22 ([source](https://go.dev/blog/loopvar-preview)).
 
 ### Making wrong assumptions during map iterations (ordering and map insert during iteration) (#33)
 
