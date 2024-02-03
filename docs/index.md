@@ -1756,10 +1756,11 @@ ticker = time.NewTicker(1000 * time.Nanosecond)
 ???+ info "TL;DR"
 
     Avoiding calls to `time.After` in repeated functions (such as loops or HTTP handlers) can avoid peak memory consumption. The resources created by `time.After` are released only when the timer expires.
-People often use time.After in loops or HTTP handlers repeatedly to implement the timing function. But it can lead to unintended peak memory consumption due to the delayed release of resources, just like the following code:
+
+Developers often use `time.After` in loops or HTTP handlers repeatedly to implement the timing function. But it can lead to unintended peak memory consumption due to the delayed release of resources, just like the following code:
 
 ```go
-func consumer1(ch <-chan Event) {
+func consumer(ch <-chan Event) {
 	for {
 		select {
 		case event := <-ch:
@@ -1781,12 +1782,12 @@ func After(d Duration) <-chan Time {
 
 As we see, it returns receive-only channel.
 
-When time.After is used in a loop or repeated context, a new channel is created in each iteration. If these channels are not properly closed or if their associated timers are not stopped, they can accumulate and consume memory. The resources associated with each timer and channel are only released when the timer expires or the channel is closed.
+When `time.After` is used in a loop or repeated context, a new channel is created in each iteration. If these channels are not properly closed or if their associated timers are not stopped, they can accumulate and consume memory. The resources associated with each timer and channel are only released when the timer expires or the channel is closed.
 
-To avoid this happening, We can use context's timeout setting instead of time.After, like below:
+To avoid this happening, We can use context's timeout setting instead of `time.After`, like below:
 
 ```go
-func consumer2(ch <-chan Event) {
+func consumer(ch <-chan Event) {
 	for {
 		ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
 		select {
@@ -1800,10 +1801,10 @@ func consumer2(ch <-chan Event) {
 }
 ```
 
-We can also use time.NewTimer like below:
+We can also use `time.NewTimer` like so:
 
 ```go
-func consumer3(ch <-chan Event) {
+func consumer(ch <-chan Event) {
 	timerDuration := 1 * time.Hour
 	timer := time.NewTimer(timerDuration)
 
