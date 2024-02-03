@@ -65,7 +65,7 @@ When calling `foo`, we will pass a type argument of any type. Passing a type arg
 Let’s get back to the `getKeys` function and use type parameters to write a generic version that would accept any kind of map:
 
 ```go
-func getKeys[K comparable, V any](m map[K]V) []K { <1>
+func getKeys[K comparable, V any](m map[K]V) []K {
   var keys []K <2>
   for k := range m {
     keys = append(keys, k)

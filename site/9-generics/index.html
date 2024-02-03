@@ -131,16 +131,6 @@
     </div>
     <div data-md-component="announce">
       
-        <aside class="md-banner">
-          <div class="md-banner__inner md-grid md-typeset">
-            
-            
-This repo is open to <a href="https://hacktoberfest.com/">Hacktoberfest</a>! 🎉 If you want to participate, please have a look at the <a href="https://github.com/teivah/100-go-mistakes/issues">open issues</a>.
-
-          </div>
-          
-        </aside>
-      
     </div>
     
     
@@ -975,7 +965,7 @@ This repo is open to <a href="https://hacktoberfest.com/">Hacktoberfest</a>! �
 </span></code></pre></div>
 <p>When calling <code>foo</code>, we will pass a type argument of any type. Passing a type argument is called instantiation because the work is done at compile time which keeps type safety as part of the core language features and avoids runtime overheads.</p>
 <p>Let’s get back to the <code>getKeys</code> function and use type parameters to write a generic version that would accept any kind of map:</p>
-<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getKeys</span><span class="p">[</span><span class="nx">K</span><span class="w"> </span><span class="kt">comparable</span><span class="p">,</span><span class="w"> </span><span class="nx">V</span><span class="w"> </span><span class="kt">any</span><span class="p">](</span><span class="nx">m</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span><span class="nx">V</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="nx">K</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class="mi">1</span><span class="p">&gt;</span>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">getKeys</span><span class="p">[</span><span class="nx">K</span><span class="w"> </span><span class="kt">comparable</span><span class="p">,</span><span class="w"> </span><span class="nx">V</span><span class="w"> </span><span class="kt">any</span><span class="p">](</span><span class="nx">m</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="nx">K</span><span class="p">]</span><span class="nx">V</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="nx">K</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="p">[]</span><span class="nx">K</span><span class="w"> </span><span class="p">&lt;</span><span class="mi">2</span><span class="p">&gt;</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">k</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">keys</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">keys</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span>
