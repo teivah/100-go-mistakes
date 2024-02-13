@@ -61,11 +61,11 @@ extra:
 extra_css:
   - stylesheets/extra.css
 nav:
-    - Book:
+    - 📖 Book:
         - book.md
         - chapter-1.md
         - external.md
-    - Go Mistakes:
+    - ⭐ Go Mistakes:
       - index.md
       - Full Sections:
         - 9-generics.md
@@ -74,8 +74,6 @@ nav:
         - 56-concurrency-faster.md
         - 89-benchmarks.md
         - 98-profiling-execution-tracing.md
-    - ❤️ Go Jobs:
-      - jobs.md
 markdown_extensions:
   - admonition
   - pymdownx.details
