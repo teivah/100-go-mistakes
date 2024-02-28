@@ -8,6 +8,7 @@ hide:
 ## English
 
 * Book Review: 100 Go Mistakes and How to Avoid Them: [Post](https://boldlygo.tech/posts/2023-08-09-review-100-go-mistakes/), [YouTube](https://www.youtube.com/watch?v=tcRYU9g5wtw)
+* The Most Useful Book for a Go Programmer?: [YouTube](https://www.youtube.com/watch?v=8pqgv4_Yjq0)
 * How to make mistakes in Go - Go Time #190: [Episode](https://changelog.com/gotime/190), [Spotify](https://open.spotify.com/episode/0K1DImrxHCy6E7zVY4AxMZ?si=akroInsPQ1mM5B5V2tHLUw&dl_branch=1)
 * [8LU - 100% Test Coverage](https://youtu.be/V3FBDav6wgQ?t=1210)
 * [Some Tips I learned from 100 Mistakes in Go](https://raygervais.dev/articles/2023/04/100_mistakes_in_go/)
