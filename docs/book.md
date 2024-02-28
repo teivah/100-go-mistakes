@@ -58,4 +58,4 @@ Read a summary of the 100 mistakes [here](https://100go.co).
 
 ## About the Author
 
-[Teiva Harsanyi](http://teivah.io) is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.
+[Teiva Harsanyi](https://teivah.dev) is a senior software engineer at Google. He has worked in various domains, including insurance, transportation, and safety-critical industries like air traffic management. He is passionate about Go and how to design and implement reliable systems.

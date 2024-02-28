@@ -14,16 +14,16 @@
       
       
       <link rel="icon" href="../img/Go-Logo_LightBlue.svg">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
     
     
   <title>100 Go Mistakes</title>
 
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -88,17 +88,15 @@
     
     
    <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-        html.glightbox-open { overflow: initial; height: 100%; }
-        .gslide-title { margin-top: 0px; user-select: text; }
-        .gslide-desc { color: #666; user-select: text; }
-        .gslide-image img { background: white; }
-        
-            .gscrollbar-fixer { padding-right: 15px; }
-            .gdesc-inner { font-size: 0.75rem; }
-            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -110,9 +108,6 @@
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="deep-orange">
   
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -168,9 +163,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
       </label>
     
@@ -178,15 +173,18 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
       </label>
     
   
 </form>
       
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
       <div class="md-header__option">
@@ -271,7 +269,7 @@
         <a href="https://github.com/teivah/100-go-mistakes" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     teivah/100-go-mistakes
@@ -297,7 +295,7 @@
         <a href="../book/" class="md-tabs__link">
           
   
-  Book
+  📖 Book
 
         </a>
       </li>
@@ -315,25 +313,7 @@
         <a href=".." class="md-tabs__link">
           
   
-  Go Mistakes
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../jobs/" class="md-tabs__link">
-          
-  
-  ❤️ Go Jobs
+  ⭐ Go Mistakes
 
         </a>
       </li>
@@ -381,7 +361,7 @@
       <a href="https://github.com/teivah/100-go-mistakes" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
   </div>
   <div class="md-source__repository">
     teivah/100-go-mistakes
@@ -396,24 +376,30 @@
   
   
   
+  
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        
-        
           
         
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
         
+          
           <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Book
+    📖 Book
   </span>
   
 
@@ -423,12 +409,13 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            Book
+            📖 Book
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
+  
   
   
   
@@ -452,6 +439,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../chapter-1/" class="md-nav__link">
         
@@ -469,6 +457,7 @@
             
               
                 
+  
   
   
   
@@ -499,24 +488,30 @@
   
   
   
+  
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        
-        
           
         
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
+          
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Go Mistakes
+    ⭐ Go Mistakes
   </span>
   
 
@@ -526,12 +521,13 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Go Mistakes
+            ⭐ Go Mistakes
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
+  
   
   
   
@@ -555,21 +551,25 @@
   
   
   
+  
     
     
     
       
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
-        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
         
           
         
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
+          
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
   
@@ -593,6 +593,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../9-generics/" class="md-nav__link">
         
@@ -610,6 +611,7 @@
             
               
                 
+  
   
   
   
@@ -633,6 +635,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../28-maps-memory-leaks/" class="md-nav__link">
         
@@ -650,6 +653,7 @@
             
               
                 
+  
   
   
   
@@ -673,6 +677,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../89-benchmarks/" class="md-nav__link">
         
@@ -690,6 +695,7 @@
             
               
                 
+  
   
   
   
@@ -711,69 +717,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ❤️ Go Jobs
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            ❤️ Go Jobs
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../jobs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Go Jobs
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -814,7 +757,9 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    代码及工程组织
+    <span class="md-ellipsis">
+      代码及工程组织
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="代码及工程组织">
@@ -822,112 +767,144 @@
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    意外的变量隐藏 (#1)
+    <span class="md-ellipsis">
+      意外的变量隐藏 (#1)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    不必要的代码嵌套 (#2)
+    <span class="md-ellipsis">
+      不必要的代码嵌套 (#2)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#init-3" class="md-nav__link">
-    误用init函数 (#3)
+    <span class="md-ellipsis">
+      误用init函数 (#3)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#getterssetters-4" class="md-nav__link">
-    滥用getters/setters (#4)
+    <span class="md-ellipsis">
+      滥用getters/setters (#4)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
-    接口污染 (#5)
+    <span class="md-ellipsis">
+      接口污染 (#5)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#6" class="md-nav__link">
-    将接口定义在实现方一侧 (#6)
+    <span class="md-ellipsis">
+      将接口定义在实现方一侧 (#6)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#7" class="md-nav__link">
-    将接口作为返回值 (#7)
+    <span class="md-ellipsis">
+      将接口作为返回值 (#7)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#any-8" class="md-nav__link">
-    any 没传递任何信息 (#8)
+    <span class="md-ellipsis">
+      any 没传递任何信息 (#8)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#9" class="md-nav__link">
-    困惑何时该用范型 (#9)
+    <span class="md-ellipsis">
+      困惑何时该用范型 (#9)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#10" class="md-nav__link">
-    未意识到类型嵌套的可能问题 (#10)
+    <span class="md-ellipsis">
+      未意识到类型嵌套的可能问题 (#10)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#function-option-11" class="md-nav__link">
-    不使用function option模式 (#11)
+    <span class="md-ellipsis">
+      不使用function option模式 (#11)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#12" class="md-nav__link">
-    工程组织不合理 (工程结构和包的组织) (#12)
+    <span class="md-ellipsis">
+      工程组织不合理 (工程结构和包的组织) (#12)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#13" class="md-nav__link">
-    创建工具包 (#13)
+    <span class="md-ellipsis">
+      创建工具包 (#13)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#14" class="md-nav__link">
-    忽略了包名冲突 (#14)
+    <span class="md-ellipsis">
+      忽略了包名冲突 (#14)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#15" class="md-nav__link">
-    代码缺少文档 (#15)
+    <span class="md-ellipsis">
+      代码缺少文档 (#15)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#linters-16" class="md-nav__link">
-    不使用linters检查 (#16)
+    <span class="md-ellipsis">
+      不使用linters检查 (#16)
+    </span>
   </a>
   
 </li>
@@ -939,7 +916,9 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    数据类型
+    <span class="md-ellipsis">
+      数据类型
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="数据类型">
@@ -947,91 +926,117 @@
         
           <li class="md-nav__item">
   <a href="#17" class="md-nav__link">
-    八进制字面量引发的困惑 (#17)
+    <span class="md-ellipsis">
+      八进制字面量引发的困惑 (#17)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#18" class="md-nav__link">
-    未注意可能的整数溢出 (#18)
+    <span class="md-ellipsis">
+      未注意可能的整数溢出 (#18)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#19" class="md-nav__link">
-    没有透彻理解浮点数 (#19)
+    <span class="md-ellipsis">
+      没有透彻理解浮点数 (#19)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#slice-20" class="md-nav__link">
-    不理解slice的长度和容量 (#20)
+    <span class="md-ellipsis">
+      不理解slice的长度和容量 (#20)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#slice-21" class="md-nav__link">
-    不高效的slice初始化 (#21)
+    <span class="md-ellipsis">
+      不高效的slice初始化 (#21)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#nilslice-22" class="md-nav__link">
-    困惑于nil和空slice (#22)
+    <span class="md-ellipsis">
+      困惑于nil和空slice (#22)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#slice-23" class="md-nav__link">
-    没有适当检查slice是否为空 (#23)
+    <span class="md-ellipsis">
+      没有适当检查slice是否为空 (#23)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#slice-24" class="md-nav__link">
-    没有正确拷贝slice (#24)
+    <span class="md-ellipsis">
+      没有正确拷贝slice (#24)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#slice-append-25" class="md-nav__link">
-    slice append带来的预期之外的副作用 (#25)
+    <span class="md-ellipsis">
+      slice append带来的预期之外的副作用 (#25)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#slice-26" class="md-nav__link">
-    slice和内存泄漏 (#26)
+    <span class="md-ellipsis">
+      slice和内存泄漏 (#26)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#map-27" class="md-nav__link">
-    不高效的map初始化 (#27)
+    <span class="md-ellipsis">
+      不高效的map初始化 (#27)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#map-28" class="md-nav__link">
-    map和内存泄漏 (#28)
+    <span class="md-ellipsis">
+      map和内存泄漏 (#28)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#29" class="md-nav__link">
-    不正确的值比较 (#29)
+    <span class="md-ellipsis">
+      不正确的值比较 (#29)
+    </span>
   </a>
   
 </li>
@@ -1043,7 +1048,9 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    控制结构
+    <span class="md-ellipsis">
+      控制结构
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="控制结构">
@@ -1051,42 +1058,54 @@
         
           <li class="md-nav__item">
   <a href="#range-30" class="md-nav__link">
-    忽略了 range 循环变量是一个拷贝 (#30)
+    <span class="md-ellipsis">
+      忽略了 range 循环变量是一个拷贝 (#30)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#range-channels-arrays-31" class="md-nav__link">
-    忽略了 range 循环中迭代目标值的计算方式 (channels 和 arrays) (#31)
+    <span class="md-ellipsis">
+      忽略了 range 循环中迭代目标值的计算方式 (channels 和 arrays) (#31)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#range-range-loops-32" class="md-nav__link">
-    忽略了 range 循环中指针元素的影响 range loops (#32)
+    <span class="md-ellipsis">
+      忽略了 range 循环中指针元素的影响 range loops (#32)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#map-33" class="md-nav__link">
-    map迭代过程中的错误假设（遍历顺序 和 迭代过程中插入）(#33)
+    <span class="md-ellipsis">
+      map迭代过程中的错误假设（遍历顺序 和 迭代过程中插入）(#33)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#break-34" class="md-nav__link">
-    忽略了 break 语句是如何工作的 (#34)
+    <span class="md-ellipsis">
+      忽略了 break 语句是如何工作的 (#34)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#defer-35" class="md-nav__link">
-    在循环中使用 defer  (#35)
+    <span class="md-ellipsis">
+      在循环中使用 defer  (#35)
+    </span>
   </a>
   
 </li>
@@ -1098,7 +1117,9 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    字符串
+    <span class="md-ellipsis">
+      字符串
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="字符串">
@@ -1106,42 +1127,54 @@
         
           <li class="md-nav__item">
   <a href="#rune-36" class="md-nav__link">
-    没有理解rune (#36)
+    <span class="md-ellipsis">
+      没有理解rune (#36)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#37" class="md-nav__link">
-    不正确的字符串遍历 (#37)
+    <span class="md-ellipsis">
+      不正确的字符串遍历 (#37)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#trim-38" class="md-nav__link">
-    误用trim函数 (#38)
+    <span class="md-ellipsis">
+      误用trim函数 (#38)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#39" class="md-nav__link">
-    不经优化的字符串拼接操作 (#39)
+    <span class="md-ellipsis">
+      不经优化的字符串拼接操作 (#39)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#40" class="md-nav__link">
-    无用的字符串转换 (#40)
+    <span class="md-ellipsis">
+      无用的字符串转换 (#40)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#41" class="md-nav__link">
-    子字符串和内存泄漏 (#41)
+    <span class="md-ellipsis">
+      子字符串和内存泄漏 (#41)
+    </span>
   </a>
   
 </li>
@@ -1153,7 +1186,9 @@
       
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    函数和方法
+    <span class="md-ellipsis">
+      函数和方法
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="函数和方法">
@@ -1161,42 +1196,54 @@
         
           <li class="md-nav__item">
   <a href="#42" class="md-nav__link">
-    不知道使用哪种接收器类型 (#42)
+    <span class="md-ellipsis">
+      不知道使用哪种接收器类型 (#42)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#43" class="md-nav__link">
-    从不使用命名的返回值 (#43)
+    <span class="md-ellipsis">
+      从不使用命名的返回值 (#43)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#44" class="md-nav__link">
-    使用命名的返回值时预期外的副作用 (#44)
+    <span class="md-ellipsis">
+      使用命名的返回值时预期外的副作用 (#44)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#nil-45" class="md-nav__link">
-    返回一个nil接收器 (#45)
+    <span class="md-ellipsis">
+      返回一个nil接收器 (#45)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#46" class="md-nav__link">
-    使用文件名作为函数入参 (#46)
+    <span class="md-ellipsis">
+      使用文件名作为函数入参 (#46)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#defer-value-47" class="md-nav__link">
-    忽略 defer 语句中参数、接收器值的计算方式 (参数值计算, 指针, 和 value类型接收器) (#47)
+    <span class="md-ellipsis">
+      忽略 defer 语句中参数、接收器值的计算方式 (参数值计算, 指针, 和 value类型接收器) (#47)
+    </span>
   </a>
   
 </li>
@@ -1208,7 +1255,9 @@
       
         <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    错误管理
+    <span class="md-ellipsis">
+      错误管理
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="错误管理">
@@ -1216,49 +1265,63 @@
         
           <li class="md-nav__item">
   <a href="#panicking-48" class="md-nav__link">
-    Panicking (#48)
+    <span class="md-ellipsis">
+      Panicking (#48)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#error-49" class="md-nav__link">
-    未考虑何时才应该包装error (#49)
+    <span class="md-ellipsis">
+      未考虑何时才应该包装error (#49)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#50" class="md-nav__link">
-    不正确的错误类型比较 (#50)
+    <span class="md-ellipsis">
+      不正确的错误类型比较 (#50)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#51" class="md-nav__link">
-    不正确的错误对象值比较 (#51)
+    <span class="md-ellipsis">
+      不正确的错误对象值比较 (#51)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#52" class="md-nav__link">
-    处理同一个错误两次 (#52)
+    <span class="md-ellipsis">
+      处理同一个错误两次 (#52)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#53" class="md-nav__link">
-    不处理错误 (#53)
+    <span class="md-ellipsis">
+      不处理错误 (#53)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#defer-54" class="md-nav__link">
-    不处理 defer 中的错误 (#54)
+    <span class="md-ellipsis">
+      不处理 defer 中的错误 (#54)
+    </span>
   </a>
   
 </li>
@@ -1270,7 +1333,9 @@
       
         <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    并发编程: 基础
+    <span class="md-ellipsis">
+      并发编程: 基础
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="并发编程: 基础">
@@ -1278,42 +1343,54 @@
         
           <li class="md-nav__item">
   <a href="#55" class="md-nav__link">
-    混淆并发和并行 (#55)
+    <span class="md-ellipsis">
+      混淆并发和并行 (#55)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#56" class="md-nav__link">
-    认为并发总是更快 (#56)
+    <span class="md-ellipsis">
+      认为并发总是更快 (#56)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#channelsmutexes-57" class="md-nav__link">
-    不清楚何时使用channels或mutexes (#57)
+    <span class="md-ellipsis">
+      不清楚何时使用channels或mutexes (#57)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#vs-go-58" class="md-nav__link">
-    不明白竞态问题 (数据竞态 vs. 竞态条件 和 Go内存模型) (#58)
+    <span class="md-ellipsis">
+      不明白竞态问题 (数据竞态 vs. 竞态条件 和 Go内存模型) (#58)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#59" class="md-nav__link">
-    不理解不同工作负载类型对并发的影响 (#59)
+    <span class="md-ellipsis">
+      不理解不同工作负载类型对并发的影响 (#59)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#go-contexts-60" class="md-nav__link">
-    误解了Go contexts (#60)
+    <span class="md-ellipsis">
+      误解了Go contexts (#60)
+    </span>
   </a>
   
 </li>
@@ -1325,7 +1402,9 @@
       
         <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    并发编程: 实践
+    <span class="md-ellipsis">
+      并发编程: 实践
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="并发编程: 实践">
@@ -1333,98 +1412,126 @@
         
           <li class="md-nav__item">
   <a href="#context-61" class="md-nav__link">
-    传递不合适的context (#61)
+    <span class="md-ellipsis">
+      传递不合适的context (#61)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#goroutine-62" class="md-nav__link">
-    启动了一个goroutine但是不知道它何时会停止 (#62)
+    <span class="md-ellipsis">
+      启动了一个goroutine但是不知道它何时会停止 (#62)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#goroutines-63" class="md-nav__link">
-    不注意处理 goroutines 和 循环中的迭代变量 (#63)
+    <span class="md-ellipsis">
+      不注意处理 goroutines 和 循环中的迭代变量 (#63)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#select-channels-64" class="md-nav__link">
-    使用select + channels 时误以为分支选择顺序是确定的 (#64)
+    <span class="md-ellipsis">
+      使用select + channels 时误以为分支选择顺序是确定的 (#64)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#channels-65" class="md-nav__link">
-    不正确使用通知 channels (#65)
+    <span class="md-ellipsis">
+      不正确使用通知 channels (#65)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#nil-channels-66" class="md-nav__link">
-    不使用 nil channels (#66)
+    <span class="md-ellipsis">
+      不使用 nil channels (#66)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#channel-size-67" class="md-nav__link">
-    不清楚该如何确定 channel size (#67)
+    <span class="md-ellipsis">
+      不清楚该如何确定 channel size (#67)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#etcd-68" class="md-nav__link">
-    忘记了字符串格式化可能带来的副作用（例如 etcd 数据竞争和死锁）(#68)
+    <span class="md-ellipsis">
+      忘记了字符串格式化可能带来的副作用（例如 etcd 数据竞争和死锁）(#68)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#append-69" class="md-nav__link">
-    使用 append 不当导致数据竞争 (#69)
+    <span class="md-ellipsis">
+      使用 append 不当导致数据竞争 (#69)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#mutexes-slicesmaps-70" class="md-nav__link">
-    误用 mutexes 和 slices、maps (#70)
+    <span class="md-ellipsis">
+      误用 mutexes 和 slices、maps (#70)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#syncwaitgroup-71" class="md-nav__link">
-    误用 sync.WaitGroup (#71)
+    <span class="md-ellipsis">
+      误用 sync.WaitGroup (#71)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#synccond-72" class="md-nav__link">
-    忘记使用 sync.Cond (#72)
+    <span class="md-ellipsis">
+      忘记使用 sync.Cond (#72)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#errgroup-73" class="md-nav__link">
-    不使用 errgroup (#73)
+    <span class="md-ellipsis">
+      不使用 errgroup (#73)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#sync-74" class="md-nav__link">
-    拷贝一个 sync 下的类型 (#74)
+    <span class="md-ellipsis">
+      拷贝一个 sync 下的类型 (#74)
+    </span>
   </a>
   
 </li>
@@ -1436,7 +1543,9 @@
       
         <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    标准库
+    <span class="md-ellipsis">
+      标准库
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="标准库">
@@ -1444,49 +1553,63 @@
         
           <li class="md-nav__item">
   <a href="#timeduration-75" class="md-nav__link">
-    使用了错误的 time.Duration (#75)
+    <span class="md-ellipsis">
+      使用了错误的 time.Duration (#75)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#timeafter-76" class="md-nav__link">
-    time.After 和内存泄漏 (#76)
+    <span class="md-ellipsis">
+      time.After 和内存泄漏 (#76)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#json-77" class="md-nav__link">
-    JSON处理中的常见错误 (#77)
+    <span class="md-ellipsis">
+      JSON处理中的常见错误 (#77)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#sql-78" class="md-nav__link">
-    常见的 SQL 错误 (#78)
+    <span class="md-ellipsis">
+      常见的 SQL 错误 (#78)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#http-sqlrows-osfile-79" class="md-nav__link">
-    不关闭临时资源（HTTP 请求体、sql.Rows 和 os.File) (#79)
+    <span class="md-ellipsis">
+      不关闭临时资源（HTTP 请求体、sql.Rows 和 os.File) (#79)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#http-80" class="md-nav__link">
-    响应HTTP请求后没有返回语句 (#80)
+    <span class="md-ellipsis">
+      响应HTTP请求后没有返回语句 (#80)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#http-clientserver-81" class="md-nav__link">
-    直接使用默认的HTTP client和server (#81)
+    <span class="md-ellipsis">
+      直接使用默认的HTTP client和server (#81)
+    </span>
   </a>
   
 </li>
@@ -1498,7 +1621,9 @@
       
         <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
-    测试
+    <span class="md-ellipsis">
+      测试
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="测试">
@@ -1506,70 +1631,90 @@
         
           <li class="md-nav__item">
   <a href="#build-tags-82" class="md-nav__link">
-    不对测试进行分类 （build tags, 环境变量，短模式）(#82)
+    <span class="md-ellipsis">
+      不对测试进行分类 （build tags, 环境变量，短模式）(#82)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#race-83" class="md-nav__link">
-    不打开 race 开关 (#83)
+    <span class="md-ellipsis">
+      不打开 race 开关 (#83)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#parallel-shuffle-84" class="md-nav__link">
-    不打开测试的执行模式开关 (parallel 和 shuffle) (#84)
+    <span class="md-ellipsis">
+      不打开测试的执行模式开关 (parallel 和 shuffle) (#84)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#85" class="md-nav__link">
-    不使用表驱动的测试 (#85)
+    <span class="md-ellipsis">
+      不使用表驱动的测试 (#85)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#sleep-86" class="md-nav__link">
-    在单元测试中执行sleep操作 (#86)
+    <span class="md-ellipsis">
+      在单元测试中执行sleep操作 (#86)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#time-api-87" class="md-nav__link">
-    没有高效地处理 time API (#87)
+    <span class="md-ellipsis">
+      没有高效地处理 time API (#87)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#httptest-iotest-88" class="md-nav__link">
-    不使用测试相关的工具包 (httptest 和 iotest) (#88)
+    <span class="md-ellipsis">
+      不使用测试相关的工具包 (httptest 和 iotest) (#88)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#89" class="md-nav__link">
-    不正确的基准测试 (#89)
+    <span class="md-ellipsis">
+      不正确的基准测试 (#89)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#go-test-90" class="md-nav__link">
-    没有去探索go test所有的特性 (#90)
+    <span class="md-ellipsis">
+      没有去探索go test所有的特性 (#90)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
-    不使用模糊测试 (社区反馈错误)
+    <span class="md-ellipsis">
+      不使用模糊测试 (社区反馈错误)
+    </span>
   </a>
   
 </li>
@@ -1581,7 +1726,9 @@
       
         <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
-    优化技术
+    <span class="md-ellipsis">
+      优化技术
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="优化技术">
@@ -1589,70 +1736,90 @@
         
           <li class="md-nav__item">
   <a href="#cpu-cache-91" class="md-nav__link">
-    不理解CPU cache (#91)
+    <span class="md-ellipsis">
+      不理解CPU cache (#91)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#false-sharing-92" class="md-nav__link">
-    写的并发处理逻辑会导致false sharing (#92)
+    <span class="md-ellipsis">
+      写的并发处理逻辑会导致false sharing (#92)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#93" class="md-nav__link">
-    没有考虑指令级的并行 (#93)
+    <span class="md-ellipsis">
+      没有考虑指令级的并行 (#93)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#94" class="md-nav__link">
-    不了解数据对齐 (#94)
+    <span class="md-ellipsis">
+      不了解数据对齐 (#94)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#stack-vs-heap-95" class="md-nav__link">
-    不了解 stack vs. heap (#95)
+    <span class="md-ellipsis">
+      不了解 stack vs. heap (#95)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#api-compiler-optimizations-and-syncpool-96" class="md-nav__link">
-    不知道如何减少内存分配次数 (API调整, compiler optimizations, and sync.Pool) (#96)
+    <span class="md-ellipsis">
+      不知道如何减少内存分配次数 (API调整, compiler optimizations, and sync.Pool) (#96)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#97" class="md-nav__link">
-    不注意使用内联 (#97)
+    <span class="md-ellipsis">
+      不注意使用内联 (#97)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#go-98" class="md-nav__link">
-    不使用Go问题诊断工具 (#98)
+    <span class="md-ellipsis">
+      不使用Go问题诊断工具 (#98)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#gc-99" class="md-nav__link">
-    不理解GC是如何工作的 (#99)
+    <span class="md-ellipsis">
+      不理解GC是如何工作的 (#99)
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#dockerk8sgo-100" class="md-nav__link">
-    不了解Docker或者K8S对运行的Go应用的性能影响 (#100)
+    <span class="md-ellipsis">
+      不了解Docker或者K8S对运行的Go应用的性能影响 (#100)
+    </span>
   </a>
   
 </li>
@@ -2017,6 +2184,16 @@
 <p>为了避免CPU throttling（CPU限频）问题，当我们在Docker和Kubernetes部署应用时，要知道Go语言对CFS(完全公平调度器)无感知。</p>
 
 
+
+
+
+
+
+  
+  
+
+
+
   
 
 
@@ -2080,6 +2257,7 @@
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
@@ -2091,7 +2269,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2022 - 2023 Teiva Harsanyi
+      Copyright &copy; 2022 - 2024 Teiva Harsanyi
     </div>
   
   
@@ -2112,7 +2290,7 @@
       
     
     <a href="https://twitter.com/teivah" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
     </a>
   
 </div>
@@ -2126,10 +2304,11 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.highlight", "search.share", "search.suggest", "content.code.copy", "navigation.expand", "navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "search.highlight", "search.share", "search.suggest", "content.code.copy", "navigation.expand", "navigation.instant", "navigation.sections"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
