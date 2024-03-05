@@ -336,6 +336,7 @@ However, if you’re not a regular user of linters, here is a list that you may 
 
 
 Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:
+
 * [https://golang.org/cmd/gofmt](https://golang.org/cmd/gofmt)—A standard Go code formatter
 * [https://godoc.org/golang.org/x/tools/cmd/goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)—A standard Go imports formatter
 
@@ -2135,3 +2136,9 @@ Read the full section [here](98-profiling-execution-tracing.md).
 ???+ info "TL;DR"
 
     To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
+
+The `GOMAXPROCS` variable defines the limit of OS threads in charge of executing user-level code simultaneously. By default, it's set to the number of OS-apparent logical CPU cores.
+
+When running some Go code inside Docker and Kubernetes, we must know that Go isn't CFS-aware ([github.com/golang/go/issues/33803](https://github.com/golang/go/issues/33803)). Therefore, `GOMAXPROCS` isn't automatically set to the value of `spec.containers.resources.limits.cpu` (see [Kubernetes Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)); instead, it's set to the number of logical cores on the host machine. The main implication is that it can lead to an increased tail latency in some specific situations.
+
+One solution is to rely on [uber-go/automaxprocs](https://github.com/uber-go/automaxprocs) that automatically set `GOMAXPROCS` to match the Linux container CPU quota.

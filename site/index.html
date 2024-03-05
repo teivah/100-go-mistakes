@@ -3442,9 +3442,11 @@ Granularity is another essential thing to consider. We should avoid having dozen
 <li><a href="https://github.com/fzipp/gocyclo">https://github.com/fzipp/gocyclo</a>—A cyclomatic complexity analyzer</li>
 <li><a href="https://github.com/jgautheron/goconst">https://github.com/jgautheron/goconst</a>—A repeated string constants analyzer</li>
 </ul>
-<p>Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:
-* <a href="https://golang.org/cmd/gofmt">https://golang.org/cmd/gofmt</a>—A standard Go code formatter
-* <a href="https://godoc.org/golang.org/x/tools/cmd/goimports">https://godoc.org/golang.org/x/tools/cmd/goimports</a>—A standard Go imports formatter</p>
+<p>Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:</p>
+<ul>
+<li><a href="https://golang.org/cmd/gofmt">https://golang.org/cmd/gofmt</a>—A standard Go code formatter</li>
+<li><a href="https://godoc.org/golang.org/x/tools/cmd/goimports">https://godoc.org/golang.org/x/tools/cmd/goimports</a>—A standard Go imports formatter</li>
+</ul>
 <p>Meanwhile, we should also look at golangci-lint (<a href="https://github.com/golangci/golangci-lint">https://github.com/golangci/golangci-lint</a>). It’s a linting tool that provides a facade on top of many useful linters and formatters. Also, it allows running the linters in parallel to improve analysis speed, which is quite handy.</p>
 <p>Linters and formatters are a powerful way to improve the quality and consistency of our codebase. Let’s take the time to understand which one we should use and make sure we automate their execution (such as a CI or Git precommit hook).</p>
 <h2 id="data-types">Data Types</h2>
@@ -4798,6 +4800,9 @@ the use case. However, we should see the two options as complementary. </p>
 <summary>TL;DR</summary>
 <p>To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.</p>
 </details>
+<p>The <code>GOMAXPROCS</code> variable defines the limit of OS threads in charge of executing user-level code simultaneously. By default, it's set to the number of OS-apparent logical CPU cores.</p>
+<p>When running some Go code inside Docker and Kubernetes, we must know that Go isn't CFS-aware (<a href="https://github.com/golang/go/issues/33803">github.com/golang/go/issues/33803</a>). Therefore, <code>GOMAXPROCS</code> isn't automatically set to the value of <code>spec.containers.resources.limits.cpu</code> (see <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">Kubernetes Resource Management for Pods and Containers</a>); instead, it's set to the number of logical cores on the host machine. The main implication is that it can lead to an increased tail latency in some specific situations.</p>
+<p>One solution is to rely on <a href="https://github.com/uber-go/automaxprocs">uber-go/automaxprocs</a> that automatically set <code>GOMAXPROCS</code> to match the Linux container CPU quota.</p>
 
 
 
