@@ -4,11 +4,11 @@ comments: true
 
 # Common Go Mistakes
 
-This page is a summary of all the mistakes in the 100 Go Mistakes book. Meanwhile, it's also a page open to the community. If you believe that a mistake should be added, please create a [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
+This page is a summary of the mistakes in the [100 Go Mistakes and How to Avoid Them book](book.md). Meanwhile, it's also open to the community. If you believe that a common Go mistake should be added, please create an [issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
 ???+ warning
 
-    You're currently viewing a new version that I'm enriching with significantly more content. Yet, this version is still under development; please be gentle if you find an issue, and feel free to create a PR.
+    You're viewing a new version enriched with significantly more content. However, this version is not yet complete, and we're looking for volunteers to summarize the remaining mistakes ([GitHub issue #43](https://github.com/teivah/100-go-mistakes/issues/43)).
 
 ![](img/inside-cover.png)
 
@@ -236,10 +236,10 @@ func WithPort(port int) Option {
   }
 }
 
-func NewServer(addr string, opts ...Option) ( *http.Server, error) { <1>
-  var options options <2>
-  for _, opt := range opts { <3>
-    err := opt(&options) <4>
+func NewServer(addr string, opts ...Option) ( *http.Server, error) {
+  var options options
+  for _, opt := range opts {
+    err := opt(&options)
     if err != nil {
       return nil, err
     }
@@ -2133,3 +2133,11 @@ Read the full section [here](98-profiling-execution-tracing.md).
 ???+ info "TL;DR"
 
     To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
+
+## Community
+
+Thanks to all the contributors:
+
+<a href="https://contrib.rocks/image?repo=teivah/100-go-mistakes">
+    <img src="https://contrib.rocks/image?repo=teivah/100-go-mistakes" alt="Description of the image">
+</a>

@@ -21,8 +21,10 @@
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
     
     
-  <title>100 Go Mistakes</title>
-
+      
+        <title>Common Go Mistakes - 100 Go Mistakes and How to Avoid Them</title>
+      
+    
     
       <link rel="stylesheet" href="assets/stylesheets/main.7e359304.min.css">
       
@@ -319,7 +321,7 @@
         <a href="." class="md-tabs__link">
           
   
-  ⭐ Go Mistakes
+  💡️ Go Mistakes
 
         </a>
       </li>
@@ -520,7 +522,7 @@
             
   
   <span class="md-ellipsis">
-    ⭐ Go Mistakes
+    💡️ Go Mistakes
   </span>
   
 
@@ -530,7 +532,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            ⭐ Go Mistakes
+            💡️ Go Mistakes
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1747,6 +1749,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community
+    </span>
+  </a>
   
 </li>
       
@@ -3135,6 +3146,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3154,10 +3174,10 @@
 
 
 <h1 id="common-go-mistakes">Common Go Mistakes</h1>
-<p>This page is a summary of all the mistakes in the 100 Go Mistakes book. Meanwhile, it's also a page open to the community. If you believe that a mistake should be added, please create a <a href="https://github.com/teivah/100-go-mistakes/issues/new?assignees=&amp;labels=community+mistake&amp;template=community_mistake.md&amp;title=">community mistake issue</a>.</p>
+<p>This page is a summary of the mistakes in the <a href="book/">100 Go Mistakes and How to Avoid Them book</a>. Meanwhile, it's also open to the community. If you believe that a common Go mistake should be added, please create an <a href="https://github.com/teivah/100-go-mistakes/issues/new?assignees=&amp;labels=community+mistake&amp;template=community_mistake.md&amp;title=">issue</a>.</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
-<p>You're currently viewing a new version that I'm enriching with significantly more content. Yet, this version is still under development; please be gentle if you find an issue, and feel free to create a PR.</p>
+<p>You're viewing a new version enriched with significantly more content. However, this version is not yet complete, and we're looking for volunteers to summarize the remaining mistakes (<a href="https://github.com/teivah/100-go-mistakes/issues/43">GitHub issue #43</a>).</p>
 </details>
 <p><a class="glightbox" href="img/inside-cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="img/inside-cover.png" /></a></p>
 <h2 id="code-and-project-organization">Code and Project Organization</h2>
@@ -3328,10 +3348,10 @@ promoted to <code>Foo</code>. Therefore, Baz becomes available from Foo.</p>
 </span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
 </span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewServer</span><span class="p">(</span><span class="nx">addr</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Server</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class="mi">1</span><span class="p">&gt;</span>
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="p">&lt;</span><span class="mi">2</span><span class="p">&gt;</span>
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">opt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class="mi">3</span><span class="p">&gt;</span>
-</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">opt</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">&lt;</span><span class="mi">4</span><span class="p">&gt;</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewServer</span><span class="p">(</span><span class="nx">addr</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Server</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="nx">options</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">opt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">opt</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">options</span><span class="p">)</span>
 </span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 </span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="p">}</span>
@@ -4761,6 +4781,11 @@ the use case. However, we should see the two options as complementary. </p>
 <summary>TL;DR</summary>
 <p>To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.</p>
 </details>
+<h2 id="community">Community</h2>
+<p>Thanks to all the contributors:</p>
+<p><a href="https://contrib.rocks/image?repo=teivah/100-go-mistakes">
+    <a class="glightbox" href="https://contrib.rocks/image?repo=teivah/100-go-mistakes" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://contrib.rocks/image?repo=teivah/100-go-mistakes" alt="Description of the image"></a>
+</a></p>
 
 
 

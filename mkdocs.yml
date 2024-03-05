@@ -65,7 +65,7 @@ nav:
         - book.md
         - chapter-1.md
         - external.md
-    - ⭐ Go Mistakes:
+    - 💡️ Go Mistakes:
       - index.md
       - Full Sections:
         - 9-generics.md
