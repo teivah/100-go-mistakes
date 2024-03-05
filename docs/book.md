@@ -50,12 +50,16 @@ Read a [summary](index.md) of the 100 mistakes or the [first chapter](chapter-1.
 
 * _100个Go语言典型错误_ (🇨🇳 edition: paper or digital)
     * [Douban.com](https://read.douban.com/ebook/455919353/)
+    
+* _Go 100가지 실수 패턴과 솔루션_ (🇰🇷 edition: paper or digital)
+    * [Yes24.com](https://m.yes24.com/Goods/Detail/124158773)
 
 <figure markdown>
   ![](img/cover-en.jpg){width="200"}
   ![](img/cover-jp.jpg){width="200"}
   ![](img/cover-cn.jpg){width="170"}
-  <figcaption>Covers</figcaption>
+  ![](img/cover-kr.png){width="200"}
+  <figcaption>Covers (English, Japanese, Chinese, and Korean)</figcaption>
 </figure>
 
 ## About the Author
