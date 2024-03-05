@@ -12,4 +12,4 @@ Thanks to all the contributors:
     <img src="https://contrib.rocks/image?repo=teivah/100-go-mistakes" alt="Description of the image">
 </a>
 
-If you want to get involved, we're looking for volunteers to summarize the remaining mistakes ([GitHub issue #43](https://github.com/teivah/100-go-mistakes/issues/43)) 🙏
+If you want to get involved, I'm looking for volunteers to summarize the remaining mistakes ([GitHub issue #43](https://github.com/teivah/100-go-mistakes/issues/43)) 🙏

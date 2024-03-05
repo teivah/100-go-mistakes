@@ -6,9 +6,12 @@ comments: true
 
 This page is a summary of the mistakes in the [100 Go Mistakes and How to Avoid Them book](book.md). Meanwhile, it's also open to the community. If you believe that a common Go mistake should be added, please create an [issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
-???+ warning
+???+ warning "Beta"
 
-    You're viewing a new version enriched with significantly more content. However, this version is not yet complete, and we're looking for volunteers to summarize the remaining mistakes ([GitHub issue #43](https://github.com/teivah/100-go-mistakes/issues/43)).
+    You're viewing a beta version enriched with significantly more content. However, this version is not yet complete, and I'm looking for volunteers to help me summarize the remaining mistakes ([GitHub issue #43](https://github.com/teivah/100-go-mistakes/issues/43)).
+
+    Progress:
+    <progress value="70" max="100"/>
 
 ![](img/inside-cover.png)
 
