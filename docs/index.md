@@ -333,11 +333,13 @@ However, if you’re not a regular user of linters, here is a list that you may 
 * [https://github.com/kisielk/errcheck](https://github.com/kisielk/errcheck)—An error checker
 * [https://github.com/fzipp/gocyclo](https://github.com/fzipp/gocyclo)—A cyclomatic complexity analyzer
 * [https://github.com/jgautheron/goconst](https://github.com/jgautheron/goconst)—A repeated string constants analyzer
-*
+
+
 Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:
 * [https://golang.org/cmd/gofmt](https://golang.org/cmd/gofmt)—A standard Go code formatter
 * [https://godoc.org/golang.org/x/tools/cmd/goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)—A standard Go imports formatter
-*
+
+
 Meanwhile, we should also look at golangci-lint ([https://github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint)). It’s a linting tool that provides a facade on top of many useful linters and formatters. Also, it allows running the linters in parallel to improve analysis speed, which is quite handy.
 
 Linters and formatters are a powerful way to improve the quality and consistency of our codebase. Let’s take the time to understand which one we should use and make sure we automate their execution (such as a CI or Git precommit hook).
