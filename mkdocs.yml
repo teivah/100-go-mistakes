@@ -68,6 +68,7 @@ nav:
     - Go Mistakes:
       - index.md
       - Full Sections:
+        - 5-interface-pollution.md
         - 9-generics.md
         - 20-slice.md
         - 28-maps-memory-leaks.md

@@ -14,7 +14,7 @@
         <link rel="prev" href="external/">
       
       
-        <link rel="next" href="9-generics/">
+        <link rel="next" href="5-interface-pollution/">
       
       
       <link rel="icon" href="img/Go-Logo_LightBlue.svg">
@@ -121,7 +121,7 @@
           <div class="md-banner__inner md-grid md-typeset">
             
             
-📢 A new section is now fully available: <a href="https://100go.co/92-false-sharing/">#92: Writing concurrent code that leads to false sharing</a>.
+📢 Two new full sections are now available: <a href="https://100go.co/5-interface-pollution/">#5: Interface pollution</a> and <a href="https://100go.co/92-false-sharing/">#92: Writing concurrent code that leads to false sharing</a>.
 
           </div>
           
@@ -1829,6 +1829,27 @@
   
   
     <li class="md-nav__item">
+      <a href="5-interface-pollution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interface pollution (#5)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="9-generics/" class="md-nav__link">
         
   
@@ -3297,16 +3318,7 @@
 <summary>TL;DR</summary>
 <p>Abstractions should be discovered, not created. To prevent unnecessary complexity, create an interface when you need it and not when you foresee needing it, or if you can at least prove the abstraction to be a valid one.</p>
 </details>
-<p>An interface provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. What makes Go interfaces so different is that they are satisfied implicitly. There is no explicit keyword like <code>implements</code> to mark that an object <code>X</code> implements interface <code>Y</code>.</p>
-<p>In general, we can define three main use cases where interfaces are generally considered as bringing value: factoring out a common behavior, creating some decoupling, and restricting a type to a certain behavior. Yet, this list isn't exhaustive and will also depend on the context we face.</p>
-<p>In many occasions, interfaces are made to create abstractions. And the main caveat when programming meets abstractions is remembering that abstractions should be discovered, not created. What does this mean? It means we shouldn’t start creating abstractions in our code if there is no immediate reason to do so. We shouldn’t design with interfaces but wait for a concrete need. Said differently, we should create an interface when we need it, not when we foresee that we could need it.
-What’s the main problem if we overuse interfaces? The answer is that they make the code flow more complex. Adding a useless level of indirection doesn’t bring any value; it creates a worthless abstraction making the code more difficult to read, understand, and reason about. If we don’t have a strong reason for adding an interface and it’s unclear how an interface makes a code better, we should challenge this interface’s purpose. Why not call the implementation directly?</p>
-<p>We should be cautious when creating abstractions in our code (abstractions should be discovered, not created). It’s common for us, software developers, to overengineer our code by trying to guess what the perfect level of abstraction is, based on what we think we might need later. This process should be avoided because, in most cases, it pollutes our code with unnecessary abstractions, making it more complex to read.</p>
-<div class="admonition quote">
-<p class="admonition-title">Rob Pike</p>
-<p>Don’t design with interfaces, discover them.</p>
-</div>
-<p>Let’s not try to solve a problem abstractly but solve what has to be solved now. Last, but not least, if it’s unclear how an interface makes the code better, we should probably consider removing it to make our code simpler.</p>
+<p>Read the full section <a href="5-interface-pollution/">here</a>.</p>
 <p><a href="https://github.com/teivah/100-go-mistakes/tree/master/src/02-code-project-organization/5-interface-pollution/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span> Source code</a></p>
 <h3 id="interface-on-the-producer-side-6">Interface on the producer side (#6)</h3>
 <details class="info" open="open">
