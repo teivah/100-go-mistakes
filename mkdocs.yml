@@ -19,6 +19,7 @@ theme:
     - navigation.expand
     - navigation.instant
     - navigation.sections
+    - announce.dismiss
   palette:
     # Palette toggle for light mode
     - scheme: default
