@@ -96,7 +96,7 @@ So how do we solve false sharing? There are two main solutions.
 
 The first solution is to use the same approach we’ve shown but ensure that `sumA` and `sumB` aren’t part of the same cache line. For example, we can update the `Result` struct to add _padding_ between the fields. Padding is a technique to allocate extra memory. Because an `int64` requires an 8-byte allocation and a cache line 64 bytes long, we need 64 – 8 = 56 bytes of padding:
 
-```go
+```go hl_lines="3"
 type Result struct {
     sumA int64
     _    [56]byte // Padding
