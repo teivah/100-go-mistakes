@@ -39,6 +39,10 @@
 
 [Post](https://www.sobyte.net/post/2023-05/summarized-from-100-go-mistakes/)
 
+### Book review: 100 Go Mistakes and How to Avoid Them
+
+[Post](https://schfkt.dev/blog/book-10-go-mistakes/)
+
 ## Chinese
 
 ### 深度阅读之《100 Go Mistakes and How to Avoid Them
