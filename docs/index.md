@@ -591,7 +591,7 @@ This code updates the last index to 10. However, if we run this code, it does no
 
 ???+ warning
 
-    This mistake isn't relevant anymore from Go 1.22 ([source](https://go.dev/blog/loopvar-preview)).
+    This mistake isn't relevant anymore from Go 1.22 ([details](https://go.dev/blog/loopvar-preview)).
 
 ### Making wrong assumptions during map iterations (ordering and map insert during iteration) (#33)
 
@@ -1510,7 +1510,7 @@ In summary, let’s be mindful that a goroutine is a resource like any other tha
 
 ???+ warning
 
-    This mistake isn't relevant anymore from Go 1.22 ([source](https://go.dev/blog/loopvar-preview)).
+    This mistake isn't relevant anymore from Go 1.22 ([details](https://go.dev/blog/loopvar-preview)).
 
 ### Expecting a deterministic behavior using select and channels (#64)
 
