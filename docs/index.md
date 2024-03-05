@@ -2135,11 +2135,3 @@ Read the full section [here](98-profiling-execution-tracing.md).
 ???+ info "TL;DR"
 
     To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
-
-## Community
-
-Thanks to all the contributors:
-
-<a href="https://contrib.rocks/image?repo=teivah/100-go-mistakes">
-    <img src="https://contrib.rocks/image?repo=teivah/100-go-mistakes" alt="Description of the image">
-</a>

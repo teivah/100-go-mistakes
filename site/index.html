@@ -301,7 +301,7 @@
         <a href="book/" class="md-tabs__link">
           
   
-  📖 Book
+  Book
 
         </a>
       </li>
@@ -321,11 +321,28 @@
         <a href="." class="md-tabs__link">
           
   
-  💡️ Go Mistakes
+  Go Mistakes
 
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="community/" class="md-tabs__link">
+        
+  
+    
+  
+  Community
+
+      </a>
+    </li>
   
 
       
@@ -407,7 +424,7 @@
             
   
   <span class="md-ellipsis">
-    📖 Book
+    Book
   </span>
   
 
@@ -417,7 +434,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            📖 Book
+            Book
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -522,7 +539,7 @@
             
   
   <span class="md-ellipsis">
-    💡️ Go Mistakes
+    Go Mistakes
   </span>
   
 
@@ -532,7 +549,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            💡️ Go Mistakes
+            Go Mistakes
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1752,15 +1769,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#community" class="md-nav__link">
-    <span class="md-ellipsis">
-      Community
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1952,6 +1960,26 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="community/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3146,15 +3174,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#community" class="md-nav__link">
-    <span class="md-ellipsis">
-      Community
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3421,14 +3440,12 @@ Granularity is another essential thing to consider. We should avoid having dozen
 <li><a href="https://golang.org/cmd/vet">https://golang.org/cmd/vet</a>—A standard Go analyzer</li>
 <li><a href="https://github.com/kisielk/errcheck">https://github.com/kisielk/errcheck</a>—An error checker</li>
 <li><a href="https://github.com/fzipp/gocyclo">https://github.com/fzipp/gocyclo</a>—A cyclomatic complexity analyzer</li>
-<li><a href="https://github.com/jgautheron/goconst">https://github.com/jgautheron/goconst</a>—A repeated string constants analyzer
-*
-Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:</li>
-<li><a href="https://golang.org/cmd/gofmt">https://golang.org/cmd/gofmt</a>—A standard Go code formatter</li>
-<li><a href="https://godoc.org/golang.org/x/tools/cmd/goimports">https://godoc.org/golang.org/x/tools/cmd/goimports</a>—A standard Go imports formatter
-*
-Meanwhile, we should also look at golangci-lint (<a href="https://github.com/golangci/golangci-lint">https://github.com/golangci/golangci-lint</a>). It’s a linting tool that provides a facade on top of many useful linters and formatters. Also, it allows running the linters in parallel to improve analysis speed, which is quite handy.</li>
+<li><a href="https://github.com/jgautheron/goconst">https://github.com/jgautheron/goconst</a>—A repeated string constants analyzer</li>
 </ul>
+<p>Besides linters, we should also use code formatters to fix code style. Here is a list of some code formatters for you to try:
+* <a href="https://golang.org/cmd/gofmt">https://golang.org/cmd/gofmt</a>—A standard Go code formatter
+* <a href="https://godoc.org/golang.org/x/tools/cmd/goimports">https://godoc.org/golang.org/x/tools/cmd/goimports</a>—A standard Go imports formatter</p>
+<p>Meanwhile, we should also look at golangci-lint (<a href="https://github.com/golangci/golangci-lint">https://github.com/golangci/golangci-lint</a>). It’s a linting tool that provides a facade on top of many useful linters and formatters. Also, it allows running the linters in parallel to improve analysis speed, which is quite handy.</p>
 <p>Linters and formatters are a powerful way to improve the quality and consistency of our codebase. Let’s take the time to understand which one we should use and make sure we automate their execution (such as a CI or Git precommit hook).</p>
 <h2 id="data-types">Data Types</h2>
 <h3 id="creating-confusion-with-octal-literals-17">Creating confusion with octal literals (#17)</h3>
@@ -4781,11 +4798,6 @@ the use case. However, we should see the two options as complementary. </p>
 <summary>TL;DR</summary>
 <p>To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.</p>
 </details>
-<h2 id="community">Community</h2>
-<p>Thanks to all the contributors:</p>
-<p><a href="https://contrib.rocks/image?repo=teivah/100-go-mistakes">
-    <a class="glightbox" href="https://contrib.rocks/image?repo=teivah/100-go-mistakes" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://contrib.rocks/image?repo=teivah/100-go-mistakes" alt="Description of the image"></a>
-</a></p>
 
 
 

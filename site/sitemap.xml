@@ -46,6 +46,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://100go.co/community/</loc>
+         <lastmod>2024-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://100go.co/external/</loc>
          <lastmod>2024-03-05</lastmod>
          <changefreq>daily</changefreq>
