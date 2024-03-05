@@ -7,17 +7,21 @@ import (
 
 var pool = sync.Pool{
 	New: func() any {
-		return make([]byte, 1024)
+		b := make([]byte, 1024)
+		return &b
 	},
 }
 
 func write(w io.Writer) {
-	buffer := pool.Get().([]byte)
-	buffer = buffer[:0]
-	defer pool.Put(buffer)
+	bPtr := pool.Get().(*[]byte)
+	defer func() {
+		*bPtr = (*bPtr)[:0]
+		pool.Put(bPtr)
+	}()
 
-	getResponse(buffer)
-	_, _ = w.Write(buffer)
+	b := *bPtr
+	getResponse(b)
+	_, _ = w.Write(b)
 }
 
 func getResponse([]byte) {
