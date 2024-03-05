@@ -73,6 +73,7 @@ nav:
         - 28-maps-memory-leaks.md
         - 56-concurrency-faster.md
         - 89-benchmarks.md
+        - 92-false-sharing.md
         - 98-profiling-execution-tracing.md
     - community.md
 markdown_extensions:

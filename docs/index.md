@@ -2080,6 +2080,8 @@ Credits: [@jeromedoucet](https://github.com/jeromedoucet)
 
     Knowing that lower levels of CPU caches aren’t shared across all the cores helps avoid performance-degrading patterns such as false sharing while writing concurrency code. Sharing memory is an illusion.
 
+Read the full section [here](92-false-sharing.md).
+
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/12-optimizations/92-false-sharing/)
 
 ### Not taking into account instruction-level parallelism (#93)
