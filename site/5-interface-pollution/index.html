@@ -1037,6 +1037,7 @@
 
 
 <h1 id="interface-pollution">Interface pollution</h1>
+<p><a class="glightbox" href="../img/interface-pollution.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/interface-pollution.jpeg" /></a></p>
 <p>Interfaces are one of the cornerstones of the Go language when designing and structuring our code. However, like many tools or concepts, abusing them is generally not a good idea. Interface pollution is about overwhelming our code with unnecessary abstractions, making it harder to understand. It’s a common mistake made by developers coming from another language with different habits. Before delving into the topic, let’s refresh our minds about Go’s interfaces. Then, we will see when it’s appropriate to use interfaces and when it may be considered pollution.</p>
 <h2 id="concepts">Concepts</h2>
 <p>An interface provides a way to specify the behavior of an object. We use interfaces to create common abstractions that multiple objects can implement. What makes Go interfaces so different is that they are satisfied implicitly. There is no explicit keyword like <code>implements</code> to mark that an object X implements interface Y.</p>

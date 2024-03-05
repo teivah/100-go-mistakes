@@ -879,6 +879,7 @@
 
 
 <h1 id="writing-concurrent-code-that-leads-to-false-sharing">Writing concurrent code that leads to false sharing</h1>
+<p><a class="glightbox" href="../img/false-sharing.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/false-sharing.jpeg" /></a></p>
 <p>In previous sections, we have discussed the fundamental concepts of CPU caching. We have seen that some specific caches (typically, L1 and L2) aren’t shared among all the logical cores but are specific to a physical core. This specificity has some concrete impacts such as concurrency and the concept of false sharing, which can lead to a significant performance decrease. Let’s look at what false sharing is via an example and then see how to prevent it.</p>
 <p>In this example, we use two structs, <code>Input</code> and <code>Result</code>:</p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Input</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>

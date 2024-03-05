@@ -7,6 +7,8 @@ hide:
 
 # Writing concurrent code that leads to false sharing
 
+![](img/false-sharing.jpeg)
+
 In previous sections, we have discussed the fundamental concepts of CPU caching. We have seen that some specific caches (typically, L1 and L2) aren’t shared among all the logical cores but are specific to a physical core. This specificity has some concrete impacts such as concurrency and the concept of false sharing, which can lead to a significant performance decrease. Let’s look at what false sharing is via an example and then see how to prevent it.
 
 In this example, we use two structs, `Input` and `Result`:
