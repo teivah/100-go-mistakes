@@ -7,6 +7,10 @@ hide:
 
 # 100个Go常见错误及如何避免
 
+???+ Tip "Jobs"
+
+    Is your company hiring? [Sponsor](https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&tier_id=386213&preview=true) the Chinese version of this repository and let a significant audience of Go developers (~1k unique visitors per week) know about your opportunities in this section.
+
 ![](img/inside-cover.png)
 
 ## 代码及工程组织

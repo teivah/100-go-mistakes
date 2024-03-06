@@ -52,10 +52,10 @@ extra:
     - name: 🇬🇧 English
       link: /
       lang: en
-    - name: 🇨🇳 Chinese Simplified
+    - name: 🇨🇳 Chinese simplified
       link: /zh/
       lang: zh
-    - name: 🇯🇵 Japanese (進行中)
+    - name: 🇯🇵 Japanese
       link: /ja/
       lang: ja
   social:
@@ -70,6 +70,8 @@ nav:
         - external.md
     - Go Mistakes:
       - index.md
+      - '简体中文': zh.md
+      - '日本語': ja.md
       - Full Sections:
         - 5-interface-pollution.md
         - 9-generics.md

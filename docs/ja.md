@@ -9,11 +9,15 @@ hide:
 
 このページは『100 Go Mistakes』の内容をまとめたものです。一方で、コミュニティに開かれたページでもあります。「ありがちな間違い」が新たに追加されるべきだとお考えでしたら [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=) を作成してください。
 
+???+ Tip "Jobs"
+
+    Is your company hiring? [Sponsor](https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&tier_id=386213&preview=true) the Japanese version of this repository and let a significant audience of Go developers (~1k unique visitors per week) know about your opportunities in this section.
+
+![](img/inside-cover.png)
+
 ???+ warning "注意"
 
     現在、大幅に多くのコンテンツを追加して強化している新しいバージョンを閲覧しています。このバージョンはまだ開発中です。問題を見つけた場合はどうぞ気軽にPRを作成してください。
-
-![](img/inside-cover.png)
 
 ## コードとプロジェクト構成
 

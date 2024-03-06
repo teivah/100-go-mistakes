@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://100go.co/ja/">
       
       
+        <link rel="prev" href="../zh/">
+      
+      
+        <link rel="next" href="../5-interface-pollution/">
       
       
       <link rel="icon" href="../img/Go-Logo_LightBlue.svg">
@@ -212,13 +216,13 @@
         
           <li class="md-select__item">
             <a href="/zh/" hreflang="zh" class="md-select__link">
-              🇨🇳 Chinese Simplified
+              🇨🇳 Chinese simplified
             </a>
           </li>
         
           <li class="md-select__item">
             <a href="/ja/" hreflang="ja" class="md-select__link">
-              🇯🇵 Japanese (進行中)
+              🇯🇵 Japanese
             </a>
           </li>
         
@@ -314,10 +318,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href=".." class="md-tabs__link">
           
   
@@ -497,27 +503,30 @@
       
   
   
+    
   
   
+  
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -528,7 +537,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Go Mistakes
@@ -562,25 +571,1274 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../zh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    简体中文
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    日本語
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    日本語
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      コードとプロジェクト構成
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コードとプロジェクト構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      意図的でない変数のシャドーイング (#1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      不必要にネストされたコード (#2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      init関数の誤用 (#3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ゲッターとセッターの乱用 (#4)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      インタフェース汚染 (#5)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      生産者側のインタフェース (#6)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      インタフェースを返す (#7)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      any は何も言わない (#8)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ジェネリックスをいつ使用するべきか理解していない (#9)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      型の埋め込みで起こりうる問題を把握していない (#10)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional-options-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functional Options パターンを使用していない (#11)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      誤ったプロジェクト構成 (プロジェクト構造とパッケージ構成) (#12)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユーティリティパッケージの作成 (#13)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッケージ名の衝突を無視する (#14)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      コードの文章化が行われていない (#15)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      リンターを使用してない (#16)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      データ型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データ型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#8-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 進数リテラルで混乱を招いてしまう (#17)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      整数オーバーフローを無視している (#18)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮動小数点を理解していない (#19)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20" class="md-nav__link">
+    <span class="md-ellipsis">
+      スライスの長さと容量を理解していない (#20)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      非効率なスライスの初期化 (#21)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      nil と空のスライスを混同している (#22)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      スライスが空かどうかを適切に確認しない (#23)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      スライスのコピーを正しく作成していない (#24)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      append の使用による予想外の副作用 (#25)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      スライスとメモリリーク (#26)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="スライスとメモリリーク (#26)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      容量漏れ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      スライスとポインタ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      非効率なマップの初期化 (#27)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    <span class="md-ellipsis">
+      マップとメモリリーク (#28)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    <span class="md-ellipsis">
+      誤った方法による値の比較 (#29)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      制御構造
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="制御構造">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      要素が range ループ内でコピーされることを知らない  (#30)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      range ループ（チャネルと配列）での引数の評価方法を知らない (#31)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-32" class="md-nav__link">
+    <span class="md-ellipsis">
+      range ループ内におけるポインタ要素の使用が及ぼす影響を分かっていない (#32)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      マップの反復処理中に誤った仮定をする（反復処理中の順序付けとマップの挿入） (#33)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-34" class="md-nav__link">
+    <span class="md-ellipsis">
+      break 文がどのように機能するかを分かっていない (#34)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-35" class="md-nav__link">
+    <span class="md-ellipsis">
+      ループ内で defer を使用する (#35)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字列
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="文字列">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      ルーンを理解していない (#36)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字列に対する不正な反復処理 (#37)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trim-38" class="md-nav__link">
+    <span class="md-ellipsis">
+      trim 関数の誤用 (#38)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    <span class="md-ellipsis">
+      最適化が不十分な文字列の連結 (#39)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#40" class="md-nav__link">
+    <span class="md-ellipsis">
+      無駄な文字列変換 (#40)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      部分文字列とメモリリーク (#41)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      関数とメソッド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="関数とメソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      どの型のレシーバーを使用すればよいかわかっていない (#42)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      名前付き結果パラメータをまったく使用していない (#43)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      名前付き結果パラメータによる予想外の副作用 (#44)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-45" class="md-nav__link">
+    <span class="md-ellipsis">
+      nil レシーバーを返す (#45)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    <span class="md-ellipsis">
+      関数入力にファイル名を使用している (#46)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-47" class="md-nav__link">
+    <span class="md-ellipsis">
+      defer 引数とレシーバーがどのように評価されるかを知らない（引数の評価、ポインター、および値レシーバー） (#47)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラー処理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エラー処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#48" class="md-nav__link">
+    <span class="md-ellipsis">
+      パニック (#48)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーをラップすべきときを知らない (#49)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#50" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラー型の不正な比較 (#50)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラー値の不正な比較 (#51)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-52" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーの 2 回処理 (#52)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラー処理をしない (#53)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defer-54" class="md-nav__link">
+    <span class="md-ellipsis">
+      defer エラーを処理しない (#54)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      並行処理：基礎
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="並行処理：基礎">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      並行処理と並列処理の混同 (#55)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    <span class="md-ellipsis">
+      並行処理のほうが常に早いと考えている (#56)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    <span class="md-ellipsis">
+      チャネルまたはミューテックスをいつ使用するべきかについて戸惑っている (#57)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-58" class="md-nav__link">
+    <span class="md-ellipsis">
+      競合問題を理解していない（データ競合と競合状態、そしてGo言語のメモリモデル） (#58)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="競合問題を理解していない（データ競合と競合状態、そしてGo言語のメモリモデル） (#58)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      データ競合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      競合状態
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59" class="md-nav__link">
+    <span class="md-ellipsis">
+      ワークロードタイプごとの並行処理の影響を理解していない (#59)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-context-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go Context に対する誤解 (#60)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Go Context に対する誤解 (#60)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      デッドライン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      キャンセルシグナル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Value
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context のキャンセルをキャッチする
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      並行処理：実践
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="並行処理：実践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#context-61" class="md-nav__link">
+    <span class="md-ellipsis">
+      不適切な Context を広めてしまう (#61)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      停止すべきときを知らずにゴルーチンを開始してしまう (#62)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      ゴルーチンとループ変数に注意しない (#63)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-64" class="md-nav__link">
+    <span class="md-ellipsis">
+      select とチャネルを使用して決定的動作を期待する (#64)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      通知チャネルを使用していない (#65)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nil-66" class="md-nav__link">
+    <span class="md-ellipsis">
+      nil チャネルを使用していない (#66)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67" class="md-nav__link">
+    <span class="md-ellipsis">
+      チャネルの容量について困惑している (#67)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcd-68" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字列フォーマットで起こり得る副作用を忘れてしまう（ etcd データ競合の例とデッドロック） (#68)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append-69" class="md-nav__link">
+    <span class="md-ellipsis">
+      append でデータ競合を起こしてしまう (#69)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#70" class="md-nav__link">
+    <span class="md-ellipsis">
+      スライスとマップでミューテックスを正しく使用していない (#70)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syncwaitgroup-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      sync.WaitGroup を正しく使用していない (#71)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synccond-72" class="md-nav__link">
+    <span class="md-ellipsis">
+      sync.Cond について忘れてしまう (#72)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errgroup-73" class="md-nav__link">
+    <span class="md-ellipsis">
+      errgroup を使用していない (#73)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-74" class="md-nav__link">
+    <span class="md-ellipsis">
+      sync 型のコピー (#74)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      標準ライブラリ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="標準ライブラリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#75" class="md-nav__link">
+    <span class="md-ellipsis">
+      間違った時間を指定する (#75)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeafter-76" class="md-nav__link">
+    <span class="md-ellipsis">
+      time.After とメモリリーク (#76)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json-77" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON 処理でありがちな間違い (#77)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-78" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL でありがちな間違い (#78)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-bodysqlrows-osfile-79" class="md-nav__link">
+    <span class="md-ellipsis">
+      一時的なリソース（ HTTP body、sql.Rows、および os.File ）を閉じていない (#79)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-return-80" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP リクエストに応答した後の return 文を忘れてしまう (#80)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      標準の HTTP クライアントとサーバーを使用している (#81)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      テスト
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="テスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      テストを分類していない（ビルドタグ、環境変数、ショートモード） (#82)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-race-83" class="md-nav__link">
+    <span class="md-ellipsis">
+      -race フラグを有効にしていない (#83)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-parallel-shuffle-84" class="md-nav__link">
+    <span class="md-ellipsis">
+      テスト実行モード（ -parallel および -shuffle ）を使用していない (#84)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85" class="md-nav__link">
+    <span class="md-ellipsis">
+      テーブル駆動テストを使用しない (#85)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86" class="md-nav__link">
+    <span class="md-ellipsis">
+      単体テストでのスリープ (#86)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-api-87" class="md-nav__link">
+    <span class="md-ellipsis">
+      time API を効率的に処理できていない (#87)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httptest-iotest-88" class="md-nav__link">
+    <span class="md-ellipsis">
+      テストに関するユーティリティパッケージ（ httptest および iotest ）を使用していない (#88)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89" class="md-nav__link">
+    <span class="md-ellipsis">
+      不正確なベンチマークの作成 (#89)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-90" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go言語のテスト機能をすべて試していない (#90)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#community-mistake" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファジングを使用していない（community mistake）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      最適化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最適化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-91" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU キャッシュを理解していない (#91)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92" class="md-nav__link">
+    <span class="md-ellipsis">
+      誤った共有を引き起こす並行処理(#92)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93" class="md-nav__link">
+    <span class="md-ellipsis">
+      命令レベルの並列性を考慮しない (#93)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94" class="md-nav__link">
+    <span class="md-ellipsis">
+      データの配置を意識していない (#94)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95" class="md-nav__link">
+    <span class="md-ellipsis">
+      ヒープとスタックの違いを理解していない (#95)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-syncpool-96" class="md-nav__link">
+    <span class="md-ellipsis">
+      割り当てを減らす方法がわかっていない（ API の変更、コンパイラの最適化、および sync.Pool） (#96)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#97" class="md-nav__link">
+    <span class="md-ellipsis">
+      インライン展開をしていない (#97)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go-98" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go言語の診断ツールを利用していない (#98)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc-99" class="md-nav__link">
+    <span class="md-ellipsis">
+      GC の仕組みを理解していない (#99)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-kubernetes-go-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker と Kubernetes 上でGo言語を実行することの影響を理解していない (#100)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -591,8 +1849,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             Full Sections
           </label>
@@ -1993,11 +3251,15 @@
 
 <h1 id="go">Go言語でありがちな間違い</h1>
 <p>このページは『100 Go Mistakes』の内容をまとめたものです。一方で、コミュニティに開かれたページでもあります。「ありがちな間違い」が新たに追加されるべきだとお考えでしたら <a href="https://github.com/teivah/100-go-mistakes/issues/new?assignees=&amp;labels=community+mistake&amp;template=community_mistake.md&amp;title=">community mistake issue</a> を作成してください。</p>
+<details class="tip" open="open">
+<summary>Jobs</summary>
+<p>Is your company hiring? <a href="https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&amp;tier_id=386213&amp;preview=true">Sponsor</a> the Japanese version of this repository and let a significant audience of Go developers (~1k unique visitors per week) know about your opportunities in this section.</p>
+</details>
+<p><a class="glightbox" href="../img/inside-cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/inside-cover.png" /></a></p>
 <details class="warning" open="open">
 <summary>注意</summary>
 <p>現在、大幅に多くのコンテンツを追加して強化している新しいバージョンを閲覧しています。このバージョンはまだ開発中です。問題を見つけた場合はどうぞ気軽にPRを作成してください。</p>
 </details>
-<p><a class="glightbox" href="../img/inside-cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../img/inside-cover.png" /></a></p>
 <h2 id="_1">コードとプロジェクト構成</h2>
 <h3 id="1">意図的でない変数のシャドーイング (#1)</h3>
 <details class="info" open="open">
