@@ -21,3 +21,8 @@ func correct() {
 	_ = src
 	_ = dst
 }
+
+func main() {
+	bad()
+	correct()
+}
