@@ -11,7 +11,7 @@ This page is a summary of the mistakes in the [100 Go Mistakes and How to Avoid 
     You're viewing a beta version enriched with significantly more content. However, this version is not yet complete, and I'm looking for volunteers to help me summarize the remaining mistakes ([GitHub issue #43](https://github.com/teivah/100-go-mistakes/issues/43)).
 
     Progress:
-    <progress value="70" max="100"/>
+    <progress value="80" max="100"/>
 
 ![](img/inside-cover.png)
 
