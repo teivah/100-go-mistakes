@@ -1647,15 +1647,130 @@ Let’s keep this idea in mind: nil channels are useful in some conditions and s
 
 ???+ info "TL;DR"
 
-    Carefully decide on the right channel type to use, given a problem. Only unbuffered channels provide strong synchronization guarantees.
+    Carefully decide on the right channel type to use, given a problem. Only unbuffered channels provide strong synchronization guarantees. For buffered channels, you should have a good reason to specify a channel size other than one.
 
-You should have a good reason to specify a channel size other than one for buffered channels.
+An unbuffered channel is a channel without any capacity. It can be created by either omitting the size or providing a 0 size:
 
-### Forgetting about possible side effects with string formatting (etcd data race example and deadlock) (#68)
+```go
+ch1 := make(chan int)
+ch2 := make(chan int, 0)
+```
+
+With an unbuffered channel (sometimes called a synchronous channel), the sender will block until the receiver receives data from the channel.
+
+Conversely, a buffered channel has a capacity, and it must be created with a size greater than or equal to 1:
+
+```go
+ch3 := make(chan int, 1)
+```
+
+With a buffered channel, a sender can send messages while the channel isn’t full. Once the channel is full, it will block until a receiver goroutine receives a message:
+
+```go
+ch3 := make(chan int, 1)
+ch3 <-1 // Non-blocking
+ch3 <-2 // Blocking
+```
+
+The first send isn’t blocking, whereas the second one is, as the channel is full at this stage.
+
+What's the main difference between unbuffered and buffered channels:
+
+* An unbuffered channel enables synchronization. We have the guarantee that two goroutines will be in a known state: one receiving and another sending a message.
+* A buffered channel doesn’t provide any strong synchronization. Indeed, a producer goroutine can send a message and then continue its execution if the channel isn’t full. The only guarantee is that a goroutine won’t receive a message before it is sent. But this is only a guarantee because of causality (you don’t drink your coffee before you prepare it).
+
+If we need a buffered channel, what size should we provide?
+
+The default value we should use for buffered channels is its minimum: 1. So, we may approach the problem from this standpoint: is there any good reason not to use a value of 1? Here’s a list of possible cases where we should use another size:
+
+* While using a worker pooling-like pattern, meaning spinning a fixed number of goroutines that need to send data to a shared channel. In that case, we can tie the channel size to the number of goroutines created.
+* When using channels for rate-limiting problems. For example, if we need to enforce resource utilization by bounding the number of requests, we should set up the channel size according to the limit.
+
+If we are outside of these cases, using a different channel size should be done cautiously. Let’s bear in mind that deciding about an accurate queue size isn’t an easy problem:
+
+!!! quote "Martin Thompson"
+
+    Queues are typically always close to full or close to empty due to the differences in pace between consumers and producers. They very rarely operate in a balanced middle ground where the rate of production and consumption is evenly matched.
+
+### Forgetting about possible side effects with string formatting (#68)
 
 ???+ info "TL;DR"
 
     Being aware that string formatting may lead to calling existing functions means watching out for possible deadlocks and other data races.
+
+It’s pretty easy to forget the potential side effects of string formatting while working in a concurrent application.
+
+#### [etcd](https://github.com/etcd-io/etcd) data race
+
+[github.com/etcd-io/etcd/pull/7816](https://github.com/etcd-io/etcd/pull/7816) shows an example of an issue where a map's key was formatted based on a mutable values from a context.
+
+#### Deadlock
+
+Can you see what the problem is in this code with a `Customer` struct exposing an `UpdateAge` method and implementing the `fmt.Stringer` interface?
+
+```go
+type Customer struct {
+    mutex sync.RWMutex // Uses a sync.RWMutex to protect concurrent accesses
+    id    string
+    age   int
+}
+
+func (c *Customer) UpdateAge(age int) error {
+    c.mutex.Lock() // Locks and defers unlock as we update Customer
+    defer c.mutex.Unlock()
+
+    if age < 0 { // Returns an error if age is negative
+        return fmt.Errorf("age should be positive for customer %v", c)
+    }
+
+    c.age = age
+    return nil
+}
+
+func (c *Customer) String() string {
+    c.mutex.RLock() // Locks and defers unlock as we read Customer
+    defer c.mutex.RUnlock()
+    return fmt.Sprintf("id %s, age %d", c.id, c.age)
+}
+```
+
+The problem here may not be straightforward. If the provided age is negative, we return an error. Because the error is formatted, using the `%s` directive on the receiver, it will call the `String` method to format `Customer`. But because `UpdateAge` already acquires the mutex lock, the `String` method won’t be able to acquire it. Hence, this leads to a deadlock situation. If all goroutines are also asleep, it leads to a panic.
+
+One possible solution is to restrict the scope of the mutex lock:
+
+```go hl_lines="2 3 4"
+func (c *Customer) UpdateAge(age int) error {
+    if age < 0 {
+        return fmt.Errorf("age should be positive for customer %v", c)
+    }
+
+    c.mutex.Lock() <1>
+    defer c.mutex.Unlock()
+
+    c.age = age
+    return nil
+}
+```
+
+Yet, such an approach isn't always possible. In these conditions, we have to be extremely careful with string formatting.
+
+Another approach is to access the `id` field directly:
+
+```go hl_lines="6"
+func (c *Customer) UpdateAge(age int) error {
+    c.mutex.Lock()
+    defer c.mutex.Unlock()
+
+    if age < 0 {
+        return fmt.Errorf("age should be positive for customer id %s", c.id)
+    }
+
+    c.age = age
+    return nil
+}
+```
+
+In concurrent applications, we should remain cautious about the possible side effects of string formatting.
 
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/68-string-formatting/main.go)
 
@@ -1665,6 +1780,50 @@ You should have a good reason to specify a channel size other than one for buffe
 
     Calling `append` isn’t always data-race-free; hence, it shouldn’t be used concurrently on a shared slice.
 
+Should adding an element to a slice using `append` is data-race-free? Spoiler: it depends.
+
+Do you believe this example has a data race? 
+
+```go
+s := make([]int, 1)
+
+go func() { // In a new goroutine, appends a new element on s
+    s1 := append(s, 1)
+    fmt.Println(s1)
+}()
+
+go func() { // Same
+    s2 := append(s, 1)
+    fmt.Println(s2)
+}()
+```
+
+The answer is no.
+
+In this example, we create a slice with `make([]int, 1)`. The code creates a one-length, one-capacity slice. Thus, because the slice is full, using append in each goroutine returns a slice backed by a new array. It doesn’t mutate the existing array; hence, it doesn’t lead to a data race.
+
+Now, let’s run the same example with a slight change in how we initialize `s`. Instead of creating a slice with a length of 1, we create it with a length of 0 but a capacity of 1. How about this new example? Does it contain a data race?
+
+```go hl_lines="1"
+s := make([]int, 0, 1)
+
+go func() { 
+    s1 := append(s, 1)
+    fmt.Println(s1)
+}()
+
+go func() {
+    s2 := append(s, 1)
+    fmt.Println(s2)
+}()
+```
+
+The answer is yes. We create a slice with `make([]int, 0, 1)`. Therefore, the array isn’t full. Both goroutines attempt to update the same index of the backing array (index 1), which is a data race.
+
+How can we prevent the data race if we want both goroutines to work on a slice containing the initial elements of `s` plus an extra element? One solution is to create a copy of `s`.
+
+We should remember that using append on a shared slice in concurrent applications can lead to a data race. Hence, it should be avoided.
+
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/69-data-race-append/main.go)
 
 ### Using mutexes inaccurately with slices and maps (#70)
@@ -1672,6 +1831,85 @@ You should have a good reason to specify a channel size other than one for buffe
 ???+ info "TL;DR"
 
     Remembering that slices and maps are pointers can prevent common data races.
+
+Let's implement a `Cache` struct used to handle caching for customer balances. This struct will contain a map of balances per customer ID and a mutex to protect concurrent accesses:
+
+```go
+type Cache struct {
+    mu       sync.RWMutex
+    balances map[string]float64
+}
+```
+
+Next, we add an `AddBalance` method that mutates the `balances` map. The mutation is done in a critical section (within a mutex lock and a mutex unlock):
+
+```go
+func (c *Cache) AddBalance(id string, balance float64) {
+    c.mu.Lock()
+    c.balances[id] = balance
+    c.mu.Unlock()
+}
+```
+
+Meanwhile, we have to implement a method to calculate the average balance for all the customers. One idea is to handle a minimal critical section this way:
+
+```go
+func (c *Cache) AverageBalance() float64 {
+    c.mu.RLock()
+    balances := c.balances // Creates a copy of the balances map
+    c.mu.RUnlock()
+
+    sum := 0.
+    for _, balance := range balances { // Iterates over the copy, outside of the critical section
+        sum += balance
+    }
+    return sum / float64(len(balances))
+}
+```
+
+What's the problem with this code?
+
+If we run a test using the `-race` flag with two concurrent goroutines, one calling `AddBalance` (hence mutating balances) and another calling `AverageBalance`, a data race occurs. What’s the problem here?
+
+Internally, a map is a `runtime.hmap` struct containing mostly metadata (for example, a counter) and a pointer referencing data buckets. So, `balances := c.balances` doesn’t copy the actual data. Therefore, the two goroutines perform operations on the same data set, and one mutates it. Hence, it's a data race.
+
+One possible solution is to protect the whole `AverageBalance` function:
+
+```go hl_lines="2 3"
+func (c *Cache) AverageBalance() float64 {
+    c.mu.RLock()
+    defer c.mu.RUnlock() // Unlocks when the function returns
+
+    sum := 0.
+    for _, balance := range c.balances {
+        sum += balance
+    }
+    return sum / float64(len(c.balances))
+}
+```
+
+Another option, if the iteration operation isn’t lightweight, is to work on an actual copy of the data and protect only the copy:
+
+```go hl_lines="2 3 4 5 6 7"
+func (c *Cache) AverageBalance() float64 {
+    c.mu.RLock()
+    m := make(map[string]float64, len(c.balances)) // Copies the map
+    for k, v := range c.balances {
+        m[k] = v
+    }
+    c.mu.RUnlock()
+
+    sum := 0.
+    for _, balance := range m {
+        sum += balance
+    }
+    return sum / float64(len(m))
+}
+```
+
+Once we have made a deep copy, we release the mutex. The iterations are done on the copy outside of the critical section.
+
+In summary, we have to be careful with the boundaries of a mutex lock. In this section, we have seen why assigning an existing map (or an existing slice) to a map isn’t enough to protect against data races. The new variable, whether a map or a slice, is backed by the same data set. There are two leading solutions to prevent this: protect the whole function, or work on a copy of the actual data. In all cases, let’s be cautious when designing critical sections and make sure the boundaries are accurately defined.
 
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/70-mutex-slices-maps/main.go)
 
