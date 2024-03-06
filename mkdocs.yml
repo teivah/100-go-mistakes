@@ -77,7 +77,6 @@ nav:
         - 89-benchmarks.md
         - 92-false-sharing.md
         - 98-profiling-execution-tracing.md
-    - community.md
 markdown_extensions:
   - admonition
   - pymdownx.details

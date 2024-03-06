@@ -6,14 +6,19 @@ comments: true
 
 This page is a summary of the mistakes in the [100 Go Mistakes and How to Avoid Them book](book.md). Meanwhile, it's also open to the community. If you believe that a common Go mistake should be added, please create an [issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
+???+ Tip "Jobs"
+
+    Is your company hiring? [Sponsor](https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&tier_id=386213&preview=true) this repository and let a significant audience of Go developers (~1k unique visitors per week) know about your opportunities in this section.
+
+
+![](img/inside-cover.png)
+
 ???+ warning "Beta"
 
     You're viewing a beta version enriched with significantly more content. However, this version is not yet complete, and I'm looking for volunteers to help me summarize the remaining mistakes ([GitHub issue #43](https://github.com/teivah/100-go-mistakes/issues/43)).
 
     Progress:
     <progress value="80" max="100"/>
-
-![](img/inside-cover.png)
 
 ## Code and Project Organization
 
@@ -2372,3 +2377,11 @@ The `GOMAXPROCS` variable defines the limit of OS threads in charge of executing
 When running some Go code inside Docker and Kubernetes, we must know that Go isn't CFS-aware ([github.com/golang/go/issues/33803](https://github.com/golang/go/issues/33803)). Therefore, `GOMAXPROCS` isn't automatically set to the value of `spec.containers.resources.limits.cpu` (see [Kubernetes Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)); instead, it's set to the number of logical cores on the host machine. The main implication is that it can lead to an increased tail latency in some specific situations.
 
 One solution is to rely on [uber-go/automaxprocs](https://github.com/uber-go/automaxprocs) that automatically set `GOMAXPROCS` to match the Linux container CPU quota.
+
+## Community
+
+Thanks to all the contributors:
+
+<a href="https://contrib.rocks/image?repo=teivah/100-go-mistakes">
+    <img src="https://contrib.rocks/image?repo=teivah/100-go-mistakes" alt="Description of the image">
+</a>

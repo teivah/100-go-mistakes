@@ -335,23 +335,6 @@
   
 
       
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="community/" class="md-tabs__link">
-        
-  
-    
-  
-  Community
-
-      </a>
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -1799,6 +1782,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2032,26 +2024,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="community/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Community
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -3270,6 +3242,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#community" class="md-nav__link">
+    <span class="md-ellipsis">
+      Community
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3290,13 +3271,17 @@
 
 <h1 id="common-go-mistakes">Common Go Mistakes</h1>
 <p>This page is a summary of the mistakes in the <a href="book/">100 Go Mistakes and How to Avoid Them book</a>. Meanwhile, it's also open to the community. If you believe that a common Go mistake should be added, please create an <a href="https://github.com/teivah/100-go-mistakes/issues/new?assignees=&amp;labels=community+mistake&amp;template=community_mistake.md&amp;title=">issue</a>.</p>
+<details class="tip" open="open">
+<summary>Jobs</summary>
+<p>Is your company hiring? <a href="https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&amp;tier_id=386213&amp;preview=true">Sponsor</a> this repository and let a significant audience of Go developers (~1k unique visitors per week) know about your opportunities in this section.</p>
+</details>
+<p><a class="glightbox" href="img/inside-cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="img/inside-cover.png" /></a></p>
 <details class="warning" open="open">
 <summary>Beta</summary>
 <p>You're viewing a beta version enriched with significantly more content. However, this version is not yet complete, and I'm looking for volunteers to help me summarize the remaining mistakes (<a href="https://github.com/teivah/100-go-mistakes/issues/43">GitHub issue #43</a>).</p>
 <p>Progress:
 <progress value="80" max="100"/></p>
 </details>
-<p><a class="glightbox" href="img/inside-cover.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="img/inside-cover.png" /></a></p>
 <h2 id="code-and-project-organization">Code and Project Organization</h2>
 <h3 id="unintended-variable-shadowing-1">Unintended variable shadowing (#1)</h3>
 <details class="info" open="open">
@@ -5071,6 +5056,11 @@ the use case. However, we should see the two options as complementary. </p>
 <p>The <code>GOMAXPROCS</code> variable defines the limit of OS threads in charge of executing user-level code simultaneously. By default, it's set to the number of OS-apparent logical CPU cores.</p>
 <p>When running some Go code inside Docker and Kubernetes, we must know that Go isn't CFS-aware (<a href="https://github.com/golang/go/issues/33803">github.com/golang/go/issues/33803</a>). Therefore, <code>GOMAXPROCS</code> isn't automatically set to the value of <code>spec.containers.resources.limits.cpu</code> (see <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">Kubernetes Resource Management for Pods and Containers</a>); instead, it's set to the number of logical cores on the host machine. The main implication is that it can lead to an increased tail latency in some specific situations.</p>
 <p>One solution is to rely on <a href="https://github.com/uber-go/automaxprocs">uber-go/automaxprocs</a> that automatically set <code>GOMAXPROCS</code> to match the Linux container CPU quota.</p>
+<h2 id="community">Community</h2>
+<p>Thanks to all the contributors:</p>
+<p><a href="https://contrib.rocks/image?repo=teivah/100-go-mistakes">
+    <a class="glightbox" href="https://contrib.rocks/image?repo=teivah/100-go-mistakes" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://contrib.rocks/image?repo=teivah/100-go-mistakes" alt="Description of the image"></a>
+</a></p>
 
 
 
