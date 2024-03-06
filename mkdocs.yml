@@ -21,6 +21,7 @@ theme:
     - navigation.sections
     - announce.dismiss
     - navigation.tracking
+    - toc.follow
   palette:
     # Palette toggle for light mode
     - scheme: default
