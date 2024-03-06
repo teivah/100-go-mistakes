@@ -20,6 +20,7 @@ theme:
     - navigation.instant
     - navigation.sections
     - announce.dismiss
+    - navigation.tracking
   palette:
     # Palette toggle for light mode
     - scheme: default
