@@ -1,8 +1,6 @@
 ---
 title: Chinese (Simplified) Version
 comments: true
-hide:
-- navigation
 ---
 
 # 100个Go常见错误及如何避免

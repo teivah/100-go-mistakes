@@ -1,8 +1,6 @@
 ---
 title: Japanese Version
 comments: true
-hide:
-- navigation
 ---
 
 # Go言語でありがちな間違い
