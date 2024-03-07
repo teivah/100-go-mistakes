@@ -22,6 +22,7 @@ theme:
     - announce.dismiss
     - navigation.tracking
     - toc.follow
+    - content.code.annotate
   palette:
     # Palette toggle for light mode
     - scheme: default
