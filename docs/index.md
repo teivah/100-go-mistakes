@@ -1,5 +1,6 @@
 ---
 comments: true
+status: new
 ---
 
 # Common Go Mistakes
@@ -18,7 +19,7 @@ This page is a summary of the mistakes in the [100 Go Mistakes and How to Avoid 
     You're viewing a beta version enriched with significantly more content. However, this version is not yet complete, and I'm looking for volunteers to help me summarize the remaining mistakes ([GitHub issue #43](https://github.com/teivah/100-go-mistakes/issues/43)).
 
     Progress:
-    <progress value="80" max="100"/>
+    <progress value="81" max="100"/>
 
 ## Code and Project Organization
 
@@ -187,8 +188,8 @@ type Bar struct {
 
 In the `Foo` struct, the `Bar` type is declared without an associated name; hence, it’s an embedded field.
 
-We use embedding to promote the fields and methods of an embedded type. Because Bar contains a Baz field, this field is
-promoted to `Foo`. Therefore, Baz becomes available from Foo.
+We use embedding to promote the fields and methods of an embedded type. Because `Bar` contains a `Baz` field, this field is
+promoted to `Foo`. Therefore, `Baz` becomes available from `Foo`.
 
 What can we say about type embedding? First, let’s note that it’s rarely a necessity, and it means that whatever the use case, we can probably solve it as well without type embedding. Type embedding is mainly used for convenience: in most cases, to promote behaviors.
 
@@ -592,7 +593,7 @@ This code updates the last index to 10. However, if we run this code, it does no
 
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/04-control-structures/31-range-loop-arg-evaluation/)
 
-### Ignoring the impacts of using pointer elements in `range` loops (#32)
+### :warning: Ignoring the impacts of using pointer elements in `range` loops (#32)
 
 ???+ warning
 
@@ -1333,7 +1334,7 @@ In summary, when we work in concurrent applications, it’s essential to underst
 
 ???+ info "TL;DR"
 
-    When creating a certain number of goroutines, consider the workload type. Creating CPU-bound goroutines means bounding this number close to the `GOMAXPROCS` variable (based by default on the number of CPU cores on the host). Creating I/O-bound goroutines depends on other factors, such as the external system.
+    When creating a certain number of goroutines, consider the workload type. Creating CPU-bound goroutines means bounding this number close to the GOMAXPROCS variable (based by default on the number of CPU cores on the host). Creating I/O-bound goroutines depends on other factors, such as the external system.
 
 In programming, the execution time of a workload is limited by one of the following:
 
@@ -1511,7 +1512,7 @@ In summary, let’s be mindful that a goroutine is a resource like any other tha
 
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/62-starting-goroutine/)
 
-### Not being careful with goroutines and loop variables (#63)
+### :warning: Not being careful with goroutines and loop variables (#63)
 
 ???+ warning
 
@@ -2241,7 +2242,7 @@ Let’s make sure we are comfortable reading these messages. Go always logs the 
 * Where accesses occur in the code: in this case, lines 9 and 10.
 * When these goroutines were created: goroutine 7 was created in main().
 
-In addition, if a specific file contains tests that lead to data races, we can (temporarily! :wink:) exclude it from race detection using the `!race` build tag:
+In addition, if a specific file contains tests that lead to data races, we can exclude it :material-information-outline:{ title="temporarily! 😉" } from race detection using the `!race` build tag:
 
 ```go
 //go:build !race
@@ -2389,7 +2390,7 @@ Read the full section [here](92-false-sharing.md).
 
 ???+ info "TL;DR"
 
-    Use instruction-level parallelism (ILP) to optimize specific parts of your code to allow a CPU to execute as many parallel instructions as possible. Identifying data hazards is one of the main steps.
+    Use ILP to optimize specific parts of your code to allow a CPU to execute as many parallel instructions as possible. Identifying data hazards is one of the main steps.
 
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/12-optimizations/93-instruction-level-parallelism/)
 
@@ -2443,9 +2444,9 @@ Read the full section [here](98-profiling-execution-tracing.md).
 
     To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
 
-The `GOMAXPROCS` variable defines the limit of OS threads in charge of executing user-level code simultaneously. By default, it's set to the number of OS-apparent logical CPU cores.
+By default, GOMAXPROCS is set to the number of OS-apparent logical CPU cores.
 
-When running some Go code inside Docker and Kubernetes, we must know that Go isn't CFS-aware ([github.com/golang/go/issues/33803](https://github.com/golang/go/issues/33803)). Therefore, `GOMAXPROCS` isn't automatically set to the value of `spec.containers.resources.limits.cpu` (see [Kubernetes Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)); instead, it's set to the number of logical cores on the host machine. The main implication is that it can lead to an increased tail latency in some specific situations.
+When running some Go code inside Docker and Kubernetes, we must know that Go isn't CFS-aware ([github.com/golang/go/issues/33803](https://github.com/golang/go/issues/33803)). Therefore, GOMAXPROCS isn't automatically set to the value of `spec.containers.resources.limits.cpu` (see [Kubernetes Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)); instead, it's set to the number of logical cores on the host machine. The main implication is that it can lead to an increased tail latency in some specific situations.
 
 One solution is to rely on [uber-go/automaxprocs](https://github.com/uber-go/automaxprocs) that automatically set `GOMAXPROCS` to match the Linux container CPU quota.
 

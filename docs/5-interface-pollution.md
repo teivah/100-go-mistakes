@@ -3,6 +3,7 @@ title: Interface pollution (#5)
 comments: true
 hide:
 - toc
+status: new
 ---
 
 # Interface pollution

@@ -23,6 +23,7 @@ theme:
     - navigation.tracking
     - toc.follow
     - content.code.annotate
+    - content.tooltips
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -62,17 +63,13 @@ extra:
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/teivah
+  status:
+    new: New content
 extra_css:
   - stylesheets/extra.css
 nav:
-    - Book:
-        - book.md
-        - chapter-1.md
-        - external.md
     - Go Mistakes:
       - index.md
-      - '简体中文': zh.md
-      - '日本語': ja.md
       - Full Sections:
         - 5-interface-pollution.md
         - 9-generics.md
@@ -82,7 +79,15 @@ nav:
         - 89-benchmarks.md
         - 92-false-sharing.md
         - 98-profiling-execution-tracing.md
+      - Translations:
+        - '简体中文': zh.md
+        - '日本語': ja.md
+    - Book Details:
+      - book.md
+      - chapter-1.md
+      - external.md
 markdown_extensions:
+  - abbr
   - admonition
   - pymdownx.details
   - pymdownx.highlight:
@@ -91,7 +96,9 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.highlight
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
   - pymdownx.superfences
   - tables
   - attr_list
