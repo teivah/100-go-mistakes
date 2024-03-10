@@ -239,10 +239,10 @@ func WithPort(port int) Option {
   }
 }
 
-func NewServer(addr string, opts ...Option) ( *http.Server, error) { <1>
-  var options options <2>
-  for _, opt := range opts { <3>
-    err := opt(&options) <4>
+func NewServer(addr string, opts ...Option) ( *http.Server, error) {
+  var options options
+  for _, opt := range opts { 
+    err := opt(&options) 
     if err != nil {
       return nil, err
     }
@@ -1076,7 +1076,7 @@ func f() error {
         return err
     }
 
-    status = StatusSuccess <5>
+    status = StatusSuccess
     return nil
 }
 ```

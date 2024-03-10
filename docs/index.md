@@ -1069,7 +1069,7 @@ func f() error {
         return err
     }
 
-    status = StatusSuccess <5>
+    status = StatusSuccess
     return nil
 }
 ```
@@ -1750,7 +1750,7 @@ func (c *Customer) UpdateAge(age int) error {
         return fmt.Errorf("age should be positive for customer %v", c)
     }
 
-    c.mutex.Lock() <1>
+    c.mutex.Lock()
     defer c.mutex.Unlock()
 
     c.age = age
