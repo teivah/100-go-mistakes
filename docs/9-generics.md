@@ -66,7 +66,7 @@ Let’s get back to the `getKeys` function and use type parameters to write a ge
 
 ```go
 func getKeys[K comparable, V any](m map[K]V) []K {
-  var keys []K <2>
+  var keys []K
   for k := range m {
     keys = append(keys, k)
   }
