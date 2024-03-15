@@ -1,5 +1,6 @@
 ---
 comments: true
+description: Summary of the mistakes in the 100 Go Mistakes book.
 status: new
 ---
 
