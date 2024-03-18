@@ -2,72 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://100go.co/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/20-slice/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/28-maps-memory-leaks/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/5-interface-pollution/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/56-concurrency-faster/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/89-benchmarks/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/9-generics/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/92-false-sharing/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/98-profiling-execution-tracing/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/book/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/chapter-1/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/external/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/ja/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://100go.co/zh/</loc>
-         <lastmod>2024-03-15</lastmod>
+         <lastmod>2024-03-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

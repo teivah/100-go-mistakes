@@ -17,7 +17,7 @@ theme:
     - search.suggest
     - content.code.copy
     - navigation.expand
-    - navigation.instant
+#    - navigation.instant -- Navigation is too slow
     - navigation.sections
     - announce.dismiss
 #    - navigation.tracking
