@@ -1950,6 +1950,37 @@ In summary, we have to be careful with the boundaries of a mutex lock. In this s
 
     `sync` types shouldn’t be copied.
 
+The sync types in Go, such as `sync.Mutex` and `sync.WaitGroup`, contain internal state that is used to coordinate the execution of goroutines. If you copy a sync value, you are copying this internal state, which can lead to unexpected behavior and subtle errors.
+
+For example, consider the following code that uses a `sync.Mutex`:
+
+```go
+type MyStruct struct {
+    mu sync.Mutex
+    // other fields...
+}
+
+func (m *MyStruct) Lock() {
+    m.mu.Lock()
+}
+
+func (m *MyStruct) Unlock() {
+    m.mu.Unlock()
+}
+
+func main() {
+    m1 := MyStruct{}
+    m2 := m1 // Copies m1, including the mutex
+
+    m1.Lock()
+    m2.Unlock() // Unlocks a different copy of the mutex!
+}
+```
+
+In this example, `m1` and `m2` have separate mutexes, so `m2.Unlock()` does not unlock the mutex that `m1.Lock()` has locked. This can lead to a deadlock or other race conditions.
+
+Therefore, it is best practice _not to copy_ `sync` values. Instead, pass pointers to these values or avoid the need for copying.
+
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/74-copying-sync/main.go)
 
 ## Standard Library
