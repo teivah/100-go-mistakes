@@ -54,12 +54,15 @@ extra:
     - name: 🇬🇧 English
       link: /
       lang: en
-    - name: 🇨🇳 Chinese simplified
+    - name: 🇨🇳 简体中文
       link: /zh/
       lang: zh
-    - name: 🇯🇵 Japanese
+    - name: 🇯🇵 日本語
       link: /ja/
       lang: ja
+    - name: 🇧🇷 Português Brasileiro
+      link: /pt-br/
+      lang: pt-br
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/teivah
@@ -80,8 +83,9 @@ nav:
         - 92-false-sharing.md
         - 98-profiling-execution-tracing.md
       - Translations:
-        - '简体中文': zh.md
-        - '日本語': ja.md
+        - '🇨🇳 简体中文': zh.md
+        - '🇯🇵 日本語': ja.md
+        - '🇧🇷 Português Brasileiro': pt-br.md
     - Book Details:
       - book.md
       - chapter-1.md
