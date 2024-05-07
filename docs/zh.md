@@ -541,7 +541,7 @@ Go 的上下文（context）也是 Go 并发编程的基石之一。上下文允
 
 ### [不使用Go问题诊断工具](https://100go.co/98-profiling-execution-tracing/) (#98)
 
-了解Go profilng工具、执行时tracer来辅助判断一个应用程序是否正常，以及列出需要优化的部分。
+了解Go profiling工具、执行时tracer来辅助判断一个应用程序是否正常，以及列出需要优化的部分。
 
 ### 不理解GC是如何工作的 (#99)
 
