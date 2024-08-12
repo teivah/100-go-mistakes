@@ -1099,8 +1099,8 @@ There’s another solution: calling a closure (an anonymous function value that 
 func f() error {
     var status string
     defer func() {
-        notify(status)
         incrementCounter(status)
+        notify(status)
     }()
 
     // The rest of the function unchanged
