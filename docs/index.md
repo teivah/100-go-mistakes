@@ -1914,6 +1914,24 @@ func (c *Cache) AverageBalance() float64 {
 }
 ```
 
+Additionally, if you are using Go 1.21 and above, the new function of package `maps` from standard library can do the copy for you:
+
+```go hl_lines="2 3 4"
+func (c *Cache) AverageBalance() float64 {
+    c.mu.RLock()
+    m := maps.Clone(c.balances)
+    c.mu.RUnlock()
+
+    sum := 0.
+    for _, balance := range m {
+        sum += balance
+    }
+    return sum / float64(len(m))
+}
+```
+
+Internally, it is doing the exact same loop copy, implemented by using generic. But it will cost you less effort and make your codes explicit.
+
 Once we have made a deep copy, we release the mutex. The iterations are done on the copy outside of the critical section.
 
 In summary, we have to be careful with the boundaries of a mutex lock. In this section, we have seen why assigning an existing map (or an existing slice) to a map isn’t enough to protect against data races. The new variable, whether a map or a slice, is backed by the same data set. There are two leading solutions to prevent this: protect the whole function, or work on a copy of the actual data. In all cases, let’s be cautious when designing critical sections and make sure the boundaries are accurately defined.
