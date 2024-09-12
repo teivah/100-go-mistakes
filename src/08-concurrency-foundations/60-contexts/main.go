@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/teivah/100-go-mistakes/08-concurrency-foundations/60-contexts/flight"
+	"github.com/teivah/100-go-mistakes/src/08-concurrency-foundations/60-contexts/flight"
 )
 
 type publisher interface {
