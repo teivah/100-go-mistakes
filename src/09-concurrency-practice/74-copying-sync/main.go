@@ -19,7 +19,7 @@ func main() {
 }
 
 type Counter struct {
-	mu       sync.Mutex
+	mu       sync.Mutex // bad
 	counters map[string]int
 }
 
@@ -38,7 +38,7 @@ func (c *Counter) Increment2(name string) {
 }
 
 type Counter2 struct {
-	mu       *sync.Mutex
+	mu       *sync.Mutex // good
 	counters map[string]int
 }
 

@@ -2215,7 +2215,7 @@ func main() {
 }
 ```
 
-Runnig this code with the `-race` logs the following warning:
+Running this code with the `-race` logs the following warning:
 
 ```bash hl_lines="3 7 11"
 ==================

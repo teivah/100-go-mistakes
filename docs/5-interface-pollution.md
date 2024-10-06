@@ -47,7 +47,7 @@ Custom implementations of `io.Writer` should write the data coming from a slice 
 
 What is the rationale for having these two interfaces in the language? What is the point of creating these abstractions?
 
-Let’s assume we need to implement a function that should copy the content of one file to another. We could create a specific function that would take as input two `*os.Files`. Or, we can choose to create a more generic function using `io.Reader` and `io.Writer` abstractions:
+Let’s assume we need to implement a function that should copy the content of one file to another. We could create a specific function that would take as input two `*os.File`. Or, we can choose to create a more generic function using `io.Reader` and `io.Writer` abstractions:
 
 ```go
 func copySourceToDest(source io.Reader, dest io.Writer) error {
