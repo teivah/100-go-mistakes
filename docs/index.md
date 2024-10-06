@@ -8,10 +8,11 @@ status: new
 
 This page is a summary of the mistakes in the [100 Go Mistakes and How to Avoid Them book](book.md). Meanwhile, it's also open to the community. If you believe that a common Go mistake should be added, please create an [issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
-???+ Tip "Jobs"
+???+ success "Support"
 
-    Is your company hiring? [Sponsor](https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&tier_id=386213&preview=true) this repository and let a significant audience of Go developers (~1k unique visitors per week) know about your opportunities in this section.
+    This website is 100% free as I wanted to provide to the Go community as much free content as possible from my book. If you find the content useful and want to support my work, feel free to contribute 🙂:
 
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="teivah" data-color="#FFDD00" data-emoji="☕"  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
 
 ![](img/inside-cover.png)
 
