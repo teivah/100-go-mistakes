@@ -137,7 +137,7 @@
               </button>
             
             
-📢 Two new full sections are now available: <a href="https://100go.co/5-interface-pollution/">#5: Interface pollution</a> and <a href="https://100go.co/92-false-sharing/">#92: Writing concurrent code that leads to false sharing</a>.
+📢 I have just released a daily newsletter for coders: The Coder Cafe ☕. Feel free to have a look at <a href="https://thecoder.cafe">thecoder.cafe</a>.
 
           </div>
           
@@ -1190,7 +1190,7 @@
 <li><code>io.Writer</code> writes data to a target</li>
 </ul>
 <p>What is the rationale for having these two interfaces in the language? What is the point of creating these abstractions?</p>
-<p>Let’s assume we need to implement a function that should copy the content of one file to another. We could create a specific function that would take as input two <code>*os.Files</code>. Or, we can choose to create a more generic function using <code>io.Reader</code> and <code>io.Writer</code> abstractions:</p>
+<p>Let’s assume we need to implement a function that should copy the content of one file to another. We could create a specific function that would take as input two <code>*os.File</code>. Or, we can choose to create a more generic function using <code>io.Reader</code> and <code>io.Writer</code> abstractions:</p>
 <div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">copySourceToDest</span><span class="p">(</span><span class="nx">source</span><span class="w"> </span><span class="nx">io</span><span class="p">.</span><span class="nx">Reader</span><span class="p">,</span><span class="w"> </span><span class="nx">dest</span><span class="w"> </span><span class="nx">io</span><span class="p">.</span><span class="nx">Writer</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="c1">// ...</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
