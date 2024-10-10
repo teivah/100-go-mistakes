@@ -18,8 +18,8 @@ func consumer1(ch <-chan Event) {
 }
 
 func consumer2(ch <-chan Event) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
 	for {
-		ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
 		select {
 		case event := <-ch:
 			cancel()
