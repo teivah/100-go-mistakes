@@ -5,6 +5,14 @@ comments: true
 
 # 100 个 Go 常见错误及如何避免
 
+???+ tip "The Coder Cafe"
+
+    如果您喜欢我的书，您可能会对我的最新项目感兴趣：[The Coder Cafe](https://thecoder.cafe)，这是一个为程序员提供的每日简报。
+
+    > Feeling overwhelmed by the endless stream of tech content? At The Coder Cafe, we serve one essential concept for coders daily. Written by a senior software engineer at Google, it's perfectly brewed for your morning coffee, helping you grow your skills deeply.
+
+    <center><a href="https://thecoder.cafe"><img src="../img/thecodercafe.png" alt="" style="width:480px;height:240px;"></a></center>
+
 ![](img/inside-cover.png)
 
 ## 代码及工程组织

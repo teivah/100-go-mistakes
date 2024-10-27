@@ -5,6 +5,14 @@ comments: true
 
 # Erros comuns de Go
 
+???+ tip "The Coder Cafe"
+
+    Se você gostou do meu livro, talvez se interesse pelo meu novo projeto: [The Coder Cafe](https://thecoder.cafe), uma newsletter diária para programadores.
+
+    > Feeling overwhelmed by the endless stream of tech content? At The Coder Cafe, we serve one essential concept for coders daily. Written by a senior software engineer at Google, it's perfectly brewed for your morning coffee, helping you grow your skills deeply.
+
+    <center><a href="https://thecoder.cafe"><img src="../img/thecodercafe.png" alt="" style="width:480px;height:240px;"></a></center>
+
 Esta página é um resumo dos erros do [100 Go Mistakes and How to Avoid Them book](book.md). Enquanto isso, também está aberto à comunidade. Se você acredita que um erro comum do Go deve ser adicionado, crie uma [issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
 ![](img/inside-cover.png)

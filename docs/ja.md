@@ -5,6 +5,14 @@ comments: true
 
 # Go言語でありがちな間違い
 
+???+ tip "The Coder Cafe"
+
+    もし私の本を楽しんでいただけたなら、私の最新プロジェクトにもご興味があるかもしれません。[The Coder Cafe](https://thecoder.cafe)は、コーダー向けの日刊ニュースレターです。
+
+    > Feeling overwhelmed by the endless stream of tech content? At The Coder Cafe, we serve one essential concept for coders daily. Written by a senior software engineer at Google, it's perfectly brewed for your morning coffee, helping you grow your skills deeply.
+
+    <center><a href="https://thecoder.cafe"><img src="../img/thecodercafe.png" alt="" style="width:480px;height:240px;"></a></center>
+
 このページは『100 Go Mistakes』の内容をまとめたものです。一方で、コミュニティに開かれたページでもあります。「ありがちな間違い」が新たに追加されるべきだとお考えでしたら [community mistake issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=) を作成してください。
 
 ![](img/inside-cover.png)
