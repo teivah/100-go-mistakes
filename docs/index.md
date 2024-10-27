@@ -8,11 +8,11 @@ status: new
 
 ???+ tip "The Coder Cafe"
 
-    If you enjoyed my book, you may be interested in my latest project: [The Coder Cafe](https://thecoder.cafe), a daily newsletter for coders.
+    If you enjoyed my book, you may be interested in my latest project: [The Coder Cafe](https://thecoder.cafe?rd=100go.co), a daily newsletter for coders.
 
     > Feeling overwhelmed by the endless stream of tech content? At The Coder Cafe, we serve one essential concept for coders daily. Written by a senior software engineer at Google, it's perfectly brewed for your morning coffee, helping you grow your skills deeply.
 
-    <center><a href="https://thecoder.cafe"><img src="../img/thecodercafe.png" alt="" style="width:480px;height:240px;"></a></center>
+    <center><a href="https://thecoder.cafe?rd=100go.co"><img src="../img/thecodercafe.png" alt="" style="width:480px;height:240px;"></a></center>
 
 This page is a summary of the mistakes in the [100 Go Mistakes and How to Avoid Them book](book.md). Meanwhile, it's also open to the community. If you believe that a common Go mistake should be added, please create an [issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
