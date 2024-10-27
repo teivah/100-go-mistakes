@@ -1927,6 +1927,24 @@ In summary, we have to be careful with the boundaries of a mutex lock. In this s
 
     To accurately use `sync.WaitGroup`, call the `Add` method before spinning up goroutines.
 
+The `Add` method of `sync.WaitGroup` is used to increment an internal counter of goroutines that the program should wait for. Therefore, it is important to call `Add` before starting the goroutine. If you start the goroutine before calling `Add`, there is a possibility that the goroutine will finish before `Add` is called, which may lead to an incorrect wait state.
+
+```go
+var wg sync.WaitGroup
+
+for i := 0; i < 5; i++ {
+    wg.Add(1) // Adds to counter before starting goroutine
+    go func(i int) {
+        defer wg.Done() // Decrease the counter when the goroutine ends
+        fmt.Println(i)
+    }(i)
+}
+
+wg.Wait() // Wait until all goroutines finish
+```
+
+In this example, `wg.Add(1)` is called before each goroutine is started, ensuring the counter is correct. When each goroutine finishes, it calls `wg.Done()` to decrement the counter. Finally, `wg.Wait()` is used to block until all goroutines have finished. This ensures that the main program does not terminate before all goroutines have completed their work.
+
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/71-wait-group/main.go)
 
 ### Forgetting about `sync.Cond` (#72)
