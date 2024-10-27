@@ -1895,10 +1895,7 @@ Another option, if the iteration operation isn’t lightweight, is to work on an
 ```go hl_lines="2 3 4 5 6 7"
 func (c *Cache) AverageBalance() float64 {
     c.mu.RLock()
-    m := make(map[string]float64, len(c.balances)) // Copies the map
-    for k, v := range c.balances {
-        m[k] = v
-    }
+    m := maps.Clone(c.balances)
     c.mu.RUnlock()
 
     sum := 0.

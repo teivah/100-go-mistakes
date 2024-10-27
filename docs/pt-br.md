@@ -7,11 +7,6 @@ comments: true
 
 Esta página é um resumo dos erros do [100 Go Mistakes and How to Avoid Them book](book.md). Enquanto isso, também está aberto à comunidade. Se você acredita que um erro comum do Go deve ser adicionado, crie uma [issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
-???+ Tip "Jobs"
-
-    Sua empresa está contratando? [Patrocine](https://github.com/sponsors/teivah/sponsorships?sponsor=teivah&tier_id=386213&preview=true) este repositório e informe um público significativo de desenvolvedores Go (cerca de 1 mil visitantes únicos por semana) sobre suas oportunidades nesta seção.
-
-
 ![](img/inside-cover.png)
 
 ???+ warning "Beta"
