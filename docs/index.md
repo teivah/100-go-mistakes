@@ -1921,23 +1921,57 @@ In summary, we have to be careful with the boundaries of a mutex lock. In this s
 
     To accurately use `sync.WaitGroup`, call the `Add` method before spinning up goroutines.
 
-The `Add` method of `sync.WaitGroup` is used to increment an internal counter of goroutines that the program should wait for. Therefore, it is important to call `Add` before starting the goroutine. If you start the goroutine before calling `Add`, there is a possibility that the goroutine will finish before `Add` is called, which may lead to an incorrect wait state.
+In the following example, we will initialize a wait group, start three goroutines that will update a counter atomically, and then wait for them to complete. We want to wait for these three goroutines to print the value of the counter (which should be 3):
 
 ```go
-var wg sync.WaitGroup
-
-for i := 0; i < 5; i++ {
-    wg.Add(1) // Adds to counter before starting goroutine
-    go func(i int) {
-        defer wg.Done() // Decrease the counter when the goroutine ends
-        fmt.Println(i)
-    }(i)
+wg := sync.WaitGroup{}
+var v uint64
+for i := 0; i < 3; i++ {
+    go func() {
+        wg.Add(1)
+        atomic.AddUint64(&v, 1)
+        wg.Done()
+    }()
 }
-
-wg.Wait() // Wait until all goroutines finish
+wg.Wait()
+fmt.Println(v)
 ```
 
-In this example, `wg.Add(1)` is called before each goroutine is started, ensuring the counter is correct. When each goroutine finishes, it calls `wg.Done()` to decrement the counter. Finally, `wg.Wait()` is used to block until all goroutines have finished. This ensures that the main program does not terminate before all goroutines have completed their work.
+If we run this example, we get a non-deterministic value: the code can print any value from 0 to 3. Also, if we enable the `-race` flag, Go will even catch a data race.
+
+The problem is that `wg.Add(1)` is called within the newly created goroutine, not in the parent goroutine. Hence, there is no guarantee that we have indicated to the wait group that we want to wait for three goroutines before calling `wg.Wait()`.
+
+To fix this issue, we can call `wg.Add` before the loop:
+
+```go
+wg := sync.WaitGroup{}
+var v uint64
+wg.Add(3)
+for i := 0; i < 3; i++ {
+    go func() {
+        atomic.AddUint64(&v, 1)
+        wg.Done()
+    }()
+}
+wg.Wait()
+fmt.Println(v)
+```
+
+Or inside the loop but not in the newly created goroutine:
+
+```go
+wg := sync.WaitGroup{}
+var v uint64
+for i := 0; i < 3; i++ {
+    wg.Add(1)
+    go func() {
+        atomic.AddUint64(&v, 1)
+        wg.Done()
+    }()
+}
+wg.Wait()
+fmt.Println(v)
+```
 
  [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/09-concurrency-practice/71-wait-group/main.go)
 
