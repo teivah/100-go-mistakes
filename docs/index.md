@@ -8,12 +8,6 @@ status: new
 
 This page is a summary of the mistakes in the [100 Go Mistakes and How to Avoid Them book](book.md). Meanwhile, it's also open to the community. If you believe that a common Go mistake should be added, please create an [issue](https://github.com/teivah/100-go-mistakes/issues/new?assignees=&labels=community+mistake&template=community_mistake.md&title=).
 
-???+ success "Support"
-
-    This website is 100% free as I wanted to provide to the Go community as much free content as possible from my book. If you find the content useful and want to support my work, feel free to contribute 🙂:
-
-    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="teivah" data-color="#FFDD00" data-emoji="☕"  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-
 ![](img/inside-cover.png)
 
 ???+ warning "Beta"
@@ -1988,74 +1982,9 @@ ticker = time.NewTicker(1000 * time.Nanosecond)
 
 ### `time.After` and memory leaks (#76)
 
-???+ info "TL;DR"
+???+ warning
 
-    Avoiding calls to `time.After` in repeated functions (such as loops or HTTP handlers) can avoid peak memory consumption. The resources created by `time.After` are released only when the timer expires.
-
-Developers often use `time.After` in loops or HTTP handlers repeatedly to implement the timing function. But it can lead to unintended peak memory consumption due to the delayed release of resources, just like the following code:
-
-```go
-func consumer(ch <-chan Event) {
-	for {
-		select {
-		case event := <-ch:
-			handle(event)
-		case <-time.After(time.Hour):
-			log.Println("warning: no messages received")
-		}
-	}
-}
-```
-
-The source code of the function time.After is as follows:
-
-```go
-func After(d Duration) <-chan Time {
-	return NewTimer(d).C
-}
-```
-
-As we see, it returns receive-only channel.
-
-When `time.After` is used in a loop or repeated context, a new channel is created in each iteration. If these channels are not properly closed or if their associated timers are not stopped, they can accumulate and consume memory. The resources associated with each timer and channel are only released when the timer expires or the channel is closed.
-
-To avoid this happening, We can use context's timeout setting instead of `time.After`, like below:
-
-```go
-func consumer(ch <-chan Event) {
-	for {
-		ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
-		select {
-		case event := <-ch:
-			cancel()
-			handle(event)
-		case <-ctx.Done():
-			log.Println("warning: no messages received")
-		}
-	}
-}
-```
-
-We can also use `time.NewTimer` like so:
-
-```go
-func consumer(ch <-chan Event) {
-	timerDuration := 1 * time.Hour
-	timer := time.NewTimer(timerDuration)
-
-	for {
-		timer.Reset(timerDuration)
-		select {
-		case event := <-ch:
-			handle(event)
-		case <-timer.C:
-			log.Println("warning: no messages received")
-		}
-	}
-}
-```
-
- [:simple-github: Source code](https://github.com/teivah/100-go-mistakes/tree/master/src/10-standard-lib/76-time-after/main.go)
+    This mistake isn't relevant anymore from Go 1.23 ([details](https://go.dev/wiki/Go123Timer)).
 
 ### JSON handling common mistakes (#77)
 
