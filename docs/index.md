@@ -229,10 +229,10 @@ type Option func(options *options) error
 func WithPort(port int) Option {
   return func(options *options) error {
     if port < 0 {
-    return errors.New("port should be positive")
-  }
-  options.port = &port
-  return nil
+      return errors.New("port should be positive")
+    }
+    options.port = &port
+    return nil
   }
 }
 
@@ -251,7 +251,7 @@ func NewServer(addr string, opts ...Option) ( *http.Server, error) {
   if options.port == nil {
     port = defaultHTTPPort
   } else {
-      if *options.port == 0 {
+    if *options.port == 0 {
       port = randomPort()
     } else {
       port = *options.port
