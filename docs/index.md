@@ -2440,7 +2440,7 @@ One solution is to rely on [uber-go/automaxprocs](https://github.com/uber-go/aut
 
 ???+ warning
 
-   automaxprocs does not work for workloads running in AWS ECS [issue #66](https://github.com/uber-go/automaxprocs/issues/66). Use [rdforte/gomaxecs](https://github.com/rdforte/gomaxecs) instead. 
+    automaxprocs does not work for workloads running in AWS ECS [issue #66](https://github.com/uber-go/automaxprocs/issues/66). Use [rdforte/gomaxecs](https://github.com/rdforte/gomaxecs) instead.
 
 ## Community
 
