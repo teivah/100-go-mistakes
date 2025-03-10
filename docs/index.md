@@ -2438,6 +2438,10 @@ When running some Go code inside Docker and Kubernetes, we must know that Go isn
 
 One solution is to rely on [uber-go/automaxprocs](https://github.com/uber-go/automaxprocs) that automatically set `GOMAXPROCS` to match the Linux container CPU quota.
 
+???+ warning
+
+    automaxprocs does not work for workloads running in AWS ECS [issue #66](https://github.com/uber-go/automaxprocs/issues/66). Use [rdforte/gomaxecs](https://github.com/rdforte/gomaxecs) instead.
+
 ## Community
 
 Thanks to all the contributors:
