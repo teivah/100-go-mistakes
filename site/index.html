@@ -5254,6 +5254,10 @@ the use case. However, we should see the two options as complementary. </p>
 <p>By default, <abbr title="The variable defines the limit of OS threads in charge of executing user-level code simultaneously">GOMAXPROCS</abbr> is set to the number of OS-apparent logical CPU cores.</p>
 <p>When running some Go code inside Docker and Kubernetes, we must know that Go isn't <abbr title="Completely Fair Scheduler">CFS</abbr>-aware (<a href="https://github.com/golang/go/issues/33803">github.com/golang/go/issues/33803</a>). Therefore, <abbr title="The variable defines the limit of OS threads in charge of executing user-level code simultaneously">GOMAXPROCS</abbr> isn't automatically set to the value of <code>spec.containers.resources.limits.cpu</code> (see <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">Kubernetes Resource Management for Pods and Containers</a>); instead, it's set to the number of logical cores on the host machine. The main implication is that it can lead to an increased tail latency in some specific situations.</p>
 <p>One solution is to rely on <a href="https://github.com/uber-go/automaxprocs">uber-go/automaxprocs</a> that automatically set <code>GOMAXPROCS</code> to match the Linux container CPU quota.</p>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>automaxprocs does not work for workloads running in AWS ECS <a href="https://github.com/uber-go/automaxprocs/issues/66">issue #66</a>. Use <a href="https://github.com/rdforte/gomaxecs">rdforte/gomaxecs</a> instead.</p>
+</details>
 <h2 id="community">Community</h2>
 <p>Thanks to all the contributors:</p>
 <p><a href="https://contrib.rocks/image?repo=teivah/100-go-mistakes">
