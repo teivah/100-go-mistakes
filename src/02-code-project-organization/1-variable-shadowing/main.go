@@ -5,6 +5,13 @@ import (
 	"net/http"
 )
 
+func main() {
+	_ = listing1()
+	_ = listing2()
+	_ = listing3()
+	_ = listing4()
+}
+
 func listing1() error {
 	var client *http.Client
 	if tracing {
