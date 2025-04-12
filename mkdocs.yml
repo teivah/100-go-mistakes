@@ -90,7 +90,7 @@ nav:
       - book.md
       - chapter-1.md
       - external.md
-    - 'So, I Wrote a Book': https://www.thecoder.cafe/p/100-go-mistakes
+    - 'The Story Behind 100 Go Mistakes': https://www.thecoder.cafe/p/100-go-mistakes
 
 markdown_extensions:
   - abbr
