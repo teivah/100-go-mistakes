@@ -73,7 +73,7 @@ Now, let’s assume that the machine contains two cores. In most cases, we shoul
 
 <figure markdown>
   ![](img/false-sharing-2.svg)
-  <figcaption>Each block is copied to a cache line on both code 0 and core 1.</figcaption>
+  <figcaption>Each block is copied to a cache line on both core 0 and core 1.</figcaption>
 </figure>
 
 Both cache lines are replicated because L1D (L1 data) is per core. Recall that in our example, each goroutine updates its own variable: `sumA` on one side, and `sumB` on the other side:
