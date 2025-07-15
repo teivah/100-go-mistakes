@@ -67,7 +67,7 @@ If we run this code, we see that the slice was able to cope with our request:
 [0 1 0 2 3 4 5]
 ```
 
-Because an array is a fixed-size structure, it can store the new elements until element 4. When we want to insert element 5, the array is already full: Go internally creates another array by doubling the capacity, copying all the elements, and then inserting element 5. Figure 4 shows this process.
+Because an array is a fixed-size structure, we cannot fit all the new elements, since there isn’t enough space for element 5. Go detects this in advance, creates another array with doubled capacity, copies the existing elements, and inserts all the new ones. Figure 4 illustrates this process.
 
 <figure markdown>
   ![](img/slice-4.png)
