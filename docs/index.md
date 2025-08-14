@@ -2426,21 +2426,11 @@ Read the full section [here](98-profiling-execution-tracing.md).
 
     Understanding how to tune the GC can lead to multiple benefits such as handling sudden load increases more efficiently.
 
-### Not understanding the impacts of running Go in Docker and Kubernetes (#100)
-
-???+ info "TL;DR"
-
-    To help avoid CPU throttling when deployed in Docker and Kubernetes, keep in mind that Go isn’t CFS-aware.
-
-By default, GOMAXPROCS is set to the number of OS-apparent logical CPU cores.
-
-When running some Go code inside Docker and Kubernetes, we must know that Go isn't CFS-aware ([github.com/golang/go/issues/33803](https://github.com/golang/go/issues/33803)). Therefore, GOMAXPROCS isn't automatically set to the value of `spec.containers.resources.limits.cpu` (see [Kubernetes Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)); instead, it's set to the number of logical cores on the host machine. The main implication is that it can lead to an increased tail latency in some specific situations.
-
-One solution is to rely on [uber-go/automaxprocs](https://github.com/uber-go/automaxprocs) that automatically set `GOMAXPROCS` to match the Linux container CPU quota.
+### :warning: Not understanding the impacts of running Go in Docker and Kubernetes (#100)
 
 ???+ warning
 
-    automaxprocs does not work for workloads running in AWS ECS [issue #66](https://github.com/uber-go/automaxprocs/issues/66). Use [rdforte/gomaxecs](https://github.com/rdforte/gomaxecs) instead.
+	This mistake isn't relevant anymore from Go 1.25 ([details](https://go.dev/doc/go1.25#container-aware-gomaxprocs)).
 
 ## Community
 
