@@ -2430,7 +2430,7 @@ Read the full section [here](98-profiling-execution-tracing.md).
 
 ???+ warning
 
-	This mistake isn't relevant anymore from Go 1.25 ([details](https://go.dev/doc/go1.25#container-aware-gomaxprocs)).
+	This mistake isn't relevant anymore from Go 1.25 ([details](https://go.dev/blog/container-aware-gomaxprocs)).
 
 ## Community
 
