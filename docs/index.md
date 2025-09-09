@@ -1178,7 +1178,7 @@ When handling an error, we can decide to wrap it. Wrapping is about adding addit
 
 ???+ info "TL;DR"
 
-    If you use Go 1.13 error wrapping with the `%w` directive and `fmt.Errorf`, comparing an error against or a value has to be done using `errors.As`. Otherwise, if the returned error you want to check is wrapped, it will fail the checks.
+    If you use Go 1.13 error wrapping with the `%w` directive and `fmt.Errorf`, comparing an error against or a value has to be done using `errors.Is`. Otherwise, if the returned error you want to check is wrapped, it will fail the checks.
 
 A sentinel error is an error defined as a global variable:
 
