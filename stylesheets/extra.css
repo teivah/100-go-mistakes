@@ -1,0 +1,8 @@
+.md-typeset figure img {
+  display: inline;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: 15px
+}
