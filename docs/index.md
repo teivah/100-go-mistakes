@@ -2439,3 +2439,7 @@ Thanks to all the contributors:
 <a href="https://contrib.rocks/image?repo=teivah/100-go-mistakes">
     <img src="https://contrib.rocks/image?repo=teivah/100-go-mistakes" alt="Description of the image">
 </a>
+
+## Powered by
+
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSource)
