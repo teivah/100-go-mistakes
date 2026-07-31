@@ -35,7 +35,7 @@ func TestRemoveNewLineSuffix_EndingWithMultipleNewLines(t *testing.T) {
 }
 
 func TestRemoveNewLineSuffix_EndingWithoutNewLine(t *testing.T) {
-	got := removeNewLineSuffixes("a\n")
+	got := removeNewLineSuffixes("a")
 	expected := "a"
 	if got != expected {
 		t.Errorf("got: %s", got)
