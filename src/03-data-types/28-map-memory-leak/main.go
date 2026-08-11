@@ -15,6 +15,7 @@ func main() {
 	for i := 0; i < n; i++ {
 		m[i] = randBytes()
 	}
+	runtime.GC()
 	printAlloc()
 
 	// Remove elements
